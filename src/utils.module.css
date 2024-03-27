@@ -1,0 +1,91 @@
+:global(.grid) {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* Usage
+
+    <div className={style.section}>
+        <div className="w-6 sub">
+        <h1 className="w-2">A new era of financial analytics</h1>
+        </div>
+    </div>  
+*/
+
+.section {
+  composes: grid from global;
+  gap: calc(var(--unit) / var(--wrapper) * 100%);
+  margin: 0 auto;
+  max-width: 1104px;
+  width: calc(100% - (var(--unit) / var(--wrapper) * (100% * 2)));
+  margin-bottom: min(48px, calc(var(--unit) / var(--wrapper) * 100%));
+  background: #fff;
+  overflow: hidden;
+
+  & :global(.sub) {
+    grid-template-columns: subgrid;
+  }
+
+  & :global([class^='s-']) {
+    display: grid;
+    background: #0f01;
+  }
+
+  & :global([class^='e-']) {
+    display: grid;
+    grid-column-start: 1;
+    background: #f001;
+  }
+
+  /* start */
+
+  & :global(.s-12) {
+    grid-column-start: 13;
+  }
+
+  & :global(.s-10) {
+    grid-column-start: 11;
+  }
+
+  & :global(.s-8) {
+    grid-column-start: 9;
+  }
+
+  & :global(.s-6) {
+    grid-column-start: 7;
+  }
+
+  & :global(.s-4) {
+    grid-column-start: 5;
+  }
+
+  & :global(.s-2) {
+    grid-column-start: 3;
+  }
+
+  /* end */
+
+  & :global(.e-12) {
+    grid-column-end: 13;
+  }
+
+  & :global(.e-10) {
+    grid-column-end: 11;
+  }
+
+  & :global(.e-8) {
+    grid-column-end: 9;
+  }
+
+  & :global(.e-6) {
+    grid-column-end: 7;
+  }
+
+  & :global(.e-4) {
+    grid-column-end: 5;
+  }
+
+  & :global(.e-2) {
+    grid-column-end: 3;
+  }
+}
