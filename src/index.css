@@ -1,0 +1,41 @@
+:root {
+  --beige: #f6f5f5;
+  --dark: #060121;
+
+  --text: var(--dark);
+  --background: var(--beige);
+}
+
+@font-face {
+  font-family: 'ABCRepro';
+  src: url('./assets/ABCReproVariable-Trial.woff2');
+}
+
+:root {
+  font-family: 'ABCRepro', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  background-color: var(--background);
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: underline;
+}
+a:hover {
+  text-decoration: none;
+}
