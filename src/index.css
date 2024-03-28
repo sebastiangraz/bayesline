@@ -16,14 +16,16 @@
   --text: hsl(var(--dark) / var(--opacity));
   --background: hsl(var(--beige) / var(--opacity));
 
-  --wrapper: 1104;
+  --scrollbar-width: 6;
   --base-unit: 48;
-  --unit: calc(var(--base-unit) / var(--wrapper) * 100%);
+  --base-wrapper: 1104;
+  --wrapper: calc(var(--base-wrapper) + (var(--base-unit) * 2));
+  --unit: calc(var(--base-unit) / var(--wrapper) * 100%); /* 1em */
 }
 
 .tile {
   mask: conic-gradient(from 90deg at 1px 1px, #0000 90deg, #000a 0) calc(50% - 16px) -1px / 48px 48px;
-  background: radial-gradient(closest-side at 50% 50%, var(--dark) 40%, #0000 100%) 0 100% / 100% 200%;
+  background: radial-gradient(closest-side at 50% 50%, var(--text) 40%, #0000 100%) 0 100% / 100% 200%;
   background-repeat: no-repeat;
   opacity: 0.12;
   width: 100%;
@@ -34,11 +36,11 @@
 }
 
 .padding-1 {
-  padding: 3em;
+  padding: 1em;
 }
 
 .padding-2 {
-  padding: 6em;
+  padding: 2em;
 }
 
 :root {
@@ -55,9 +57,8 @@ body {
   margin: 0;
   padding: 0;
   color: var(--dark);
-  /*   color: color-mix(in hch, #f00 20%, var(--background)); */
   background-color: var(--background);
-  font-size: clamp(0.01rem, 1.45vw, 1rem);
+  font-size: clamp(1rem, 0rem + 4vw, 3rem);
 }
 
 html::-webkit-scrollbar-track {
@@ -66,7 +67,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar {
-  width: 6px;
+  width: 0px;
   height: 6px;
 }
 
@@ -117,24 +118,28 @@ h6 {
 
 h1 {
   font-size: clamp(2.5rem, 1.6477rem + 3.4091vw, 4rem);
+  /*   font-size: clamp(3rem, 2.5577rem + 1.9231vw, 4rem); */
   line-height: 0.96;
   letter-spacing: -0.05em;
 }
 
 h2 {
   font-size: clamp(2.25rem, 1.8239rem + 1.7045vw, 3rem);
+  /*   font-size: clamp(2.25rem, 1.9183rem + 1.4423vw, 3rem); */
   line-height: 1.1;
   letter-spacing: -0.04em;
 }
 
 h3 {
   font-size: clamp(1.75rem, 1.608rem + 0.5682vw, 2rem);
+  /*   font-size: clamp(1.75rem, 1.6394rem + 0.4808vw, 2rem); */
   line-height: 1.16;
   letter-spacing: -0.03em;
 }
 
 h4 {
   font-size: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
+  /*   font-size: clamp(1.25rem, 1.1394rem + 0.4808vw, 1.5rem); */
   line-height: 1.2;
   letter-spacing: -0.02em;
 }

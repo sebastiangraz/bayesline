@@ -17,10 +17,10 @@
 
 .section {
   composes: grid from global;
-  column-gap: var(--unit);
+  column-gap: calc(var(--base-unit) / var(--base-wrapper) * 100%);
   margin: 0 auto;
-  max-width: 1104px;
-  /*   width: calc(100% - (var(--unit) * 2)); */
+  max-width: calc(var(--base-wrapper) * 1px);
+  width: calc(100% - (var(--unit) * 2));
   margin-bottom: min(48px, var(--unit));
   overflow: hidden;
 
