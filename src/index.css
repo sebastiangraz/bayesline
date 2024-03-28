@@ -8,13 +8,17 @@
 }
 
 :root {
-  --beige: #f6f5f5;
-  --dark: #060121;
-  --text: var(--dark);
-  --background: var(--beige);
+  --beige: 0 5% 96%; /* hsl */
+  --dark: 249 94% 7%; /* hsl */
 
-  --unit: 48;
+  --opacity: 1;
+
+  --text: hsl(var(--dark) / var(--opacity));
+  --background: hsl(var(--beige) / var(--opacity));
+
   --wrapper: 1104;
+  --base-unit: 48;
+  --unit: calc(var(--base-unit) / var(--wrapper) * 100%);
 }
 
 .tile {
@@ -27,6 +31,14 @@
   margin: 0 1rem auto;
   position: fixed;
   z-index: -1;
+}
+
+.padding-1 {
+  padding: 3em;
+}
+
+.padding-2 {
+  padding: 6em;
 }
 
 :root {
@@ -42,12 +54,35 @@
 body {
   margin: 0;
   padding: 0;
-  color: var(--text);
+  color: var(--dark);
+  /*   color: color-mix(in hch, #f00 20%, var(--background)); */
   background-color: var(--background);
+  font-size: clamp(0.01rem, 1.45vw, 1rem);
+}
+
+html::-webkit-scrollbar-track {
+  --opacity: 0.12;
+  background-color: hsl(var(--dark) / var(--opacity));
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html::-webkit-scrollbar-thumb {
+  --opacity: 0.32;
+  background-color: hsl(var(--dark) / var(--opacity));
+  border-radius: 12px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  --opacity: 0.56;
 }
 
 p {
   margin: 0;
+  font-size: 1rem;
 }
 
 button {
@@ -63,6 +98,10 @@ a:hover {
   text-decoration: none;
 }
 
+img {
+  display: block;
+}
+
 h1,
 h2,
 h3,
@@ -73,23 +112,29 @@ h6 {
   margin: 0;
   text-wrap: balance;
 }
+
+/* https://clamp.font-size.app/ min:400 max:1104 */
+
 h1 {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 1.6477rem + 3.4091vw, 4rem);
   line-height: 0.96;
   letter-spacing: -0.05em;
 }
+
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2.25rem, 1.8239rem + 1.7045vw, 3rem);
   line-height: 1.1;
   letter-spacing: -0.04em;
 }
+
 h3 {
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 1.608rem + 0.5682vw, 2rem);
   line-height: 1.16;
   letter-spacing: -0.03em;
 }
+
 h4 {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
   line-height: 1.2;
   letter-spacing: -0.02em;
 }

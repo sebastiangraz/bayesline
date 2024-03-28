@@ -17,11 +17,11 @@
 
 .section {
   composes: grid from global;
-  gap: calc(var(--unit) / var(--wrapper) * 100%);
+  column-gap: var(--unit);
   margin: 0 auto;
   max-width: 1104px;
-  width: calc(100% - (var(--unit) / var(--wrapper) * (100% * 2)));
-  margin-bottom: min(48px, calc(var(--unit) / var(--wrapper) * 100%));
+  /*   width: calc(100% - (var(--unit) * 2)); */
+  margin-bottom: min(48px, var(--unit));
   overflow: hidden;
 
   & :global(.sub) {

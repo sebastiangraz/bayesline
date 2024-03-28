@@ -8,12 +8,12 @@ function App() {
 
       <Hero />
 
-      <div className={utils.section}>
-        <div className="e-4 sub">
+      <div className={`${utils.section}`}>
+        <div className="e-4 sub padding-1">
           <p className="e-4">We are reimagining financial analytics on Al infrastructure.</p>
         </div>
-        <div className="s-4 e-12 sub">
-          <h2 className="e-4">We are reimagining financial analytics on Al infrastructure.</h2>
+        <div className="s-4 e-12 sub padding-2">
+          <h3 className="e-4">We are reimagining financial analytics on Al infrastructure.</h3>
         </div>
       </div>
 
@@ -35,7 +35,7 @@ function App() {
         </div>
       </div>
 
-      <div className={utils.section}>
+      {/*       <div className={utils.section}>
         <div className="e-4">
           <h1>A new era of center</h1>
         </div>
@@ -51,7 +51,7 @@ function App() {
         <div className="s-8 e-12">
           <h1>A new era of financial analytics</h1>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
