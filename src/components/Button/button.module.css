@@ -19,7 +19,7 @@
   font-size: inherit;
 }
 .secondary {
-  background-color: var(--beige);
+  background-color: var(--background);
   position: relative;
   font-size: inherit;
 }

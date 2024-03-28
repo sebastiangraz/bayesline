@@ -7,6 +7,9 @@
 .wrap {
   flex-wrap: wrap;
 }
+.between {
+  justify-content: space-between;
+}
 .gap-1 {
   gap: 0.25em;
 }

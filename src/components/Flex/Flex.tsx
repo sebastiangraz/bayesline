@@ -4,6 +4,7 @@ interface FlexProps {
   children: React.ReactNode;
   className?: string;
   column?: boolean;
+  between?: boolean;
   wrap?: boolean;
   gap?: 1 | 2 | 3 | 4;
 }
@@ -14,6 +15,7 @@ export const Flex = (props: FlexProps) => {
   const row = rest.column ? style.column : '';
   const wrap = rest.wrap ? style.wrap : '';
   const className = rest.className ? rest.className : '';
+  const between = rest.between ? style.between : '';
 
   let gap = '';
   switch (rest.gap) {
@@ -33,5 +35,5 @@ export const Flex = (props: FlexProps) => {
       gap = '';
   }
 
-  return <div className={`${style.flex} ${row} ${wrap} ${gap} ${className}`}>{children}</div>;
+  return <div className={`${style.flex} ${row} ${wrap} ${gap} ${between} ${className}`}>{children}</div>;
 };

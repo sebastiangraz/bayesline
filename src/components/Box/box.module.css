@@ -3,7 +3,9 @@
   position: relative;
 }
 .bg-secondary {
-  background-color: var(--beige);
+  --opacity: 0.96;
+  backdrop-filter: blur(1px);
+  background-color: hsl(var(--beige) / var(--opacity));
   position: relative;
 }
 .box {

@@ -4,6 +4,7 @@ interface BoxProps {
   bg?: 'primary' | 'secondary';
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const Box = (props: BoxProps) => {

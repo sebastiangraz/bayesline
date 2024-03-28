@@ -59,6 +59,10 @@
     grid-column-start: 3;
   }
 
+  & :global(.s-1) {
+    grid-column-start: 2;
+  }
+
   /* end */
 
   & :global(.e-12) {
@@ -87,5 +91,9 @@
 
   & :global(.e-2) {
     grid-column-end: 3;
+  }
+
+  & :global(.e-1) {
+    grid-column-end: 2;
   }
 }
