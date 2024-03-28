@@ -46,6 +46,10 @@ body {
   background-color: var(--background);
 }
 
+p {
+  margin: 0;
+}
+
 button {
   all: unset;
   cursor: pointer;

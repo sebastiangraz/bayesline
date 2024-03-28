@@ -10,5 +10,10 @@ export default defineConfig({
     modules: {
       localsConvention: 'camelCaseOnly'
     }
+  },
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
   }
 });

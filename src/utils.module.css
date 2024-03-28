@@ -3,14 +3,17 @@
   grid-template-columns: repeat(12, 1fr);
 }
 
-/* Usage
-
-    <div className={style.section}>
-        <div className="w-6 sub">
-        <h1 className="w-2">A new era of financial analytics</h1>
-        </div>
-    </div>  
-*/
+.debug {
+  & > * {
+    box-shadow: 0 0 0 1px #f002 inset;
+  }
+  & > * > * {
+    box-shadow: 0 0 0 1px #f002 inset;
+  }
+  & > * > * > * {
+    box-shadow: 0 0 0 1px #f002 inset;
+  }
+}
 
 .section {
   composes: grid from global;
@@ -19,7 +22,6 @@
   max-width: 1104px;
   width: calc(100% - (var(--unit) / var(--wrapper) * (100% * 2)));
   margin-bottom: min(48px, calc(var(--unit) / var(--wrapper) * 100%));
-  background: #fff;
   overflow: hidden;
 
   & :global(.sub) {
@@ -28,13 +30,11 @@
 
   & :global([class^='s-']) {
     display: grid;
-    background: #0f01;
   }
 
   & :global([class^='e-']) {
     display: grid;
     grid-column-start: 1;
-    background: #f001;
   }
 
   /* start */
