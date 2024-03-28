@@ -3,18 +3,6 @@
   grid-template-columns: repeat(12, 1fr);
 }
 
-.debug {
-  & > * {
-    box-shadow: 0 0 0 1px #f002 inset;
-  }
-  & > * > * {
-    box-shadow: 0 0 0 1px #f002 inset;
-  }
-  & > * > * > * {
-    box-shadow: 0 0 0 1px #f002 inset;
-  }
-}
-
 .section {
   composes: grid from global;
   column-gap: calc(var(--base-unit) / var(--base-wrapper) * 100%);
@@ -26,14 +14,14 @@
 
   & :global(.sub) {
     grid-template-columns: subgrid;
+    display: grid;
   }
 
   & :global([class^='s-']) {
-    display: grid;
+    grid-column-start: 13;
   }
 
   & :global([class^='e-']) {
-    display: grid;
     grid-column-start: 1;
   }
 
@@ -51,12 +39,20 @@
     grid-column-start: 9;
   }
 
+  & :global(.s-7) {
+    grid-column-start: 8;
+  }
+
   & :global(.s-6) {
     grid-column-start: 7;
   }
 
   & :global(.s-4) {
     grid-column-start: 5;
+  }
+
+  & :global(.s-3) {
+    grid-column-start: 4;
   }
 
   & :global(.s-2) {
@@ -83,6 +79,10 @@
 
   & :global(.e-4) {
     grid-column-end: 5;
+  }
+
+  & :global(.e-3) {
+    grid-column-end: 4;
   }
 
   & :global(.e-2) {

@@ -1,0 +1,25 @@
+.button {
+  padding: 1rem 2rem;
+  transition: 0.2s ease background-color;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    --opacity: 0.88;
+    background-color: hsl(var(--dark) / var(--opacity));
+  }
+}
+
+.primary {
+  background-color: var(--text);
+  color: var(--background);
+  text-decoration: none;
+  position: relative;
+  font-size: inherit;
+}
+.secondary {
+  background-color: var(--beige);
+  position: relative;
+  font-size: inherit;
+}

@@ -21,6 +21,9 @@
   --base-wrapper: 1104;
   --wrapper: calc(var(--base-wrapper) + (var(--base-unit) * 2));
   --unit: calc(var(--base-unit) / var(--wrapper) * 100%); /* 1em */
+
+  --shadow: 0px 43px 80px 0px rgba(0, 0, 0, 0.04), 0px 9.605px 17.869px 0px rgba(0, 0, 0, 0.03),
+    0px 2.86px 5.32px 0px rgba(0, 0, 0, 0.02);
 }
 
 .tile {
@@ -35,12 +38,57 @@
   z-index: -1;
 }
 
+.debug {
+  & > * {
+    box-shadow: 0 0 0 1px #f002 inset;
+  }
+  & > * > * {
+    box-shadow: 0 0 0 1px #f002 inset;
+  }
+  & > * > * > * {
+    box-shadow: 0 0 0 1px #f002 inset;
+  }
+}
+
+.z-negative {
+  z-index: -1;
+}
+.z-0 {
+  z-index: 0;
+}
+.z-1 {
+  z-index: 1;
+}
+
 .padding-1 {
   padding: 1em;
 }
 
 .padding-2 {
   padding: 2em;
+}
+.padding-3 {
+  padding: 3em;
+}
+.padding-4 {
+  padding: 4em;
+}
+
+.border-r {
+  --opacity: 0.08;
+  box-shadow: -1px 0 0 0 hsl(var(--dark) / var(--opacity)) inset;
+}
+.border-t {
+  --opacity: 0.08;
+  box-shadow: 0 -1px 0 0 hsl(var(--dark) / var(--opacity)) inset;
+}
+.border-l {
+  --opacity: 0.08;
+  box-shadow: 1px 0 0 0 hsl(var(--dark) / var(--opacity)) inset;
+}
+.border-b {
+  --opacity: 0.08;
+  box-shadow: 0 1px 0 0 hsl(var(--dark) / var(--opacity)) inset;
 }
 
 :root {
@@ -93,6 +141,7 @@ button {
 
 a {
   text-decoration: underline;
+  color: inherit;
 }
 
 a:hover {
@@ -142,4 +191,9 @@ h4 {
   /*   font-size: clamp(1.25rem, 1.1394rem + 0.4808vw, 1.5rem); */
   line-height: 1.2;
   letter-spacing: -0.02em;
+}
+
+.small {
+  font-size: 0.875rem;
+  line-height: 1.5;
 }

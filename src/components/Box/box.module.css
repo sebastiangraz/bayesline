@@ -1,0 +1,13 @@
+.bg-primary {
+  background-color: white;
+  position: relative;
+}
+.bg-secondary {
+  background-color: var(--beige);
+  position: relative;
+}
+.box {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
