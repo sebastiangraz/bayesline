@@ -1,18 +1,15 @@
 import style from './footer.module.css';
 import utils from '@/utils.module.css';
 import { Button, Flex } from '..';
+import { StaggerText } from '@/helpers/StaggerText';
 
 export const Footer = () => {
   return (
     <div className={`${utils.section} ${style.hero}`}>
       <div className="s-2 e-10">
         <Flex center column gap={3}>
-          <h1>
-            financial
-            <br />
-            analytics
-            <br />
-            rethought
+          <h1 className="w-title">
+            <StaggerText>financial analytics rethought</StaggerText>
           </h1>
 
           <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">

@@ -1,3 +1,4 @@
+import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
 import utils from '@/utils.module.css';
 
@@ -8,7 +9,9 @@ export const Hero = () => {
         <Logo />
       </span>
       <div className="s-2 e-10">
-        <h1>A new era of financial analytics</h1>
+        <h1>
+          <StaggerText>A new era of financial analytics</StaggerText>
+        </h1>
       </div>
     </div>
   );
