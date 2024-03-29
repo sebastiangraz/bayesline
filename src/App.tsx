@@ -19,11 +19,11 @@ function App() {
               <pre className="caps">Try for free</pre>
             </Button>
             <div className="padding-05">
-              <p className="small center">Schedule a demo with us</p>
+              <p className="small balance center">Schedule a demo with us</p>
             </div>
           </div>
           <Flex column gap={1} className="padding-05">
-            <p className="small">
+            <p className="small balance">
               We just started and made some functionality available. Sign-up only requires a valid corporate email.
               Click here for our API documentation, and an open-source python wrapper with an example notebook.
             </p>
@@ -37,15 +37,15 @@ function App() {
             <Flex column gap={4}>
               <h3>We are reimagining financial analytics on Al infrastructure.</h3>
               <Flex column gap={2}>
-                <p>
+                <p className="balance">
                   We deliver the analytics that investment managers are already familiar with, but hyper-customizable
                   and blazing fast.
                 </p>
-                <p>
+                <p className="balance">
                   Our first goal is to revolutionize equity risk models and analytics. Traditional models are inflexible
                   and fitted to generic, one-size-fits-all asset universes.
                 </p>
-                <p>
+                <p className="balance">
                   Through our user interface or API, users can specify models with a few clicks that truly fit their
                   portfolio, or current market events.
                 </p>
@@ -60,22 +60,22 @@ function App() {
           <Flex column gap={4}>
             <h3>The Team</h3>
 
-            <Flex gap={4}>
-              <Flex gap={2} className="w-100">
+            <Flex gap={4} wrap>
+              <Flex gap={2}>
                 <Avatar></Avatar>
                 <Flex column gap={1}>
                   <p className="caps">Sebastian Janisch</p>
-                  <p className="small balance">
+                  <p className="small balance w-prose">
                     Bayesline was started by Sebastian Janisch and Misha van Beek on March 25th, 2024
                   </p>
                 </Flex>
               </Flex>
 
-              <Flex gap={2} className="w-100">
+              <Flex gap={2}>
                 <Avatar></Avatar>
                 <Flex column gap={1}>
                   <p className="caps">Misha van Beek</p>
-                  <p className="small balance">
+                  <p className="small balance w-prose">
                     Through our user interface or API, users can specify models with a few clicks that truly fit their
                     portfolio, or current market events.
                   </p>

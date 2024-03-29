@@ -8,6 +8,9 @@
   src: url('./assets/ABCReproMonoVariable-Trial.woff2');
 }
 
+@custom-media --sm (min-width: 560px);
+@custom-media --lg (min-width: 960px);
+
 * {
   box-sizing: border-box;
 }

@@ -6,6 +6,10 @@
 }
 .wrap {
   flex-wrap: wrap;
+  & > * {
+    flex: 1;
+    min-width: 20rem;
+  }
 }
 .between {
   justify-content: space-between;
