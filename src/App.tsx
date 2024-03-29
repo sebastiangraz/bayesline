@@ -64,7 +64,7 @@ function App() {
             <h3>The Team</h3>
 
             <Flex gap={4} wrap>
-              <Flex gap={2}>
+              <Flex gap={2} className="w-prose">
                 <Avatar></Avatar>
                 <Flex column gap={1}>
                   <p className="caps">Sebastian Janisch</p>
@@ -74,7 +74,7 @@ function App() {
                 </Flex>
               </Flex>
 
-              <Flex gap={2}>
+              <Flex gap={2} className="w-prose">
                 <Avatar></Avatar>
                 <Flex column gap={1}>
                   <p className="caps">Misha van Beek</p>

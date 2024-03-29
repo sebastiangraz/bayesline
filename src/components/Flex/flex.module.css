@@ -7,10 +7,11 @@
 .wrap {
   flex-wrap: wrap;
   & > * {
-    flex: 1;
-    min-width: 100%;
+    flex: 1 0 100%;
+    flex-direction: column;
     @media (--md) {
-      min-width: 20rem;
+      flex: 1 0 0%;
+      flex-direction: row;
     }
   }
 }
