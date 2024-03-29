@@ -1,4 +1,5 @@
 import utils from './utils.module.css';
+import style from './app.module.css';
 import { Hero, Box, Button, Flex } from './components';
 import { Footer } from './components/Footer';
 
@@ -10,19 +11,21 @@ function App() {
       <Hero />
 
       <Box bg="primary" className={`${utils.section} z-1`}>
-        <div
-          className="e-3 border-r"
-          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+        <Flex
+          column
+          between
+          className={`e-3 ${style.sidebar}`}
+          /*           style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} */
         >
           <div>
             <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-              <pre className="caps">Try for free</pre>
+              <pre className="caps case-type">Try for free</pre>
             </Button>
             <div className="padding-05">
               <p className="small balance center">Schedule a demo with us</p>
             </div>
           </div>
-          <Flex column gap={1} className="padding-05">
+          <Flex column gap={1} className={style.meta}>
             <p className="small balance">
               We just started and made some functionality available. Sign-up only requires a valid corporate email.
               Click here for our API documentation, and an open-source python wrapper with an example notebook.
@@ -31,7 +34,7 @@ function App() {
               For a demo of our UI, please contact <a href="mailto:info@bayesline.com">info@bayesline.com</a>
             </p>
           </Flex>
-        </div>
+        </Flex>
         <div className="s-3 e-12 sub padding-1 padding-y-2">
           <div className="e-6">
             <Flex column gap={4}>

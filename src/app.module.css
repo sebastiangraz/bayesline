@@ -1,0 +1,13 @@
+.sidebar {
+  --opacity: 0.08;
+  box-shadow: 0 -1px 0 0 hsl(var(--dark) / var(--opacity)) inset;
+  @media (--md) {
+    box-shadow: -1px 0 0 0 hsl(var(--dark) / var(--opacity)) inset;
+  }
+}
+.meta {
+  padding: 1em;
+  @media (--md) {
+    padding: 0.5em;
+  }
+}

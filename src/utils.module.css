@@ -25,6 +25,10 @@
     grid-column-start: 1;
   }
 
+  /*   & :global(.e-3) {
+    grid-column-start: 1;
+  } */
+
   /* start */
 
   & :global(.s-12) {
