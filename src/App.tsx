@@ -19,7 +19,7 @@ function App() {
               <pre className="caps">Try for free</pre>
             </Button>
             <div className="padding-05">
-              <p className="small">Get set up in minutes</p>
+              <p className="small center">Schedule a demo with us</p>
             </div>
           </div>
           <Flex column gap={1} className="padding-05">
