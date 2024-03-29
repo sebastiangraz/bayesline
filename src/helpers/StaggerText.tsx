@@ -2,21 +2,23 @@ import { motion } from 'framer-motion';
 import React from 'react';
 interface StaggerTextProps {
   children: React.ReactNode;
+  delay?: number;
 }
 export const StaggerText = (props: StaggerTextProps) => {
-  const { children } = props;
+  const { delay, children } = props;
   const content = children!.toString();
   const contentWords = content.split(' ');
-  const duration = contentWords.length * 0.032;
+  /*   const duration = contentWords.length * 0.064; */
 
   const parentVariant = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
+        delay: delay || 0,
         staggerChildren: 0.024,
-        duration: duration,
-        delayChildren: 0.3,
+        duration: 0.3,
+        delayChildren: delay || 0.3,
         ease: [0.83, 0, 0.17, 1]
       }
     }
@@ -28,7 +30,7 @@ export const StaggerText = (props: StaggerTextProps) => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: duration / 2,
+        duration: 0.4,
         ease: [0.5, 0, 0.2, 0.5]
       }
     }

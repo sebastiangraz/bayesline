@@ -1,17 +1,26 @@
 import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
 import utils from '@/utils.module.css';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const Hero = () => {
+  const { scrollY } = useScroll();
+
+  const yDistance = useTransform(scrollY, [0, 1000], [0, -40]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+
   return (
     <div className={`${utils.section} ${style.hero}`}>
       <span className="logo s-4 e-8">
         <Logo />
       </span>
+
       <div className="s-2 e-10">
-        <h1>
-          <StaggerText>A new era of financial analytics</StaggerText>
-        </h1>
+        <motion.div style={{ y: yDistance, opacity: opacity }}>
+          <h1>
+            <StaggerText>A new era of financial analytics</StaggerText>
+          </h1>
+        </motion.div>
       </div>
     </div>
   );
