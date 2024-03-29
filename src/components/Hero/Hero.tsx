@@ -7,16 +7,19 @@ export const Hero = () => {
   const { scrollY } = useScroll();
 
   const yDistance = useTransform(scrollY, [0, 1000], [0, -40]);
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const headerOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const logoOpacity = useTransform(scrollY, [200, 300], [1, 0]);
 
   return (
     <div className={`${utils.section} ${style.hero}`}>
       <span className="logo s-4 e-8">
-        <Logo />
+        <motion.div style={{ opacity: logoOpacity }}>
+          <Logo />
+        </motion.div>
       </span>
 
       <div className="s-2 e-10">
-        <motion.div style={{ y: yDistance, opacity: opacity }}>
+        <motion.div style={{ y: yDistance, opacity: headerOpacity }}>
           <h1>
             <StaggerText>A new era of financial analytics</StaggerText>
           </h1>
