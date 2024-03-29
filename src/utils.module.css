@@ -52,7 +52,13 @@
   }
 
   & :global(.s-3) {
-    grid-column-start: 4;
+    grid-column-start: 1;
+    @media (--md) {
+      grid-column-start: 5;
+    }
+    @media (--lg) {
+      grid-column-start: 4;
+    }
   }
 
   & :global(.s-2) {
@@ -78,7 +84,13 @@
   }
 
   & :global(.e-6) {
-    grid-column-end: 7;
+    grid-column-end: 13;
+    @media (--md) {
+      grid-column-end: 7;
+    }
+    @media (--lg) {
+      grid-column-end: 7;
+    }
   }
 
   & :global(.e-4) {
@@ -86,7 +98,13 @@
   }
 
   & :global(.e-3) {
-    grid-column-end: 4;
+    grid-column-end: 13;
+    @media (--md) {
+      grid-column-end: 5;
+    }
+    @media (--lg) {
+      grid-column-end: 4;
+    }
   }
 
   & :global(.e-2) {

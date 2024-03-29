@@ -9,7 +9,7 @@ function App() {
 
       <Hero />
 
-      <Box bg="primary" className={`${utils.section} z-1 `}>
+      <Box bg="primary" className={`${utils.section} z-1`}>
         <div
           className="e-3 border-r"
           style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
