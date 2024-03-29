@@ -1,7 +1,6 @@
 import utils from './utils.module.css';
 import style from './app.module.css';
 import { Hero, Box, Button, Flex, Footer } from '@/components';
-import { StaggerText } from '@/helpers/StaggerText';
 
 function App() {
   return (
