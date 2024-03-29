@@ -3,6 +3,11 @@
   src: url('./assets/ABCReproVariable-Trial.woff2');
 }
 
+@font-face {
+  font-family: 'ABCReproMono';
+  src: url('./assets/ABCReproMonoVariable-Trial.woff2');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -24,6 +29,119 @@
 
   --shadow: 0px 43px 80px 0px rgba(0, 0, 0, 0.04), 0px 9.605px 17.869px 0px rgba(0, 0, 0, 0.03),
     0px 2.86px 5.32px 0px rgba(0, 0, 0, 0.02);
+}
+
+:root {
+  font-family: 'ABCRepro', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--dark);
+  background-color: var(--background);
+  font-size: clamp(1rem, 0rem + 4vw, 3rem);
+}
+
+p {
+  margin: 0;
+  font-size: 1rem;
+  color: hsl(var(--dark) / 0.8);
+}
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: underline;
+  color: var(--text);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* https://clamp.font-size.app/ min:400 max:1104 */
+
+h1 {
+  font-size: clamp(2.5rem, 1.6477rem + 3.4091vw, 4rem);
+  /*   font-size: clamp(3rem, 2.5577rem + 1.9231vw, 4rem); */
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-size: clamp(2.25rem, 1.8239rem + 1.7045vw, 3rem);
+  /*   font-size: clamp(2.25rem, 1.9183rem + 1.4423vw, 3rem); */
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+h3 {
+  font-size: clamp(1.75rem, 1.608rem + 0.5682vw, 2rem);
+  /*   font-size: clamp(1.75rem, 1.6394rem + 0.4808vw, 2rem); */
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
+  /*   font-size: clamp(1.25rem, 1.1394rem + 0.4808vw, 1.5rem); */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.center {
+  text-align: center;
+}
+
+.balance {
+  text-wrap: balance;
+}
+
+.small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.caps {
+  text-transform: uppercase;
+  font-family: 'ABCReproMono', monospace;
+  letter-spacing: 0.02em;
+  font-weight: 450;
+}
+
+hr {
+  background: hsl(var(--dark) / 0.08);
+  border: 0;
+  min-width: 1px;
+  min-height: 1px;
+  margin: 0;
 }
 
 .tile {
@@ -62,6 +180,10 @@
 
 .w-100 {
   width: 100%;
+}
+
+.w-prose {
+  max-width: 52ch;
 }
 
 .padding-05 {
@@ -118,107 +240,8 @@
   box-shadow: 0 -1px 0 0 hsl(var(--dark) / var(--opacity)) inset;
 }
 
-:root {
-  font-family: 'ABCRepro', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  color: var(--dark);
-  background-color: var(--background);
-  font-size: clamp(1rem, 0rem + 4vw, 3rem);
-}
-
-p {
-  margin: 0;
-  font-size: 1rem;
-}
-
-button {
-  all: unset;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-a {
-  text-decoration: underline;
-  color: inherit;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-img {
-  display: block;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: inherit;
-  margin: 0;
-  text-wrap: balance;
-}
-
-/* https://clamp.font-size.app/ min:400 max:1104 */
-
-h1 {
-  font-size: clamp(2.5rem, 1.6477rem + 3.4091vw, 4rem);
-  /*   font-size: clamp(3rem, 2.5577rem + 1.9231vw, 4rem); */
-  line-height: 0.96;
-  letter-spacing: -0.05em;
-}
-
-h2 {
-  font-size: clamp(2.25rem, 1.8239rem + 1.7045vw, 3rem);
-  /*   font-size: clamp(2.25rem, 1.9183rem + 1.4423vw, 3rem); */
-  line-height: 1.1;
-  letter-spacing: -0.04em;
-}
-
-h3 {
-  font-size: clamp(1.75rem, 1.608rem + 0.5682vw, 2rem);
-  /*   font-size: clamp(1.75rem, 1.6394rem + 0.4808vw, 2rem); */
-  line-height: 1.16;
-  letter-spacing: -0.03em;
-}
-
-h4 {
-  font-size: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
-  /*   font-size: clamp(1.25rem, 1.1394rem + 0.4808vw, 1.5rem); */
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-.balance {
-  text-wrap: balance;
-}
-
-.small {
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-hr {
-  height: 1px;
-  border: 0;
-  margin: 0;
-}
-
 html::-webkit-scrollbar-track {
-  --opacity: 0.12;
-  background-color: hsl(var(--dark) / var(--opacity));
+  background-color: hsl(var(--dark) / 0.12);
 }
 
 html::-webkit-scrollbar {
@@ -227,11 +250,10 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-thumb {
-  --opacity: 0.32;
-  background-color: hsl(var(--dark) / var(--opacity));
+  background-color: hsl(var(--dark) / 0.32);
   border-radius: 12px;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  --opacity: 0.56;
+  background-color: hsl(var(--dark) / 0.56);
 }

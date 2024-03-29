@@ -1,15 +1,17 @@
 .bg-primary {
   background-color: white;
   position: relative;
+  box-shadow: var(--shadow);
 }
 .bg-secondary {
-  --opacity: 0.96;
   backdrop-filter: blur(1px);
-  background-color: hsl(var(--beige) / var(--opacity));
+  background-color: hsl(var(--beige) / 0.98);
+  box-shadow:
+    0 0 0 1px hsl(var(--dark) / 0.04),
+    var(--shadow);
   position: relative;
 }
 .box {
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: var(--shadow);
 }

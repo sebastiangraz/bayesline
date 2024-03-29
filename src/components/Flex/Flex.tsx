@@ -6,6 +6,7 @@ interface FlexProps {
   column?: boolean;
   between?: boolean;
   wrap?: boolean;
+  center?: boolean;
   gap?: 1 | 2 | 3 | 4;
 }
 
@@ -16,6 +17,7 @@ export const Flex = (props: FlexProps) => {
   const wrap = rest.wrap ? style.wrap : '';
   const className = rest.className ? rest.className : '';
   const between = rest.between ? style.between : '';
+  const center = rest.center ? style.center : '';
 
   let gap = '';
   switch (rest.gap) {
@@ -35,5 +37,5 @@ export const Flex = (props: FlexProps) => {
       gap = '';
   }
 
-  return <div className={`${style.flex} ${row} ${wrap} ${gap} ${between} ${className}`}>{children}</div>;
+  return <div className={`${style.flex} ${row} ${wrap} ${gap} ${between} ${center} ${className}`}>{children}</div>;
 };

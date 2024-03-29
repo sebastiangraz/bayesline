@@ -10,6 +10,9 @@
 .between {
   justify-content: space-between;
 }
+.center {
+  align-items: center;
+}
 .gap-1 {
   gap: 0.25em;
 }

@@ -1,5 +1,6 @@
 import utils from './utils.module.css';
 import { Hero, Box, Button, Flex } from './components';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         >
           <div>
             <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-              <p>Try for free</p>
+              <p className="caps">Try for free</p>
             </Button>
             <div className="padding-05">
               <p className="small">Get set up in minutes</p>
@@ -55,15 +56,15 @@ function App() {
       </Box>
 
       <Box bg="secondary" className={`${utils.section} z-1 `}>
-        <div className="e-12 padding-2 ">
+        <div className="e-12 padding-2">
           <Flex column gap={4}>
             <h3>The Team</h3>
-            <hr className="border-t w-100"></hr>
+
             <Flex gap={4}>
               <Flex gap={2} className="w-100">
                 <Avatar></Avatar>
                 <Flex column gap={1}>
-                  <p>Sebastian Janisch</p>
+                  <p className="caps">Sebastian Janisch</p>
                   <p className="small balance">
                     Bayesline was started by Sebastian Janisch and Misha van Beek on March 25th, 2024
                   </p>
@@ -73,7 +74,7 @@ function App() {
               <Flex gap={2} className="w-100">
                 <Avatar></Avatar>
                 <Flex column gap={1}>
-                  <p>Misha van Beek</p>
+                  <p className="caps">Misha van Beek</p>
                   <p className="small balance">
                     Through our user interface or API, users can specify models with a few clicks that truly fit their
                     portfolio, or current market events.
@@ -81,27 +82,20 @@ function App() {
                 </Flex>
               </Flex>
             </Flex>
+            <hr />
+
+            <Flex column gap={1}>
+              <p className="caps">Contact</p>
+              <p className="small balance w-prose">
+                For general inquiries or to request a demo, you can reach us at{' '}
+                <a href="mailto:info@bayesline.com">info@bayesline.com</a>.
+              </p>
+            </Flex>
           </Flex>
         </div>
       </Box>
 
-      {/*       <Box className={utils.section}>
-        <div className="e-6 sub">
-          <h2 className="e-2">card</h2>
-          <h2 className="s-2 e-4">card</h2>
-          <h2 className="s-4 e-6">card</h2>
-        </div>
-        <div className="s-8 e-12 sub">
-          <h2 className="e-2">card</h2>
-          <h2 className="s-2 e-4">card</h2>
-        </div>
-      </Box> */}
-
-      <div className={utils.section}>
-        <div className="s-2 e-10 sub">
-          <h1 className="s-2 e-6">center sub text</h1>
-        </div>
-      </div>
+      <Footer />
     </main>
   );
 }
