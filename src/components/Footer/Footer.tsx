@@ -16,11 +16,13 @@ export const Footer = () => {
           </h1>
 
           <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-            <p className="caps">Try for free</p>
+            <pre className="caps">Try for free</pre>
           </Button>
-          <p className="w-prose balance center">
-            For general inquiries or to request a demo, you can reach us at info@bayesline.com.
+          <p className="w-prose balance center small">
+            For general inquiries or to request a demo, you can reach us at{' '}
+            <a href="mailto:info@bayesline.com">info@bayesline.com</a>.
           </p>
+          <p className="small balance center">© Copyright 2024 · Bayesline</p>
         </Flex>
       </div>
     </div>

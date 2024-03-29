@@ -16,7 +16,7 @@ function App() {
         >
           <div>
             <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-              <p className="caps">Try for free</p>
+              <pre className="caps">Try for free</pre>
             </Button>
             <div className="padding-05">
               <p className="small">Get set up in minutes</p>
