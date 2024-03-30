@@ -4,7 +4,7 @@
   box-shadow: var(--shadow);
 }
 .bg-secondary {
-  backdrop-filter: blur(1px);
+  /*   backdrop-filter: blur(1px); */
   background-color: hsl(var(--beige) / 0.98);
   box-shadow:
     0 0 0 1px hsl(var(--dark) / 0.04),
@@ -13,5 +13,4 @@
 }
 .box {
   border-radius: 4px;
-  overflow: hidden;
 }

@@ -2,6 +2,7 @@ import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
 import utils from '@/utils.module.css';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Flex, Illustration } from '@/components';
 
 export const Hero = () => {
   const { scrollY } = useScroll();
@@ -11,21 +12,28 @@ export const Hero = () => {
   const logoOpacity = useTransform(scrollY, [200, 300], [1, 0]);
 
   return (
-    <div className={`${utils.section} ${style.hero}`}>
-      <span className="logo s-4 e-8">
-        <motion.div style={{ opacity: logoOpacity }}>
-          <Logo />
-        </motion.div>
-      </span>
+    <>
+      <div className={`${utils.section} ${style.hero}`}>
+        <span className="logo s-4 e-8">
+          <motion.div style={{ opacity: logoOpacity }}>
+            <Logo />
+          </motion.div>
+        </span>
 
-      <div className="s-2 e-10">
-        <motion.div style={{ y: yDistance, opacity: headerOpacity }}>
-          <h1>
-            <StaggerText>A new era of financial analytics</StaggerText>
-          </h1>
-        </motion.div>
+        <div className="s-2 e-10">
+          <motion.div style={{ y: yDistance, opacity: headerOpacity }}>
+            <h1>
+              <StaggerText>A new era of financial analytics</StaggerText>
+            </h1>
+          </motion.div>
+        </div>
+        <div className={`e-12 ${style.illustration}`}>
+          <Flex center>
+            <Illustration />
+          </Flex>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
