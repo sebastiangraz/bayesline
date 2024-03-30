@@ -18,3 +18,19 @@
     align-items: center;
   }
 }
+.footer {
+  position: sticky;
+  top: 0px;
+  z-index: 0;
+  overflow: hidden;
+  height: 60vh;
+  width: 100vw;
+  img {
+    position: relative;
+    height: 100%;
+    width: 105%;
+    left: -2.5%;
+    object-fit: contain;
+    object-position: bottom;
+  }
+}

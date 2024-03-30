@@ -1,7 +1,6 @@
 import utils from './utils.module.css';
 import style from './app.module.css';
 import { Hero, Box, Button, Flex, Footer } from '@/components';
-import { Illustration } from '@/components/';
 
 function App() {
   return (
@@ -9,18 +8,8 @@ function App() {
       <div className="tile"></div>
 
       <Hero />
-      {/*       <div className={`e-12 ${style.heroIllustration}`}>
-        <Flex center>
-          <Illustration />
-        </Flex>
-      </div> */}
       <Box bg="primary" className={`${utils.section} z-1`}>
-        <Flex
-          column
-          between
-          className={`e-3 ${style.sidebar}`}
-          /*           style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} */
-        >
+        <Flex column between className={`e-3 ${style.sidebar}`}>
           <div>
             <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
               <pre className="caps case-type">Try for free</pre>

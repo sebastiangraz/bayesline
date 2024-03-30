@@ -8,8 +8,8 @@ export const Hero = () => {
   const { scrollY } = useScroll();
 
   const yDistance = useTransform(scrollY, [0, 1000], [0, -40]);
-  const headerOpacity = useTransform(scrollY, [0, 400], [1, 0]);
-  const logoOpacity = useTransform(scrollY, [200, 300], [1, 0]);
+  const headerOpacity = useTransform(scrollY, [300, 500], [1, 0]);
+  const logoOpacity = useTransform(scrollY, [400, 600], [1, 0]);
 
   return (
     <>
