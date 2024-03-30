@@ -9,7 +9,7 @@
   margin: 0 auto;
   max-width: calc(var(--base-wrapper) * 1px);
   width: calc(100% - (var(--unit) * 2));
-  margin-bottom: min(48px, var(--unit));
+  margin-bottom: min(96px, var(--unit) * 2);
   overflow: hidden;
 
   & :global(.sub) {

@@ -24,6 +24,7 @@
 
   --text: hsl(var(--dark) / var(--opacity));
   --background: hsl(var(--beige) / var(--opacity));
+  --coral: hsl(11, 66%, 51%);
 
   --base-unit: 48;
   --base-wrapper: 1104;

@@ -1,6 +1,7 @@
 import utils from './utils.module.css';
 import style from './app.module.css';
 import { Hero, Box, Button, Flex, Footer } from '@/components';
+import { Illustration } from '@/components/';
 
 function App() {
   return (
@@ -8,7 +9,11 @@ function App() {
       <div className="tile"></div>
 
       <Hero />
-
+      <div className={`e-12 ${style.heroIllustration}`}>
+        <Flex center>
+          <Illustration />
+        </Flex>
+      </div>
       <Box bg="primary" className={`${utils.section} z-1`}>
         <Flex
           column

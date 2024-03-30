@@ -10,3 +10,8 @@
     padding: 0.5em;
   }
 }
+.heroIllustration {
+  display: block;
+  margin-bottom: -14em;
+  color: var(--coral);
+}
