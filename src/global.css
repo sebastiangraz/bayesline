@@ -26,6 +26,7 @@
   --background: hsl(var(--beige) / var(--opacity));
   --coral: hsl(11, 66%, 51%);
   --tan: hsl(28, 28%, 76%);
+  --blue: hsl(231, 55%, 57%);
 
   --base-unit: 48;
   --base-wrapper: 1104;
