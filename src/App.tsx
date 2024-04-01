@@ -67,7 +67,7 @@ function App() {
           <Flex column gap={4}>
             <Flex column gap={3}>
               <h3>The Team</h3>
-              <h4 className="balance">
+              <h4 className="balance w-prose">
                 Bayesline was founded on March 25th 2024 by Sebastian Janisch and Misha van Beek, with a mission to
                 reimagine financial analytics—putting flexibility and performance first.
               </h4>
