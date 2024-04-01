@@ -1,6 +1,8 @@
 import utils from './utils.module.css';
 import style from './app.module.css';
 import { Hero, Box, Button, Flex, Footer } from '@/components';
+import sebastian from '@/assets/sebastian.jpg';
+import misha from '@/assets/misha.jpg';
 
 function App() {
   return (
@@ -58,7 +60,7 @@ function App() {
 
             <Flex gap={4} wrap>
               <Flex gap={2} className="w-prose">
-                <Avatar></Avatar>
+                <Avatar url={sebastian}></Avatar>
                 <Flex column gap={1}>
                   <p className="caps">Sebastian Janisch</p>
                   <p className="small balance w-prose">
@@ -68,7 +70,7 @@ function App() {
               </Flex>
 
               <Flex gap={2} className="w-prose">
-                <Avatar></Avatar>
+                <Avatar url={misha}></Avatar>
                 <Flex column gap={1}>
                   <p className="caps">Misha van Beek</p>
                   <p className="small balance w-prose">
@@ -96,10 +98,10 @@ function App() {
   );
 }
 
-const Avatar = () => {
+const Avatar = ({ url }: { url?: string }) => {
   return (
     <div className="avatar">
-      <img src="https://via.placeholder.com/64" alt="avatar" style={{ borderRadius: '99em', overflow: 'hidden' }} />
+      <img src={url} alt="avatar" style={{ width: '5rem', borderRadius: '99em', overflow: 'hidden' }} />
     </div>
   );
 };
