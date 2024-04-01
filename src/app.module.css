@@ -10,6 +10,13 @@
     padding: 0.5em;
   }
 }
+.box {
+  padding: 2em;
+  @media (--md) {
+    padding: 2em 1em;
+  }
+}
+
 .avatar {
   margin-top: 2rem;
   margin-bottom: 1rem;

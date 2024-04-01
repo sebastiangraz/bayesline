@@ -5,3 +5,4 @@ export { Flex } from './Flex';
 export { Footer } from './Footer';
 export { Illustration } from './Illustration';
 export { Avatar } from './Avatar';
+export { Icon } from './Icon';

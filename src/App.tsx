@@ -1,6 +1,6 @@
 import utils from './utils.module.css';
 import style from './app.module.css';
-import { Hero, Box, Button, Flex, Footer, Avatar } from '@/components';
+import { Hero, Box, Button, Flex, Footer, Avatar, Icon } from '@/components';
 import sebastian from '@/assets/sebastian.jpg';
 import misha from '@/assets/misha.jpg';
 
@@ -30,23 +30,32 @@ function App() {
             </p>
           </Flex>
         </Flex>
-        <div className="s-3 e-12 sub padding-1 padding-y-2">
+        <div className={`s-3 e-12 sub ${style.box}`}>
           <div className="e-6">
             <Flex column gap={4}>
               <h3>We are reimagining financial analytics on Al infrastructure.</h3>
               <Flex column gap={2}>
-                <p className="balance">
-                  We deliver the analytics that investment managers are already familiar with, but hyper-customizable
-                  and blazing fast.
-                </p>
-                <p className="balance">
-                  Our first goal is to revolutionize equity risk models and analytics. Traditional models are inflexible
-                  and fitted to generic, one-size-fits-all asset universes.
-                </p>
-                <p className="balance">
-                  Through our user interface or API, users can specify models with a few clicks that truly fit their
-                  portfolio, or current market events.
-                </p>
+                <Flex gap={2}>
+                  <Icon name="chart" className={style.icon}></Icon>
+                  <p className="balance">
+                    We deliver the analytics that investment managers are already familiar with, but hyper-customizable
+                    and blazing fast.
+                  </p>
+                </Flex>
+                <Flex gap={2}>
+                  <Icon name="layers" className={style.icon}></Icon>
+                  <p className="balance">
+                    Our first goal is to revolutionize equity risk models and analytics. Traditional models are
+                    inflexible and fitted to generic, one-size-fits-all asset universes.
+                  </p>
+                </Flex>
+                <Flex gap={2}>
+                  <Icon name="border" className={style.icon}></Icon>
+                  <p className="balance">
+                    Through our user interface or API, users can specify models with a few clicks that truly fit their
+                    portfolio, or current market events.
+                  </p>
+                </Flex>
               </Flex>
             </Flex>
           </div>
