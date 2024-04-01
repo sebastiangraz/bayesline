@@ -5,7 +5,7 @@
 
 .section {
   composes: grid from global;
-  column-gap: calc(var(--base-unit) / var(--base-wrapper) * 100%);
+  column-gap: 1em;
   margin: 0 auto;
   max-width: calc(var(--base-wrapper) * 1px);
   width: calc(100% - (var(--unit) * 2));
