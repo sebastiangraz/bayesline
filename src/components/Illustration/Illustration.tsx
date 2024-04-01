@@ -250,7 +250,7 @@ export const Illustration = ({ ...props }) => {
           <motion.path
             d="M426 0.999961L426 97L401 121L401 145L401 169L376 193L376 217L376 241L351 265L351 289L326 313L326 337L301 361L276 385L276 409L251 433L226 457L226 481L226 505L201 529L201 553L201 577L176 601L176 625L176 649L176 673L151 697L151 721L151 745L151 769L126 793L126 817L126 841L126 865L126 889L101 913L101 937L101 961L101 985L101 1009L101 1033L101 1057L76 1081L76 1105L76 1129L76 1153L76 1177L76 1201"
             stroke="currentColor"
-            strokeWidth={1.5}
+            strokeWidth={1}
             strokeMiterlimit="4"
             strokeLinecap="round"
             strokeDasharray="2 4"
@@ -271,7 +271,7 @@ export const Illustration = ({ ...props }) => {
           <motion.path
             d="M426 0.999961L426 97L401 121L401 145L401 169L376 193L376 217L376 241L351 265L351 289L351 313L326 337L326 361L326 385L326 409L301 433L301 457L301 481L301 505L301 529L301 553L301 577L301 601L301 625L326 649L326 673L326 697L326 721L351 745L351 769L351 793L376 817L376 841L401 865L401 889L426 913L426 937L451 961L476 985L476 1009L501 1033L526 1057L551 1081L551 1105L576 1129L601 1153L626 1177L651 1201"
             stroke="currentColor"
-            strokeWidth={1.5}
+            strokeWidth={1}
             strokeMiterlimit="4"
             strokeLinecap="round"
             strokeDasharray="2 4"
@@ -292,8 +292,8 @@ export const Illustration = ({ ...props }) => {
           <motion.path
             d="M426 0.999961L426 97L401 121L401 145L401 169L401 193L401 217L401 241L401 265L401 289L401 313L426 337L426 361L426 385L451 409L451 433L451 457L476 481L501 505L501 529L526 553L526 577L551 601L576 625L601 649L626 673L651 697L676 721L701 745L726 769L751 793L776 817L801 841L801 865L801 889L776 913L776 937L751 961L751 985L726 1009L726 1033L701 1057L701 1081L676 1105L651 1129L626 1153L626 1177"
             stroke="currentColor"
-            strokeWidth={1.5}
-            strokeMiterlimit="4.99933"
+            strokeWidth={1}
+            strokeMiterlimit="5"
             strokeLinecap="round"
             strokeDasharray="2 4"
             shapeRendering="geometricPrecision"
@@ -313,8 +313,8 @@ export const Illustration = ({ ...props }) => {
           <motion.path
             d="M426 0.999961L426 97L426 121L426 145L426 169L426 193L426 217L426 241L426 265L401 289L401 313L401 337L376 361L376 385L351 409L351 433L326 457L326 481L326 505L326 529L326 553L326 577L326 601L301 625L301 649L301 673L301 697L301 721L301 745L301 769L301 793L301 817L301 841L301 865L301 889L301 913L301 937L301 961L301 985L301 1009L301 1033L301 1057L301 1081L301 1105L301 1129L301 1153L301 1177L277 1201"
             stroke="currentColor"
-            strokeWidth={1.5}
-            strokeMiterlimit="4.99933"
+            strokeWidth={1}
+            strokeMiterlimit="5"
             strokeLinecap="round"
             strokeDasharray="2 4"
             shapeRendering="geometricPrecision"
@@ -333,8 +333,8 @@ export const Illustration = ({ ...props }) => {
           <motion.path
             d="M426 0.999961L426 97L426 121L426 145L426 169L426 193L426 217L426 241L426 265L426 289L426 313L451 337L451 361L451 385L451 409L476 433L476 457L476 481L501 505L501 529L526 553L526 577L551 601L551 625L576 649L576 673L601 697L626 721L626 745L651 769L676 793L701 817L701 841L726 865L726 889L726 913L751 937L751 961L776 985L776 1009L776 1033L801 1057L801 1081L801 1105L826 1129L826 1153L826 1177L851 1201"
             stroke="currentColor"
-            strokeWidth={1.5}
-            strokeMiterlimit="4.99933"
+            strokeWidth={1}
+            strokeMiterlimit="5"
             strokeLinecap="round"
             strokeDasharray="2 4"
             shapeRendering="geometricPrecision"
@@ -353,7 +353,7 @@ export const Illustration = ({ ...props }) => {
           <motion.path
             d="M426 0.999961L426 97L451 121L451 145L451 169L451 193L451 217L476 241L476 265L476 289L451 313L451 337L451 361L451 385L451 409L426 433L426 457L426 481L401 505L401 529L376 553L351 577L351 601L326 625L301 649L276 673L276 697L251 721L226 745L201 769L176 793L151 817L101 865L101 889L76 913L76 937L76 961L76 985L51 1009L51 1033L51 1057L51 1081L26 1105L26 1129L26 1153L26 1177L0.999951 1201"
             stroke="currentColor"
-            strokeWidth={1.5}
+            strokeWidth={1}
             strokeMiterlimit="4"
             strokeLinecap="round"
             strokeDasharray="2 4"
@@ -374,7 +374,7 @@ export const Illustration = ({ ...props }) => {
           <motion.path
             d="M426 0.999961L426 97L426 121L451 145L451 169L451 193L451 217L451 241L451 265L451 289L451 313L451 337L451 361L476 385L476 409L476 433L476 457L476 481L451 505L451 529L451 553L451 577L451 601L451 625L451 649L451 673L451 697L451 721L426 745L426 769L426 793L426 817L426 841L401 865L401 889L376 913L351 937L351 961L326 985L326 1009L301 1033L276 1057L251 1081L251 1105L226 1129L201 1153L176 1177L151 1201"
             stroke="currentColor"
-            strokeWidth={1.5}
+            strokeWidth={1}
             strokeMiterlimit="4"
             strokeLinecap="round"
             strokeDasharray="2 4"
@@ -395,8 +395,8 @@ export const Illustration = ({ ...props }) => {
           <motion.path
             d="M426 0.999961L426 97L451 121L451 145L451 169L476 193L476 217L501 241L501 265L501 289L526 313L526 337L526 361L551 385L551 409L551 433L576 457L576 481L576 505L576 529L601 553L601 577L601 601L601 625L601 649L601 673L601 697L601 721L601 745L626 769L626 793L626 817L626 841L626 865L626 889L601 913L601 937L601 961L601 985L601 1009L601 1033L601 1057L601 1081L576 1105L576 1129L576 1153L576 1177L576 1201"
             stroke="currentColor"
-            strokeWidth={1.5}
-            strokeMiterlimit="4.99933"
+            strokeWidth={1}
+            strokeMiterlimit="5"
             strokeLinecap="round"
             strokeDasharray="2 4"
             shapeRendering="geometricPrecision"
