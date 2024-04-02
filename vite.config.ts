@@ -13,18 +13,11 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly'
     }
   },
+  base: './',
   resolve: {
     alias: [
       /* '@': '/src' */
       { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }
     ]
-  },
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        nested: resolve(__dirname, 'signup/index.html')
-      }
-    }
   }
 });
