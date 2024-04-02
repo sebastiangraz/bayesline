@@ -4,20 +4,31 @@
   position: sticky;
   top: 0;
   z-index: 0;
-  padding: 3.5rem 0 0 0;
-  row-gap: 3rem;
+  padding: 2.5rem 0 0 0;
+  row-gap: 2rem;
   overflow: visible;
   height: 60vh;
+  @media (--md) {
+    row-gap: 3rem;
+    padding: 3.5rem 0 0 0;
+  }
 
   h1 {
     text-align: center;
   }
 
   & :global .logo {
-    min-height: 3rem;
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  & :global .logo svg {
+    width: 7rem;
+    @media (--md) {
+      width: 9rem;
+    }
   }
 }
 

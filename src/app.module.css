@@ -5,9 +5,9 @@
   }
 }
 .meta {
-  padding: 1em;
+  padding: 2em;
   @media (--md) {
-    padding: 0.5em;
+    padding: 1rem;
   }
 }
 .box {
