@@ -13,7 +13,6 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly'
     }
   },
-  base: './',
   resolve: {
     alias: [
       /* '@': '/src' */
