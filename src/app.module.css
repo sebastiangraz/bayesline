@@ -7,7 +7,7 @@
 .meta {
   padding: 2em;
   @media (--md) {
-    padding: 1rem;
+    padding: 2rem;
   }
 }
 .box {

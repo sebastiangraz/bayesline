@@ -19,8 +19,11 @@ function App() {
           </div>
           <Flex column gap={1} className={style.meta}>
             <p className="small balance">
-              To be the first to know about our beta launch,<br />
-              <a href="mailto:info@bayesline.com?subject=Join Beta Waitlist&body=Hi, I wouldl like to join the waitlist.">join the waitlist</a>.
+              To be the first to know about our beta launch,{' '}
+              <a href="mailto:info@bayesline.com?subject=Join Beta Waitlist&body=Hi, I wouldl like to join the waitlist.">
+                Join&nbsp;the&nbsp;waitlist
+              </a>
+              .
             </p>
           </Flex>
         </Flex>
@@ -32,24 +35,22 @@ function App() {
                 <Flex gap={2}>
                   <Icon name="chart" className={style.icon}></Icon>
                   <p className="balance">
-                    We are changing the way investment managers interact with financial analytics. 
-                    From one-size-doesn't-fit-all to highly customizable and blazing fast.
+                    We are changing the way investment managers interact with financial analytics. From
+                    one-size-doesn't-fit-all to highly customizable and blazing fast.
                   </p>
                 </Flex>
                 <Flex gap={2}>
                   <Icon name="layers" className={style.icon}></Icon>
                   <p className="balance">
-                    Our first goal is to revolutionize equity risk models and analytics. 
-                    Traditional models don't align with realistic invementment universes
-                    or styles - we're changing that.
+                    Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align
+                    with realistic invementment universes or styles - we're changing that.
                   </p>
                 </Flex>
                 <Flex gap={2}>
                   <Icon name="border" className={style.icon}></Icon>
                   <p className="balance">
-                    For example, if you run a mid-cap health care portfolio across 
-                    the US and Europe, a geographically and stylistically 
-                    aligned model is only a few seconds away.
+                    For example, if you run a mid-cap health care portfolio across the US and Europe, a geographically
+                    and stylistically aligned model is only a few seconds away.
                   </p>
                 </Flex>
               </Flex>
@@ -106,7 +107,7 @@ function App() {
                     interest in all things AI and hands-on engineering.
                   </p>
                   <p className="small">
-                    Before co-founding Bayesline, Misha was a Managing Director at BlackRock where he evolved Aladdin’s 
+                    Before co-founding Bayesline, Misha was a Managing Director at BlackRock where he evolved Aladdin’s
                     portfolio risk models spanning tens of trillions in assets.
                   </p>
                   <p className="small">
@@ -126,8 +127,7 @@ function App() {
             <Flex column gap={1}>
               <p className="caps">Contact</p>
               <p className="small balance w-prose">
-                For general inquiries you can reach us at{' '}
-                <a href="mailto:info@bayesline.com">info@bayesline.com</a>.
+                For general inquiries you can reach us at <a href="mailto:info@bayesline.com">info@bayesline.com</a>.
               </p>
             </Flex>
           </Flex>
