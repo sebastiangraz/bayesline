@@ -77,7 +77,7 @@ function Index() {
               </h4>
             </Flex>
 
-            <Flex gap={4} wrap between>
+            <Flex gap={5} wrap between>
               <div>
                 <Flex column gap={1}>
                   <Avatar url={sebastian} className={style.avatar}></Avatar>

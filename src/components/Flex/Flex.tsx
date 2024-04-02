@@ -7,7 +7,7 @@ interface FlexProps {
   between?: boolean;
   wrap?: boolean;
   center?: boolean;
-  gap?: 1 | 2 | 3 | 4;
+  gap?: 1 | 2 | 3 | 4 | 5;
   style?: string;
 }
 
@@ -34,6 +34,9 @@ export const Flex = (props: FlexProps) => {
       break;
     case 4:
       gap = style.gap4;
+      break;
+    case 5:
+      gap = style.gap5;
       break;
     default:
       gap = '';
