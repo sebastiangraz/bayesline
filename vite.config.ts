@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 import react from '@vitejs/plugin-react-swc';
 import { patchCssModules } from 'vite-css-modules';
 import { fileURLToPath, URL } from 'url';
@@ -18,5 +19,13 @@ export default defineConfig({
       /* '@': '/src' */
       { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }
     ]
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        nested: resolve(__dirname, 'signup/index.html')
+      }
+    }
   }
 });
