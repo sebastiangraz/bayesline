@@ -74,7 +74,7 @@ function App() {
                 <Flex column gap={1}>
                   <Avatar url={sebastian} className={style.avatar}></Avatar>
                   <p></p>
-                  <p className="caps">Sebastian Janisch</p>
+                  <p className="caps">Sebastian Janisch, CFA</p>
                   <p className="small">
                     A software engineer with a passion for quant research, Sebastian has spent the last 10 years
                     leveraging the power of machine learning to challenge, innovate, and reshape how institutions think
@@ -100,7 +100,7 @@ function App() {
                 <Flex column gap={1}>
                   <Avatar url={misha} className={style.avatar}></Avatar>
                   <p></p>
-                  <p className="caps">Misha van Beek</p>
+                  <p className="caps">Misha van Beek, PhD</p>
                   <p className="small">
                     Misha has spent the past 10 years coupling his professional quant training with his personal
                     interest in all things AI and hands-on engineering.
