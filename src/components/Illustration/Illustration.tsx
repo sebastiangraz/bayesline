@@ -19,7 +19,7 @@ const maskVariant = {
     return {
       pathLength: 1,
       transition: {
-        pathLength: { duration: 4, delay, repeat: Infinity }
+        pathLength: { duration: 4, delay }
       }
     };
   }
@@ -144,22 +144,22 @@ export const Illustration = ({ ...props }) => {
 
         <g mask="url(#mask0)">
           <motion.g
-            initial={{
-              ['--maskPosition' as any]: ['0% 0%']
-            }}
-            animate={{
-              ['--maskPosition' as any]: ['0% 0%', '-200% 0%']
-            }}
-            style={{
-              maskPosition: 'var(--maskPosition)',
-              maskSize: '200% 200%',
-              maskImage: 'linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%)'
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: 'easeOut'
-            }}
+          // initial={{
+          //   ['--maskPosition' as any]: ['0% 0%']
+          // }}
+          // animate={{
+          //   ['--maskPosition' as any]: ['0% 0%', '-200% 0%']
+          // }}
+          // style={{
+          //   maskPosition: 'var(--maskPosition)',
+          //   maskSize: '200% 200%',
+          //   maskImage: 'linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%)'
+          // }}
+          // transition={{
+          //   duration: 4,
+          //   repeat: Infinity,
+          //   ease: 'easeOut'
+          // }}
           >
             <motion.path
               fill="currentColor"
