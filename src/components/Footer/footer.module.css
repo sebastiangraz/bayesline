@@ -1,4 +1,4 @@
-.hero {
+.wrapper {
   display: grid;
   grid-template-rows: auto auto;
   position: sticky;
@@ -21,6 +21,7 @@
 .footer {
   position: sticky;
   top: 0px;
+  pointer-events: none;
   z-index: 0;
   overflow: hidden;
   height: 20vh;

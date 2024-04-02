@@ -7,7 +7,7 @@ import { StaggerText } from '@/helpers/StaggerText';
 export const Footer = () => {
   return (
     <>
-      <div className={`${utils.section} ${style.hero}`}>
+      <div className={`${utils.section} ${style.wrapper}`}>
         <div className="s-2 e-10">
           <Flex center column gap={3}>
             <h1 className="w-title">
