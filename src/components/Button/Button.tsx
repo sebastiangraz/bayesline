@@ -1,11 +1,21 @@
 import style from './button.module.css';
 import { motion } from 'framer-motion';
+import { Link } from '@tanstack/react-router';
+
 interface ButtonProps {
   type?: 'primary' | 'secondary';
   children: React.ReactNode;
   className?: string;
   href?: string;
   target?: string;
+  to?: string;
+  bgColor?: string;
+  fgColor?: string;
+  nodeColor?: string;
+}
+
+interface ButtonNodeProps {
+  style?: React.CSSProperties;
 }
 
 const outlineVariants = {
@@ -36,26 +46,45 @@ export const Button = (props: ButtonProps) => {
 
   const background = type === 'primary' ? style.primary : style.secondary;
   const className = rest.className ? rest.className : '';
+  const MotionComponent = motion(Link);
 
-  if (rest.href) {
+  const backgroundColor = rest.bgColor ? rest.bgColor : '';
+  const foregroundColor = rest.fgColor ? rest.fgColor : '';
+  const nodeColor = rest.nodeColor ? rest.nodeColor : 'var(--blue)';
+  const buttonStyle = `${style.button} ${style[background]} ${background} ${className}`;
+
+  if (rest.to) {
     return (
-      <motion.a
+      <MotionComponent
         {...rest}
-        className={`${style.button} ${background} ${className}`}
+        className={buttonStyle}
         whileHover="hover"
         initial="default"
         animate="default"
+        style={{ backgroundColor: backgroundColor, color: foregroundColor }}
       >
         {children}
-        <ButtonNodes />
-      </motion.a>
+        <ButtonNodes style={{ color: nodeColor }} />
+      </MotionComponent>
     );
   } else {
-    return <button className={`${style.button} ${background} ${className}`}>{children}</button>;
+    return (
+      <motion.a
+        {...rest}
+        className={buttonStyle}
+        whileHover="hover"
+        initial="default"
+        animate="default"
+        style={{ backgroundColor: backgroundColor, color: foregroundColor }}
+      >
+        {children}
+        <ButtonNodes style={{ color: nodeColor }} />
+      </motion.a>
+    );
   }
 };
 
-const ButtonNodes = () => {
+const ButtonNodes = (props: ButtonNodeProps) => {
   return (
     <motion.svg
       width="240"
@@ -65,6 +94,7 @@ const ButtonNodes = () => {
       xmlns="http://www.w3.org/2000/svg"
       className={style.buttonNode}
       preserveAspectRatio="xMidYMin slice"
+      style={props.style}
     >
       <svg width="240" height="62" viewBox="0 0 240 62" fill="none" xmlns="http://www.w3.org/2000/svg">
         <motion.path

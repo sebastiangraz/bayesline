@@ -10,12 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@typeform/embed-react": "^3.16.0",
     "framer-motion": "^11.0.24",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.1",
+    "@tanstack/router-devtools": "^1.26.4",
+    "@tanstack/router-vite-plugin": "^1.25.0",
     "@types/node": "^20.11.30",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

@@ -1,0 +1,12 @@
+.logo {
+  max-width: 7rem;
+}
+.page {
+  margin-top: 4rem;
+}
+.widget {
+  display: flex;
+  height: auto;
+  padding-inline: 0;
+  width: 100%;
+}

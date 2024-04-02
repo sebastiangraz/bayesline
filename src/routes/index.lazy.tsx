@@ -1,14 +1,18 @@
-import utils from './utils.module.css';
-import style from './app.module.css';
+import utils from '@/utils.module.css';
+import style from '@/app.module.css';
 import { Hero, Box, Button, Flex, Footer, Avatar, Icon } from '@/components';
 import sebastian from '@/assets/sebastian.jpg';
 import misha from '@/assets/misha.jpg';
+import { createLazyFileRoute, Link } from '@tanstack/react-router';
 
-function App() {
+export const Route = createLazyFileRoute('/')({
+  component: Index
+});
+
+function Index() {
   return (
-    <main>
+    <>
       <div className="tile"></div>
-
       <Hero />
       <Box bg="primary" className={`${utils.section} z-1`}>
         <Flex column between className={`e-3 ${style.sidebar}`}>
@@ -17,14 +21,17 @@ function App() {
               <pre className="caps case-type">Schedule a Demo</pre>
             </Button>
           </div>
-          <Flex column gap={1} className={style.meta}>
-            <p className="small balance">
-              To be the first to know about our beta launch,{' '}
-              <a href="mailto:info@bayesline.com?subject=Join Beta Waitlist&body=Hi, I wouldl like to join the waitlist.">
-                Join&nbsp;the&nbsp;waitlist
-              </a>
-              .
-            </p>
+          <Flex column gap={2} className={style.meta}>
+            <p className="small balance">To be the first to know about our beta launch.</p>
+            <Button
+              type="secondary"
+              to="/signup"
+              bgColor="var(--background)"
+              fgColor="var(--text)"
+              nodeColor="var(--background)"
+            >
+              <p className="caps small"> Join&nbsp;waitlist</p>
+            </Button>
           </Flex>
         </Flex>
         <div className={`s-3 e-12 sub ${style.box}`}>
@@ -135,8 +142,6 @@ function App() {
       </Box>
 
       <Footer />
-    </main>
+    </>
   );
 }
-
-export default App;

@@ -167,6 +167,7 @@ hr {
   height: 50vh;
   margin: 0 1rem auto;
   position: fixed;
+  top: 0;
   z-index: -1;
 }
 

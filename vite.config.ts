@@ -2,11 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import { patchCssModules } from 'vite-css-modules';
 import { fileURLToPath, URL } from 'url';
-
+import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
 // https://vitejs.dev/config/
 export default defineConfig({
   //use patchCssModules until VITE 5.3 is released
-  plugins: [patchCssModules(), react()],
+  plugins: [patchCssModules(), react(), TanStackRouterVite()],
   css: {
     modules: {
       localsConvention: 'camelCaseOnly'
