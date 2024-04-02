@@ -14,11 +14,8 @@ function App() {
         <Flex column between className={`e-3 ${style.sidebar}`}>
           <div>
             <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-              <pre className="caps case-type">Try for free</pre>
+              <pre className="caps case-type">Schedule a Demo</pre>
             </Button>
-            <div className="padding-05">
-              <p className="small balance center">Schedule a demo with us</p>
-            </div>
           </div>
           <Flex column gap={1} className={style.meta}>
             <p className="small balance">
@@ -130,7 +127,7 @@ function App() {
             <Flex column gap={1}>
               <p className="caps">Contact</p>
               <p className="small balance w-prose">
-                For general inquiries or to request a demo, you can reach us at{' '}
+                For general inquiries you can reach us at{' '}
                 <a href="mailto:info@bayesline.com">info@bayesline.com</a>.
               </p>
             </Flex>
