@@ -19,11 +19,8 @@ function App() {
           </div>
           <Flex column gap={1} className={style.meta}>
             <p className="small balance">
-              We just started and made some functionality available. Sign-up only requires a valid corporate email.
-              Click here for our API documentation, and an open-source python wrapper with an example notebook.
-            </p>
-            <p className="small">
-              For a demo of our UI, please contact <a href="mailto:info@bayesline.com">info@bayesline.com</a>
+              To be the first to know about our beta launch,<br />
+              <a href="mailto:info@bayesline.com?subject=Join Beta Waitlist&body=Hi, I wouldl like to join the waitlist.">join the waitlist</a>.
             </p>
           </Flex>
         </Flex>
@@ -35,22 +32,24 @@ function App() {
                 <Flex gap={2}>
                   <Icon name="chart" className={style.icon}></Icon>
                   <p className="balance">
-                    We deliver the analytics that investment managers are already familiar with, but hyper-customizable
-                    and blazing fast.
+                    We are changing the way investment managers interact with financial analytics. 
+                    From one-size-doesn't-fit-all to highly customizable and blazing fast.
                   </p>
                 </Flex>
                 <Flex gap={2}>
                   <Icon name="layers" className={style.icon}></Icon>
                   <p className="balance">
-                    Our first goal is to revolutionize equity risk models and analytics. Traditional models are
-                    inflexible and fitted to generic, one-size-fits-all asset universes.
+                    Our first goal is to revolutionize equity risk models and analytics. 
+                    Traditional models don't align with realistic invementment universes
+                    or styles - we're changing that.
                   </p>
                 </Flex>
                 <Flex gap={2}>
                   <Icon name="border" className={style.icon}></Icon>
                   <p className="balance">
-                    Through our user interface or API, users can specify models with a few clicks that truly fit their
-                    portfolio, or current market events.
+                    For example, if you run a mid-cap health care portfolio across 
+                    the US and Europe, a geographically and stylistically 
+                    aligned model is only a few seconds away.
                   </p>
                 </Flex>
               </Flex>
@@ -107,11 +106,11 @@ function App() {
                     interest in all things AI and hands-on engineering.
                   </p>
                   <p className="small">
-                    Before co-founding Bayesline, Misha was a Managing Director at BlackRock where he evolved Aladdin
-                    (R)’s portfolio risk models spanning tens of trillions in assets.
+                    Before co-founding Bayesline, Misha was a Managing Director at BlackRock where he evolved Aladdin’s 
+                    portfolio risk models spanning tens of trillions in assets.
                   </p>
                   <p className="small">
-                    Under his leadership, his team also developed Aladdin (R)’s economic scenario engine, as well as
+                    Under his leadership, his team also developed Aladdin’s economic scenario engine, as well as
                     investment models that run roughly $400 billion in strategic asset allocations.
                   </p>
 
