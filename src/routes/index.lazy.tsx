@@ -3,7 +3,7 @@ import style from '@/app.module.css';
 import { Hero, Box, Button, Flex, Footer, Avatar, Icon } from '@/components';
 import sebastian from '@/assets/sebastian.jpg';
 import misha from '@/assets/misha.jpg';
-import { createLazyFileRoute, Link } from '@tanstack/react-router';
+import { createLazyFileRoute } from '@tanstack/react-router';
 
 export const Route = createLazyFileRoute('/')({
   component: Index
