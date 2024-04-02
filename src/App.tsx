@@ -30,7 +30,7 @@ function App() {
         <div className={`s-3 e-12 sub ${style.box}`}>
           <div className="e-6">
             <Flex column gap={4}>
-              <h3>We are reimagining financial analytics on Al infrastructure.</h3>
+              <h3>We are reimagining financial analytics on AI infrastructure.</h3>
               <Flex column gap={2}>
                 <Flex gap={2}>
                   <Icon name="chart" className={style.icon}></Icon>
@@ -43,7 +43,7 @@ function App() {
                   <Icon name="layers" className={style.icon}></Icon>
                   <p className="balance">
                     Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align
-                    with realistic invementment universes or styles - we're changing that.
+                    with realistic investment universes or styles - we're changing that.
                   </p>
                 </Flex>
                 <Flex gap={2}>
