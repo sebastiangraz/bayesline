@@ -6,4 +6,5 @@ export { Footer } from './Footer';
 export { Illustration } from './Illustration';
 export { Avatar } from './Avatar';
 export { Icon } from './Icon';
-export { Navigation, Logo } from './Navigation';
+export { Navigation } from './Navigation';
+export { Logo } from './Logo';

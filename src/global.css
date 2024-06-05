@@ -8,6 +8,11 @@
   src: url('./assets/ABCReproMonoVariable-Trial.woff2');
 }
 
+@font-face {
+  font-family: 'B';
+  src: url('./assets/BayeslineVF.woff2');
+}
+
 @custom-media --sm (min-width: 560px);
 @custom-media --md (min-width: 768px);
 @custom-media --lg (min-width: 960px);

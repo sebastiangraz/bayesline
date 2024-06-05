@@ -16,20 +16,6 @@
   h1 {
     text-align: center;
   }
-
-  & :global .logo {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  & :global .logo svg {
-    width: 7rem;
-    @media (--md) {
-      width: 9rem;
-    }
-  }
 }
 
 .illustration {

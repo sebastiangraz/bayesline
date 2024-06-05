@@ -1,0 +1,59 @@
+.logo {
+  container-type: inline-size;
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  gap: calc(100% * 10 / 242);
+  width: 100%;
+  &:hover {
+    cursor: pointer;
+
+    & > .mark {
+      font-feature-settings: 'ss02' off;
+      animation-name: loop, reveal;
+      animation-duration: 1.5s, 0s;
+      animation-iteration-count: infinite;
+      animation-composition: add, add;
+      animation-delay: 0ms, 0ms;
+    }
+  }
+}
+
+.mark {
+  color: currentColor;
+  font-family: 'B';
+  line-height: 1;
+  display: inline;
+  user-select: none;
+
+  font-size: calc(100cqw * 42 / 242);
+  font-weight: normal;
+  font-feature-settings: 'ss02' on;
+  animation-play-state: unset, unset;
+  animation-name: loop, reveal;
+  animation-duration: 2s, 2s;
+  animation-delay: 0ms, 0ms;
+  animation-timing-function: cubic-bezier(0.9, 0.3, 0.1, 0.8), linear;
+}
+
+.type {
+  width: calc(100% * 188 / 242);
+}
+
+@keyframes loop {
+  0% {
+    font-variation-settings: 'LOOP' 0;
+  }
+  100% {
+    font-variation-settings: 'LOOP' 128;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

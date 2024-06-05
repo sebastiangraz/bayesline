@@ -1,15 +1,16 @@
 .navigation {
   position: sticky;
-  top: 0;
+  top: 1em;
   z-index: 2;
-  background-color: var(--background);
+  background-color: white;
 }
 .links {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 2rem;
+  min-height: calc(3rem - 1px);
+  padding: 0 0.5em;
 }
 .link {
   color: inherit;
@@ -18,4 +19,8 @@
   :global &.active {
     opacity: 0.5;
   }
+}
+
+.logo {
+  max-width: 100px;
 }
