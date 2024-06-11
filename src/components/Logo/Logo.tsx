@@ -4,7 +4,7 @@ interface LogoProps {
   className?: string;
 }
 
-export const Logo = ({ className }: LogoProps) => {
+export const Logo = ({ className = '' }: LogoProps) => {
   return (
     <div className={`${className} ${style.logo}`}>
       <div className={style.mark}>B</div>
