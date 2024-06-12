@@ -1,3 +1,29 @@
+main {
+  display: grid;
+  grid-template-columns:
+    auto [start]
+    repeat(23, 3em)
+    [end] auto;
+  gap: 3em 0;
+  font-size: calc(1em / 3);
+  & > * {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: start / end;
+    gap: 3em 0;
+    align-items: start;
+  }
+  .col {
+    grid-column: var(--c, start/end);
+  }
+  & > .bleed {
+    grid-column: 1 / 26;
+    & > *:first-child {
+      grid-column-start: start;
+    }
+  }
+}
+
 @font-face {
   font-family: 'ABCRepro';
   src: url('./assets/ABCReproVariable-Trial.woff2');
