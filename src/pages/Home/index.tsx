@@ -1,4 +1,3 @@
-import utils from '@/utils.module.css';
 import style from './home.module.css';
 import { Hero, Box, Button, Flex, Footer, Avatar, Icon } from '@/components';
 import sebastian from '@/assets/sebastian.jpg';
@@ -7,9 +6,26 @@ import misha from '@/assets/misha.jpg';
 export function Home() {
   return (
     <>
-      <div className="tile"></div>
       <Hero />
-      <Box bg="primary" className={`${utils.section} z-1`}>
+      <div className="bleed">
+        <div className="col" style={{ '--c': 'start/13' }}>
+          <p>test</p>
+        </div>
+        <div className="col sq" style={{ '--c': '14/end' }}>
+          <div className="col" style={{ '--c': '1/6' }}>
+            <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+              <pre className="caps case-type">Schedule a Demo</pre>
+            </Button>
+          </div>
+          <div className="col" style={{ '--c': '7/10' }}>
+            <p>test</p>
+          </div>
+          <div className="col" style={{ '--c': '1/9' }}>
+            <p>test</p>
+          </div>
+        </div>
+      </div>
+      {/* <Box bg="primary" className={`z-1`}>
         <Flex column between className={`e-3 ${style.sidebar}`}>
           <div>
             <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
@@ -61,7 +77,7 @@ export function Home() {
         </div>
       </Box>
 
-      <Box bg="secondary" className={`${utils.section} z-1 `}>
+      <Box bg="secondary" className={`z-1 `}>
         <div className="e-12 padding-2">
           <Flex column gap={4}>
             <Flex column gap={3}>
@@ -134,9 +150,7 @@ export function Home() {
             </Flex>
           </Flex>
         </div>
-      </Box>
-
-      <Footer />
+      </Box> */}
     </>
   );
 }

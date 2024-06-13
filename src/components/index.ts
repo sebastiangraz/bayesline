@@ -8,3 +8,4 @@ export { Avatar } from './Avatar';
 export { Icon } from './Icon';
 export { Navigation } from './Navigation';
 export { Logo } from './Logo';
+export { Layout } from './Layout';

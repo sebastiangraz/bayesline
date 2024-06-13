@@ -1,12 +1,12 @@
 import { Link } from '@tanstack/react-router';
 import style from './navigation.module.css';
-import utils from '@/utils.module.css';
+
 import { Logo } from '@/components';
 
 export const Navigation = () => {
   return (
     <>
-      <nav className={`${utils.row} ${style.navigation}`}>
+      <nav className={`${style.navigation}`}>
         <Link to="/" className={`${style.logo} ${style.link}`}>
           <Logo />
         </Link>

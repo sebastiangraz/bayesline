@@ -1,4 +1,4 @@
-import { Navigation } from '@/components';
+import { Navigation, Layout } from '@/components';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import style from '@/pages/Signup/signup.module.css';
 /* import { TanStackRouterDevtools } from '@tanstack/router-devtools'; */
@@ -6,19 +6,20 @@ import style from '@/pages/Signup/signup.module.css';
 export const Route = createRootRoute({
   component: () => (
     <>
-      <Navigation />
-      <main>
-        <Outlet />
-      </main>
+      <Layout>
+        <>
+          <Navigation />
+          <Outlet />
+        </>
+      </Layout>
       {/* <TanStackRouterDevtools /> */}
     </>
   ),
   notFoundComponent: () => {
     return (
       <>
-        <div className={`${style.page}`}>
-          <div className="tile"></div>
-          <p>This setting page doesn't exist!</p>
+        <div>
+          <p className="col">This setting page doesn't exist!</p>
         </div>
       </>
     );

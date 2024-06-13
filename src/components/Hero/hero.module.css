@@ -1,27 +1,20 @@
 .hero {
-  display: grid;
-  grid-template-rows: auto auto;
-  position: sticky;
-  top: 0;
-  z-index: 0;
-  padding: 2.5rem 0 0 0;
-  row-gap: 2rem;
-  overflow: visible;
-  height: 60vh;
-  @media (--md) {
-    row-gap: 3rem;
-    padding: 3.5rem 0 0 0;
-  }
-
-  h1 {
-    text-align: center;
-  }
+  background: var(--tan);
+  padding: 2em;
+  aspect-ratio: 0.6666667;
+  grid-row: 1;
 }
 
-.illustration {
-  display: block;
-  /*   margin-bottom: -14em; */
-  color: var(--coral);
-  position: relative;
-  z-index: -1;
+.hero p {
+  padding-right: 3em;
+}
+
+.ui {
+  padding: 2em;
+  background: white;
+  aspect-ratio: 1.25;
+  grid-column: var(--c, start/end);
+  grid-row: 1;
+  align-self: end;
+  max-height: 14em;
 }

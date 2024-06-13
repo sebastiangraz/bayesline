@@ -4,6 +4,7 @@
   justify-content: space-between;
   margin-top: 1em;
   top: 0;
+
   z-index: 2;
   background-color: white;
   box-shadow: var(--border-b), var(--border-t);
@@ -11,10 +12,11 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 0.75em;
+  gap: 0.5em;
   min-height: calc(3rem - 1px);
   padding: 0.125em;
   margin: 0;
+  height: 100%;
 }
 .link {
   color: inherit;
@@ -37,12 +39,13 @@
 }
 
 .logo {
+  grid-column: 1 / 4;
   align-self: stretch;
   box-shadow: var(--border-r);
   padding: 0 1em;
   display: flex;
   width: 100%;
-  max-width: 144px;
+  /* max-width: 144px; */
   :global &.active {
     opacity: unset;
   }

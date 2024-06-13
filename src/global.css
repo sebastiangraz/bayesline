@@ -1,11 +1,24 @@
 @font-face {
-  font-family: 'ABCRepro';
-  src: url('./assets/ABCReproVariable-Trial.woff2');
+  font-family: 'national2';
+  font-weight: normal;
+  src: url('./assets/national-2-regular.woff2');
 }
 
 @font-face {
-  font-family: 'ABCReproMono';
-  src: url('./assets/ABCReproMonoVariable-Trial.woff2');
+  font-family: 'national2';
+  font-weight: 500;
+  src: url('./assets/national-2-medium.woff2');
+}
+
+@font-face {
+  font-family: 'national2';
+  font-weight: 300;
+  src: url('./assets/national-2-light.woff2');
+}
+
+@font-face {
+  font-family: 'sohnemono';
+  src: url('./assets/sohnemono-buch.woff2');
 }
 
 @font-face {
@@ -46,16 +59,33 @@
   --border-t: 0 1px 0 0 hsl(var(--dark) / 0.08);
   --border-l: -1px 0 0 0 hsl(var(--dark) / 0.08);
   --border-b: 0 -1px 0 0 hsl(var(--dark) / 0.08);
+
+  /* https://clamp.font-size.app/ min:400 max:1104 */
+  --h1: clamp(3.5rem, 2.9318rem + 2.2727vw, 4.5rem);
+  --h2: clamp(3rem, 2.7159rem + 1.1364vw, 3.5rem);
+  --h3: clamp(2rem, 1.858rem + 0.5682vw, 2.25rem);
+  --h4: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
+  --h5: clamp(1.125rem, 1.108rem + 0.5682vw, 1.25rem);
+  --body: clamp(0.9375rem, 0.902rem + 0.142vw, 1rem);
+  --body-small: clamp(0.8125rem, 0.777rem + 0.142vw, 0.875rem);
+  --label: clamp(0.6875rem, 0.652rem + 0.142vw, 0.75rem);
+
+  /* --h1: clamp(2.5rem, 1.6477rem + 3.4091vw, 4rem);
+  --h2: clamp(2.25rem, 1.8239rem + 1.7045vw, 3rem);
+  --h3: clamp(1.75rem, 1.608rem + 0.5682vw, 2rem);
+  --h4: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
+  --h5: clamp(1.125rem, 1.108rem + 0.5682vw, 1.25rem);
+  --body: clamp(0.9375rem, 0.902rem + 0.142vw, 1rem);
+  --body-small: clamp(0.8125rem, 0.777rem + 0.142vw, 0.875rem);
+  --label: clamp(0.6875rem, 0.652rem + 0.142vw, 0.75rem);*/
 }
 
 :root {
-  font-family: 'ABCRepro', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'national2', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: normal;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
 }
 
@@ -94,45 +124,45 @@ img {
   display: block;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:is(h1, h2, h3, h4, h5, h6) {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-weight: inherit;
   margin: 0;
   text-wrap: balance;
 }
 
-/* https://clamp.font-size.app/ min:400 max:1104 */
-
 h1 {
-  font-size: clamp(2.5rem, 1.6477rem + 3.4091vw, 4rem);
-  /*   font-size: clamp(3rem, 2.5577rem + 1.9231vw, 4rem); */
+  font-size: var(--h1);
   line-height: 0.96;
+  font-weight: 300;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
   letter-spacing: -0.05em;
 }
 
 h2 {
-  font-size: clamp(2.25rem, 1.8239rem + 1.7045vw, 3rem);
-  /*   font-size: clamp(2.25rem, 1.9183rem + 1.4423vw, 3rem); */
-  line-height: 1.12;
+  font-size: var(--h2);
+  line-height: 1.1;
   letter-spacing: -0.04em;
 }
 
 h3 {
-  font-size: clamp(1.75rem, 1.608rem + 0.5682vw, 2rem);
-  /*   font-size: clamp(1.75rem, 1.6394rem + 0.4808vw, 2rem); */
+  font-size: var(--h3);
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
 
 h4 {
-  font-size: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
-  /*   font-size: clamp(1.25rem, 1.1394rem + 0.4808vw, 1.5rem); */
+  font-size: var(--h4);
   line-height: 1.45;
   letter-spacing: -0.02em;
+}
+
+h5 {
+  font-size: var(--h5);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
 .center {
@@ -150,9 +180,9 @@ h4 {
 
 .caps {
   text-transform: uppercase;
-  font-family: 'ABCReproMono', monospace;
+  font-family: 'sohnemono', monospace;
   letter-spacing: 0.02em;
-  font-weight: 450;
+  font-weight: normal;
 }
 
 hr {
@@ -164,7 +194,7 @@ hr {
 }
 
 .tile {
-  mask: conic-gradient(from 90deg at 1px 1px, #0000 90deg, #000a 0) calc(50% - 16px) -1px / 48px 48px;
+  mask: conic-gradient(from 90deg at 1px 1px, #0000 90deg, #000a 0) calc(50% - 16px) -1px / 1em 1em;
   background: radial-gradient(closest-side at 50% 50%, var(--text) 40%, #0000 100%) 0 100% / 100% 200%;
   background-repeat: no-repeat;
   opacity: 0.12;
