@@ -1,6 +1,6 @@
 import { Navigation, Layout } from '@/components';
 import { createRootRoute, Outlet } from '@tanstack/react-router';
-import style from '@/pages/Signup/signup.module.css';
+
 /* import { TanStackRouterDevtools } from '@tanstack/router-devtools'; */
 
 export const Route = createRootRoute({
