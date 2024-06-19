@@ -5,7 +5,7 @@
 }
 .bg-secondary {
   /*   backdrop-filter: saturate(10%); */
-  background-color: hsl(var(--beige) / 0.92);
+  /* background-color: hsl(var(--beige) / 0.92); */
   box-shadow:
     0 0 0 1px hsl(var(--dark) / 0.04),
     var(--shadow);

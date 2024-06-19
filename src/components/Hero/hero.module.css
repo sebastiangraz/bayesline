@@ -1,5 +1,5 @@
 .hero {
-  background: var(--tan);
+  background: var(--background-accent);
   padding: 2em;
   aspect-ratio: 0.6666667;
   grid-row: 1;

@@ -30,7 +30,7 @@
 }
 
 .highlight {
-  background: var(--coral);
+  background: var(--accent);
   color: white;
   height: 100%;
   display: flex;

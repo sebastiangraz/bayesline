@@ -50,7 +50,7 @@ export const Button = (props: ButtonProps) => {
 
   const backgroundColor = rest.bgColor ? rest.bgColor : '';
   const foregroundColor = rest.fgColor ? rest.fgColor : '';
-  const nodeColor = rest.nodeColor ? rest.nodeColor : 'var(--blue)';
+  const nodeColor = rest.nodeColor ? rest.nodeColor : 'var(--brand-2)';
   const buttonStyle = `${style.button} ${style[background]} ${background} ${className}`;
 
   if (rest.to) {

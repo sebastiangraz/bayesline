@@ -35,17 +35,30 @@
 }
 
 :root {
-  --beige: 0 5% 96%; /* hsl */
-  --dark: 249 94% 7%; /* hsl */
+  --beige: 43 5% 96%; /* hsl */
+  --dark: 313 100% 7%; /* hsl */
 
   --opacity: 1;
-
   --text: hsl(var(--dark) / var(--opacity));
-  --background: hsl(var(--beige) / var(--opacity));
-  --coral: hsl(11, 66%, 51%);
-  --tan: hsl(28, 28%, 76%);
-  --blue: hsl(231, 55%, 57%);
-  --cyan: hsl(198, 69%, 65%);
+  --background: var(--background-5);
+  --background-accent: var(--background-4);
+
+  --accent: hsl(20, 94%, 33%);
+  --highlight: hsl(43, 86%, 74%);
+
+  --brand: hsl(var(--dark));
+  --brand-0: var(--brand);
+  --brand-1: hsl(322 79% 13%);
+  --brand-2: hsl(322 51% 26%);
+  --brand-3: hsl(321 88% 78%);
+
+  --background-0: hsl(41.54 13.14% 19.41%);
+  --background-1: hsl(42 7.95% 34.51%);
+  --background-2: hsl(44 6.85% 57.06%);
+  --background-3: hsl(42.86 10.14% 72.94%);
+  --background-4: hsl(48 12.2% 91.96%);
+  --background-5: hsl(60 5.26% 96.27%);
+  /* --background-5: color-mix(in oklch, hsl(42, 13%, 19%) 0%, var(--background)); */
 
   --base-unit: 48;
   --base-wrapper: 1104;
@@ -92,7 +105,7 @@
 body {
   margin: 0;
   padding: 0;
-  color: var(--dark);
+  color: hsl(var(--dark));
   background-color: var(--background);
   font-size: clamp(1rem, 0rem + 4vw, 3rem);
 }
