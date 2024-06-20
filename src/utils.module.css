@@ -2,7 +2,11 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
-
+.row {
+  max-width: calc(var(--base-wrapper) * 1px);
+  width: calc(100% - (var(--unit) * 2));
+  margin: 0 auto;
+}
 .section {
   composes: grid from global;
   column-gap: 1em;

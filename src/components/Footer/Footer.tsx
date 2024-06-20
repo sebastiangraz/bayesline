@@ -1,5 +1,4 @@
 import style from './footer.module.css';
-import utils from '@/utils.module.css';
 import footer from '@/assets/footer.webp';
 import { Button, Flex } from '@/components';
 import { StaggerText } from '@/helpers/StaggerText';
@@ -7,7 +6,7 @@ import { StaggerText } from '@/helpers/StaggerText';
 export const Footer = () => {
   return (
     <>
-      <div className={`${utils.section} ${style.wrapper}`}>
+      {/* <div className={`${style.wrapper}`}>
         <div className="s-2 e-10">
           <Flex center column gap={3}>
             <h1 className="w-title">
@@ -25,7 +24,7 @@ export const Footer = () => {
       </div>
       <div className={style.footer}>
         <img src={footer} alt="footer" />
-      </div>
+      </div> */}
     </>
   );
 };
