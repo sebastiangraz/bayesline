@@ -8,13 +8,17 @@
   &:hover {
     cursor: pointer;
 
-    & > .mark {
+    .mark {
       font-feature-settings: 'ss02' off;
-      animation-name: loop, reveal;
-      animation-duration: 1.5s, 0s;
+      font-variation-settings: 'LOOP' 0;
+
+      animation-name: loop;
+      animation-duration: 1.5s;
+      animation-timing-function: cubic-bezier(0.9, 0.3, 0.2, 0.3);
       animation-iteration-count: infinite;
-      animation-composition: add, add;
-      animation-delay: 0ms, 0ms;
+    }
+    .type {
+      opacity: 0.5;
     }
   }
 }
@@ -29,15 +33,28 @@
   font-size: calc(100cqw * 42 / 242);
   font-weight: normal;
   font-feature-settings: 'ss02' on;
-  animation-play-state: unset, unset;
-  animation-name: loop, reveal;
-  animation-duration: 2s, 2s;
-  animation-delay: 0ms, 0ms;
-  animation-timing-function: cubic-bezier(0.9, 0.3, 0.1, 0.8), linear;
+  transition:
+    font-variation-settings 0.8s cubic-bezier(0.9, 0.3, 0.1, 0.8),
+    opacity 0.5s cubic-bezier(0.9, 0.3, 0.1, 0.8);
+  font-variation-settings: 'LOOP' 128;
+  opacity: 1;
+  @starting-style {
+    opacity: 0;
+    font-variation-settings: 'LOOP' 0;
+  }
 }
 
 .type {
   width: calc(100% * 188 / 242);
+  opacity: 1;
+  transition: all 0.8s cubic-bezier(0.9, 0.3, 0.1, 0.8);
+  transform: translateX(0px);
+  position: relative;
+  @starting-style {
+    opacity: 0.5;
+    transform: translateX(-0.2em);
+    font-variation-settings: 'LOOP' 0;
+  }
 }
 
 @keyframes loop {
@@ -46,14 +63,5 @@
   }
   100% {
     font-variation-settings: 'LOOP' 128;
-  }
-}
-
-@keyframes reveal {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
   }
 }

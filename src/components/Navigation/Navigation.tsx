@@ -12,7 +12,7 @@ export const Navigation = () => {
         </Link>
         <div className={` ${style.links}`}>
           <Link to="/mission" className={style.link}>
-            Our Mission
+            Mission
           </Link>
           <Link to="/news" className={style.link}>
             News
@@ -21,7 +21,7 @@ export const Navigation = () => {
             Pricing
           </Link>
           <Link to="https://app.bayesline.com/" target="_blank" className={style.link}>
-            Documentation
+            Docs
           </Link>
           <Link to="/signup" className={`${style.link} ${style.highlight}`}>
             Sign up

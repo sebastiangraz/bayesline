@@ -1,11 +1,11 @@
+export { Avatar } from './Avatar';
 export { Box } from './Box';
-export { Hero } from './Hero';
 export { Button } from './Button';
 export { Flex } from './Flex';
 export { Footer } from './Footer';
-export { Illustration } from './Illustration';
-export { Avatar } from './Avatar';
+export { Hero } from './Hero';
 export { Icon } from './Icon';
-export { Navigation } from './Navigation';
-export { Logo } from './Logo';
+export { Illustration } from './Illustration';
 export { Layout } from './Layout';
+export { Logo } from './Logo';
+export { Navigation } from './Navigation';
