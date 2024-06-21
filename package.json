@@ -11,6 +11,8 @@
     "update-deps": "bunx npm-check-updates --root --format group -i"
   },
   "dependencies": {
+    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/rollup": "^3.0.1",
     "@typeform/embed-react": "^3.17.0",
     "framer-motion": "^11.2.11",
     "react": "^18.3.1",
