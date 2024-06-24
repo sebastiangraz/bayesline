@@ -10,27 +10,6 @@ const globEntries = Object.entries(
   })
 );
 
-const entryMeta = globEntries.map(([relativePath, module]) => {
-  const Page = module.default;
-  const path = relativePath.replace('/src/pages/posts/', '');
-  const slug = path.replace('.mdx', '');
-  return {
-    slug,
-    path,
-    Page
-  };
-});
-
-export const posts = entryMeta.map(({ path, slug, Page }, i) => {
-  console.log(path, slug);
-
-  return (
-    <MDXProvider components={components}>
-      <Page></Page>
-    </MDXProvider>
-  );
-});
-
 export function News() {
   return (
     <div className="bleed">
@@ -54,3 +33,23 @@ export function News() {
     </div>
   );
 }
+
+export const entryMeta = globEntries.map(([relativePath, module], index) => {
+  const Page = module.default;
+  const path = relativePath.replace('/src/pages/posts/', '');
+  const slug = path.replace('.mdx', '');
+  return {
+    slug,
+    path,
+    Page,
+    id: `${slug}-${index}`
+  };
+});
+
+export const posts = entryMeta.map(({ path, slug, Page }, i) => {
+  return (
+    <MDXProvider components={components}>
+      <Page></Page>
+    </MDXProvider>
+  );
+});
