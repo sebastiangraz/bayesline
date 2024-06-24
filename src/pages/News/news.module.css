@@ -3,17 +3,37 @@
   padding: 0;
 
   li {
-    & > * {
-      display: grid;
-    }
-
     box-shadow: var(--border-b);
     background: var(--background-5);
     grid-column: 1 / 26;
+    &:has(.wrapper:hover) {
+      background-color: var(--background-4);
+    }
+    &:hover .thumbnail {
+      filter: saturate(0);
+      mix-blend-mode: multiply;
+    }
   }
   li a {
-    padding: 1em;
     text-decoration: none;
     list-style: none;
   }
+}
+
+.wrapper {
+  padding: 1.5rem 0;
+}
+
+.thumbnail {
+  grid-column: 1 / 4;
+  width: 100%;
+}
+
+.link {
+  grid-column: 5 / 12;
+}
+
+.excerpt {
+  grid-column: 13 / end;
+  text-wrap: pretty;
 }

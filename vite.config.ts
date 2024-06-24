@@ -5,6 +5,7 @@ import { fileURLToPath, URL } from 'url';
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+
 // https://vitejs.dev/config/
 
 export default defineConfig(async (): Promise<UserConfig> => {
