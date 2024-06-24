@@ -1,0 +1,20 @@
+.hero {
+  grid-column: 1 / span 26;
+  padding-bottom: 3em;
+  padding-top: 1em;
+}
+
+.title {
+  grid-column: start / span 11;
+}
+
+.excerpt {
+  grid-column: 15 / span 10;
+  text-wrap: pretty;
+}
+
+.prose {
+  grid-column: 7 / span 11;
+  gap: 1rem;
+  padding-top: 2em;
+}

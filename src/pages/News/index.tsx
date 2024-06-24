@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 import slugify from 'slugify';
 import style from './news.module.css';
 import hero from '@/assets/homepage-hero.png';
+
 const globEntries = Object.entries(
   import.meta.glob<string | string[] | any>(['@/pages/entries/*.mdx'], {
     eager: true
