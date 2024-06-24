@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import slugify from 'slugify';
+import style from './news.module.css';
 
 const globEntries = Object.entries(
   import.meta.glob<string | string[] | any>(['@/pages/posts/*.mdx'], {
@@ -9,21 +10,25 @@ const globEntries = Object.entries(
 
 export function News() {
   return (
-    <div>
-      <h2>News</h2>
-      <hr />
-      <ul>
+    <div className="col bleed">
+      <div className="col">
+        <h2>News</h2>
+      </div>
+
+      <ul className={`col ${style.ul}`}>
         {entryMeta.map(({ slug, title }) => {
           return (
-            <li key={slug}>
-              <Link
-                to={`/posts/$postId`}
-                params={{
-                  postId: `${slug}`
-                }}
-              >
-                {title}
-              </Link>
+            <li key={slug} className={`col`}>
+              <div className={`col`}>
+                <Link
+                  to={`/posts/$postId`}
+                  params={{
+                    postId: `${slug}`
+                  }}
+                >
+                  <h5>{title}</h5>
+                </Link>
+              </div>
             </li>
           );
         })}

@@ -1,0 +1,19 @@
+.ul {
+  grid-column: 1 / 26;
+  padding: 0;
+
+  li {
+    & > * {
+      display: grid;
+    }
+
+    box-shadow: var(--border-b);
+    background: var(--background-5);
+    grid-column: 1 / 26;
+  }
+  li a {
+    padding: 1em;
+    text-decoration: none;
+    list-style: none;
+  }
+}

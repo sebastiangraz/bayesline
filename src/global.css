@@ -82,15 +82,6 @@
   --body: clamp(0.9375rem, 0.902rem + 0.142vw, 1rem);
   --body-small: clamp(0.8125rem, 0.777rem + 0.142vw, 0.875rem);
   --label: clamp(0.6875rem, 0.652rem + 0.142vw, 0.75rem);
-
-  /* --h1: clamp(2.5rem, 1.6477rem + 3.4091vw, 4rem);
-  --h2: clamp(2.25rem, 1.8239rem + 1.7045vw, 3rem);
-  --h3: clamp(1.75rem, 1.608rem + 0.5682vw, 2rem);
-  --h4: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
-  --h5: clamp(1.125rem, 1.108rem + 0.5682vw, 1.25rem);
-  --body: clamp(0.9375rem, 0.902rem + 0.142vw, 1rem);
-  --body-small: clamp(0.8125rem, 0.777rem + 0.142vw, 0.875rem);
-  --label: clamp(0.6875rem, 0.652rem + 0.142vw, 0.75rem);*/
 }
 
 :root {
@@ -110,10 +101,9 @@ body {
   font-size: clamp(1rem, 0rem + 4vw, 3rem);
 }
 
-p,
-pre {
+:is(p, a, pre) {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--body);
   color: hsl(var(--dark) / 0.8);
   letter-spacing: -0.01em;
 }
