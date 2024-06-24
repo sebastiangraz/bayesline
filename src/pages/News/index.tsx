@@ -34,12 +34,10 @@ export function News() {
   );
 }
 
-export const entryMeta = globEntries.map(([relativePath, module]) => {
+export const entryMeta = globEntries.map(([, module]) => {
   const Page = module.default;
   const title = module.frontmatter.title;
   const slug = slugify(title, { lower: true });
-  // const path = relativePath.replace('/src/pages/posts/', '');
-  // const slug = path.replace('.mdx', '');
 
   return {
     title,
