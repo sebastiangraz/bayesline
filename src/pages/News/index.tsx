@@ -1,8 +1,4 @@
-import { MDXProvider } from '@mdx-js/react';
 import { Link } from '@tanstack/react-router';
-const components = {
-  h1: (props: any) => <h3 {...props} />
-};
 
 const globEntries = Object.entries(
   import.meta.glob<string | string[] | any>(['@/pages/posts/*.mdx'], {
@@ -13,18 +9,17 @@ const globEntries = Object.entries(
 export function News() {
   return (
     <div className="bleed">
-      <div className="col" style={{ '--c': 'start/13' }}>
+      <div className="col">
         <h2>News</h2>
         <hr />
         <ul>
-          {entryMeta.map(({ path, slug, Page }, i) => {
+          {entryMeta.map(({ slug }) => {
             return (
-              <li>
+              <li key={slug}>
                 <Link
                   to={`/posts/$postId`}
-                  key={slug}
                   params={{
-                    postId: `${slug}-${i}`
+                    postId: `${slug}`
                   }}
                 >
                   {slug}
@@ -38,7 +33,7 @@ export function News() {
   );
 }
 
-export const entryMeta = globEntries.map(([relativePath, module], index) => {
+export const entryMeta = globEntries.map(([relativePath, module]) => {
   const Page = module.default;
   const path = relativePath.replace('/src/pages/posts/', '');
   const slug = path.replace('.mdx', '');
@@ -46,14 +41,6 @@ export const entryMeta = globEntries.map(([relativePath, module], index) => {
     slug,
     path,
     Page,
-    id: `${slug}-${index}`
+    id: `${slug}`
   };
-});
-
-export const posts = entryMeta.map(({ path, slug, Page }, i) => {
-  return (
-    <MDXProvider components={components}>
-      <Page></Page>
-    </MDXProvider>
-  );
 });

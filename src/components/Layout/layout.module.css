@@ -21,16 +21,5 @@
 
   :global .bleed {
     grid-column: 1 / 26;
-    & > *:first-child {
-      grid-column-start: start;
-    }
   }
 }
-
-/* .layoutgrid {
-  &:global {
-    > .col {
-      color: green;
-    }
-  }
-} */

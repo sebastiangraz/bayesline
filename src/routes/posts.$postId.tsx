@@ -1,16 +1,23 @@
 import { createFileRoute, ErrorComponent, ErrorComponentProps, Link } from '@tanstack/react-router';
 import { entryMeta } from '@/pages/News/index.tsx';
+import { MDXProvider } from '@mdx-js/react';
 
 export function PostErrorComponent({ error }: ErrorComponentProps) {
-  return <ErrorComponent error={error} />;
+  return (
+    <>
+      <h3>404</h3>
+      <div>
+        <ErrorComponent error={error} />
+      </div>
+    </>
+  );
 }
 
+const components = {
+  h1: (props: any) => <h2 {...props} />
+};
+
 export const Route = createFileRoute('/posts/$postId')({
-  // loader: async ({ params }) => {
-  //   console.log(params);
-  //   const postId = params.postId;
-  //   return { title: postId };
-  // },
   loader: async ({ params }) => {
     const post = entryMeta.find((p) => p.id === params.postId);
     if (!post) throw new Error('Post not found');
@@ -31,7 +38,10 @@ function PostComponent() {
     <div className="col" style={{ display: 'initial' }}>
       <h4>{Page.title}</h4>
       <hr />
-      <Page />
+
+      <MDXProvider components={components}>
+        <Page />
+      </MDXProvider>
     </div>
   );
 }
