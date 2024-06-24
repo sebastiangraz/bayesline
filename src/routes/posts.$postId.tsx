@@ -2,6 +2,10 @@ import { createFileRoute, ErrorComponent, ErrorComponentProps, Link } from '@tan
 import { entryMeta } from '@/pages/News/index.tsx';
 import { MDXProvider } from '@mdx-js/react';
 
+const components = {
+  h1: (props: any) => <h2 {...props} />
+};
+
 export function PostErrorComponent({ error }: ErrorComponentProps) {
   return (
     <>
@@ -12,10 +16,6 @@ export function PostErrorComponent({ error }: ErrorComponentProps) {
     </>
   );
 }
-
-const components = {
-  h1: (props: any) => <h2 {...props} />
-};
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
@@ -31,7 +31,6 @@ export const Route = createFileRoute('/posts/$postId')({
 });
 
 function PostComponent() {
-  // const post = Route.useLoaderData();
   const { Page } = Route.useLoaderData();
 
   return (
