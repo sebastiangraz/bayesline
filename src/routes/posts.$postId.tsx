@@ -21,7 +21,7 @@ export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
     const post = entryMeta.find((p) => p.id === params.postId);
     if (!post) throw new Error('Post not found');
-    return post;
+    return { post };
   },
   errorComponent: PostErrorComponent as any,
   notFoundComponent: () => {
@@ -31,13 +31,13 @@ export const Route = createFileRoute('/posts/$postId')({
 });
 
 function PostComponent() {
-  const { Page } = Route.useLoaderData();
+  const { post } = Route.useLoaderData();
+  const { Page, title } = post;
 
   return (
     <div className="col" style={{ display: 'initial' }}>
-      <h4>{Page.title}</h4>
+      <h1>{title}</h1>
       <hr />
-
       <MDXProvider components={components}>
         <Page />
       </MDXProvider>

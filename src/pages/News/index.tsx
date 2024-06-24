@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router';
+import slugify from 'slugify';
 
 const globEntries = Object.entries(
   import.meta.glob<string | string[] | any>(['@/pages/posts/*.mdx'], {
@@ -13,7 +14,7 @@ export function News() {
         <h2>News</h2>
         <hr />
         <ul>
-          {entryMeta.map(({ slug }) => {
+          {entryMeta.map(({ slug, title }) => {
             return (
               <li key={slug}>
                 <Link
@@ -22,7 +23,7 @@ export function News() {
                     postId: `${slug}`
                   }}
                 >
-                  {slug}
+                  {title}
                 </Link>
               </li>
             );
@@ -35,11 +36,14 @@ export function News() {
 
 export const entryMeta = globEntries.map(([relativePath, module]) => {
   const Page = module.default;
-  const path = relativePath.replace('/src/pages/posts/', '');
-  const slug = path.replace('.mdx', '');
+  const title = module.frontmatter.title;
+  const slug = slugify(title, { lower: true });
+  // const path = relativePath.replace('/src/pages/posts/', '');
+  // const slug = path.replace('.mdx', '');
+
   return {
+    title,
     slug,
-    path,
     Page,
     id: `${slug}`
   };
