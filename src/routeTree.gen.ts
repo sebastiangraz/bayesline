@@ -13,7 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PostsPostIdImport } from './routes/posts.$postId'
+import { Route as NewsPostIdImport } from './routes/news.$postId'
 
 // Create Virtual Routes
 
@@ -31,15 +31,15 @@ const SignupLazyRoute = SignupLazyImport.update({
 const NewsLazyRoute = NewsLazyImport.update({
   path: '/news',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/news.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/news_.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
-const PostsPostIdRoute = PostsPostIdImport.update({
-  path: '/posts/$postId',
+const NewsPostIdRoute = NewsPostIdImport.update({
+  path: '/news/$postId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -68,11 +68,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupLazyImport
       parentRoute: typeof rootRoute
     }
-    '/posts/$postId': {
-      id: '/posts/$postId'
-      path: '/posts/$postId'
-      fullPath: '/posts/$postId'
-      preLoaderRoute: typeof PostsPostIdImport
+    '/news/$postId': {
+      id: '/news/$postId'
+      path: '/news/$postId'
+      fullPath: '/news/$postId'
+      preLoaderRoute: typeof NewsPostIdImport
       parentRoute: typeof rootRoute
     }
   }
@@ -84,7 +84,7 @@ export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   NewsLazyRoute,
   SignupLazyRoute,
-  PostsPostIdRoute,
+  NewsPostIdRoute,
 })
 
 /* prettier-ignore-end */
@@ -98,20 +98,20 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/news",
         "/signup",
-        "/posts/$postId"
+        "/news/$postId"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
     "/news": {
-      "filePath": "news.lazy.tsx"
+      "filePath": "news_.lazy.tsx"
     },
     "/signup": {
       "filePath": "signup.lazy.tsx"
     },
-    "/posts/$postId": {
-      "filePath": "posts.$postId.tsx"
+    "/news/$postId": {
+      "filePath": "news.$postId.tsx"
     }
   }
 }

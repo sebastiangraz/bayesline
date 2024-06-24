@@ -3,10 +3,14 @@ import slugify from 'slugify';
 import style from './news.module.css';
 
 const globEntries = Object.entries(
-  import.meta.glob<string | string[] | any>(['@/pages/posts/*.mdx'], {
+  import.meta.glob<string | string[] | any>(['@/pages/entries/*.mdx'], {
     eager: true
   })
 );
+
+function getFileName(path: string) {
+  return path.split('/').pop()?.replace('.mdx', '');
+}
 
 export function News() {
   return (
@@ -16,14 +20,14 @@ export function News() {
       </div>
 
       <ul className={`col ${style.ul}`}>
-        {entryMeta.map(({ slug, title }) => {
+        {entryMeta.map(({ title, fileName }) => {
           return (
-            <li key={slug} className={`col`}>
+            <li key={fileName} className={`col`}>
               <div className={`col`}>
                 <Link
-                  to={`/posts/$postId`}
+                  to={`/news/$postId`}
                   params={{
-                    postId: `${slug}`
+                    postId: `${fileName}`
                   }}
                 >
                   <h5>{title}</h5>
@@ -37,15 +41,17 @@ export function News() {
   );
 }
 
-export const entryMeta = globEntries.map(([, module]) => {
+export const entryMeta = globEntries.map(([url, module]) => {
   const Page = module.default;
   const title = module.frontmatter.title;
   const slug = slugify(title, { lower: true });
+  const fileName = getFileName(url);
 
   return {
     title,
     slug,
+    fileName,
     Page,
-    id: `${slug}`
+    id: `${fileName}`
   };
 });
