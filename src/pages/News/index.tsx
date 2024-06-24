@@ -16,19 +16,23 @@ export function News() {
       <div className="col" style={{ '--c': 'start/13' }}>
         <h2>News</h2>
         <hr />
-        {entryMeta.map(({ path, slug, Page }, i) => {
-          return (
-            <Link
-              to={`/posts/$postId`}
-              key={slug}
-              params={{
-                postId: `${slug}-${i}`
-              }}
-            >
-              {slug}
-            </Link>
-          );
-        })}
+        <ul>
+          {entryMeta.map(({ path, slug, Page }, i) => {
+            return (
+              <li>
+                <Link
+                  to={`/posts/$postId`}
+                  key={slug}
+                  params={{
+                    postId: `${slug}-${i}`
+                  }}
+                >
+                  {slug}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

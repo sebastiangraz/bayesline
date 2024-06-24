@@ -30,7 +30,7 @@ function PostComponent() {
   return (
     <div className="col" style={{ display: 'initial' }}>
       <h4>{Page.title}</h4>
-      <h2> Post</h2>
+      <hr />
       <Page />
     </div>
   );
