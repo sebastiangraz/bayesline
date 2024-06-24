@@ -8,12 +8,10 @@ const components = {
 
 export function PostErrorComponent({ error }: ErrorComponentProps) {
   return (
-    <>
+    <div>
       <h3>404</h3>
-      <div>
-        <ErrorComponent error={error} />
-      </div>
-    </>
+      <ErrorComponent error={error} />
+    </div>
   );
 }
 
@@ -35,7 +33,7 @@ function PostComponent() {
   const { Page, title } = post;
 
   return (
-    <div className="col" style={{ display: 'initial' }}>
+    <div>
       <h1>{title}</h1>
       <hr />
       <MDXProvider components={components}>

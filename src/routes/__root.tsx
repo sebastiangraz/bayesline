@@ -19,7 +19,7 @@ export const Route = createRootRoute({
     return (
       <>
         <div>
-          <p className="col">This setting page doesn't exist!</p>
+          <p>This setting page doesn't exist!</p>
         </div>
       </>
     );

@@ -7,23 +7,10 @@ export function Home() {
   return (
     <>
       <Hero />
-      <div className="bleed">
-        <div className="col" style={{ '--c': 'start/13' }}>
-          <p>test</p>
-        </div>
-        <div className="col sq" style={{ '--c': '14/end' }}>
-          <div className="col" style={{ '--c': '1/6' }}>
-            <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-              <pre className="caps case-type">Schedule a Demo</pre>
-            </Button>
-          </div>
-          <div className="col" style={{ '--c': '7/10' }}>
-            <p>test</p>
-          </div>
-          <div className="col" style={{ '--c': '1/9' }}>
-            <p>test</p>
-          </div>
-        </div>
+      <div className="col">
+        <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+          <pre className="caps case-type">Schedule a Demo</pre>
+        </Button>
       </div>
       {/* <Box bg="primary" className={`z-1`}>
         <Flex column between className={`e-3 ${style.sidebar}`}>

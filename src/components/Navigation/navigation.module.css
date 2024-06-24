@@ -1,6 +1,5 @@
 .navigation {
   display: flex;
-  grid-column: start / end;
   position: sticky;
   margin-top: 1em;
   top: 0;

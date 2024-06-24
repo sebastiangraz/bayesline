@@ -17,29 +17,27 @@ export const Hero = (props: HeroProps) => {
   const { title = 'Financial analytics rethought.' } = props;
 
   return (
-    <div className="bleed">
-      <div className={`col`} style={{ '--c': 'start/26' }}>
-        <div className={`col ${style.hero}`} style={{ '--c': 'start/13' }}>
-          <Flex column gap={4}>
-            <h1>
-              <motion.div style={{ y: yDistance, opacity: headerOpacity }}>
-                <StaggerText>{title}</StaggerText>
-              </motion.div>
-            </h1>
-            <p>
-              We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
-              blazing fast.
-            </p>
-          </Flex>
-          {/* <div className={`${style.illustration}`}>
+    <div className={`col bleed`}>
+      <div className={`col ${style.hero}`}>
+        <Flex column gap={4}>
+          <h1>
+            <motion.div style={{ y: yDistance, opacity: headerOpacity }}>
+              <StaggerText>{title}</StaggerText>
+            </motion.div>
+          </h1>
+          <p>
+            We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
+            blazing fast.
+          </p>
+        </Flex>
+        {/* <div className={`${style.illustration}`}>
             <Flex center>
               <Illustration />
             </Flex>
           </div> */}
-        </div>
-        <div className={`col ${style.ui}`} style={{ '--c': '11/25' }}>
-          <img src={hero} alt="hero" />
-        </div>
+      </div>
+      <div className={`col ${style.ui}`}>
+        <img src={hero} alt="hero" />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
   padding: 2em;
   aspect-ratio: 0.6666667;
   grid-row: 1;
+  grid-column: start/ span 12;
 }
 
 .hero p {
@@ -12,7 +13,7 @@
 .ui {
   background: white;
   aspect-ratio: 768/584;
-  grid-column: var(--c, start/end);
+  grid-column: 12/26;
   grid-row: 1;
   align-self: end;
   max-height: 584px;

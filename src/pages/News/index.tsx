@@ -9,27 +9,25 @@ const globEntries = Object.entries(
 
 export function News() {
   return (
-    <div className="bleed">
-      <div className="col">
-        <h2>News</h2>
-        <hr />
-        <ul>
-          {entryMeta.map(({ slug, title }) => {
-            return (
-              <li key={slug}>
-                <Link
-                  to={`/posts/$postId`}
-                  params={{
-                    postId: `${slug}`
-                  }}
-                >
-                  {title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+    <div>
+      <h2>News</h2>
+      <hr />
+      <ul>
+        {entryMeta.map(({ slug, title }) => {
+          return (
+            <li key={slug}>
+              <Link
+                to={`/posts/$postId`}
+                params={{
+                  postId: `${slug}`
+                }}
+              >
+                {title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
