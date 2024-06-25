@@ -49,10 +49,10 @@ export function News() {
 
 export const entryMeta = globEntries.map(([url, module]) => {
   const Page = module.default;
-  const title = module.frontmatter.title;
-  const slug = slugify(title, { lower: true });
   const fileName = getFileName(url);
-  const excerpt = module.frontmatter.excerpt;
+  const title = module.frontmatter?.title || fileName;
+  const slug = slugify(title, { lower: true });
+  const excerpt = module.frontmatter?.excerpt;
 
   return {
     title,

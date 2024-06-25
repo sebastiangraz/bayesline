@@ -5,6 +5,8 @@ import { fileURLToPath, URL } from 'url';
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import remarkgfm from 'remark-gfm';
+import remarkemoji from 'remark-emoji';
 
 // https://vitejs.dev/config/
 
@@ -15,7 +17,10 @@ export default defineConfig(async (): Promise<UserConfig> => {
     //use patchCssModules until VITE 5.3 is released
     plugins: [
       patchCssModules(),
-      mdx.default({ remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter], providerImportSource: '@mdx-js/react' }),
+      mdx.default({
+        remarkPlugins: [remarkgfm, remarkFrontmatter, remarkMdxFrontmatter, remarkemoji],
+        providerImportSource: '@mdx-js/react'
+      }),
       react(),
       TanStackRouterVite()
     ],

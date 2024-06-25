@@ -6,6 +6,9 @@
 
 .title {
   grid-column: start / span 11;
+  &::first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .excerpt {

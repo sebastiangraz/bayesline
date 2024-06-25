@@ -1,7 +1,7 @@
 import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Flex, Illustration } from '@/components';
+import { Flex } from '@/components';
 import hero from '@/assets/homepage-hero.png';
 
 interface HeroProps {
@@ -30,11 +30,6 @@ export const Hero = (props: HeroProps) => {
             blazing fast.
           </p>
         </Flex>
-        {/* <div className={`${style.illustration}`}>
-            <Flex center>
-              <Illustration />
-            </Flex>
-          </div> */}
       </div>
       <div className={`col ${style.ui}`}>
         <img src={hero} alt="hero" />
