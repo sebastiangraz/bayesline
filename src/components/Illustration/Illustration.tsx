@@ -43,7 +43,7 @@ const childVariant = {
 
 export const Illustration = ({ ...props }) => {
   const coral = getComputedStyle(document.documentElement).getPropertyValue('--coral');
-  const brand = getComputedStyle(document.documentElement).getPropertyValue('--brand');
+  const brand = getComputedStyle(document.documentElement).getPropertyValue('--brand-0');
   const background = getComputedStyle(document.documentElement).getPropertyValue('--background');
 
   const { scrollYProgress } = useScroll();
