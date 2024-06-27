@@ -1,16 +1,4 @@
 :root {
-  /* OPACITY */
-  --opacity-1: 0.04;
-  --opacity-2: 0.08;
-  --opacity-3: 0.14;
-  --opacity-4: 0.18;
-  --opacity-5: 0.32;
-  --opacity-6: 0.56;
-  --opacity-7: 0.72;
-  --opacity-8: 0.88;
-  --opacity-9: 0.96;
-  --opacity: 1;
-
   /* COLOR PRIMITIVES (HSL) */
   --coral: 20 94% 33%;
   --yellow: 43 86% 74%;
@@ -28,7 +16,6 @@
   --background-5: 43 5.26% 96.27%;
 
   /* COLOR USAGE */
-
   --accent-1: hsl(var(--coral));
   --accent-2: hsl(var(--yellow));
   --accent-3: hsl(var(--pink));
@@ -41,13 +28,17 @@
   /* SPECIFIC COLOR USAGE */
   --navigation: hsl(0 0% 100% / var(--opacity));
 
-  /* UI */
-  --shadow: 0px 43px 80px 0px rgba(0, 0, 0, 0.04), 0px 9.605px 17.869px 0px rgba(0, 0, 0, 0.03),
-    0px 2.86px 5.32px 0px rgba(0, 0, 0, 0.02);
-  --border-r: 1px 0 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
-  --border-t: 0 1px 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
-  --border-l: -1px 0 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
-  --border-b: 0 -1px 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
+  /* OPACITY */
+  --opacity-1: 0.04;
+  --opacity-2: 0.08;
+  --opacity-3: 0.14;
+  --opacity-4: 0.18;
+  --opacity-5: 0.32;
+  --opacity-6: 0.56;
+  --opacity-7: 0.72;
+  --opacity-8: 0.88;
+  --opacity-9: 0.96;
+  --opacity: 1;
 
   /* TYPO | https://clamp.font-size.app/ min:400 max:1104 */
   --h1: clamp(3.5rem, 2.9318rem + 2.2727vw, 4.5rem);
@@ -58,6 +49,14 @@
   --body: clamp(0.9375rem, 0.902rem + 0.142vw, 1rem);
   --body-small: clamp(0.8125rem, 0.777rem + 0.142vw, 0.875rem);
   --label: clamp(0.6875rem, 0.652rem + 0.142vw, 0.75rem);
+
+  /* UI */
+  --shadow: 0px 43px 80px 0px rgba(0, 0, 0, 0.04), 0px 9.605px 17.869px 0px rgba(0, 0, 0, 0.03),
+    0px 2.86px 5.32px 0px rgba(0, 0, 0, 0.02);
+  --border-r: 1px 0 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
+  --border-t: 0 1px 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
+  --border-l: -1px 0 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
+  --border-b: 0 -1px 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
 }
 
 /* DARK THEME */

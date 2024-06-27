@@ -12,6 +12,14 @@ export function PostErrorComponent({ error }: ErrorComponentProps) {
 }
 
 export const Route = createFileRoute('/news/$postId')({
+  component: NewsEntry,
+  beforeLoad: ({ params }) => {
+    const post = entryMeta.find((p) => p.id === params.postId);
+
+    return {
+      themeValue: post?.theme
+    };
+  },
   loader: async ({ params }) => {
     const post = entryMeta.find((p) => p.id === params.postId);
     if (!post) throw new Error('Post not found');
@@ -20,6 +28,5 @@ export const Route = createFileRoute('/news/$postId')({
   errorComponent: PostErrorComponent as any,
   notFoundComponent: () => {
     return <p>Post not found</p>;
-  },
-  component: NewsEntry
+  }
 });

@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 import slugify from 'slugify';
 import style from './news.module.css';
 import illustration from '@/assets/illustration.svg';
+import { themeClasses } from '@/helpers/utils';
 
 const globEntries = Object.entries(
   import.meta.glob<string | string[] | any>(['@/pages/entries/*.mdx'], {
@@ -26,16 +27,10 @@ export function News() {
 
       <ul className={`col ${style.ul}`}>
         {entryByDate.map(({ title, fileName, excerpt, theme, featured }) => {
-          const themeClasses: { [key: number]: string } = {
-            0: 'dark',
-            1: 'accent',
-            2: 'highlight'
-          };
-
-          const themeClass = themeClasses[theme] || '';
+          const themeValue = themeClasses[theme] || '';
 
           return (
-            <li key={fileName} data-theme={themeClass} className={`col ${featured ? style.featured : ''}`}>
+            <li key={fileName} data-theme={themeValue} className={`col ${featured ? style.featured : ''}`}>
               <Link
                 className={`col ${style.wrapper}`}
                 to={`/news/$postId`}
