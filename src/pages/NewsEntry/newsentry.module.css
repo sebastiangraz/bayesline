@@ -1,6 +1,7 @@
 .hero {
   grid-column: 1 / span 26;
   padding-bottom: 3em;
+  gap: 2em 0;
   padding-top: 4em;
   margin-top: -3em;
   background: var(--background);
@@ -24,4 +25,22 @@
   grid-column: 7 / span 11;
   gap: 1rem;
   padding-top: 2em;
+}
+
+.image {
+  display: grid;
+  grid-column: span 12;
+  padding: 2em 0;
+  background: var(--background-accent);
+  grid-template-columns: subgrid;
+  aspect-ratio: 4 / 3;
+  img {
+    grid-column: start / span 9;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.chapters {
+  grid-column: span 12;
 }

@@ -132,7 +132,7 @@
   body {
     margin: 0;
     padding: 0;
-    color: hsl(var(--_foreground));
+    color: hsl(var(--foreground));
     background-color: var(--background);
     font-size: clamp(1rem, 0rem + 4vw, 3rem);
   }
