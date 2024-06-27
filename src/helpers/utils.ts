@@ -1,5 +1,6 @@
 export const themeClasses: { [key: number]: string } = {
-  0: 'dark',
-  1: 'accent',
-  2: 'highlight'
+  0: '',
+  1: 'dark',
+  2: 'accent',
+  3: 'highlight'
 };
