@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import slugify from 'slugify';
 import style from './news.module.css';
 import illustration from '@/assets/illustration.svg';
-import { themeClasses } from '@/helpers/utils';
+import { readableDate, themeClasses } from '@/helpers/utils';
 
 const globEntries = Object.entries(
   import.meta.glob<string | string[] | any>(['@/pages/entries/*.mdx'], {
@@ -28,11 +28,7 @@ export function News() {
       <ul className={`col  ${style.ul}`}>
         {entryByDate.map(({ title, fileName, excerpt, theme, featured, published }) => {
           const themeValue = themeClasses[theme] || '';
-          const date = new Date(published).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          });
+          const date = readableDate(published);
 
           return (
             <li key={fileName} data-theme={themeValue} className={`col theme ${featured ? style.featured : ''}`}>
