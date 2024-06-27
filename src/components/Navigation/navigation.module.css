@@ -6,9 +6,7 @@
   z-index: 2;
   background: var(--navigation);
   color: var(--foreground);
-  box-shadow:
-    var(--shadow),
-    var(--border) var(--navigation);
+  box-shadow: var(--shadow);
   @media (--lg) {
     grid-column: start / 14;
   }

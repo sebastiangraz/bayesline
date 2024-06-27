@@ -26,8 +26,13 @@ export function News() {
       </div>
 
       <ul className={`col  ${style.ul}`}>
-        {entryByDate.map(({ title, fileName, excerpt, theme, featured }) => {
+        {entryByDate.map(({ title, fileName, excerpt, theme, featured, published }) => {
           const themeValue = themeClasses[theme] || '';
+          const date = new Date(published).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
 
           return (
             <li key={fileName} data-theme={themeValue} className={`col theme ${featured ? style.featured : ''}`}>
@@ -42,7 +47,11 @@ export function News() {
                   <img src={illustration} />
                 </div>
                 <div className={`col ${style.meta}`}>
-                  <div className={`col ${style.link}`}>{featured ? <h3>{title}</h3> : <h5>{title}</h5>}</div>
+                  <div className={`col ${style.link}`}>
+                    {featured ? <h3>{title}</h3> : <h5>{title}</h5>}
+                    <span className={`${style.date}`}>{date}</span>
+                  </div>
+
                   <div className={`col ${style.excerpt}`}>
                     <p>{excerpt}</p>
                   </div>

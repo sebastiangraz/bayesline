@@ -32,6 +32,12 @@
   grid-column: 5 / end;
 }
 
+.date {
+  display: inline-flex;
+  margin-top: 1em;
+  color: var(--foreground-accent);
+}
+
 .thumbnail {
   background: var(--background-accent);
   padding: 2em;
