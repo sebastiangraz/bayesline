@@ -1,8 +1,4 @@
 .sidebar {
-  box-shadow: var(--border-b);
-  @media (--md) {
-    box-shadow: var(--border-r);
-  }
 }
 .meta {
   padding: 2em;

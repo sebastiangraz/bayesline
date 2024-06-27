@@ -3,7 +3,7 @@
   padding: 0;
 
   li {
-    box-shadow: var(--border-b);
+    box-shadow: var(--border-b) var(--foreground-border);
     background: var(--background);
     color: var(--foreground);
     grid-column: 1 / 26;
@@ -18,6 +18,10 @@
     text-decoration: none;
     list-style: none;
   }
+}
+
+.heading {
+  margin-bottom: 2em;
 }
 
 .wrapper {

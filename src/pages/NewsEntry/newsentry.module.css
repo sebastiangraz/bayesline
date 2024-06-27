@@ -1,7 +1,10 @@
 .hero {
   grid-column: 1 / span 26;
   padding-bottom: 3em;
-  padding-top: 1em;
+  padding-top: 4em;
+  margin-top: -3em;
+  background: var(--background);
+  color: var(--foreground);
 }
 
 .title {
@@ -14,6 +17,7 @@
 .excerpt {
   grid-column: 15 / span 10;
   text-wrap: pretty;
+  color: var(--foreground-accent);
 }
 
 .prose {

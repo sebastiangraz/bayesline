@@ -1,4 +1,4 @@
-import { createFileRoute, ErrorComponent, ErrorComponentProps, Link } from '@tanstack/react-router';
+import { createFileRoute, ErrorComponent, ErrorComponentProps } from '@tanstack/react-router';
 import { entryMeta } from '@/pages/News';
 import { NewsEntry } from '@/pages/NewsEntry';
 

@@ -22,6 +22,8 @@
 
   --foreground: hsl(var(--brand-0));
   --foreground-accent: hsl(var(--brand-0) / var(--opacity-6));
+  --foreground-border: hsl(var(--brand-0) / var(--opacity-2));
+
   --background: hsl(var(--background-5) / 1);
   --background-accent: hsl(var(--background-4) / var(--opacity));
 
@@ -53,33 +55,35 @@
   /* UI */
   --shadow: 0px 43px 80px 0px rgba(0, 0, 0, 0.04), 0px 9.605px 17.869px 0px rgba(0, 0, 0, 0.03),
     0px 2.86px 5.32px 0px rgba(0, 0, 0, 0.02);
-  --border-r: 1px 0 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
-  --border-t: 0 1px 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
-  --border-l: -1px 0 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
-  --border-b: 0 -1px 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
+  --border-r: 1px 0 0 0;
+  --border-t: 0 1px 0 0;
+  --border-l: -1px 0 0 0;
+  --border-b: 0 -1px 0 0;
 }
 
 /* DARK THEME */
 [data-theme='dark'] {
   --foreground: hsl(var(--background-5));
   --foreground-accent: hsl(var(--background-5) / var(--opacity-6));
+  --foreground-border: hsl(var(--background-5) / var(--opacity-2));
   --background: hsl(var(--brand-0) / 1);
   --background-accent: hsl(var(--brand-1) / var(--opacity));
-  --navigation: hsl(0 0% 100% / var(--opacity));
+  --navigation: hsl(var(--brand-1));
 }
 
 [data-theme='accent'] {
   --foreground: hsl(var(--background-5));
   --foreground-accent: hsl(var(--background-5) / var(--opacity-6));
+  --foreground-border: hsl(var(--background-5) / var(--opacity-2));
   --background: hsl(var(--brand-1) / 1);
   --background-accent: hsl(var(--coral) / var(--opacity));
-  --navigation: hsl(0 0% 100% / var(--opacity));
+  --navigation: hsl(var(--brand-0));
 }
 
 [data-theme='highlight'] {
   --background: hsl(var(--background-3) / 1);
   --background-accent: hsl(var(--background-2) / var(--opacity));
-  --navigation: hsl(0 0% 100% / var(--opacity));
+  --navigation: hsl(var(--background-4) / 1);
 }
 
 /* UTILS */

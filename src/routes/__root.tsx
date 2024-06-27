@@ -1,5 +1,5 @@
 import { Navigation, Layout } from '@/components';
-import { createRootRouteWithContext, Outlet, useRouter } from '@tanstack/react-router';
+import { createRootRouteWithContext, Outlet, useRouter, ScrollRestoration } from '@tanstack/react-router';
 import { themeClasses } from '@/helpers/utils';
 // import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 export interface ThemeValueContext {
@@ -18,6 +18,7 @@ export const Route = createRootRouteWithContext<ThemeValueContext>()({
       <>
         <Layout theme={themeClass}>
           <>
+            <ScrollRestoration />
             <Navigation />
             <Outlet />
           </>

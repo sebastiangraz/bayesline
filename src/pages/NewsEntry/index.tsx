@@ -2,7 +2,7 @@ import { Flex } from '@/components';
 import { MDXProvider } from '@mdx-js/react';
 import { Route } from '@/routes/news.$postId';
 import style from './newsentry.module.css';
-import { themeClasses } from '@/helpers/utils';
+
 const components = {
   h1: (props: any) => <h2 {...props} />
 };
@@ -10,9 +10,6 @@ const components = {
 export function NewsEntry() {
   const { post } = Route.useLoaderData();
   const { Page, title, excerpt } = post;
-
-  // const themeClass = themeClasses[theme] || '';
-  // console.log(themeClass);
 
   return (
     <div className={`col bleed`}>

@@ -21,7 +21,7 @@ export function News() {
 
   return (
     <div className="col bleed">
-      <div className="col">
+      <div className={`col ${style.heading}`}>
         <h2>News</h2>
       </div>
 
