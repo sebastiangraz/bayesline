@@ -11,7 +11,7 @@ export const Layout = (props: LayoutProps) => {
   const { children, theme } = props;
   return (
     <div data-theme={theme}>
-      <div className="tile"></div>
+      <div className="tile theme"></div>
       <main className={style.layoutgrid}>
         {children}
         <Footer />

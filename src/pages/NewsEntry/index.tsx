@@ -14,7 +14,7 @@ export function NewsEntry() {
 
   return (
     <div className={`col bleed`}>
-      <div className={`col ${style.hero}`}>
+      <div className={`col theme ${style.hero}`}>
         <h2 className={`col ${style.title}`}>{title}</h2>
         <h5 className={`col ${style.excerpt}`}>{excerpt}</h5>
         <div className={`col ${style.image}`}>

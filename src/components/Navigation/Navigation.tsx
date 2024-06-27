@@ -6,7 +6,7 @@ import { Logo } from '@/components';
 export const Navigation = () => {
   return (
     <>
-      <nav className={`${style.navigation}`}>
+      <nav className={`theme ${style.navigation}`}>
         <Link to="/" className={`${style.logo} ${style.link}`}>
           <Logo />
         </Link>

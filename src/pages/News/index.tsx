@@ -25,12 +25,12 @@ export function News() {
         <h2>News</h2>
       </div>
 
-      <ul className={`col ${style.ul}`}>
+      <ul className={`col  ${style.ul}`}>
         {entryByDate.map(({ title, fileName, excerpt, theme, featured }) => {
           const themeValue = themeClasses[theme] || '';
 
           return (
-            <li key={fileName} data-theme={themeValue} className={`col ${featured ? style.featured : ''}`}>
+            <li key={fileName} data-theme={themeValue} className={`col theme ${featured ? style.featured : ''}`}>
               <Link
                 className={`col ${style.wrapper}`}
                 to={`/news/$postId`}
