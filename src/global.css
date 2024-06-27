@@ -1,16 +1,5 @@
-/* DEFAULT VARIABLES */
-
 :root {
-  --_foreground: 313 100% 7%; /* HSL */
-  --_background: 60 5.26% 96.27%;
-  --_background-accent: 48 12.2% 91.96%;
-
-  --foreground: hsl(var(--_foreground) / var(--opacity));
-  --foreground-accent: hsl(var(--_foreground) / var(--opacity-6));
-
-  --background: hsl(var(--_background) / 1);
-  --background-accent: hsl(var(--_background-accent) / 1);
-
+  /* OPACITY */
   --opacity-1: 0.04;
   --opacity-2: 0.08;
   --opacity-3: 0.14;
@@ -22,30 +11,38 @@
   --opacity-9: 0.96;
   --opacity: 1;
 
-  --accent: hsl(20, 94%, 33%);
-  --highlight: hsl(43, 86%, 74%);
+  /* COLOR PRIMITIVES (HSL) */
+  --accent: 20 94% 33%;
+  --highlight: 43 86% 74%;
 
-  --brand-0: hsl(313 100% 7%);
-  --brand-1: hsl(322 79% 13%);
-  --brand-2: hsl(322 51% 26%);
-  --brand-3: hsl(321 88% 78%);
+  --brand-0: 313 100% 7%;
+  --brand-1: 322 79% 13%;
+  --brand-2: 322 51% 26%;
+  --brand-3: 321 88% 78%;
 
-  --background-0: hsl(41.54 13.14% 19.41%);
-  --background-1: hsl(42 7.95% 34.51%);
-  --background-2: hsl(44 6.85% 57.06%);
-  --background-3: hsl(42.86 10.14% 72.94%);
-  --background-4: hsl(48 12.2% 91.96%);
-  --background-5: hsl(60 5.26% 96.27%);
+  --background-0: 41.54 13.14% 19.41%;
+  --background-1: 42 7.95% 34.51%;
+  --background-2: 44 6.85% 57.06%;
+  --background-3: 42.86 10.14% 72.94%;
+  --background-4: 48 12.2% 91.96%;
+  --background-5: 43 5.26% 96.27%;
 
+  /* COLOR USAGE */
+
+  --foreground: hsl(var(--brand-0));
+  --foreground-accent: hsl(var(--brand-0) / var(--opacity-6));
+  --background: hsl(var(--background-5) / 1);
+  --background-accent: hsl(var(--background-4) / var(--opacity));
+
+  /* UI */
   --shadow: 0px 43px 80px 0px rgba(0, 0, 0, 0.04), 0px 9.605px 17.869px 0px rgba(0, 0, 0, 0.03),
     0px 2.86px 5.32px 0px rgba(0, 0, 0, 0.02);
+  --border-r: 1px 0 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
+  --border-t: 0 1px 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
+  --border-l: -1px 0 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
+  --border-b: 0 -1px 0 0 color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-2)), transparent);
 
-  --border-r: 1px 0 0 0 hsl(var(--_foreground) / var(--opacity-2));
-  --border-t: 0 1px 0 0 hsl(var(--_foreground) / var(--opacity-2));
-  --border-l: -1px 0 0 0 hsl(var(--_foreground) / var(--opacity-2));
-  --border-b: 0 -1px 0 0 hsl(var(--_foreground) / var(--opacity-2));
-
-  /* https://clamp.font-size.app/ min:400 max:1104 */
+  /* TYPO | https://clamp.font-size.app/ min:400 max:1104 */
   --h1: clamp(3.5rem, 2.9318rem + 2.2727vw, 4.5rem);
   --h2: clamp(3rem, 2.7159rem + 1.1364vw, 3.5rem);
   --h3: clamp(2rem, 1.858rem + 0.5682vw, 2.25rem);
@@ -57,46 +54,26 @@
 }
 
 /* DARK THEME */
-
 [data-theme='dark'] {
-  --_foreground: 60 5.26% 96.27%; /* hsl */
-  --_background: 313 100% 7%;
-  --_background-accent: 322 79% 13%;
-  --foreground: hsl(var(--_foreground) / var(--opacity));
-  --foreground-accent: hsl(var(--_foreground) / var(--opacity-6));
-  --background: hsl(var(--_background) / var(--opacity));
-  --background-accent: hsl(var(--_background-accent) / var(--opacity));
+  --foreground: hsl(var(--background-5));
+  --foreground-accent: hsl(var(--background-5) / var(--opacity-6));
+  --background: hsl(var(--brand-0) / 1);
+  --background-accent: hsl(var(--brand-1) / var(--opacity));
 }
 
 [data-theme='accent'] {
-  --_foreground: 60 5.26% 96.27%; /* hsl */
-  --_background: 20 94% 33%;
-  --_background-accent: 20 94% 30%;
-  --foreground: hsl(var(--_foreground) / var(--opacity));
-  --foreground-accent: hsl(var(--_foreground) / var(--opacity-6));
-  --background: hsl(var(--_background) / var(--opacity));
-  --background-accent: hsl(var(--_background-accent) / var(--opacity));
+  --foreground: hsl(var(--background-5));
+  --foreground-accent: hsl(var(--background-5) / var(--opacity-6));
+  --background: hsl(var(--brand-1) / 1);
+  --background-accent: hsl(var(--accent) / var(--opacity));
 }
 
 [data-theme='highlight'] {
-  --_background: 42.86 10.14% 72.94%;
-  --_background-accent: 44 6.85% 57.06%;
-  --foreground: hsl(var(--_foreground) / var(--opacity));
-  --foreground-accent: hsl(var(--_foreground) / var(--opacity-6));
-  --background: hsl(var(--_background) / var(--opacity));
-  --background-accent: hsl(var(--_background-accent) / var(--opacity));
-}
-
-/* If within the body there is a dropdown of the value zeldman */
-body:has(option[value='zeldman']:checked) {
-  --font-family: georgia;
-  --text-color: black;
-  --body-background: #c30;
-  --main-background: #f60;
+  --background: hsl(var(--background-3) / 1);
+  --background-accent: hsl(var(--background-2) / var(--opacity));
 }
 
 /* UTILS */
-
 @layer util {
   @font-face {
     font-family: 'national2';

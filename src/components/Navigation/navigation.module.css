@@ -5,7 +5,6 @@
   top: 0;
   z-index: 2;
   background-color: white;
-  box-shadow: var(--border-b), var(--border-t);
   @media (--lg) {
     grid-column: start / 14;
   }
@@ -40,7 +39,7 @@
 }
 
 .highlight {
-  background: var(--accent);
+  background: var(--foreground);
   color: white;
   height: 100%;
   display: flex;
