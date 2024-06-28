@@ -1,3 +1,8 @@
+/* Optical size 0-100 : font-variation-settings: "opsz" 0; */
+/* Animation loop 0-128 : font-variation-settings: 'LOOP' 0; */
+/* Reveal variant : font-feature-settings: 'ss01' on; */
+/* Reveal alt variant : font-feature-settings: 'ss02' on; */
+
 .logo {
   container-type: inline-size;
   align-items: center;

@@ -6,7 +6,8 @@ import illustrationAlt from '@/assets/illustration-alt.svg';
 import { readableDate } from '@/helpers/utils';
 
 const components = {
-  h1: (props: any) => <h2 {...props} />
+  h1: (props: any) => <p className={`${style.chapterHeader}`} {...props} />,
+  aside: (props: any) => <aside className={`${style.aside}`} {...props} />
 };
 
 export function NewsEntry() {
@@ -31,11 +32,11 @@ export function NewsEntry() {
         <div className={`col ${style.chapters}`}></div>
       </div>
       <hr className={`col`} />
-      <Flex column className={`col ${style.prose}`}>
+      <div className={`col ${style.prose}`}>
         <MDXProvider components={components}>
           <Page />
         </MDXProvider>
-      </Flex>
+      </div>
     </div>
   );
 }

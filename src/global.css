@@ -57,9 +57,9 @@
     0px 2.86px 5.32px 0px rgba(0, 0, 0, 0.02);
   --border: 0 0 0 1px;
   --border-r: 1px 0 0 0;
-  --border-t: 0 1px 0 0;
+  --border-t: 0 -1px 0 0;
   --border-l: -1px 0 0 0;
-  --border-b: 0 -1px 0 0;
+  --border-b: 0 1px 0 0;
 }
 
 /* DARK THEME */
@@ -242,7 +242,8 @@
   }
 
   hr {
-    background: hsl(var(--_foreground) / 0.08);
+    align-self: center;
+    background: var(--foreground-border);
     border: 0;
     min-width: 1px;
     min-height: 1px;
