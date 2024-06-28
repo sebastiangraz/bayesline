@@ -20,7 +20,6 @@ export default defineConfig(async (): Promise<UserConfig> => {
       mdx.default({
         remarkPlugins: [
           remarkgfm,
-
           [remarkToc, { heading: 'contents' }],
           remarkFrontmatter,
           remarkMdxFrontmatter,
