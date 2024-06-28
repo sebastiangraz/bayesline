@@ -147,7 +147,7 @@
     font-size: clamp(1rem, 0rem + 4vw, 3rem);
   }
 
-  :is(p, a, pre) {
+  :is(p, a, pre, ul, ol, table, blockquote, hr, figure) {
     margin: 0;
     font-size: var(--body);
     color: var(--foreground-accent);
