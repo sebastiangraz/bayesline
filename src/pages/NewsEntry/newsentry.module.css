@@ -53,20 +53,24 @@
   all: unset;
   box-sizing: border-box;
   font-size: var(--body-small);
-  grid-column: start / end;
-  display: grid;
-  position: sticky;
-  margin-top: 2.5em;
-  height: 4em;
-  top: 5em;
-  padding: 1em 0;
-  &:after {
+  display: contents;
+
+  p {
+    grid-column: start / span 6;
+    background: var(--background);
+    position: sticky;
+    top: 5em;
+    display: grid;
+  }
+  &:before {
     content: '';
-    position: absolute;
-    top: calc(6px - 1em);
-    box-shadow: var(--border-b) var(--foreground-border);
+    position: sticky;
+    display: grid;
+    grid-column: start / end;
+    box-shadow: var(--border-t) inset var(--foreground-border);
     width: 100%;
     height: 1px;
+    top: -1px;
   }
 }
 
