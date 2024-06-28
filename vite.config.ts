@@ -7,7 +7,8 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import remarkgfm from 'remark-gfm';
 import remarkemoji from 'remark-emoji';
-
+import remarkToc from 'remark-toc';
+import rehypeSlug from 'rehype-slug';
 // https://vitejs.dev/config/
 export default defineConfig(async (): Promise<UserConfig> => {
   const mdx = await import('@mdx-js/rollup');
@@ -17,7 +18,15 @@ export default defineConfig(async (): Promise<UserConfig> => {
     plugins: [
       patchCssModules(),
       mdx.default({
-        remarkPlugins: [remarkgfm, remarkFrontmatter, remarkMdxFrontmatter, remarkemoji],
+        remarkPlugins: [
+          remarkgfm,
+
+          [remarkToc, { heading: 'contents' }],
+          remarkFrontmatter,
+          remarkMdxFrontmatter,
+          remarkemoji
+        ],
+        rehypePlugins: [rehypeSlug],
         providerImportSource: '@mdx-js/react'
       }),
       react(),

@@ -51,26 +51,37 @@
 
 .chapterHeader {
   all: unset;
-  box-sizing: border-box;
-  font-size: var(--body-small);
   display: contents;
+  box-sizing: border-box;
+  h1 {
+    font-size: var(--body-small);
+    grid-column: start / end;
+    position: relative;
+    clip: rect(0 0 0 0);
+    visibility: hidden;
+    text-indent: -9999px;
+    font-size: var(--body);
+    height: 1ch;
+    &:before {
+      content: '';
+      visibility: visible;
+      grid-column: start / end;
+      position: absolute;
+      display: grid;
+      box-shadow: var(--border-t) inset var(--foreground-border);
+      width: 100%;
+      height: 1px;
+    }
+  }
 
   p {
-    grid-column: start / span 6;
+    display: grid;
+    grid-column: start / span 5;
     background: var(--background);
     position: sticky;
     top: 5em;
+    align-self: start;
     display: grid;
-  }
-  &:before {
-    content: '';
-    position: sticky;
-    display: grid;
-    grid-column: start / end;
-    box-shadow: var(--border-t) inset var(--foreground-border);
-    width: 100%;
-    height: 1px;
-    top: -1px;
   }
 }
 

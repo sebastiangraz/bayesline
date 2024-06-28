@@ -7,9 +7,10 @@ import { readableDate } from '@/helpers/utils';
 
 const components = {
   h1: (props: any) => (
-    <h1 className={`${style.chapterHeader}`} {...props}>
+    <div className={`${style.chapterHeader}`}>
+      <h1 {...props}></h1>
       <p>{props.children}</p>
-    </h1>
+    </div>
   ),
   aside: (props: any) => <aside className={`${style.aside}`} {...props}></aside>
 };
@@ -35,7 +36,7 @@ export function NewsEntry() {
         </div>
         <div className={`col ${style.chapters}`}></div>
       </div>
-      <hr className={`col`} />
+
       <div className={`col ${style.prose}`}>
         <MDXProvider components={components}>
           <Page />
