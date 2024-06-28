@@ -1,4 +1,4 @@
-import { Flex, Text } from '@/components';
+import { Text } from '@/components';
 import { MDXProvider } from '@mdx-js/react';
 import { Route } from '@/routes/news.$postId';
 import style from './newsentry.module.css';
@@ -9,7 +9,7 @@ const components = {
   h1: (props: any) => (
     <div className={`${style.chapterHeader}`}>
       <h1 {...props}></h1>
-      <p>{props.children}</p>
+      <Text.Body>{props.children}</Text.Body>
     </div>
   ),
   aside: (props: any) => (
@@ -21,7 +21,14 @@ const components = {
   h3: (props: any) => <Text.H3 {...props}>{props.children}</Text.H3>,
   h4: (props: any) => <Text.H4 {...props}>{props.children}</Text.H4>,
   h5: (props: any) => <Text.H5 {...props}>{props.children}</Text.H5>,
-  p: (props: any) => <Text.Body {...props}>{props.children}</Text.Body>
+  p: (props: any) => <Text.Body {...props}>{props.children}</Text.Body>,
+  table: (props: any) => {
+    return (
+      <div className={`${style.table}`}>
+        <table {...props}>{props.children}</table>
+      </div>
+    );
+  }
 };
 
 function tableOfContents(toc: any) {

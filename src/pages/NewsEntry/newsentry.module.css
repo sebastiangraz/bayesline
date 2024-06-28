@@ -46,6 +46,51 @@
       font-size: var(--body-small);
     }
   }
+
+  table {
+    border-collapse: collapse;
+    display: inline-grid;
+    grid-template-columns: repeat(100, max-content);
+    font-family: var(--mono);
+    width: 100%;
+    thead,
+    tbody,
+    tr {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+    }
+    thead:has(+ tbody) {
+      border-bottom: 1px solid var(--foreground-accent);
+    }
+    td,
+    th {
+      padding: 0.5em 1em;
+      display: block;
+      box-shadow: 0 0 0 -1px;
+    }
+    th {
+      border-right: 1px solid var(--foreground-border);
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+    td {
+      border-bottom: 1px solid var(--foreground-border);
+      border-right: 1px solid var(--foreground-border);
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+    tr {
+      &:nth-child(even) {
+        background: var(--background-accent);
+      }
+      &:last-of-type td {
+        border-bottom: none;
+      }
+    }
+  }
 }
 
 .chapterHeader {
