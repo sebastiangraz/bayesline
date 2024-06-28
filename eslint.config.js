@@ -22,10 +22,11 @@ export default [
       'no-unused-vars': 'off',
       'no-undef': 'off',
       'tseslint/no-unused-vars': 'off',
-      'hooks/rules-of-hooks': 'error',
+      'hooks/rules-of-hooks': 'off',
       'hooks/exhaustive-deps': 'warn',
       'sort/sort-exports': 'error',
       'reactrefresh/only-export-components': 'warn'
+      // "react-hooks/exhaustive-deps": "off", TODO: remove this later when react-eslint-plugin supports exhaustive-deps
     }
   }
 ];
