@@ -51,6 +51,7 @@
 }
 
 .link {
+  color: var(--foreground);
   grid-column: 1 / 8;
   &::first-letter {
     text-transform: capitalize;
@@ -59,7 +60,6 @@
 
 .excerpt {
   grid-column: 9 / end;
-  text-wrap: pretty;
 }
 
 .featured {
@@ -85,7 +85,5 @@
   }
   .excerpt {
     grid-column: 1 / end;
-
-    text-wrap: pretty;
   }
 }

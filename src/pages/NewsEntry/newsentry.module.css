@@ -25,7 +25,6 @@
 
 .excerpt {
   grid-column: 15 / span 10;
-  text-wrap: pretty;
   color: var(--foreground-accent);
 }
 
@@ -103,28 +102,20 @@
   grid-column: 15 / span 10;
   .toc {
     display: grid;
-    grid-column: start / span 5;
     gap: 1em 0;
-    padding: 2em 0;
-    background: var(--background-accent);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     p {
       font-size: var(--body-small);
-      font-family: var(--mono);
-      text-transform: uppercase;
-      font-style: monospace;
     }
-    ul {
-      list-style: none;
+    > ul {
+      display: grid;
+      gap: 1em 0;
       padding: 0;
       margin: 0;
       li {
         display: grid;
         gap: 0.5em;
+        text-wrap: balance;
         a {
-          font-size: var(--body-small);
-          color: var(--foreground-accent);
           text-decoration: none;
           &:hover {
             text-decoration: underline;

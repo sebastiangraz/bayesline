@@ -1,4 +1,4 @@
-import { Box, Flex, Logo } from '@/components';
+import { Box, Flex, Logo, Text } from '@/components';
 import { Link } from '@tanstack/react-router';
 import style from './signup.module.css';
 import { Widget } from '@typeform/embed-react';
@@ -12,7 +12,7 @@ export function Signup() {
           <div className="e-12 padding-2">
             <Flex center column gap={4}>
               <Logo className={`${style.logo}`} />
-              <h2 className="center">A new era in financial analytics is on its way</h2>
+              <Text.H2 className="center">A new era in financial analytics is on its way</Text.H2>
               <Link to="/">
                 <p>Go back</p>
               </Link>

@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import style from './news.module.css';
+import { Text } from '@/components';
 import illustration from '@/assets/illustration.svg';
 import { readableDate, themeClasses } from '@/helpers/utils';
 import { entryMeta } from './entryMeta';
@@ -12,7 +13,7 @@ export function News() {
   return (
     <div className="col bleed">
       <div className={`col ${style.heading}`}>
-        <h2>News</h2>
+        <Text.H2>News</Text.H2>
       </div>
 
       <ul className={`col  ${style.ul}`}>
@@ -34,12 +35,12 @@ export function News() {
                 </div>
                 <div className={`col ${style.meta}`}>
                   <div className={`col ${style.link}`}>
-                    {featured ? <h3>{title}</h3> : <h5>{title}</h5>}
-                    <span className={`${style.date}`}>{date}</span>
+                    {featured ? <Text.H3>{title}</Text.H3> : <Text.H5>{title}</Text.H5>}
+                    <Text.Body className={`${style.date}`}>{date}</Text.Body>
                   </div>
 
                   <div className={`col ${style.excerpt}`}>
-                    <p>{excerpt}</p>
+                    <Text.Body>{excerpt}</Text.Body>
                   </div>
                 </div>
               </Link>
