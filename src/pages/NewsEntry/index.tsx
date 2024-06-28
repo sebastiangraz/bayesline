@@ -6,8 +6,12 @@ import illustrationAlt from '@/assets/illustration-alt.svg';
 import { readableDate } from '@/helpers/utils';
 
 const components = {
-  h1: (props: any) => <p className={`${style.chapterHeader}`} {...props} />,
-  aside: (props: any) => <aside className={`${style.aside}`} {...props} />
+  h1: (props: any) => (
+    <h1 className={`${style.chapterHeader}`} {...props}>
+      <p>{props.children}</p>
+    </h1>
+  ),
+  aside: (props: any) => <aside className={`${style.aside}`} {...props}></aside>
 };
 
 export function NewsEntry() {
@@ -20,9 +24,9 @@ export function NewsEntry() {
       <div className={`col theme ${style.hero}`}>
         <h2 className={`col ${style.title}`}>
           {title}{' '}
-          <h5 className={`${style.date}`}>
+          <span className={`${style.date}`}>
             <p>{date}</p>
-          </h5>
+          </span>
         </h2>
 
         <h5 className={`col ${style.excerpt}`}>{excerpt}</h5>
