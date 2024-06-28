@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.1",
+    "@stefanprobst/rehype-extract-toc": "^2.2.0",
     "@tanstack/router-devtools": "^1.40.0",
     "@tanstack/router-vite-plugin": "^1.40.3",
     "@types/node": "^20.14.9",

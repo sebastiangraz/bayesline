@@ -1,5 +1,5 @@
 import style from './home.module.css';
-import { Hero, Box, Button, Flex, Footer, Avatar, Icon } from '@/components';
+import { Hero, Button } from '@/components';
 import sebastian from '@/assets/sebastian.jpg';
 import misha from '@/assets/misha.jpg';
 

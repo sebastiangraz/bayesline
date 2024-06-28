@@ -9,6 +9,9 @@ import remarkgfm from 'remark-gfm';
 import remarkemoji from 'remark-emoji';
 import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
+import withToc from '@stefanprobst/rehype-extract-toc';
+import withTocExport from '@stefanprobst/rehype-extract-toc/mdx';
+
 // https://vitejs.dev/config/
 export default defineConfig(async (): Promise<UserConfig> => {
   const mdx = await import('@mdx-js/rollup');
@@ -19,13 +22,13 @@ export default defineConfig(async (): Promise<UserConfig> => {
       patchCssModules(),
       mdx.default({
         remarkPlugins: [
+          // [remarkToc, { heading: 'contents' }],
           remarkgfm,
-          [remarkToc, { heading: 'contents' }],
           remarkFrontmatter,
           remarkMdxFrontmatter,
           remarkemoji
         ],
-        rehypePlugins: [rehypeSlug],
+        rehypePlugins: [rehypeSlug, withToc, withTocExport],
         providerImportSource: '@mdx-js/react'
       }),
       react(),

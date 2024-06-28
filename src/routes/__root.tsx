@@ -19,6 +19,7 @@ export const Route = createRootRouteWithContext<ThemeValueContext>()({
         <Layout theme={themeClass}>
           <>
             <ScrollRestoration />
+            <div className="tile theme"></div>
             <Navigation />
             <Outlet />
           </>

@@ -15,10 +15,29 @@ const components = {
   aside: (props: any) => <aside className={`${style.aside}`} {...props}></aside>
 };
 
+function tableOfContents(toc: any) {
+  return (
+    <div className={`${style.toc}`}>
+      <p>Table of Contents</p>
+      <ul>
+        {toc.map((item: any) => {
+          return (
+            <li key={item.id}>
+              <a href={`#${item.id}`}>{item.value}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
 export function NewsEntry() {
   const { post } = Route.useLoaderData();
-  const { Page, title, excerpt, published } = post;
+  const { Page, title, excerpt, published, toc } = post;
   const date = readableDate(published);
+
+  const tableOfContentsComponent = tableOfContents(toc);
 
   return (
     <div className={`col bleed`}>
@@ -34,7 +53,7 @@ export function NewsEntry() {
         <div className={`col ${style.image}`}>
           <img src={illustrationAlt} alt="temp" />
         </div>
-        <div className={`col ${style.chapters}`}></div>
+        <div className={`col ${style.chapters}`}>{tableOfContentsComponent}</div>
       </div>
 
       <div className={`col ${style.prose}`}>

@@ -1,18 +1,8 @@
 import { Link } from '@tanstack/react-router';
-import slugify from 'slugify';
 import style from './news.module.css';
 import illustration from '@/assets/illustration.svg';
 import { readableDate, themeClasses } from '@/helpers/utils';
-
-const globEntries = Object.entries(
-  import.meta.glob<string | string[] | any>(['@/pages/entries/*.mdx'], {
-    eager: true
-  })
-);
-
-function getFileName(path: string) {
-  return path.split('/').pop()?.replace('.mdx', '');
-}
+import { entryMeta } from './entryMeta';
 
 export function News() {
   const entryByDate = entryMeta.sort((a, b) => {
@@ -60,26 +50,3 @@ export function News() {
     </div>
   );
 }
-
-export const entryMeta = globEntries.map(([url, module]) => {
-  const Page = module.default;
-  const fileName = getFileName(url);
-  const title = module.frontmatter?.title || fileName;
-  const slug = slugify(title, { lower: true });
-  const excerpt = module.frontmatter?.excerpt;
-  const theme = module.frontmatter?.theme;
-  const featured = module.frontmatter?.featured;
-  const published = module.frontmatter?.published;
-
-  return {
-    title,
-    slug,
-    fileName,
-    Page,
-    excerpt,
-    theme,
-    featured,
-    published,
-    id: `${fileName}`
-  };
-});

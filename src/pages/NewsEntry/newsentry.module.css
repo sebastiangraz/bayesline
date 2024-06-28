@@ -6,8 +6,8 @@
   margin-top: -3em;
   background: var(--background);
   color: var(--foreground);
-  z-index: -1;
-  position: relative;
+  /* z-index: -1;
+  position: relative; */
 }
 
 .title {
@@ -100,5 +100,34 @@
 }
 
 .chapters {
-  grid-column: span 12;
+  grid-column: 15 / span 10;
+  .toc {
+    display: grid;
+    grid-column: start / span 5;
+    gap: 1em 0;
+    padding: 2em 0;
+    background: var(--background-accent);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    h2 {
+      font-size: var(--h5);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        display: grid;
+        gap: 0.5em;
+        a {
+          font-size: var(--body-small);
+          color: var(--foreground-accent);
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
 }

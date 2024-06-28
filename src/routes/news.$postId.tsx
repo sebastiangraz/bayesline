@@ -1,5 +1,5 @@
 import { createFileRoute, ErrorComponent, ErrorComponentProps } from '@tanstack/react-router';
-import { entryMeta } from '@/pages/News';
+import { entryMeta } from '@/pages/News/entryMeta';
 import { NewsEntry } from '@/pages/NewsEntry';
 
 export function PostErrorComponent({ error }: ErrorComponentProps) {
