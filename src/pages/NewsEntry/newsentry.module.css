@@ -78,10 +78,12 @@
     display: grid;
     grid-column: start / span 5;
     background: var(--background);
+
     position: sticky;
     top: 5em;
-    align-self: start;
+    align-self: stretch;
     display: grid;
+    padding-bottom: 100%;
   }
 }
 
