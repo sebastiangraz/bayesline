@@ -3,7 +3,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { Route } from '@/routes/news.$postId';
 import style from './newsentry.module.css';
 import illustrationAlt from '@/assets/illustration-alt.svg';
-import { readableDate } from '@/helpers/utils';
+import { readableDate, isArrayofObjects } from '@/helpers/utils';
 
 const components = {
   h1: (props: any) => (
@@ -23,9 +23,18 @@ const components = {
   h5: (props: any) => <Text.H5 {...props}>{props.children}</Text.H5>,
   p: (props: any) => <Text.Body {...props}>{props.children}</Text.Body>,
   table: (props: any) => {
+    let firstChildProps;
+    if (isArrayofObjects(props.children)) {
+      firstChildProps = props.children[0];
+    } else {
+      firstChildProps = props.children;
+    }
+    const columns = firstChildProps?.props?.children?.props?.children;
     return (
       <div className={`${style.table}`}>
-        <table {...props}>{props.children}</table>
+        <table {...props} style={{ gridTemplateColumns: `repeat(${columns.length}, 1fr)` }}>
+          {props.children}
+        </table>
       </div>
     );
   }

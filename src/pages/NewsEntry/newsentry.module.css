@@ -50,7 +50,6 @@
   table {
     border-collapse: collapse;
     display: inline-grid;
-    grid-template-columns: repeat(100, max-content);
     font-family: var(--mono);
     width: 100%;
     thead,
