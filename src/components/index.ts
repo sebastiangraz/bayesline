@@ -3,6 +3,7 @@ export { Box } from './Box';
 export { Button } from './Button';
 export { Flex } from './Flex';
 export { Footer } from './Footer';
+export { Heading } from './Heading';
 export { Hero } from './Hero';
 export { Icon } from './Icon';
 export { Illustration } from './Illustration';

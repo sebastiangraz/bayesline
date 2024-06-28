@@ -1,7 +1,7 @@
 import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Flex } from '@/components';
+import { Flex, Heading } from '@/components';
 import hero from '@/assets/homepage-hero.png';
 
 interface HeroProps {
@@ -20,11 +20,13 @@ export const Hero = (props: HeroProps) => {
     <div className={`col bleed`}>
       <div className={`col ${style.hero}`}>
         <Flex column gap={4}>
-          <h1>
+          <Heading.H1>
             <motion.div style={{ y: yDistance, opacity: headerOpacity }}>
               <StaggerText>{title}</StaggerText>
             </motion.div>
-          </h1>
+          </Heading.H1>
+          <Heading.Body>Smol </Heading.Body>
+          <Heading.SmallCaps>Smol </Heading.SmallCaps>
           <p>
             We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
             blazing fast.

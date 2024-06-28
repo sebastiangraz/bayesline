@@ -109,8 +109,11 @@
     background: var(--background-accent);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    h2 {
-      font-size: var(--h5);
+    p {
+      font-size: var(--body-small);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      font-style: monospace;
     }
     ul {
       list-style: none;
