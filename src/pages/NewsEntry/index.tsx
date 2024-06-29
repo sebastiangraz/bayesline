@@ -27,7 +27,6 @@ export function NewsEntry() {
   const { post } = Route.useLoaderData();
   const { Page, title, excerpt, published, toc } = post;
   const date = readableDate(published);
-
   const tableOfContentsComponent = tableOfContents(toc);
 
   return (

@@ -11,6 +11,25 @@ In a constantly changing environment, companies must adapt to survive. The quest
 
 # In a constantly changing environment, companies must adapt to survive.
 
+```js
+console.log(1);
+```
+
+```js
+export function* FibonacciSequence() {
+  let [a, b] = [0, 1];
+  while (true) {
+    yield a;
+    [a, b] = [b, a + b];
+  }
+}
+
+const fib = FibonacciSequence();
+fib.next().value; // 0
+fib.next().value; // 1
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+```
+
 #### Autolink literals
 
 www.example.com, https://example.com, and contact@example.com.
@@ -102,3 +121,7 @@ Our white paper embarks on a captivating investigative journey, delving into the
 
 However you choose to engage with our research, we hope you find it valuable and informative. We look forward to hearing
 your feedback and continuing the conversation on how we can help you unlock the full potential of your working capital.
+
+```
+
+```
