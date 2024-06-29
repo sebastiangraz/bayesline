@@ -24,9 +24,13 @@ export const Navigation = () => {
   return (
     <>
       <nav ref={headerRef} className={`theme ${style.navigation}`}>
-        <Link to="/" className={`${style.logo} ${style.link}`}>
-          <Logo type={isSticky} />
-        </Link>
+        <div className={`${style.logowrapper}`}>
+          <Link to="/" className={`${style.logo} ${style.link}`}>
+            <div className={style.logosentinel}>
+              <Logo type={isSticky} />
+            </div>
+          </Link>
+        </div>
         <div className={` ${style.links}`}>
           <Link to="/mission" className={style.link}>
             Mission

@@ -11,7 +11,7 @@ export const Logo = ({ className = '', type }: LogoProps) => {
     hidden: {
       transition: {
         duration: 0.1,
-        staggerChildren: 0.01,
+        staggerChildren: 0.015,
         staggerDirection: -1
       }
     },
@@ -40,8 +40,8 @@ export const Logo = ({ className = '', type }: LogoProps) => {
   return (
     <div className={`${className} ${style.logo}`}>
       <motion.div
-        animate={type ? { fontSize: 'calc(100cqw * 42 / 42)' } : { fontSize: 'calc(100cqw * 42 / 242)' }}
-        transition={{ duration: 0.5, ease: [0.9, 0.3, 0.1, 0.8] }}
+        // animate={type ? { fontSize: 'calc(100cqw * 42 / 42)' } : { fontSize: 'calc(100cqw * 42 / 242)' }}
+        // transition={{ duration: 0.5, ease: [0.9, 0.3, 0.1, 0.8] }}
         className={style.mark}
       >
         B

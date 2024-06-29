@@ -120,7 +120,7 @@
   p {
     display: grid;
     grid-column: start / span 5;
-    background: var(--background);
+    background: linear-gradient(0deg, var(--background) 95%, transparent 100%);
     position: sticky;
     top: 5em;
     align-self: stretch;

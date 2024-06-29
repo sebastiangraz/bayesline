@@ -50,17 +50,31 @@
   padding: 0 1em;
 }
 
+.logowrapper {
+  width: 144px;
+  display: flex;
+}
+
+.logosentinel {
+  width: 112px;
+  height: 100%;
+  display: flex;
+}
+
 [data-sticky='true'] .logo {
-  width: 3em;
+  width: 48px;
+  padding: 0 0.875em;
 }
 
 .logo {
-  width: 9em;
-  transition: width 0.5s cubic-bezier(0.9, 0.3, 0.1, 0.8);
+  width: 100%;
+  overflow: hidden;
+  transition:
+    width 0.5s cubic-bezier(0.9, 0.3, 0.1, 0.8),
+    padding 0.5s cubic-bezier(0.9, 0.3, 0.1, 0.8);
   align-self: stretch;
   box-shadow: var(--border-r) var(--foreground-border);
   padding: 0 1em;
-  display: flex;
   :global &.active {
     opacity: unset;
   }
