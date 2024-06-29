@@ -9,13 +9,16 @@ excerpt: We are excited to announce that we have raised a $10M Series A round le
 
 In a constantly changing environment, companies must adapt to survive. The quest for growth, resilience, and a competitive edge demands continuous innovation and optimization in the face of emerging technologies, shifting markets, and intense competition.
 
+This is an array `[1, 2, 3]{:js}` of numbers 1 through 3.
+The name of the function is `getStringLength{:.entity.name.function}`.
+
 # In a constantly changing environment, companies must adapt to survive.
 
 ```js
 console.log(1);
 ```
 
-```js
+```js showLineNumbers {1-2,5}
 export function* FibonacciSequence() {
   let [a, b] = [0, 1];
   while (true) {
@@ -23,7 +26,26 @@ export function* FibonacciSequence() {
     [a, b] = [b, a + b];
   }
 }
+```
 
+```css
+code > [data-line]::before {
+  counter-increment: line;
+  content: counter(line); // [!code highlight]
+  /* Other styling */
+  display: inline-block;
+}
+
+code[data-line-numbers-max-digits='2'] > [data-line]::before {
+  width: 2rem;
+}
+
+code[data-line-numbers-max-digits='3'] > [data-line]::before {
+  width: 3rem;
+}
+```
+
+```js
 const fib = FibonacciSequence();
 fib.next().value; // 0
 fib.next().value; // 1
@@ -121,7 +143,3 @@ Our white paper embarks on a captivating investigative journey, delving into the
 
 However you choose to engage with our research, we hope you find it valuable and informative. We look forward to hearing
 your feedback and continuing the conversation on how we can help you unlock the full potential of your working capital.
-
-```
-
-```

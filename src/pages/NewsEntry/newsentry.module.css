@@ -169,3 +169,53 @@
     }
   }
 }
+
+span[data-rehype-pretty-code-figure] {
+  background: hsl(var(--background-4));
+  border-radius: var(--radius);
+  box-shadow: var(--border) var(--foreground-border);
+  padding: 0 0.25em;
+  font-size: var(--body-small);
+}
+
+figure[data-rehype-pretty-code-figure] {
+  display: inline-grid;
+  grid-column: 8 / end;
+  grid-row: auto;
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--foreground);
+  position: relative;
+  z-index: 1;
+
+  pre {
+    overflow-x: auto;
+  }
+
+  .code[data-line-numbers] {
+    & {
+      counter-reset: line;
+    }
+
+    & > [data-line]::before {
+      counter-increment: line;
+      content: counter(line);
+      position: sticky;
+      left: 0;
+      background: var(--foreground);
+      display: inline-block;
+      width: 1ch;
+      padding-right: 2ch;
+      text-align: right;
+      color: gray;
+    }
+
+    &[data-line-numbers-max-digits='2'] > [data-line]::before {
+      width: 2ch;
+    }
+
+    &[data-line-numbers-max-digits='3'] > [data-line]::before {
+      width: 3ch;
+    }
+  }
+}

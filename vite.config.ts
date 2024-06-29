@@ -7,10 +7,21 @@ import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import remarkgfm from 'remark-gfm';
 import remarkemoji from 'remark-emoji';
-import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
 import withToc from '@stefanprobst/rehype-extract-toc';
 import withTocExport from '@stefanprobst/rehype-extract-toc/mdx';
+import rehypePrettyCode, { Options } from 'rehype-pretty-code';
+import fs from 'fs';
+import { transformerNotationHighlight } from '@shikijs/transformers';
+
+const options = {
+  theme: JSON.parse(fs.readFileSync('./src/helpers/bayesyntax.json', 'utf-8')),
+  defaultLang: 'plaintext',
+  keepBackground: false,
+  showLineNumbers: true,
+  grid: true,
+  transformers: [transformerNotationHighlight()]
+} as Options;
 
 // https://vitejs.dev/config/
 export default defineConfig(async (): Promise<UserConfig> => {
@@ -28,7 +39,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           remarkMdxFrontmatter,
           remarkemoji
         ],
-        rehypePlugins: [rehypeSlug, withToc, withTocExport],
+        rehypePlugins: [rehypeSlug, withToc, withTocExport, [rehypePrettyCode, options]],
         providerImportSource: '@mdx-js/react'
       }),
       react(),

@@ -34,5 +34,8 @@ export const components = {
         </table>
       </div>
     );
+  },
+  code: (props: any) => {
+    return <code className={`${style.code}`} {...props}></code>;
   }
 };
