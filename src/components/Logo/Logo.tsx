@@ -39,17 +39,22 @@ export const Logo = ({ className = '', type }: LogoProps) => {
 
   return (
     <div className={`${className} ${style.logo}`}>
-      <div className={style.mark}>B</div>
+      <motion.div
+        animate={type ? { fontSize: 'calc(100cqw * 42 / 42)' } : { fontSize: 'calc(100cqw * 42 / 242)' }}
+        transition={{ duration: 0.5, ease: [0.9, 0.3, 0.1, 0.8] }}
+        className={style.mark}
+      >
+        B
+      </motion.div>
       <motion.svg
         className={`${style.type}`}
-        // width="100%"
-        /* height="28" */
         variants={parentVariant}
         initial="hidden"
-        // whileInView="show"
         animate={type ? 'hidden' : 'show'}
         preserveAspectRatio="xMinYMid meet"
         viewBox="0 0 188 28"
+        width="188px"
+        height="28px"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

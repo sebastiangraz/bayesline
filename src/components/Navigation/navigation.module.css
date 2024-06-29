@@ -1,5 +1,6 @@
 .navigation {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   position: sticky;
   margin-top: 1em;
   top: 0;
@@ -49,9 +50,13 @@
   padding: 0 1em;
 }
 
+[data-sticky='true'] .logo {
+  width: 3em;
+}
+
 .logo {
-  flex-basis: 11.5em;
-  /* min-width: 7em; */
+  width: 9em;
+  transition: width 0.5s cubic-bezier(0.9, 0.3, 0.1, 0.8);
   align-self: stretch;
   box-shadow: var(--border-r) var(--foreground-border);
   padding: 0 1em;
