@@ -53,8 +53,6 @@ export const Logo = ({ className = '', type }: LogoProps) => {
         animate={type ? 'hidden' : 'show'}
         preserveAspectRatio="xMinYMid meet"
         viewBox="0 0 188 28"
-        width="188px"
-        height="28px"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
