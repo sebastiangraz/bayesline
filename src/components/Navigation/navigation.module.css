@@ -51,7 +51,7 @@
 
 .logo {
   flex-basis: 11.5em;
-  min-width: 7em;
+  /* min-width: 7em; */
   align-self: stretch;
   box-shadow: var(--border-r) var(--foreground-border);
   padding: 0 1em;

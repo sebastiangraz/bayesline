@@ -3,6 +3,10 @@
 /* Reveal variant : font-feature-settings: 'ss01' on; */
 /* Reveal alt variant : font-feature-settings: 'ss02' on; */
 
+/* body[data-sticky='true'] .mark {
+  font-variation-settings: 'opsz' 100;
+} */
+
 .logo {
   container-type: inline-size;
   align-items: center;
@@ -21,9 +25,6 @@
       animation-timing-function: cubic-bezier(0.3, 0.1, 0.2, 0.3);
       animation-iteration-count: infinite;
     }
-    .type {
-      opacity: 0.5;
-    }
   }
 }
 
@@ -40,32 +41,32 @@
   transition:
     font-variation-settings 0.8s cubic-bezier(0.9, 0.3, 0.1, 0.8),
     opacity 0.5s cubic-bezier(0.9, 0.3, 0.1, 0.8);
-  font-variation-settings: 'LOOP' 128;
+  font-variation-settings:
+    'LOOP' 128,
+    'opsz' 100;
   opacity: 1;
   @starting-style {
     opacity: 0;
-    font-variation-settings: 'LOOP' 0;
+    font-variation-settings:
+      'LOOP' 0,
+      'opsz' 100;
   }
 }
 
 .type {
   width: calc(100% * 188 / 242);
-  opacity: 1;
-  transition: all 0.8s cubic-bezier(0.9, 0.3, 0.1, 0.8);
-  transform: translateX(0px);
   position: relative;
-  @starting-style {
-    opacity: 0.5;
-    transform: translateX(-0.2em);
-    font-variation-settings: 'LOOP' 0;
-  }
 }
 
 @keyframes loop {
   0% {
-    font-variation-settings: 'LOOP' 0;
+    font-variation-settings:
+      'LOOP' 0,
+      'opsz' 100;
   }
   100% {
-    font-variation-settings: 'LOOP' 128;
+    font-variation-settings:
+      'LOOP' 128,
+      'opsz' 100;
   }
 }
