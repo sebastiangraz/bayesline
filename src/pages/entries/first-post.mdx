@@ -28,7 +28,7 @@ export function* FibonacciSequence() {
 }
 ```
 
-```css
+```css /inline-block/
 code > [data-line]::before {
   counter-increment: line;
   content: counter(line); // [!code highlight]
@@ -36,7 +36,7 @@ code > [data-line]::before {
   display: inline-block;
 }
 
-code[data-line-numbers-max-digits='2'] > [data-line]::before {
+code[data-line-numbers-max-digits='2'] > [data-line]::before { // [!code highlight]
   width: 2rem;
 }
 

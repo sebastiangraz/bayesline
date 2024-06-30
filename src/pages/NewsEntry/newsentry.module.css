@@ -192,6 +192,23 @@ figure[data-rehype-pretty-code-figure] {
     overflow-x: auto;
   }
 
+  .code {
+    [data-highlighted-chars] {
+      background: color-mix(in srgb, var(--background) 6%, var(--foreground));
+      padding: 0.25em;
+      border-radius: var(--radius);
+      box-shadow: var(--border) color-mix(in srgb, var(--background) 10%, var(--foreground));
+    }
+
+    [data-line]:global(.highlighted),
+    [data-highlighted-line] {
+      background: color-mix(in srgb, var(--background) 6%, var(--foreground));
+      &&:before {
+        background: color-mix(in srgb, var(--background) 6%, var(--foreground));
+      }
+    }
+  }
+
   .code[data-line-numbers] {
     & {
       counter-reset: line;
