@@ -6,9 +6,11 @@ import { readableDate, themeClasses } from '@/helpers/utils';
 import { entryMeta } from './entryMeta';
 
 export function News() {
-  const entryByDate = entryMeta.sort((a, b) => {
-    return new Date(b.published).getTime() - new Date(a.published).getTime();
-  });
+  const currentTimestamp = Date.now();
+
+  const entryByDate = entryMeta
+    .sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime())
+    .filter((entry) => new Date(entry.published).getTime() <= currentTimestamp); // Filter out future articles
 
   return (
     <div className="col bleed">
