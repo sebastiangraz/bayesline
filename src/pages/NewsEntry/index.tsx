@@ -1,4 +1,4 @@
-import { Text } from '@/components';
+import { Asset, Text } from '@/components';
 import { MDXProvider } from '@mdx-js/react';
 import { Route } from '@/routes/news.$postId';
 import style from './newsentry.module.css';
@@ -25,9 +25,12 @@ function tableOfContents(toc: any) {
 
 export function NewsEntry() {
   const { post } = Route.useLoaderData();
-  const { Page, title, excerpt, published, toc } = post;
+  const { Page, title, excerpt, published, toc, thumbnail } = post;
   const date = readableDate(published);
   const tableOfContentsComponent = tableOfContents(toc);
+  function Thumbnail() {
+    return thumbnail ? <img src={thumbnail} /> : <Asset seed={`${title}-${published}`} />;
+  }
 
   return (
     <div className={`col bleed`}>
@@ -41,7 +44,7 @@ export function NewsEntry() {
 
         <Text.H5 className={`col ${style.excerpt}`}>{excerpt}</Text.H5>
         <div className={`col ${style.image}`}>
-          <img src={illustrationAlt} alt="temp" />
+          <Thumbnail />
         </div>
         <div className={`col ${style.chapters}`}>{toc.length >= 2 && tableOfContentsComponent}</div>
       </div>

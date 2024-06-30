@@ -134,11 +134,10 @@
   padding: 2em 0;
   background: var(--background-accent);
   grid-template-columns: subgrid;
-  aspect-ratio: 4 / 3;
-  img {
+  /* aspect-ratio: 1; */
+  svg {
     grid-column: start / span 9;
     width: 100%;
-    height: auto;
   }
 }
 

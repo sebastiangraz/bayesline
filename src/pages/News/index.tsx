@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import style from './news.module.css';
-import { Text } from '@/components';
-import illustration from '@/assets/illustration.svg';
+import { Text, Asset } from '@/components';
+
 import { readableDate, themeClasses } from '@/helpers/utils';
 import { entryMeta } from './entryMeta';
 
@@ -19,9 +19,13 @@ export function News() {
       </div>
 
       <ul className={`col  ${style.ul}`}>
-        {entryByDate.map(({ title, fileName, excerpt, theme, featured, published }) => {
+        {entryByDate.map(({ title, fileName, excerpt, theme, featured, published, thumbnail }) => {
           const themeValue = themeClasses[theme] || '';
           const date = readableDate(published);
+
+          function Thumbnail() {
+            return thumbnail ? <img src={thumbnail} /> : <Asset seed={`${title}-${published}`} />;
+          }
 
           return (
             <li key={fileName} data-theme={themeValue} className={`col theme ${featured ? style.featured : ''}`}>
@@ -33,7 +37,7 @@ export function News() {
                 }}
               >
                 <div className={`col ${style.thumbnail}`}>
-                  <img src={illustration} />
+                  <Thumbnail />
                 </div>
                 <div className={`col ${style.meta}`}>
                   <div className={`col ${style.link}`}>
