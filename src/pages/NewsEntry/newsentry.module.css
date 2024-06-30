@@ -182,7 +182,7 @@ figure[data-rehype-pretty-code-figure] {
   display: inline-grid;
   grid-column: 8 / end;
   grid-row: auto;
-  padding: 1.5em;
+
   border-radius: var(--radius);
   background: var(--foreground);
   position: relative;
@@ -193,15 +193,31 @@ figure[data-rehype-pretty-code-figure] {
   }
 
   .code {
-    [data-highlighted-chars] {
-      background: color-mix(in srgb, var(--background) 6%, var(--foreground));
-      padding: 0.25em;
-      border-radius: var(--radius);
-      box-shadow: var(--border) color-mix(in srgb, var(--background) 10%, var(--foreground));
+    padding: 1.5em;
+    mark {
+      all: unset;
+    }
+    [data-highlighted-chars] > * {
+      background: color-mix(in oklab, transparent 24%, currentColor);
+      -webkit-text-fill-color: var(--foreground);
+      color: transparent;
+      padding: 0.125em;
+      mask-image: linear-gradient(to top, #fffd, var(--foreground));
+
+      &:last-of-type {
+        border-top-right-radius: var(--radius);
+        border-bottom-right-radius: var(--radius);
+      }
+      &:first-of-type {
+        border-top-left-radius: var(--radius);
+        border-bottom-left-radius: var(--radius);
+      }
     }
 
     [data-line]:global(.highlighted),
     [data-highlighted-line] {
+      margin: 0 -1.5em;
+      padding: 0 1.5em;
       background: color-mix(in srgb, var(--background) 6%, var(--foreground));
       &&:before {
         background: color-mix(in srgb, var(--background) 6%, var(--foreground));
@@ -222,9 +238,11 @@ figure[data-rehype-pretty-code-figure] {
       background: var(--foreground);
       display: inline-block;
       width: 1ch;
-      padding-right: 2ch;
+      padding: 0 2ch 0 1ch;
+      margin-left: -2.5ch;
       text-align: right;
       color: gray;
+      z-index: 1;
     }
 
     &[data-line-numbers-max-digits='2'] > [data-line]::before {
