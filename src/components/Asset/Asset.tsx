@@ -39,15 +39,15 @@ const visible = [true, true, false];
 export const Asset: React.FC<Props> = (props) => {
   let { seed } = props;
 
-  // //rotate seed every 1 second
-  // const [count, setCount] = useState(0);
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCount((count) => count + 1);
-  //   }, 300);
-  //   return () => clearInterval(interval);
-  // }, []);
-  // seed = `${seed}-${count}`;
+  //rotate seed every 1 second
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  seed = `${seed}-${count}`;
 
   const width = 288;
   const height = 288;
@@ -58,7 +58,7 @@ export const Asset: React.FC<Props> = (props) => {
     generateSVGs(seed);
   }, [seed]);
 
-  function createColorGenerator(colors, startIndex, rng) {
+  function createColorGenerator(colors: string | any[], startIndex: number) {
     let index = startIndex;
     return function () {
       const color = colors[index];
@@ -71,7 +71,7 @@ export const Asset: React.FC<Props> = (props) => {
     const rng = seedrandom(seed);
     const assets = [illustrationAlt, illustration];
     let subdivisions = divideSpace(0, 0, width, height, 2, rng);
-    const getColor = createColorGenerator(themes.colors, Math.floor(rng() * themes.colors.length), rng);
+    const getColor = createColorGenerator(themes.colors, Math.floor(rng() * themes.colors.length));
 
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
       src: assets[Math.floor(rng() * assets.length)],
