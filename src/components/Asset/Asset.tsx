@@ -20,6 +20,13 @@ type SVGAsset = {
   fill: string;
 };
 
+type Subdivision = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
 const themes: Theme = {
   colors: ['var(--accent-1)', 'var(--accent-2)', 'var(--accent-3)', 'var(--foreground)', 'var(--background)']
 };
@@ -53,29 +60,48 @@ export const Asset: React.FC<Props> = ({ seed }) => {
     height: number,
     depth: number,
     rng: PRNG
-  ): { x: number; y: number; width: number; height: number }[] => {
-    if (depth === 0) {
-      return [{ x, y, width, height }];
-    }
-    let cutVertical = rng() > 0.5;
-    let midpoint = (cutVertical ? width : height) * rng();
-    let firstHalf, secondHalf;
-
-    if (cutVertical) {
-      firstHalf = divideSpace(x, y, midpoint, height, depth - 1, rng); //not gonna lie, they had us
-      secondHalf = divideSpace(x + midpoint, y, width - midpoint, height, depth - 1, rng);
-    } else {
-      firstHalf = divideSpace(x, y, width, midpoint, depth - 1, rng);
-      secondHalf = divideSpace(x, y + midpoint, width, height - midpoint, depth - 1, rng);
+  ): Subdivision[] => {
+    if (width < 16.67 || height < 16.67 || depth === 0) {
+      // Smallest square is 1x1
+      return [];
     }
 
-    return firstHalf.concat(secondHalf);
+    let sizes = [66.68, 33.34, 16.67]; // Corresponding to 4x4, 2x2, 1x1 squares
+    let result = [] as Subdivision[];
+
+    for (let size of sizes) {
+      if (size <= width && size <= height) {
+        let countX = Math.floor(width / size);
+        let countY = Math.floor(height / size);
+
+        for (let i = 0; i < countX; i++) {
+          for (let j = 0; j < countY; j++) {
+            result.push({ x: x + i * size, y: y + j * size, width: size, height: size });
+          }
+        }
+
+        // Recursively divide remaining space
+        let remainingWidth = width - countX * size;
+        if (remainingWidth > 0) {
+          result = result.concat(divideSpace(x + countX * size, y, remainingWidth, height, depth - 1, rng));
+        }
+
+        let remainingHeight = height - countY * size;
+        if (remainingHeight > 0) {
+          result = result.concat(divideSpace(x, y + countY * size, width, remainingHeight, depth - 1, rng));
+        }
+
+        break; // Stop after the first successful division
+      }
+    }
+
+    return result;
   };
 
   return (
-    <svg width="100%" height="auto" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+    <svg width="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
       {svgs.map((svg, index) => (
-        <g key={`rect-${index}`}>
+        <g key={`svg-${index}`}>
           <rect x={svg.x} y={svg.y} width={svg.width} height={svg.height} fill={svg.fill} />
           <image href={svg.src} x={svg.x} y={svg.y} width={svg.width} height={svg.height} />
         </g>
