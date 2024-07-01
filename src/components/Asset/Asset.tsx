@@ -27,6 +27,7 @@ type Subdivision = {
   y: number;
   width: number;
   height: number;
+  visible: boolean;
 };
 
 const themes: Theme = {
@@ -35,7 +36,20 @@ const themes: Theme = {
 
 const visible = [true, true, false];
 
-export const Asset: React.FC<Props> = ({ seed }) => {
+export const Asset: React.FC<Props> = (props) => {
+  let { seed } = props;
+
+  //rotate seed every 1 second
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((count) => count + 1);
+    }, 300);
+    return () => clearInterval(interval);
+  }, []);
+
+  seed = `${seed}-${count}`;
+
   const width = 288;
   const height = 288;
 
@@ -48,7 +62,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
   const generateSVGs = (seed: string) => {
     const rng = seedrandom(seed);
     const assets = [illustrationAlt, illustration];
-    let subdivisions = divideSpace(0, 0, width, height, 2, rng); // Adjusted to 288x288 as total space
+    let subdivisions = divideSpace(0, 0, width, height, 2, rng);
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
       src: assets[Math.floor(rng() * assets.length)],
       width: sub.width,
@@ -56,7 +70,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
       x: sub.x,
       y: sub.y,
       fill: themes.colors[Math.floor(rng() * themes.colors.length)],
-      visible: visible[Math.floor(rng() * visible.length)]
+      visible: sub.visible
     }));
     setSvgs(svgAssets);
   };
@@ -68,13 +82,12 @@ export const Asset: React.FC<Props> = ({ seed }) => {
     height: number,
     depth: number,
     rng: PRNG
-  ): { x: number; y: number; width: number; height: number }[] => {
+  ): Subdivision[] => {
     if (width < 48 || height < 48 || depth === 0) {
-      // Adjusted smallest size to 48x48
       return [];
     }
 
-    let sizes = [192, 96, 48]; // Adjusted sizes in pixels
+    let sizes = [192, 96, 48]; // Size options
     let result = [] as Subdivision[];
 
     for (let size of sizes) {
@@ -84,19 +97,24 @@ export const Asset: React.FC<Props> = ({ seed }) => {
 
         for (let i = 0; i < countX; i++) {
           for (let j = 0; j < countY; j++) {
-            result.push({ x: x + i * size, y: y + j * size, width: size, height: size });
+            result.push({
+              x: x + i * size,
+              y: y + j * size,
+              width: size,
+              height: size,
+              visible: true // Default visibility is true
+            });
           }
         }
 
-        //if size is largest don't hide using visible property
         if (size !== sizes[0]) {
+          // Set visibility randomly for non-largest divisions
           result.forEach((sub) => {
-            sub.height = visible[Math.floor(rng() * visible.length)] ? sub.height : 0;
-            sub.width = visible[Math.floor(rng() * visible.length)] ? sub.width : 0;
+            // Use the RNG to decide visibility without altering dimensions
+            sub.visible = visible[Math.floor(rng() * visible.length)];
           });
         }
 
-        // Recursively divide remaining space
         let remainingWidth = width - countX * size;
         if (remainingWidth > 0) {
           result = result.concat(divideSpace(x + countX * size, y, remainingWidth, height, depth - 1, rng));
@@ -107,7 +125,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
           result = result.concat(divideSpace(x, y + countY * size, width, remainingHeight, depth - 1, rng));
         }
 
-        break; // Stop after the first successful division
+        break;
       }
     }
 
@@ -123,7 +141,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
     >
       {svgs.map((svg, index) => {
         return (
-          <g key={`svg-${index}`}>
+          <g key={`svg-${index}`} style={{ display: svg.visible ? 'block' : 'none' }}>
             <rect
               x={svg.x}
               y={svg.y}
