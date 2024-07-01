@@ -28,14 +28,10 @@ type Subdivision = {
   height: number;
 };
 
-const themes: Theme = {
-  colors: ['var(--accent-1)', 'var(--accent-2)', 'var(--accent-3)', 'var(--foreground)', 'var(--background)']
-};
-
 export const Asset: React.FC<Props> = ({ seed }) => {
+  const gridUnit = 48; // Define grid size (48x48 pixels)
   const width = 336;
   const height = 336;
-
   const [svgs, setSvgs] = useState<SVGAsset[]>([]);
 
   useEffect(() => {
@@ -45,7 +41,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
   const generateSVGs = (seed: string) => {
     const rng = seedrandom(seed);
     const assets = [illustrationAlt, illustration];
-    let subdivisions = divideSpace(0, 0, width, height, 3, rng); // Adjusted to 288x288 as total space
+    let subdivisions = divideSpace(0, 0, width, height, 5, rng);
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
       src: assets[Math.floor(rng() * assets.length)],
       width: sub.width,
@@ -57,49 +53,46 @@ export const Asset: React.FC<Props> = ({ seed }) => {
     setSvgs(svgAssets);
   };
 
-  const divideSpace = (
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    depth: number,
-    rng: PRNG
-  ): { x: number; y: number; width: number; height: number }[] => {
-    if (width < 48 || height < 48 || depth === 0) {
-      // Adjusted smallest size to 48x48
-      return [];
-    }
+  const divideSpace: DivideSpace = (x, y, width, height, depth, rng) => {
+    let availableSpace = [{ x, y, width, height }];
+    const sizes = [192, 96, 48]; // Sizes must be multiples of gridUnit
+    let subdivisions = [];
 
-    let sizes = [192, 96, 48]; // Adjusted sizes in pixels
-    let result = [] as Subdivision[];
+    while (availableSpace.length > 0 && depth > 0) {
+      let spaceIndex = Math.floor(rng() * availableSpace.length);
+      let space = availableSpace[spaceIndex];
+      let size = sizes.find((size) => size <= space.width && size <= space.height);
 
-    for (let size of sizes) {
-      if (size <= width && size <= height) {
-        let countX = Math.floor(width / size);
-        let countY = Math.floor(height / size);
-
-        for (let i = 0; i < countX; i++) {
-          for (let j = 0; j < countY; j++) {
-            result.push({ x: x + i * size, y: y + j * size, width: size, height: size });
-          }
-        }
-
-        // Recursively divide remaining space
-        let remainingWidth = width - countX * size;
-        if (remainingWidth > 0) {
-          result = result.concat(divideSpace(x + countX * size, y, remainingWidth, height, depth - 1, rng));
-        }
-
-        let remainingHeight = height - countY * size;
-        if (remainingHeight > 0) {
-          result = result.concat(divideSpace(x, y + countY * size, width, remainingHeight, depth - 1, rng));
-        }
-
-        break; // Stop after the first successful division
+      if (!size) {
+        availableSpace.splice(spaceIndex, 1); // Remove unusable space
+        continue;
       }
+
+      // Ensure alignment to grid
+      let posX = Math.floor(rng() * Math.floor((space.width - size) / gridUnit)) * gridUnit + space.x;
+      let posY = Math.floor(rng() * Math.floor((space.height - size) / gridUnit)) * gridUnit + space.y;
+
+      subdivisions.push({ x: posX, y: posY, width: size, height: size });
+
+      // Update available space by excluding the new square area
+      updateAvailableSpace(space, posX, posY, size, availableSpace);
+      depth--;
     }
 
-    return result;
+    return subdivisions;
+  };
+
+  const updateAvailableSpace = (space, x, y, size, availableSpace) => {
+    // Exclude the placed square's space
+    // This is simplified and needs to be expanded to properly manage all space around the placed square
+    availableSpace.push({ x: space.x, y: space.y, width: x - space.x, height: space.height });
+    availableSpace.push({ x: x + size, y: space.y, width: space.width - size - (x - space.x), height: space.height });
+    availableSpace.push({ x: space.x, y: space.y, width: space.width, height: y - space.y });
+    availableSpace.push({ x: space.x, y: y + size, width: space.width, height: space.height - size - (y - space.y) });
+  };
+
+  const themes: Theme = {
+    colors: ['var(--accent-1)', 'var(--accent-2)', 'var(--accent-3)', 'var(--foreground)', 'var(--background)']
   };
 
   return (
