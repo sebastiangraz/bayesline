@@ -103,14 +103,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
     <svg width="100%" viewBox="0 0 288 288" preserveAspectRatio="xMidYMid meet" className={style.asset}>
       {svgs.map((svg, index) => (
         <g key={`svg-${index}`}>
-          <rect
-            x={svg.x}
-            y={svg.y}
-            width={svg.width}
-            height={svg.height}
-            fill={svg.fill}
-            shape-rendering="crispEdges"
-          />
+          <rect x={svg.x} y={svg.y} width={svg.width} height={svg.height} fill={svg.fill} shapeRendering="crispEdges" />
           <image href={svg.src} x={svg.x} y={svg.y} width={svg.width} height={svg.height} />
         </g>
       ))}
