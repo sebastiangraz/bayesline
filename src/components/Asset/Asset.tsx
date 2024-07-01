@@ -19,6 +19,7 @@ type SVGAsset = {
   x: number;
   y: number;
   fill: string;
+  visible: boolean;
 };
 
 type Subdivision = {
@@ -31,6 +32,8 @@ type Subdivision = {
 const themes: Theme = {
   colors: ['var(--accent-1)', 'var(--accent-2)', 'var(--accent-3)', 'var(--foreground)', 'var(--background)']
 };
+
+const visible = [true, true, false];
 
 export const Asset: React.FC<Props> = ({ seed }) => {
   const width = 288;
@@ -52,7 +55,8 @@ export const Asset: React.FC<Props> = ({ seed }) => {
       height: sub.height,
       x: sub.x,
       y: sub.y,
-      fill: themes.colors[Math.floor(rng() * themes.colors.length)]
+      fill: themes.colors[Math.floor(rng() * themes.colors.length)],
+      visible: visible[Math.floor(rng() * visible.length)]
     }));
     setSvgs(svgAssets);
   };
@@ -84,6 +88,14 @@ export const Asset: React.FC<Props> = ({ seed }) => {
           }
         }
 
+        //if size is largest don't hide using visible property
+        if (size !== sizes[0]) {
+          result.forEach((sub) => {
+            sub.height = visible[Math.floor(rng() * visible.length)] ? sub.height : 0;
+            sub.width = visible[Math.floor(rng() * visible.length)] ? sub.width : 0;
+          });
+        }
+
         // Recursively divide remaining space
         let remainingWidth = width - countX * size;
         if (remainingWidth > 0) {
@@ -103,13 +115,27 @@ export const Asset: React.FC<Props> = ({ seed }) => {
   };
 
   return (
-    <svg width="100%" viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet" className={style.asset}>
-      {svgs.map((svg, index) => (
-        <g key={`svg-${index}`}>
-          <rect x={svg.x} y={svg.y} width={svg.width} height={svg.height} fill={svg.fill} shapeRendering="crispEdges" />
-          <image href={svg.src} x={svg.x} y={svg.y} width={svg.width} height={svg.height} />
-        </g>
-      ))}
+    <svg
+      width="100%"
+      viewBox={`0 0 ${width} ${height}`}
+      preserveAspectRatio="xMidYMid meet"
+      className={`${style.asset}`}
+    >
+      {svgs.map((svg, index) => {
+        return (
+          <g key={`svg-${index}`}>
+            <rect
+              x={svg.x}
+              y={svg.y}
+              width={svg.width}
+              height={svg.height}
+              fill={svg.fill}
+              shapeRendering="crispEdges"
+            />
+            <image href={svg.src} x={svg.x} y={svg.y} width={svg.width} height={svg.height} />
+          </g>
+        );
+      })}
     </svg>
   );
 };
