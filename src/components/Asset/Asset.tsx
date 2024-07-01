@@ -39,16 +39,15 @@ const visible = [true, true, false];
 export const Asset: React.FC<Props> = (props) => {
   let { seed } = props;
 
-  //rotate seed every 1 second
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((count) => count + 1);
-    }, 300);
-    return () => clearInterval(interval);
-  }, []);
-
-  seed = `${seed}-${count}`;
+  // //rotate seed every 1 second
+  // const [count, setCount] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCount((count) => count + 1);
+  //   }, 300);
+  //   return () => clearInterval(interval);
+  // }, []);
+  // seed = `${seed}-${count}`;
 
   const width = 288;
   const height = 288;
@@ -59,17 +58,28 @@ export const Asset: React.FC<Props> = (props) => {
     generateSVGs(seed);
   }, [seed]);
 
+  function createColorGenerator(colors, startIndex, rng) {
+    let index = startIndex;
+    return function () {
+      const color = colors[index];
+      index = (index + 1) % colors.length; // Move to the next color cyclically
+      return color;
+    };
+  }
+
   const generateSVGs = (seed: string) => {
     const rng = seedrandom(seed);
     const assets = [illustrationAlt, illustration];
     let subdivisions = divideSpace(0, 0, width, height, 2, rng);
+    const getColor = createColorGenerator(themes.colors, Math.floor(rng() * themes.colors.length), rng);
+
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
       src: assets[Math.floor(rng() * assets.length)],
       width: sub.width,
       height: sub.height,
       x: sub.x,
       y: sub.y,
-      fill: themes.colors[Math.floor(rng() * themes.colors.length)],
+      fill: getColor(),
       visible: sub.visible
     }));
     setSvgs(svgAssets);
@@ -143,6 +153,7 @@ export const Asset: React.FC<Props> = (props) => {
         return (
           <g key={`svg-${index}`} style={{ display: svg.visible ? 'block' : 'none' }}>
             <rect
+              style={{ strokeWidth: '2px', stroke: 'red' }}
               x={svg.x}
               y={svg.y}
               width={svg.width}
