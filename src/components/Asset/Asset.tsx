@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import seedrandom, { PRNG } from 'seedrandom';
 import illustrationAlt from '@/assets/illustration-alt.svg';
 import illustration from '@/assets/illustration.svg';
+import style from './asset.module.css';
 
 type Props = {
   seed: string;
@@ -41,7 +42,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
   const generateSVGs = (seed: string) => {
     const rng = seedrandom(seed);
     const assets = [illustrationAlt, illustration];
-    let subdivisions = divideSpace(0, 0, 100, 100, 2, rng); // Starting with 4 levels deep
+    let subdivisions = divideSpace(0, 0, 288, 288, 2, rng); // Adjusted to 288x288 as total space
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
       src: assets[Math.floor(rng() * assets.length)],
       width: sub.width,
@@ -60,13 +61,13 @@ export const Asset: React.FC<Props> = ({ seed }) => {
     height: number,
     depth: number,
     rng: PRNG
-  ): Subdivision[] => {
-    if (width < 16.67 || height < 16.67 || depth === 0) {
-      // Smallest square is 1x1
+  ): { x: number; y: number; width: number; height: number }[] => {
+    if (width < 48 || height < 48 || depth === 0) {
+      // Adjusted smallest size to 48x48
       return [];
     }
 
-    let sizes = [66.68, 33.34, 16.67]; // Corresponding to 4x4, 2x2, 1x1 squares
+    let sizes = [192, 96, 48]; // Adjusted sizes in pixels
     let result = [] as Subdivision[];
 
     for (let size of sizes) {
@@ -99,10 +100,17 @@ export const Asset: React.FC<Props> = ({ seed }) => {
   };
 
   return (
-    <svg width="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+    <svg width="100%" viewBox="0 0 288 288" preserveAspectRatio="xMidYMid meet" className={style.asset}>
       {svgs.map((svg, index) => (
         <g key={`svg-${index}`}>
-          <rect x={svg.x} y={svg.y} width={svg.width} height={svg.height} fill={svg.fill} />
+          <rect
+            x={svg.x}
+            y={svg.y}
+            width={svg.width}
+            height={svg.height}
+            fill={svg.fill}
+            shape-rendering="crispEdges"
+          />
           <image href={svg.src} x={svg.x} y={svg.y} width={svg.width} height={svg.height} />
         </g>
       ))}

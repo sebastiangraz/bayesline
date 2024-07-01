@@ -7,8 +7,9 @@
     background: var(--background);
     color: var(--foreground);
     grid-column: 1 / 26;
-    &:has(.wrapper:hover) .thumbnail img {
-      transform: translateY(-0.1em);
+    &:has(.wrapper:hover) .thumbnail svg,
+    .thumbnail img {
+      /* transform: translateY(-0.1em); */
     }
     /* &:hover .thumbnail {
       filter: saturate(0);
@@ -40,12 +41,11 @@
 
 .thumbnail {
   background: var(--background-accent);
-  padding: 2em;
+  padding: 1.5rem;
   grid-column: 1 / 4;
   width: 100%;
+  svg,
   img {
-    width: 100%;
-    height: auto;
     transition: 0.2s ease transform;
   }
 }
@@ -74,7 +74,7 @@
   }
 
   .thumbnail {
-    grid-column: 1 / 11;
+    grid-column: 1 / 10;
     width: 100%;
     padding: 4em;
   }
