@@ -153,7 +153,6 @@ export const Asset: React.FC<Props> = (props) => {
         return (
           <g key={`svg-${index}`} style={{ display: svg.visible ? 'block' : 'none' }}>
             <rect
-              style={{ strokeWidth: '2px', stroke: 'red' }}
               x={svg.x}
               y={svg.y}
               width={svg.width}
