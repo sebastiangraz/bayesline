@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import seedrandom, { PRNG } from 'seedrandom';
-import illustrationAlt from '@/assets/illustration-alt.svg';
-import illustration from '@/assets/illustration.svg';
 import style from './asset.module.css';
+import { assets } from './assets';
 
 type Props = {
   seed: string;
@@ -13,7 +12,7 @@ type Theme = {
 };
 
 type SVGAsset = {
-  src: string;
+  src: () => JSX.Element;
   width: number;
   height: number;
   x: number;
@@ -40,14 +39,14 @@ export const Asset: React.FC<Props> = (props) => {
   let { seed } = props;
 
   //rotate seed every 1 second
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-  seed = `${seed}-${count}`;
+  // const [count, setCount] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCount((count) => count + 1);
+  //   }, 1000);
+  //   return () => clearInterval(interval);
+  // }, []);
+  // seed = `${seed}-${count}`;
 
   const width = 288;
   const height = 288;
@@ -69,12 +68,12 @@ export const Asset: React.FC<Props> = (props) => {
 
   const generateSVGs = (seed: string) => {
     const rng = seedrandom(seed);
-    const assets = [illustrationAlt, illustration];
+
     let subdivisions = divideSpace(0, 0, width, height, 2, rng);
     const getColor = createColorGenerator(themes.colors, Math.floor(rng() * themes.colors.length));
 
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
-      src: assets[Math.floor(rng() * assets.length)],
+      src: assets[Math.floor(rng() * assets.length)].path,
       width: sub.width,
       height: sub.height,
       x: sub.x,
@@ -150,6 +149,8 @@ export const Asset: React.FC<Props> = (props) => {
       className={`${style.asset}`}
     >
       {svgs.map((svg, index) => {
+        console.log(svg.fill);
+
         return (
           <g key={`svg-${index}`} style={{ display: svg.visible ? 'block' : 'none' }}>
             <rect
@@ -159,8 +160,18 @@ export const Asset: React.FC<Props> = (props) => {
               height={svg.height}
               fill={svg.fill}
               shapeRendering="crispEdges"
-            />
-            <image href={svg.src} x={svg.x} y={svg.y} width={svg.width} height={svg.height} />
+            ></rect>
+            <svg
+              width={svg.width}
+              height={svg.height}
+              preserveAspectRatio="xMidYMid meet"
+              x={svg.x}
+              y={svg.y}
+              viewBox={`0 0 144 144`}
+              className={`${style[svg.fill]}`}
+            >
+              {svg.src()}
+            </svg>
           </g>
         );
       })}
