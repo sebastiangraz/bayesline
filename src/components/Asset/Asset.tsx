@@ -41,7 +41,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
   const generateSVGs = (seed: string) => {
     const rng = seedrandom(seed);
     const assets = [illustrationAlt, illustration];
-    let subdivisions = divideSpace(0, 0, width, height, 5, rng);
+    let subdivisions = divideSpace(0, 0, width, height, 3, rng);
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
       src: assets[Math.floor(rng() * assets.length)],
       width: sub.width,
@@ -53,7 +53,14 @@ export const Asset: React.FC<Props> = ({ seed }) => {
     setSvgs(svgAssets);
   };
 
-  const divideSpace: DivideSpace = (x, y, width, height, depth, rng) => {
+  const divideSpace: (
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    depth: number,
+    rng: PRNG
+  ) => Subdivision[] = (x, y, width, height, depth, rng) => {
     let availableSpace = [{ x, y, width, height }];
     const sizes = [192, 96, 48]; // Sizes must be multiples of gridUnit
     let subdivisions = [];
