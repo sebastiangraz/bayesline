@@ -33,8 +33,8 @@ const themes: Theme = {
 };
 
 export const Asset: React.FC<Props> = ({ seed }) => {
-  const width = 336;
-  const height = 336;
+  const width = 288;
+  const height = 288;
 
   const [svgs, setSvgs] = useState<SVGAsset[]>([]);
 
@@ -45,7 +45,7 @@ export const Asset: React.FC<Props> = ({ seed }) => {
   const generateSVGs = (seed: string) => {
     const rng = seedrandom(seed);
     const assets = [illustrationAlt, illustration];
-    let subdivisions = divideSpace(0, 0, width, height, 3, rng); // Adjusted to 288x288 as total space
+    let subdivisions = divideSpace(0, 0, width, height, 2, rng); // Adjusted to 288x288 as total space
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
       src: assets[Math.floor(rng() * assets.length)],
       width: sub.width,
