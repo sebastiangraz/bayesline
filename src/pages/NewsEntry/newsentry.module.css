@@ -6,8 +6,6 @@
   margin-top: -3em;
   background: var(--background);
   color: var(--foreground);
-  /* z-index: -1;
-  position: relative; */
 }
 
 .title {
@@ -134,8 +132,8 @@
   padding: 2em 0;
   background: var(--background-accent);
   grid-template-columns: subgrid;
-  /* aspect-ratio: 1; */
-  svg {
+  svg,
+  img {
     grid-column: start / span 9;
     width: 100%;
   }

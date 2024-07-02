@@ -10,7 +10,7 @@ export function News() {
 
   const entryByDate = entryMeta
     .sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime())
-    .filter((entry) => new Date(entry.published).getTime() <= currentTimestamp); // Filter out future articles
+    .filter((entry) => new Date(entry.published).getTime() <= currentTimestamp);
 
   return (
     <div className="col bleed">
@@ -24,8 +24,12 @@ export function News() {
           const date = readableDate(published);
           const seedValue = seed || `${title}-${published}`;
 
+          function getImageUrl(name: string) {
+            return new URL(`../entries/${fileName}/${name}`, import.meta.url).href;
+          }
+
           function Thumbnail() {
-            return thumbnail ? <img src={thumbnail} /> : <Asset seed={seedValue} />;
+            return thumbnail ? <img src={getImageUrl(thumbnail)} /> : <Asset seed={seedValue} />;
           }
 
           return (

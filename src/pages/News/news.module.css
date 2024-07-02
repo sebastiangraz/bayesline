@@ -43,10 +43,9 @@
   background: var(--background-accent);
   /* padding: 1.5rem; */
   grid-column: 1 / 4;
-  width: 100%;
   svg,
   img {
-    transition: 0.2s ease transform;
+    width: 100%;
   }
 }
 

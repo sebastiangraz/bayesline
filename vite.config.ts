@@ -13,6 +13,7 @@ import withTocExport from '@stefanprobst/rehype-extract-toc/mdx';
 import rehypePrettyCode, { Options } from 'rehype-pretty-code';
 import fs from 'fs';
 import { transformerNotationHighlight } from '@shikijs/transformers';
+import rehypeMdxImportMedia from 'rehype-mdx-import-media';
 
 const options = {
   theme: JSON.parse(fs.readFileSync('./src/helpers/bayesyntax.json', 'utf-8')),
@@ -39,7 +40,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           remarkMdxFrontmatter,
           remarkemoji
         ],
-        rehypePlugins: [rehypeSlug, withToc, withTocExport, [rehypePrettyCode, options]],
+        rehypePlugins: [rehypeSlug, withToc, withTocExport, [rehypePrettyCode, options], rehypeMdxImportMedia],
         providerImportSource: '@mdx-js/react'
       }),
       react(),

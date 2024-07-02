@@ -123,7 +123,7 @@ export const Asset: React.FC<Props> = React.memo(
               animate={isInView ? 'show' : 'hidden'}
               custom={{ i: index, random: directions }}
               key={`svg-${index}`}
-              // style={{ display: svg.visible ? 'block' : 'none' }}
+              style={{ display: svg.visible ? 'block' : 'none' }}
             >
               <rect
                 x={svg.x}
