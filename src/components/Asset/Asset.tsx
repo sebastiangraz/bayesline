@@ -24,22 +24,36 @@ const childVariant = {
     clipPath: 'inset(0% 0% 0% 0%)',
     opacity: 1,
     transition: {
-      delay: 0.05 * i,
-      duration: 1,
+      duration: 1 + i * 0.2,
       ease: [1, 0, 0.17, 1],
       opacity: {
         duration: 0.25
       }
     }
+  })
+};
+const imageVariant = {
+  hidden: ({
+    random
+  }: {
+    random: {
+      '--x': string;
+      '--y': string;
+    };
+  }) => ({
+    '--x': random['--x'],
+    '--y': random['--y'],
+    opacity: 0
   }),
-  exit: {
-    clipPath: 'inset(0% 0% 0% 0%)',
-    opacity: 0,
+  show: ({ i }: { i: number }) => ({
+    '--x': '0px',
+    '--y': '0px',
+    opacity: 1,
     transition: {
-      duration: 0.5,
+      duration: 1 + i * 0.2,
       ease: [1, 0, 0.17, 1]
     }
-  }
+  })
 };
 
 const createColorGenerator = (colors: string | any[], subdivisions: { visible: boolean }[]) => {
@@ -89,11 +103,27 @@ const generateSVGs = (seed: string) => {
 
 export const Asset: React.FC<Props> = React.memo(
   ({ seed }) => {
+    // const [count, setCount] = React.useState(Math.floor(Math.random() * 1000));
+    // React.useEffect(() => {
+    //   const interval = setInterval(() => {
+    //     setCount((count) => count + 1);
+    //   }, 1500);
+    //   return () => clearInterval(interval);
+    // }, []);
+    // seed = `${seed}-${count}`;
+
     const directionsArr = [
       { clip: 'inset(0% 0% 50% 0%)' },
       { clip: 'inset(50% 0% 0% 0%)' },
       { clip: 'inset(0% 50% 0% 0%)' },
       { clip: 'inset(0% 0% 0% 50%)' }
+    ];
+
+    const imageDirectionsArr = [
+      { '--y': '-8px', '--x': '0px' },
+      { '--y': '8px', '--x': '0px' },
+      { '--y': '0px', '--x': '-8px' },
+      { '--y': '0px', '--x': '8px' }
     ];
 
     const svgs = useMemo(() => generateSVGs(seed).filter((svg) => svg.visible), [seed]);
@@ -114,6 +144,8 @@ export const Asset: React.FC<Props> = React.memo(
       >
         {svgs.map((svg, index) => {
           const directions = directionsArr[index % directionsArr.length];
+          const imageDirections = imageDirectionsArr[index % imageDirectionsArr.length];
+
           return (
             <motion.g
               initial="hidden"
@@ -130,18 +162,24 @@ export const Asset: React.FC<Props> = React.memo(
                 fill={svg.bg}
                 shapeRendering="crispEdges"
               />
-              <svg
-                width={svg.width}
-                height={svg.height}
-                preserveAspectRatio="xMidYMid meet"
-                x={svg.x}
-                y={svg.y}
-                viewBox={`0 0 144 144`}
-                style={{ color: svg.fg }}
-                className={`${style.foregroundSvg}`}
+              <motion.g
+                variants={imageVariant}
+                custom={{ i: index, random: imageDirections }}
+                style={{ color: svg.fg, x: 'var(--x)', y: 'var(--y)' }}
               >
-                {svg.src()}
-              </svg>
+                <motion.svg
+                  width={svg.width}
+                  height={svg.height}
+                  preserveAspectRatio="xMidYMid meet"
+                  x={svg.x}
+                  y={svg.y}
+                  viewBox={`0 0 144 144`}
+                  style={{ color: svg.fg }}
+                  className={`${style.foregroundSvg}`}
+                >
+                  {svg.src()}
+                </motion.svg>
+              </motion.g>
             </motion.g>
           );
         })}
