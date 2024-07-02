@@ -162,6 +162,7 @@ export const Asset: React.FC<Props> = (props) => {
       viewBox={`0 0 ${width} ${height}`}
       preserveAspectRatio="xMidYMid meet"
       className={`${style.asset}`}
+      style={{ boxShadow: 'var(--shadow)' }}
     >
       {svgs.map((svg, index) => {
         return (
