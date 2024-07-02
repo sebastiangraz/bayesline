@@ -1,15 +1,16 @@
 .button {
   padding: 1rem 2rem;
   transition: 0.2s ease opacity;
-
+  border-radius: var(--radius);
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
+  place-self: start;
   & > * {
     color: inherit;
     z-index: 1;
-    /*     mix-blend-mode: plus-lighter; */
+    /* mix-blend-mode: plus-lighter; */
   }
   & > svg {
     transition: transform 0.2s ease-out;
@@ -41,9 +42,10 @@
 
 .buttonNode {
   position: absolute;
+  mix-blend-mode: plus-lighter;
   z-index: 0;
   width: 100%;
   height: 100%;
   display: flex;
-  color: inherit;
+  color: color-mix(in srgb, var(--background) 60%, var(--foreground));
 }

@@ -4,10 +4,10 @@
     'colspan row-top'
     'colspan row-bottom';
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   grid-column: start/end;
   align-items: stretch;
-  gap: 1em; /* Adjust the gap size based on your needs */
+  gap: 1em;
   .card:nth-child(1) {
     grid-area: colspan;
   }
@@ -22,20 +22,16 @@
 .card {
   display: grid;
   background: var(--background-accent);
-  grid-column: span 11;
   align-content: start;
-  grid-template-rows: auto auto;
-
+  grid-template-rows: 1fr auto;
+  border-radius: var(--radius);
   :global .card-header {
     display: flex;
     flex-direction: column;
     padding: 1em;
     gap: 0.5em;
-    grid-row: 1;
   }
-
-  & img {
-    grid-row: 2;
-    box-sizing: content-box;
+  img {
+    mask-image: radial-gradient(ellipse at top center, #ffff 50%, #fff0 150%);
   }
 }

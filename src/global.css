@@ -68,8 +68,8 @@
   --border-l: -1px 0 0 0;
   --border-b: 0 1px 0 0;
 
-  --radius: 0.125em;
-  --radius-1: 0.25em;
+  --radius: 0.125rem;
+  --radius-1: 0.25rem;
 }
 
 /* DARK THEME */
@@ -100,6 +100,9 @@
 [data-theme='highlight'] {
   &.theme,
   .theme {
+    /* --foreground: hsl(var(--steel-5));
+    --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
+    --foreground-border: hsl(var(--steel-5) / var(--opacity-2)); */
     --background: hsl(var(--steel-3) / 1);
     --background-accent: hsl(var(--steel-2) / var(--opacity));
     --navigation: hsl(var(--steel-4) / 1);

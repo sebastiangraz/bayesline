@@ -1,6 +1,8 @@
 import style from './home.module.css';
 import { Hero, Button, Card, Cards, Text } from '@/components';
 import composition from '@/assets/composition.png';
+import sidebar from '@/assets/sidebar.png';
+
 export function Home() {
   return (
     <>
@@ -14,7 +16,13 @@ export function Home() {
                 Bring your own data, hierarchies, factor exposures, or use our pre-canned and optimized models. Select
                 from industry standard reports, or new ways to look at risk.
               </Text.Body>
-              <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+              <Button
+                bgColor="hsl(var(--brand-2))"
+                fgColor="var(--foreground)"
+                type="primary"
+                href="https://calendar.app.google/qq4pjZcmDdzTjBme7"
+                target="_blank"
+              >
                 <Text.Caps>Schedule a Demo</Text.Caps>
               </Button>
             </div>
@@ -27,6 +35,7 @@ export function Home() {
                 Run reports in comparison mode, zooming into the relative performance of different models and settings.
               </Text.Body>
             </div>
+            <img src={sidebar} />
           </Card>
           <Card>
             <div className="card-header">
