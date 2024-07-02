@@ -8,7 +8,7 @@ type Props = {
 };
 
 type Theme = {
-  [key: string]: string[];
+  [key: string]: { fg: string; bg: string }[];
 };
 
 type SVGAsset = {
@@ -17,8 +17,9 @@ type SVGAsset = {
   height: number;
   x: number;
   y: number;
-  fill: string;
   visible: boolean;
+  fg: string;
+  bg: string;
 };
 
 type Subdivision = {
@@ -30,26 +31,27 @@ type Subdivision = {
 };
 
 const themes: Theme = {
-  theme1: ['var(--accent-1)', 'var(--foreground)', 'var(--background)', 'var(--background-2)'],
-  theme2: ['var(--accent-2)', 'var(--foreground)', 'var(--background)', 'var(--background-3)'],
-  theme3: ['var(--accent-3)', 'var(--foreground)', 'var(--background-0)', 'var(--background-1)', 'hsl(var(--brand-2))'],
-  theme4: ['var(--background-0)', 'var(--background-1)', 'var(--background-2)']
+  theme1: [
+    { fg: 'var(--accent-3)', bg: 'var(--accent-1)' },
+    { fg: 'var(--accent-1)', bg: 'var(--accent-3)' },
+    { fg: 'var(--accent-1)', bg: 'hsl(var(--brand-0))' }
+  ],
+  theme2: [
+    { fg: 'var(--accent-2)', bg: 'hsl(var(--brand-2))' },
+    { fg: 'hsl(var(--brand-2))', bg: 'hsl(var(--brand-1))' },
+    { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-1))' },
+    { fg: 'hsl(var(--brand-2))', bg: 'var(--accent-2)' }
+  ],
+  theme3: [
+    { fg: 'var(--accent-1)', bg: 'var(--background-0)' },
+    { fg: 'var(--accent-2)', bg: 'var(--background-1)' },
+    { fg: 'var(--accent-1)', bg: 'var(--background-2)' }
+  ]
 };
-
-const visible = [true, true, false];
+const visible = [true, false];
 
 export const Asset: React.FC<Props> = (props) => {
   let { seed } = props;
-
-  // rotate seed every 1 second
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-  seed = `${seed}-${count}`;
 
   const width = 288;
   const height = 288;
@@ -60,33 +62,40 @@ export const Asset: React.FC<Props> = (props) => {
     generateSVGs(seed);
   }, [seed]);
 
-  function createColorGenerator(colors: string | any[], startIndex: number) {
+  function createColorGenerator(colors: { fg: string; bg: string }[], startIndex: number) {
     let index = startIndex;
 
     return function () {
-      const color = colors[index];
-      index = (index + 1) % colors.length; // Move to the next color cyclically
-      return color;
+      const colorPair = colors[index];
+      index = (index + 1) % colors.length; // Cycle through color pairs
+      return colorPair;
     };
   }
 
   const generateSVGs = (seed: string) => {
     const rng = seedrandom(seed);
+    const themeKeys = Object.keys(themes);
+    const selectedTheme = themes[themeKeys[Math.floor(rng() * themeKeys.length)]];
+    // const getColor = () => selectedTheme[Math.floor(rng() * selectedTheme.length)];
+
+    let getColor = createColorGenerator(selectedTheme, Math.floor(rng() * selectedTheme.length));
 
     let subdivisions = divideSpace(0, 0, width, height, 2, rng);
-    const getTheme = themes[Object.keys(themes)[Math.floor(rng() * Object.keys(themes).length)]];
 
-    const getColor = createColorGenerator(getTheme, Math.floor(rng() * getTheme.length));
+    const svgAssets = subdivisions.map((sub) => {
+      const colorPair = getColor();
+      return {
+        src: assets[Math.floor(rng() * assets.length)].path,
+        width: sub.width,
+        height: sub.height,
+        x: sub.x,
+        y: sub.y,
+        fg: colorPair.fg,
+        bg: colorPair.bg,
+        visible: sub.visible
+      };
+    });
 
-    let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
-      src: assets[Math.floor(rng() * assets.length)].path,
-      width: sub.width,
-      height: sub.height,
-      x: sub.x,
-      y: sub.y,
-      fill: getColor(),
-      visible: sub.visible
-    }));
     setSvgs(svgAssets);
   };
 
@@ -162,7 +171,7 @@ export const Asset: React.FC<Props> = (props) => {
               y={svg.y}
               width={svg.width}
               height={svg.height}
-              fill={svg.fill}
+              fill={svg.bg}
               shapeRendering="crispEdges"
             ></rect>
             <svg
@@ -172,7 +181,8 @@ export const Asset: React.FC<Props> = (props) => {
               x={svg.x}
               y={svg.y}
               viewBox={`0 0 144 144`}
-              className={`${style[`path${index}`]}`}
+              style={{ color: svg.fg }}
+              className={`${style.foregroundSvg}`}
             >
               {svg.src()}
             </svg>

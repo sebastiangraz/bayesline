@@ -1,28 +1,6 @@
 .asset {
   display: flex;
 }
-/* .path0 {
-  path {
-    stroke: black;
-  }
+.foregroundSvg {
+  fill: currentColor;
 }
-.path1 {
-  path {
-    stroke: red;
-  }
-}
-.path2 {
-  path {
-    stroke: blue;
-  }
-}
-.path3 {
-  path {
-    stroke: green;
-  }
-}
-.path4 {
-  path {
-    stroke: yellow;
-  }
-} */
