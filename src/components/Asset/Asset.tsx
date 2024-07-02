@@ -218,3 +218,17 @@ export const Asset: React.FC<Props> = React.memo(
     return prevProps.seed === nextProps.seed;
   }
 );
+
+{
+  //rotate seed every 1 second
+  /*
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCount((count) => count + 1);
+      }, 700);
+      return () => clearInterval(interval);
+    }, []);
+    seed = `${seed}-${count}`;
+  */
+}
