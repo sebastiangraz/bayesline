@@ -24,7 +24,7 @@ const childVariant = {
     clipPath: 'inset(0% 0% 0% 0%)',
     opacity: 1,
     transition: {
-      duration: 1 + i * 0.2,
+      duration: 0.5 + i * 0.3,
       ease: [1, 0, 0.17, 1],
       opacity: {
         duration: 0.25
@@ -50,7 +50,7 @@ const imageVariant = {
     '--y': '0px',
     opacity: 1,
     transition: {
-      duration: 1 + i * 0.2,
+      duration: 0.5 + i * 0.3,
       ease: [1, 0, 0.17, 1]
     }
   })
@@ -103,27 +103,18 @@ const generateSVGs = (seed: string) => {
 
 export const Asset: React.FC<Props> = React.memo(
   ({ seed }) => {
-    // const [count, setCount] = React.useState(Math.floor(Math.random() * 1000));
-    // React.useEffect(() => {
-    //   const interval = setInterval(() => {
-    //     setCount((count) => count + 1);
-    //   }, 1500);
-    //   return () => clearInterval(interval);
-    // }, []);
-    // seed = `${seed}-${count}`;
-
     const directionsArr = [
-      { clip: 'inset(0% 0% 50% 0%)' },
-      { clip: 'inset(50% 0% 0% 0%)' },
-      { clip: 'inset(0% 50% 0% 0%)' },
-      { clip: 'inset(0% 0% 0% 50%)' }
+      { clip: 'inset(0% 0% 25% 0%)' },
+      { clip: 'inset(25% 0% 0% 0%)' },
+      { clip: 'inset(0% 25% 0% 0%)' },
+      { clip: 'inset(0% 0% 0% 25%)' }
     ];
 
     const imageDirectionsArr = [
-      { '--y': '-8px', '--x': '0px' },
-      { '--y': '8px', '--x': '0px' },
-      { '--y': '0px', '--x': '-8px' },
-      { '--y': '0px', '--x': '8px' }
+      { '--y': '-4px', '--x': '0px' },
+      { '--y': '4px', '--x': '0px' },
+      { '--y': '0px', '--x': '-4px' },
+      { '--y': '0px', '--x': '4px' }
     ];
 
     const svgs = useMemo(() => generateSVGs(seed).filter((svg) => svg.visible), [seed]);

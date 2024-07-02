@@ -49,7 +49,7 @@ export function NewsEntry() {
         </Text.H2>
 
         <Text.H5 className={`col ${style.excerpt}`}>{excerpt}</Text.H5>
-        <div className={`col ${style.image}`}>
+        <div className={`col ${style.entryImage}`}>
           <Thumbnail />
         </div>
         <div className={`col ${style.chapters}`}>{toc.length >= 2 && tableOfContentsComponent}</div>

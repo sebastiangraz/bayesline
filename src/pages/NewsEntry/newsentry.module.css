@@ -126,7 +126,7 @@
   }
 }
 
-.image {
+.entryImage {
   display: grid;
   grid-column: span 12;
   padding: 2em 0;
