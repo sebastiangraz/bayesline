@@ -3,8 +3,6 @@
 }
 .foregroundSvg {
   & > svg {
-    transform: scale(2);
-    position: absolute;
     display: block;
   }
 }
