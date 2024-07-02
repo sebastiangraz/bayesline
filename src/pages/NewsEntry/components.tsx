@@ -37,5 +37,8 @@ export const components = {
   },
   code: (props: any) => {
     return <code className={`${style.code}`} {...props}></code>;
+  },
+  img: (props: any) => {
+    return <img className={`${style.image}`} {...props}></img>;
   }
 };

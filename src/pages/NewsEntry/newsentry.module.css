@@ -88,6 +88,20 @@
       }
     }
   }
+  p:has(img) {
+    grid-column: start / end;
+    z-index: 0;
+    img {
+      border-radius: var(--radius);
+    }
+  }
+}
+
+.image {
+  display: grid;
+  grid-column: 1 / 26;
+
+  grid-template-columns: subgrid;
 }
 
 .chapterHeader {
