@@ -79,7 +79,7 @@ const createColorGenerator = (colors: { fg: string; bg: string }[], startIndex: 
   let index = startIndex;
   return function () {
     const colorPair = colors[index];
-    index = (index + 1) % colors.length; // Cycle through color pairs
+    index = (index + 1) % colors.length;
     return colorPair;
   };
 };
@@ -158,16 +158,6 @@ const generateSVGs = (seed: string) => {
 
 export const Asset: React.FC<Props> = React.memo(
   ({ seed }) => {
-    // //rotate seed every 1 second
-    // const [count, setCount] = useState(0);
-    // useEffect(() => {
-    //   const interval = setInterval(() => {
-    //     setCount((count) => count + 1);
-    //   }, 700);
-    //   return () => clearInterval(interval);
-    // }, []);
-    // seed = `${seed}-${count}`;
-
     const directions = [
       { clip: 'inset(0% 0% 50% 0%)' },
       { clip: 'inset(50% 0% 0% 0%)' },
@@ -176,7 +166,6 @@ export const Asset: React.FC<Props> = React.memo(
     ];
 
     const svgs = useMemo(() => generateSVGs(seed), [seed]);
-
     const ref = useRef(null);
     const isInView = useInView(ref);
 
