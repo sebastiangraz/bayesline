@@ -165,7 +165,7 @@ export const Asset: React.FC<Props> = React.memo(
       { clip: 'inset(0% 0% 0% 50%)' }
     ];
 
-    const svgs = useMemo(() => generateSVGs(seed), [seed]);
+    const svgs = useMemo(() => generateSVGs(seed), [seed]) as SVGAsset[];
     const ref = useRef(null);
     const isInView = useInView(ref);
 
