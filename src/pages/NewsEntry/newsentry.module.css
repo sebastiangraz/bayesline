@@ -170,7 +170,7 @@
 }
 
 span[data-rehype-pretty-code-figure] {
-  background: hsl(var(--background-4));
+  background: var(--background-4);
   border-radius: var(--radius);
   box-shadow: var(--border) var(--foreground-border);
   padding: 0 0.25em;

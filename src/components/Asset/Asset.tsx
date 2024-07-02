@@ -8,7 +8,7 @@ type Props = {
 };
 
 type Theme = {
-  colors: string[];
+  [key: string]: string[];
 };
 
 type SVGAsset = {
@@ -30,7 +30,10 @@ type Subdivision = {
 };
 
 const themes: Theme = {
-  colors: ['var(--accent-1)', 'var(--accent-2)', 'var(--accent-3)', 'var(--foreground)', 'var(--background)']
+  theme1: ['var(--accent-1)', 'var(--foreground)', 'var(--background)', 'var(--background-2)'],
+  theme2: ['var(--accent-2)', 'var(--foreground)', 'var(--background)', 'var(--background-3)'],
+  theme3: ['var(--accent-3)', 'var(--foreground)', 'var(--background-0)', 'var(--background-1)', 'hsl(var(--brand-2))'],
+  theme4: ['var(--background-0)', 'var(--background-1)', 'var(--background-2)']
 };
 
 const visible = [true, true, false];
@@ -38,15 +41,15 @@ const visible = [true, true, false];
 export const Asset: React.FC<Props> = (props) => {
   let { seed } = props;
 
-  //rotate seed every 1 second
-  // const [count, setCount] = useState(0);
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCount((count) => count + 1);
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, []);
-  // seed = `${seed}-${count}`;
+  // rotate seed every 1 second
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  seed = `${seed}-${count}`;
 
   const width = 288;
   const height = 288;
@@ -59,6 +62,7 @@ export const Asset: React.FC<Props> = (props) => {
 
   function createColorGenerator(colors: string | any[], startIndex: number) {
     let index = startIndex;
+
     return function () {
       const color = colors[index];
       index = (index + 1) % colors.length; // Move to the next color cyclically
@@ -70,7 +74,9 @@ export const Asset: React.FC<Props> = (props) => {
     const rng = seedrandom(seed);
 
     let subdivisions = divideSpace(0, 0, width, height, 2, rng);
-    const getColor = createColorGenerator(themes.colors, Math.floor(rng() * themes.colors.length));
+    const getTheme = themes[Object.keys(themes)[Math.floor(rng() * Object.keys(themes).length)]];
+
+    const getColor = createColorGenerator(getTheme, Math.floor(rng() * getTheme.length));
 
     let svgAssets: SVGAsset[] = subdivisions.map((sub) => ({
       src: assets[Math.floor(rng() * assets.length)].path,
@@ -149,8 +155,6 @@ export const Asset: React.FC<Props> = (props) => {
       className={`${style.asset}`}
     >
       {svgs.map((svg, index) => {
-        console.log(svg.fill);
-
         return (
           <g key={`svg-${index}`} style={{ display: svg.visible ? 'block' : 'none' }}>
             <rect
@@ -168,7 +172,7 @@ export const Asset: React.FC<Props> = (props) => {
               x={svg.x}
               y={svg.y}
               viewBox={`0 0 144 144`}
-              className={`${style[svg.fill]}`}
+              className={`${style[`path${index}`]}`}
             >
               {svg.src()}
             </svg>

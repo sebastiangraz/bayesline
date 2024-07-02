@@ -8,12 +8,12 @@
   --brand-1: 322 79% 13%;
   --brand-2: 322 51% 26%;
 
-  --background-0: 41.5 13.2% 19.41%;
-  --background-1: 42 7.95% 34.51%;
-  --background-2: 44 6.85% 57.06%;
-  --background-3: 42.8 10.1% 72.94%;
-  --background-4: 48 12.2% 91.96%;
-  --background-5: 43 5.26% 96.27%;
+  --steel-0: 41.5 13.2% 19.41%;
+  --steel-1: 42 7.95% 34.51%;
+  --steel-2: 44 6.85% 57.06%;
+  --steel-3: 42.8 10.1% 72.94%;
+  --steel-4: 48 12.2% 91.96%;
+  --steel-5: 43 5.26% 96.27%;
 
   /* COLOR USAGE */
   --accent-1: hsl(var(--coral));
@@ -24,8 +24,13 @@
   --foreground-accent: hsl(var(--brand-0) / var(--opacity-6));
   --foreground-border: hsl(var(--brand-0) / var(--opacity-2));
 
-  --background: hsl(var(--background-5) / 1);
-  --background-accent: hsl(var(--background-4) / var(--opacity));
+  --background-0: hsl(var(--steel-0));
+  --background-1: hsl(var(--steel-1));
+  --background-2: hsl(var(--steel-2));
+  --background-3: hsl(var(--steel-3));
+  --background-4: hsl(var(--steel-4));
+  --background: hsl(var(--steel-5));
+  --background-accent: hsl(var(--steel-4) / var(--opacity));
 
   /* SPECIFIC COLOR USAGE */
   --navigation: hsl(0 0% 100% / var(--opacity));
@@ -71,9 +76,9 @@
 [data-theme='dark'] {
   &.theme,
   .theme {
-    --foreground: hsl(var(--background-5));
-    --foreground-accent: hsl(var(--background-5) / var(--opacity-6));
-    --foreground-border: hsl(var(--background-5) / var(--opacity-2));
+    --foreground: hsl(var(--steel-5));
+    --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
+    --foreground-border: hsl(var(--steel-5) / var(--opacity-2));
     --background: hsl(var(--brand-0) / 1);
     --background-accent: hsl(var(--brand-1) / var(--opacity));
     --navigation: hsl(var(--brand-1));
@@ -83,9 +88,9 @@
 [data-theme='accent'] {
   &.theme,
   .theme {
-    --foreground: hsl(var(--background-5));
-    --foreground-accent: hsl(var(--background-5) / var(--opacity-6));
-    --foreground-border: hsl(var(--background-5) / var(--opacity-2));
+    --foreground: hsl(var(--steel-5));
+    --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
+    --foreground-border: hsl(var(--steel-5) / var(--opacity-2));
     --background: hsl(var(--brand-1) / 1);
     --background-accent: hsl(var(--coral) / var(--opacity));
     --navigation: hsl(var(--brand-0));
@@ -95,9 +100,9 @@
 [data-theme='highlight'] {
   &.theme,
   .theme {
-    --background: hsl(var(--background-3) / 1);
-    --background-accent: hsl(var(--background-2) / var(--opacity));
-    --navigation: hsl(var(--background-4) / 1);
+    --background: hsl(var(--steel-3) / 1);
+    --background-accent: hsl(var(--steel-2) / var(--opacity));
+    --navigation: hsl(var(--steel-4) / 1);
   }
 }
 
@@ -348,7 +353,7 @@
   }
 
   html::-webkit-scrollbar-track {
-    background-color: hsl(var(--background-4));
+    background-color: hsl(var(--steel-4));
   }
 
   html::-webkit-scrollbar {
@@ -357,10 +362,10 @@
   }
 
   html::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--background-2));
+    background-color: hsl(var(--steel-2));
   }
 
   html::-webkit-scrollbar-thumb:hover {
-    background-color: hsl(var(--background-1));
+    background-color: hsl(var(--steel-1));
   }
 }
