@@ -76,7 +76,7 @@ export const recursiveDivider = (
   return result;
 };
 
-export const themeClasses: { [key: number]: string } = {
+export const themeClasses: Record<number, string> = {
   0: '',
   1: 'dark',
   2: 'accent',

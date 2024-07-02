@@ -1,17 +1,42 @@
 import style from './home.module.css';
-import { Hero, Button } from '@/components';
-import sebastian from '@/assets/sebastian.jpg';
-import misha from '@/assets/misha.jpg';
-
+import { Hero, Button, Card, Cards, Text } from '@/components';
+import composition from '@/assets/composition.png';
 export function Home() {
   return (
     <>
       <Hero />
       <div className="col">
-        <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-          <pre className="caps case-type">Schedule a Demo</pre>
-        </Button>
+        <Cards>
+          <Card dataTheme={1}>
+            <div className="card-header">
+              <Text.H4>Ultimate flexibility</Text.H4>
+              <Text.Body>
+                Bring your own data, hierarchies, factor exposures, or use our pre-canned and optimized models. Select
+                from industry standard reports, or new ways to look at risk.
+              </Text.Body>
+              <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+                <Text.Caps>Schedule a Demo</Text.Caps>
+              </Button>
+            </div>
+            <img src={composition} />
+          </Card>
+          <Card dataTheme={3}>
+            <div className="card-header">
+              <Text.H4>Compare models</Text.H4>
+              <Text.Body>
+                Run reports in comparison mode, zooming into the relative performance of different models and settings.
+              </Text.Body>
+            </div>
+          </Card>
+          <Card>
+            <div className="card-header">
+              <Text.H4>Automated suggestions</Text.H4>
+              <Text.Body>Seamless tips and approval flows.</Text.Body>
+            </div>
+          </Card>
+        </Cards>
       </div>
+
       {/* <Box bg="primary" className={`z-1`}>
         <Flex column between className={`e-3 ${style.sidebar}`}>
           <div>
