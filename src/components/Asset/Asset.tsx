@@ -101,7 +101,6 @@ export const Asset: React.FC<Props> = React.memo(
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="xMidYMid meet"
         className={`${style.asset}`}
-        style={{ boxShadow: 'var(--shadow)' }}
       >
         {svgs.map((svg, index) => {
           const directions = directionsArr[index % directionsArr.length];

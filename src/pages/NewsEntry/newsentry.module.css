@@ -134,6 +134,7 @@
   grid-template-columns: subgrid;
   svg,
   img {
+    box-shadow: var(--shadow);
     grid-column: start / span 9;
     width: 100%;
   }
