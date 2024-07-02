@@ -37,7 +37,6 @@ const childVariant = {
   }: {
     random: {
       clip: string;
-      endClip: string;
     };
   }) => ({
     clipPath: random.clip
@@ -46,7 +45,7 @@ const childVariant = {
     clipPath: 'inset(0% 0% 0% 0%)',
     transition: {
       delay: 0.05 * i,
-      duration: 0.6,
+      duration: 1,
       ease: [1, 0, 0.17, 1]
     }
   })
@@ -158,7 +157,7 @@ const generateSVGs = (seed: string) => {
 
 export const Asset: React.FC<Props> = React.memo(
   ({ seed }) => {
-    const directions = [
+    const directionsArr = [
       { clip: 'inset(0% 0% 50% 0%)' },
       { clip: 'inset(50% 0% 0% 0%)' },
       { clip: 'inset(0% 50% 0% 0%)' },
@@ -167,7 +166,10 @@ export const Asset: React.FC<Props> = React.memo(
 
     const svgs = useMemo(() => generateSVGs(seed), [seed]) as SVGAsset[];
     const ref = useRef(null);
-    const isInView = useInView(ref);
+    const isInView = useInView(ref, {
+      // once: true,
+      amount: 'some'
+    });
 
     return (
       <svg
@@ -179,12 +181,13 @@ export const Asset: React.FC<Props> = React.memo(
         style={{ boxShadow: 'var(--shadow)' }}
       >
         {svgs.map((svg, index) => {
+          const directions = directionsArr[index % directionsArr.length];
           return (
             <motion.g
               initial="hidden"
               variants={childVariant}
               animate={isInView ? 'show' : 'hidden'}
-              custom={{ i: index, random: directions[index % directions.length] }}
+              custom={{ i: index, random: directions }}
               key={`svg-${index}`}
               style={{ display: svg.visible ? 'block' : 'none' }}
             >
