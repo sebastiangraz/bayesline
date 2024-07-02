@@ -2173,7 +2173,7 @@ export const assets: AssetObject[] = [
     name: 'illustration-2',
     path: () => (
       <svg width="144" height="144" fill="none">
-        <g stroke="currentColor" opacity=".56">
+        <g stroke="currentColor">
           <path
             d="m14.62 12.45-2.17 2.17m8.27-2.23-2.06 2.3m8.14-2.36-1.9 2.41m7.97-2.47-1.74 2.54m7.79-2.61-1.54 2.67m7.59-2.72-1.32 2.78M51 12.1l-1.07 2.88M57 12.05l-.78 2.97m6.78-3-.47 3.04"
             opacity=".56"

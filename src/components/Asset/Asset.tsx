@@ -38,14 +38,14 @@ const themes: Theme = {
   ],
   theme2: [
     { fg: 'var(--accent-2)', bg: 'hsl(var(--brand-2))' },
-    { fg: 'hsl(var(--brand-2))', bg: 'hsl(var(--brand-1))' },
+    { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-1))' },
     { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-1))' },
     { fg: 'hsl(var(--brand-2))', bg: 'var(--accent-2)' }
   ],
   theme3: [
-    { fg: 'var(--accent-1)', bg: 'var(--background-0)' },
+    { fg: 'var(--background)', bg: 'var(--background-0)' },
     { fg: 'var(--accent-2)', bg: 'var(--background-1)' },
-    { fg: 'var(--accent-1)', bg: 'var(--background-2)' }
+    { fg: 'var(--background-4)', bg: 'var(--background-2)' }
   ]
 };
 const visible = [true, false];
@@ -58,7 +58,7 @@ export const Asset: React.FC<Props> = (props) => {
   // useEffect(() => {
   //   const interval = setInterval(() => {
   //     setCount((count) => count + 1);
-  //   }, 300);
+  //   }, 700);
   //   return () => clearInterval(interval);
   // }, []);
   // seed = `${seed}-${count}`;
@@ -121,7 +121,7 @@ export const Asset: React.FC<Props> = (props) => {
       return [];
     }
 
-    let sizes = [192, 96, 48]; // Size options
+    let sizes = [192, 96, 48];
     let result = [] as Subdivision[];
 
     for (let size of sizes) {
@@ -136,15 +136,13 @@ export const Asset: React.FC<Props> = (props) => {
               y: y + j * size,
               width: size,
               height: size,
-              visible: true // Default visibility is true
+              visible: true
             });
           }
         }
 
         if (size !== sizes[0]) {
-          // Set visibility randomly for non-largest divisions
           result.forEach((sub) => {
-            // Use the RNG to decide visibility without altering dimensions
             sub.visible = visible[Math.floor(rng() * visible.length)];
           });
         }
