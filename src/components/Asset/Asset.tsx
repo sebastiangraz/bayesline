@@ -9,17 +9,6 @@ type Props = {
   seed: string;
 };
 
-type SVGAsset = {
-  src: () => JSX.Element;
-  width: number;
-  height: number;
-  x: number;
-  y: number;
-  visible: boolean;
-  fg: string;
-  bg: string;
-};
-
 const childVariant = {
   hidden: ({
     random
@@ -98,7 +87,7 @@ export const Asset: React.FC<Props> = React.memo(
       { clip: 'inset(0% 0% 0% 50%)' }
     ];
 
-    const svgs = useMemo(() => generateSVGs(seed), [seed]) as SVGAsset[];
+    const svgs = useMemo(() => generateSVGs(seed).filter((svg) => svg.visible), [seed]);
     const ref = useRef(null);
     const isInView = useInView(ref, {
       once: true,
@@ -123,7 +112,6 @@ export const Asset: React.FC<Props> = React.memo(
               animate={isInView ? 'show' : 'hidden'}
               custom={{ i: index, random: directions }}
               key={`svg-${index}`}
-              style={{ display: svg.visible ? 'block' : 'none' }}
             >
               <rect
                 x={svg.x}
