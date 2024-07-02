@@ -25,11 +25,13 @@ function tableOfContents(toc: any) {
 
 export function NewsEntry() {
   const { post } = Route.useLoaderData();
-  const { Page, title, excerpt, published, toc, thumbnail } = post;
+  const { Page, title, excerpt, published, toc, thumbnail, seed } = post;
   const date = readableDate(published);
   const tableOfContentsComponent = tableOfContents(toc);
+  const seedValue = seed || `${title}-${published}`;
+
   function Thumbnail() {
-    return thumbnail ? <img src={thumbnail} /> : <Asset seed={`${title}-${published}`} />;
+    return thumbnail ? <img src={thumbnail} /> : <Asset seed={seedValue} />;
   }
 
   return (

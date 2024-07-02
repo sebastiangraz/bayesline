@@ -17,6 +17,7 @@ export const entryMeta = globEntries.map(([url, module]) => {
   const published = module.frontmatter?.published;
   const toc = module.tableOfContents as Toc;
   const thumbnail = module.frontmatter?.thumbnail;
+  const seed = module.frontmatter?.seed;
 
   return {
     title,
@@ -28,6 +29,7 @@ export const entryMeta = globEntries.map(([url, module]) => {
     published,
     toc,
     thumbnail,
+    seed,
     id: `${fileName}`
   };
 });

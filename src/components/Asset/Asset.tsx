@@ -53,6 +53,16 @@ const visible = [true, false];
 export const Asset: React.FC<Props> = (props) => {
   let { seed } = props;
 
+  // //rotate seed every 1 second
+  // const [count, setCount] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCount((count) => count + 1);
+  //   }, 300);
+  //   return () => clearInterval(interval);
+  // }, []);
+  // seed = `${seed}-${count}`;
+
   const width = 288;
   const height = 288;
 

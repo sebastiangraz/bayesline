@@ -2,5 +2,9 @@
   display: flex;
 }
 .foregroundSvg {
-  fill: currentColor;
+  & > svg {
+    transform: scale(2);
+    position: absolute;
+    display: block;
+  }
 }

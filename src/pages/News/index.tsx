@@ -19,12 +19,13 @@ export function News() {
       </div>
 
       <ul className={`col  ${style.ul}`}>
-        {entryByDate.map(({ title, fileName, excerpt, theme, featured, published, thumbnail }) => {
+        {entryByDate.map(({ title, fileName, excerpt, theme, featured, published, thumbnail, seed }) => {
           const themeValue = themeClasses[theme] || '';
           const date = readableDate(published);
+          const seedValue = seed || `${title}-${published}`;
 
           function Thumbnail() {
-            return thumbnail ? <img src={thumbnail} /> : <Asset seed={`${title}-${published}`} />;
+            return thumbnail ? <img src={thumbnail} /> : <Asset seed={seedValue} />;
           }
 
           return (

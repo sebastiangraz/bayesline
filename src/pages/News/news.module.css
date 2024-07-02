@@ -41,7 +41,7 @@
 
 .thumbnail {
   background: var(--background-accent);
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
   grid-column: 1 / 4;
   width: 100%;
   svg,
