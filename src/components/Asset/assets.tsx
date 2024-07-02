@@ -2338,3 +2338,26 @@ export const assets: AssetObject[] = [
     )
   }
 ];
+
+type Theme = {
+  [key: string]: { fg: string; bg: string }[];
+};
+
+export const themes: Theme = {
+  theme1: [
+    { fg: 'var(--accent-3)', bg: 'var(--accent-1)' },
+    { fg: 'var(--accent-1)', bg: 'var(--accent-3)' },
+    { fg: 'var(--accent-1)', bg: 'hsl(var(--brand-0))' }
+  ],
+  theme2: [
+    { fg: 'var(--accent-2)', bg: 'hsl(var(--brand-2))' },
+    { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-1))' },
+    { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-1))' },
+    { fg: 'hsl(var(--brand-2))', bg: 'var(--accent-2)' }
+  ],
+  theme3: [
+    { fg: 'var(--background)', bg: 'var(--background-0)' },
+    { fg: 'var(--accent-2)', bg: 'var(--background-1)' },
+    { fg: 'var(--background-4)', bg: 'var(--background-2)' }
+  ]
+};
