@@ -42,11 +42,18 @@ const childVariant = {
   }
 };
 
-const createColorGenerator = (colors: { fg: string; bg: string }[], startIndex: number) => {
-  let index = startIndex;
-  return function () {
-    const colorPair = colors[index];
-    index = (index + 1) % colors.length;
+const createColorGenerator = (colors: string | any[], subdivisions: { visible: boolean }[]) => {
+  let index = 0;
+  let colorIndex = 0;
+
+  return () => {
+    while (!subdivisions[index].visible && index < subdivisions.length - 1) {
+      index++;
+    }
+
+    const colorPair = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length;
+    index++;
     return colorPair;
   };
 };
@@ -59,23 +66,25 @@ const generateSVGs = (seed: string) => {
   const themeKeys = Object.keys(themes);
   const selectedTheme = themes[themeKeys[Math.floor(rng() * themeKeys.length)]];
 
-  let getColor = createColorGenerator(selectedTheme, Math.floor(rng() * selectedTheme.length));
-
   let subdivisions = recursiveDivider(0, 0, width, height, 2, rng);
 
-  return subdivisions.map((sub) => {
-    const colorPair = getColor();
-    return {
-      src: assets[Math.floor(rng() * assets.length)].path,
-      width: sub.width,
-      height: sub.height,
-      x: sub.x,
-      y: sub.y,
-      fg: colorPair.fg,
-      bg: colorPair.bg,
-      visible: sub.visible
-    };
-  });
+  let getColor = createColorGenerator(selectedTheme, subdivisions);
+
+  return subdivisions
+    .filter((sub) => sub.visible)
+    .map((sub) => {
+      const colorPair = getColor();
+      return {
+        src: assets[Math.floor(rng() * assets.length)].path,
+        width: sub.width,
+        height: sub.height,
+        x: sub.x,
+        y: sub.y,
+        fg: colorPair.fg,
+        bg: colorPair.bg,
+        visible: sub.visible
+      };
+    });
 };
 
 export const Asset: React.FC<Props> = React.memo(
@@ -88,6 +97,7 @@ export const Asset: React.FC<Props> = React.memo(
     ];
 
     const svgs = useMemo(() => generateSVGs(seed).filter((svg) => svg.visible), [seed]);
+
     const ref = useRef(null);
     const isInView = useInView(ref, {
       once: true,
@@ -119,7 +129,7 @@ export const Asset: React.FC<Props> = React.memo(
                 height={svg.height}
                 fill={svg.bg}
                 shapeRendering="crispEdges"
-              ></rect>
+              />
               <svg
                 width={svg.width}
                 height={svg.height}
@@ -146,11 +156,11 @@ export const Asset: React.FC<Props> = React.memo(
 {
   //rotate seed every 1 second
   /*
-    const [count, setCount] = useState(0);
-    useEffect(() => {
+    const [count, setCount] = React.useState(Math.floor(Math.random() * 1000));
+    React.useEffect(() => {
       const interval = setInterval(() => {
         setCount((count) => count + 1);
-      }, 700);
+      }, 1500);
       return () => clearInterval(interval);
     }, []);
     seed = `${seed}-${count}`;

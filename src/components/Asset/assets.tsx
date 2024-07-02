@@ -2356,7 +2356,7 @@ export const themes: Theme = {
     { fg: 'hsl(var(--brand-2))', bg: 'var(--accent-2)' }
   ],
   theme3: [
-    { fg: 'var(--background)', bg: 'var(--background-0)' },
+    { fg: 'hsl(var(--steel-5))', bg: 'var(--background-0)' },
     { fg: 'var(--accent-2)', bg: 'var(--background-1)' },
     { fg: 'var(--background-4)', bg: 'var(--background-2)' }
   ]
