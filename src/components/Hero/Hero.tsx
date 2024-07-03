@@ -1,38 +1,60 @@
 import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Flex, Text } from '@/components';
 import hero from '@/assets/homepage-hero.png';
+import { useRef } from 'react';
 
-import { ReactP5Wrapper } from '@p5-wrapper/react';
+const VectorField = () => {
+  const size = 288; // Size of the SVG canvas
+  const numArrows = 10; // Number of arrows along one dimension
+  const arrowSize = size / numArrows; // Size of each arrow space
 
-function sketch(p5: any) {
-  //set padding for canvas
-  p5.setup = () => {
-    p5.createCanvas(184, 184, p5.WEBGL);
-    p5.colorMode(p5.HSB);
-  };
-  //set variable for spacing
-  let spacing = 12;
+  const mouseX = useMotionValue(size / 2);
+  const mouseY = useMotionValue(size / 2);
+  const svgRef = useRef<SVGSVGElement>(null);
 
-  p5.draw = () => {
-    p5.background(255, 255, 255, 0);
-    p5.stroke(42.8, 10, 72);
-    p5.strokeWeight(1.25);
-    p5.noFill();
-    p5.translate(-p5.width / 2 + 8, -p5.height / 2 + 8);
-    p5.translate(0, 0);
-    for (let x = 4; x < p5.width; x += spacing) {
-      for (let y = 4; y < p5.height; y += spacing) {
-        p5.push();
-        p5.translate(x, y);
-        p5.rotate(p5.atan2(p5.mouseY - y, p5.mouseX - x));
-        p5.line(6, 3, 0, 0); // (x1, y1, x2, y2)
-        p5.pop();
-      }
+  const handleMouseMove = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    const rect = svgRef.current!.getBoundingClientRect();
+    if (rect) {
+      mouseX.set(event.clientX - rect.left);
+      mouseY.set(event.clientY - rect.top);
     }
   };
-}
+
+  const arrows = Array.from({ length: numArrows * numArrows }, (_, index) => {
+    const x = (index % numArrows) * arrowSize;
+    const y = Math.floor(index / numArrows) * arrowSize;
+
+    const angle = useTransform<number, number>([mouseX, mouseY], ([latestX, latestY]) => {
+      return Math.atan2(latestY - y, latestX - x) * (180 / Math.PI);
+    });
+    return { x, y, angle };
+  });
+
+  return (
+    <svg ref={svgRef} width={size} height={size} onMouseMove={handleMouseMove}>
+      {arrows.map((arrow, index) => (
+        <motion.line
+          key={index}
+          x1={arrow.x}
+          y1={arrow.y}
+          x2={useTransform(arrow.angle, (a) => arrow.x + arrowSize * Math.cos((a * Math.PI) / 180))}
+          y2={useTransform(arrow.angle, (a) => arrow.y + arrowSize * Math.sin((a * Math.PI) / 180))}
+          stroke="var(--background-3)"
+          strokeWidth="1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.2,
+            delay: index * 0.01
+          }}
+        />
+      ))}
+    </svg>
+  );
+};
+
 interface HeroProps {
   title?: string;
 }
@@ -62,7 +84,7 @@ export const Hero = (props: HeroProps) => {
       </div>
       <div className={`col ${style.ui}`}>
         <div className={`${style.cue}`}>
-          <ReactP5Wrapper sketch={sketch} />
+          <VectorField />
         </div>
         <img src={hero} alt="hero" />
       </div>
