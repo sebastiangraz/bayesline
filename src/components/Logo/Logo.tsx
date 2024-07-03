@@ -50,7 +50,7 @@ export const Logo = ({ className = '', type }: LogoProps) => {
         className={`${style.type}`}
         variants={parentVariant}
         initial="hidden"
-        animate={type ? 'hidden' : 'show'}
+        animate={type ? 'show' : 'hidden'}
         preserveAspectRatio="xMinYMid meet"
         viewBox="0 0 188 28"
         fill="none"

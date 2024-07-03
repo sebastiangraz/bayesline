@@ -1,6 +1,11 @@
-.cardField {
-  grid-area: 2/1;
-}
 .cardImage {
   grid-area: 2/1;
+  pointer-events: none;
+}
+
+.cardField {
+  grid-area: 2/1;
+  color: var(--background);
+  place-self: end center;
+  margin-left: -4em;
 }

@@ -1,3 +1,4 @@
 .vectorfield {
   display: grid;
+  overflow: visible;
 }

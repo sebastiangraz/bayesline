@@ -21,13 +21,14 @@ export const Navigation = () => {
       observer.observe(headerRef.current as HTMLDivElement);
     })();
   }, []);
+
   return (
     <>
       <nav ref={headerRef} className={`theme ${style.navigation}`}>
         <div className={`${style.logowrapper}`}>
           <Link to="/" className={`${style.logo} ${style.link}`}>
             <div className={style.logosentinel}>
-              <Logo type={isSticky} />
+              <Logo type={!isSticky} />
             </div>
           </Link>
         </div>

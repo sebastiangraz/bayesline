@@ -3,7 +3,7 @@ import { useCallback, useRef } from 'react';
 import style from './vectorfield.module.css';
 
 interface VectorFieldProps {
-  variant?: 'swirl' | 'straight' | 'radial';
+  variant?: 'swirl' | 'straight' | 'radial' | 'checker';
   className?: string;
 }
 
@@ -23,7 +23,7 @@ const arrowVariants = {
 
 export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) => {
   const svgSize = 192; // Size of the SVG canvas
-  const svgPadding = 10; // Padding around the canvas
+  const svgPadding = 6; // Padding around the canvas
   const size = svgSize - svgPadding * 2; // Size of the vector field
 
   const numArrows = 14; // Number of arrows along one dimension
@@ -56,6 +56,8 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
       const baseAngle = Math.atan2(dy, dx);
 
+      const centerX = numArrows / 2;
+      const centerY = numArrows / 2;
       switch (variant) {
         case 'swirl':
           bufferVariable = dist / 2;
@@ -67,6 +69,10 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
         case 'radial':
           bufferVariable = 100 - Math.min(100, dist);
+          break;
+
+        case 'checker':
+          bufferVariable = ((index % numArrows) * 45 + Math.floor(index / numArrows) * 45) % 90;
           break;
 
         default:
@@ -83,11 +89,11 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
     const x2 = useSpring(
       useTransform(angle, (a) => x + arrowSize * Math.cos((a * Math.PI) / 180)),
-      { stiffness: 400, damping: 20 }
+      { stiffness: 400, damping: 20, mass: 0.1 }
     );
     const y2 = useSpring(
       useTransform(angle, (a) => y + arrowSize * Math.sin((a * Math.PI) / 180)),
-      { stiffness: 400, damping: 20 }
+      { stiffness: 400, damping: 20, mass: 0.1 }
     );
 
     const radialIndex = Math.floor((225 + angle.get()) % 180);
@@ -107,7 +113,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
           x2={arrow.x2}
           y2={arrow.y2}
           stroke="currentColor"
-          strokeWidth="1"
+          strokeWidth={1.33}
           variants={arrowVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}

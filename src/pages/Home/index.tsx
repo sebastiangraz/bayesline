@@ -36,7 +36,7 @@ export function Home() {
               </Text.Body>
             </div>
             <img src={sidebar} className={style.cardImage} />
-            <VectorField variant="radial" className={style.cardField} />
+            <VectorField variant="checker" className={style.cardField} />
           </Card>
           <Card>
             <div className="card-header">
