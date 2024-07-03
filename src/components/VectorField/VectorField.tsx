@@ -56,8 +56,6 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
       const baseAngle = Math.atan2(dy, dx);
 
-      const centerX = numArrows / 2;
-      const centerY = numArrows / 2;
       switch (variant) {
         case 'swirl':
           bufferVariable = dist / 2;
