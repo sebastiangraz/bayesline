@@ -18,7 +18,7 @@ function sketch(p5: any) {
   p5.draw = () => {
     p5.background(255, 255, 255, 0);
     p5.stroke(42.8, 10, 72);
-    p5.strokeWeight(1);
+    p5.strokeWeight(1.25);
     p5.noFill();
     p5.translate(-p5.width / 2 + 8, -p5.height / 2 + 8);
     p5.translate(0, 0);
@@ -27,7 +27,7 @@ function sketch(p5: any) {
         p5.push();
         p5.translate(x, y);
         p5.rotate(p5.atan2(p5.mouseY - y, p5.mouseX - x));
-        p5.line(4, 6, 0, 0); // (x1, y1, x2, y2)
+        p5.line(6, 3, 0, 0); // (x1, y1, x2, y2)
         p5.pop();
       }
     }
