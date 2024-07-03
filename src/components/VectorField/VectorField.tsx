@@ -6,6 +6,20 @@ interface VectorFieldProps {
   variant: 'swirl' | 'straight';
 }
 
+const arrowVariants = {
+  hidden: {
+    scale: 0
+  },
+
+  visible: ({ i }: { i: number }) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.1 + i * 0.015
+    }
+  })
+};
+
 export const VectorField = () => {
   const svgSize = 192; // Size of the SVG canvas
   const svgPadding = 10; // Padding around the canvas
@@ -52,13 +66,16 @@ export const VectorField = () => {
       { stiffness: 400, damping: 20 }
     );
 
-    return { x, y, x2, y2 };
+    const radialIndex = Math.floor((angle.get() + 360) % 360);
+
+    return { x, y, x2, y2, angle: radialIndex };
   });
 
   return (
     <svg ref={svgRef} width={svgSize} height={svgSize} onMouseMove={handleMouseMove}>
       {arrows.map((arrow, index) => (
         <motion.line
+          vectorEffect={'non-scaling-stroke' as any}
           key={index}
           x1={arrow.x}
           y1={arrow.y}
@@ -66,12 +83,10 @@ export const VectorField = () => {
           y2={arrow.y2}
           stroke="var(--background-3)"
           strokeWidth="1"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.2 + index * 0.02
-            // delay: index
-          }}
+          variants={arrowVariants}
+          initial="hidden"
+          animate="visible"
+          custom={{ i: arrow.angle }}
         />
       ))}
     </svg>
