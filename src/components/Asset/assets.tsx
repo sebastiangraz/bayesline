@@ -1984,181 +1984,181 @@ export const assets: AssetObject[] = [
     name: 'illustration-3',
     path: () => (
       <svg width="144" height="144" fill="none">
-        <g stroke="currentColor" stroke-linecap="round" stroke-width="2" clip-path="url(#a)">
+        <g stroke="currentColor" stroke-linecap="round" stroke-width="2">
           <path d="M143.82 143.82s0 0 0 0m0 0s0 0 0 0" />
-          <path d="M143.82 143.82s0 0 0 0" opacity=".88" />
+          <path d="M143.82 143.82s0 0 0 0" stroke-opacity=".88" />
           <path d="M143.82 143.82s0 0 0 0m0 0s0 0 0 0" />
-          <path d="M143.82 143.82s0 0 0 0" opacity=".56" />
+          <path d="M143.82 143.82s0 0 0 0" stroke-opacity=".56" />
           <path d="M143.82 143.82s0 0 0 0" />
-          <path d="M142.87 137.65s0 0 0 0" opacity=".24" />
-          <path d="M140.11 138.8s0 0 0 0" opacity=".56" />
-          <path d="M138.2 141.1s0 0 0 0" opacity=".72" />
+          <path d="M142.87 137.65s0 0 0 0" stroke-opacity=".24" />
+          <path d="M140.11 138.8s0 0 0 0" stroke-opacity=".56" />
+          <path d="M138.2 141.1s0 0 0 0" stroke-opacity=".72" />
           <path d="M137.58 144.02s0 0 0 0" />
-          <path d="M142.4 131.42s0 0 0 0" opacity=".08" />
-          <path d="M133.53 136.77s0 0 0 0" opacity=".88" />
-          <path d="M131.96 139.95s0 0 0 0" opacity=".56" />
+          <path d="M142.4 131.42s0 0 0 0" stroke-opacity=".08" />
+          <path d="M133.53 136.77s0 0 0 0" stroke-opacity=".88" />
+          <path d="M131.96 139.95s0 0 0 0" stroke-opacity=".56" />
           <path d="M131.35 143.45s0 0 0 0" />
-          <path d="M142.18 125.17s0 0 0 0" opacity=".72" />
-          <path d="M138.21 125.96s0 0 0 0" opacity=".24" />
+          <path d="M142.18 125.17s0 0 0 0" stroke-opacity=".72" />
+          <path d="M138.21 125.96s0 0 0 0" stroke-opacity=".24" />
           <path d="M131.23 129.97s0 0 0 0m-2.68 3.03s0 0 0 0m-1.97 3.53s0 0 0 0m-1.16 3.87s0 0 0 0m-.31 4.04s0 0 0 0" />
-          <path d="M138.56 119.42s0 0 0 0" opacity=".24" />
-          <path d="M125.22 127.18s0 0 0 0" opacity=".56" />
-          <path d="M120.99 133.74s0 0 0 0" opacity=".72" />
-          <path d="M119 141.29s0 0 0 0" opacity=".56" />
+          <path d="M138.56 119.42s0 0 0 0" stroke-opacity=".24" />
+          <path d="M125.22 127.18s0 0 0 0" stroke-opacity=".56" />
+          <path d="M120.99 133.74s0 0 0 0" stroke-opacity=".72" />
+          <path d="M119 141.29s0 0 0 0" stroke-opacity=".56" />
           <path d="M142.24 112.66s0 0 0 0" />
-          <path d="M137.62 113.25s0 0 0 0" opacity=".08" />
+          <path d="M137.62 113.25s0 0 0 0" stroke-opacity=".08" />
           <path d="M133.13 114.51s0 0 0 0" />
-          <path d="M114.24 133.9s0 0 0 0" opacity=".56" />
-          <path d="M113.1 138.42s0 0 0 0" opacity=".72" />
-          <path d="M112.63 143.06s0 0 0 0" opacity=".88" />
+          <path d="M114.24 133.9s0 0 0 0" stroke-opacity=".56" />
+          <path d="M113.1 138.42s0 0 0 0" stroke-opacity=".72" />
+          <path d="M112.63 143.06s0 0 0 0" stroke-opacity=".88" />
           <path d="M143.32 106.39s0 0 0 0" />
-          <path d="M138.12 106.82s0 0 0 0" opacity=".56" />
-          <path d="M133.02 107.98s0 0 0 0" opacity=".24" />
-          <path d="M128.14 109.83s0 0 0 0" opacity=".72" />
-          <path d="M123.56 112.34s0 0 0 0" opacity=".24" />
-          <path d="M112.5 123.3s0 0 0 0m-2.54 4.56s0 0 0 0" opacity=".08" />
-          <path d="M108.06 132.73s0 0 0 0" opacity=".24" />
-          <path d="M106.87 137.81s0 0 0 0" opacity=".56" />
-          <path d="M106.4 143.01s0 0 0 0" opacity=".88" />
+          <path d="M138.12 106.82s0 0 0 0" stroke-opacity=".56" />
+          <path d="M133.02 107.98s0 0 0 0" stroke-opacity=".24" />
+          <path d="M128.14 109.83s0 0 0 0" stroke-opacity=".72" />
+          <path d="M123.56 112.34s0 0 0 0" stroke-opacity=".24" />
+          <path d="M112.5 123.3s0 0 0 0m-2.54 4.56s0 0 0 0" stroke-opacity=".08" />
+          <path d="M108.06 132.73s0 0 0 0" stroke-opacity=".24" />
+          <path d="M106.87 137.81s0 0 0 0" stroke-opacity=".56" />
+          <path d="M106.4 143.01s0 0 0 0" stroke-opacity=".88" />
           <path d="M140.08 100.3s0 0 0 0" />
-          <path d="M134.54 101.14s0 0 0 0" opacity=".88" />
-          <path d="M129.16 102.68s0 0 0 0" opacity=".08" />
-          <path d="M124.02 104.9s0 0 0 0m-4.82 2.84s0 0 0 0m-4.4 3.45s0 0 0 0" opacity=".56" />
-          <path d="M107.47 119.61s0 0 0 0" opacity=".08" />
+          <path d="M134.54 101.14s0 0 0 0" stroke-opacity=".88" />
+          <path d="M129.16 102.68s0 0 0 0" stroke-opacity=".08" />
+          <path d="M124.02 104.9s0 0 0 0m-4.82 2.84s0 0 0 0m-4.4 3.45s0 0 0 0" stroke-opacity=".56" />
+          <path d="M107.47 119.61s0 0 0 0" stroke-opacity=".08" />
           <path d="M100.27 140.57s0 0 0 0" />
-          <path d="M144.96 93.92s0 0 0 0" opacity=".88" />
-          <path d="M140.28 94.03s0 0 0 0" opacity=".56" />
-          <path d="M135.63 94.58s0 0 0 0" opacity=".72" />
-          <path d="M131.06 95.57s0 0 0 0m-4.46 1.4s0 0 0 0" opacity=".56" />
-          <path d="M122.28 98.8s0 0 0 0" opacity=".72" />
-          <path d="M114.26 103.6s0 0 0 0m-3.63 2.94s0 0 0 0" opacity=".24" />
+          <path d="M144.96 93.92s0 0 0 0" stroke-opacity=".88" />
+          <path d="M140.28 94.03s0 0 0 0" stroke-opacity=".56" />
+          <path d="M135.63 94.58s0 0 0 0" stroke-opacity=".72" />
+          <path d="M131.06 95.57s0 0 0 0m-4.46 1.4s0 0 0 0" stroke-opacity=".56" />
+          <path d="M122.28 98.8s0 0 0 0" stroke-opacity=".72" />
+          <path d="M114.26 103.6s0 0 0 0m-3.63 2.94s0 0 0 0" stroke-opacity=".24" />
           <path d="M107.28 109.81s0 0 0 0m-3.02 3.57s0 0 0 0" />
-          <path d="M101.58 117.22s0 0 0 0" opacity=".24" />
-          <path d="M99.28 121.3s0 0 0 0m-3.42 8.7s0 0 0 0m-1.09 4.55s0 0 0 0" opacity=".56" />
+          <path d="M101.58 117.22s0 0 0 0" stroke-opacity=".24" />
+          <path d="M99.28 121.3s0 0 0 0m-3.42 8.7s0 0 0 0m-1.09 4.55s0 0 0 0" stroke-opacity=".56" />
           <path d="M93.9 143.85s0 0 0 0" />
-          <path d="M144.75 87.67s0 0 0 0" opacity=".08" />
-          <path d="M140.05 87.8s0 0 0 0" opacity=".72" />
-          <path d="M135.38 88.3s0 0 0 0" opacity=".88" />
-          <path d="M130.76 89.2s0 0 0 0" opacity=".24" />
+          <path d="M144.75 87.67s0 0 0 0" stroke-opacity=".08" />
+          <path d="M140.05 87.8s0 0 0 0" stroke-opacity=".72" />
+          <path d="M135.38 88.3s0 0 0 0" stroke-opacity=".88" />
+          <path d="M130.76 89.2s0 0 0 0" stroke-opacity=".24" />
           <path d="M126.24 90.49s0 0 0 0" />
-          <path d="M121.84 92.15s0 0 0 0" opacity=".56" />
+          <path d="M121.84 92.15s0 0 0 0" stroke-opacity=".56" />
           <path d="M117.59 94.17s0 0 0 0" />
-          <path d="M113.53 96.54s0 0 0 0" opacity=".08" />
-          <path d="M109.68 99.24s0 0 0 0" opacity=".72" />
-          <path d="M102.72 105.56s0 0 0 0m-3.06 3.57s0 0 0 0m-2.74 3.82s0 0 0 0" opacity=".56" />
-          <path d="M94.5 116.98s0 0 0 0" opacity=".24" />
-          <path d="M92.42 121.2s0 0 0 0" opacity=".08" />
+          <path d="M113.53 96.54s0 0 0 0" stroke-opacity=".08" />
+          <path d="M109.68 99.24s0 0 0 0" stroke-opacity=".72" />
+          <path d="M102.72 105.56s0 0 0 0m-3.06 3.57s0 0 0 0m-2.74 3.82s0 0 0 0" stroke-opacity=".56" />
+          <path d="M94.5 116.98s0 0 0 0" stroke-opacity=".24" />
+          <path d="M92.42 121.2s0 0 0 0" stroke-opacity=".08" />
           <path d="M90.71 125.58s0 0 0 0m-2.3 9.12s0 0 0 0" />
-          <path d="M137.19 81.78s0 0 0 0" opacity=".08" />
-          <path d="M129.3 83.14s0 0 0 0" opacity=".72" />
+          <path d="M137.19 81.78s0 0 0 0" stroke-opacity=".08" />
+          <path d="M129.3 83.14s0 0 0 0" stroke-opacity=".72" />
           <path d="M121.67 85.5s0 0 0 0" />
-          <path d="M114.39 88.8s0 0 0 0m-6.79 4.22s0 0 0 0" opacity=".56" />
+          <path d="M114.39 88.8s0 0 0 0m-6.79 4.22s0 0 0 0" stroke-opacity=".56" />
           <path d="M95.9 103.87s0 0 0 0" />
-          <path d="M91.18 110.33s0 0 0 0" opacity=".56" />
-          <path d="M87.33 117.33s0 0 0 0m-4.87 15.2s0 0 0 0" opacity=".08" />
-          <path d="M144.74 75.2s0 0 0 0" opacity=".56" />
-          <path d="M139.95 75.3s0 0 0 0" opacity=".08" />
-          <path d="M135.18 75.73s0 0 0 0" opacity=".88" />
-          <path d="M130.45 76.5s0 0 0 0" opacity=".24" />
+          <path d="M91.18 110.33s0 0 0 0" stroke-opacity=".56" />
+          <path d="M87.33 117.33s0 0 0 0m-4.87 15.2s0 0 0 0" stroke-opacity=".08" />
+          <path d="M144.74 75.2s0 0 0 0" stroke-opacity=".56" />
+          <path d="M139.95 75.3s0 0 0 0" stroke-opacity=".08" />
+          <path d="M135.18 75.73s0 0 0 0" stroke-opacity=".88" />
+          <path d="M130.45 76.5s0 0 0 0" stroke-opacity=".24" />
           <path d="M125.78 77.6s0 0 0 0" />
-          <path d="M121.2 79.02s0 0 0 0" opacity=".24" />
+          <path d="M121.2 79.02s0 0 0 0" stroke-opacity=".24" />
           <path d="M116.74 80.75s0 0 0 0" />
-          <path d="M112.41 82.8s0 0 0 0" opacity=".08" />
-          <path d="M108.23 85.14s0 0 0 0" opacity=".24" />
+          <path d="M112.41 82.8s0 0 0 0" stroke-opacity=".08" />
+          <path d="M108.23 85.14s0 0 0 0" stroke-opacity=".24" />
           <path d="M100.41 90.66s0 0 0 0m-6.98 6.56s0 0 0 0" />
-          <path d="M90.3 100.85s0 0 0 0" opacity=".24" />
+          <path d="M90.3 100.85s0 0 0 0" stroke-opacity=".24" />
           <path d="M87.44 104.69s0 0 0 0" />
-          <path d="M84.85 108.71s0 0 0 0" opacity=".08" />
+          <path d="M84.85 108.71s0 0 0 0" stroke-opacity=".08" />
           <path d="M82.54 112.91s0 0 0 0" />
-          <path d="M80.53 117.26s0 0 0 0" opacity=".08" />
+          <path d="M80.53 117.26s0 0 0 0" stroke-opacity=".08" />
           <path d="M78.84 121.74s0 0 0 0m-1.39 4.59s0 0 0 0M76.4 131s0 0 0 0m-.73 4.74s0 0 0 0" />
-          <path d="M144.1 68.95s0 0 0 0" opacity=".88" />
+          <path d="M144.1 68.95s0 0 0 0" stroke-opacity=".88" />
           <path d="M139.21 69.1s0 0 0 0" />
-          <path d="M134.33 69.55s0 0 0 0" opacity=".24" />
-          <path d="M129.5 70.33s0 0 0 0" opacity=".56" />
+          <path d="M134.33 69.55s0 0 0 0" stroke-opacity=".24" />
+          <path d="M129.5 70.33s0 0 0 0" stroke-opacity=".56" />
           <path d="M124.72 71.43s0 0 0 0" />
-          <path d="M120.03 72.83s0 0 0 0" opacity=".08" />
+          <path d="M120.03 72.83s0 0 0 0" stroke-opacity=".08" />
           <path d="M115.43 74.54s0 0 0 0" />
-          <path d="M110.96 76.54s0 0 0 0" opacity=".88" />
-          <path d="M106.63 78.84s0 0 0 0" opacity=".72" />
-          <path d="M102.46 81.4s0 0 0 0m-3.99 2.85s0 0 0 0" opacity=".08" />
+          <path d="M110.96 76.54s0 0 0 0" stroke-opacity=".88" />
+          <path d="M106.63 78.84s0 0 0 0" stroke-opacity=".72" />
+          <path d="M102.46 81.4s0 0 0 0m-3.99 2.85s0 0 0 0" stroke-opacity=".08" />
           <path d="M91.08 90.67s0 0 0 0m-3.36 3.57s0 0 0 0" />
-          <path d="M84.6 98.01s0 0 0 0" opacity=".24" />
-          <path d="M81.73 101.98s0 0 0 0" opacity=".08" />
+          <path d="M84.6 98.01s0 0 0 0" stroke-opacity=".24" />
+          <path d="M81.73 101.98s0 0 0 0" stroke-opacity=".08" />
           <path d="M79.12 106.14s0 0 0 0m-2.32 4.31s0 0 0 0" />
-          <path d="M74.76 114.9s0 0 0 0m-1.74 4.58s0 0 0 0" opacity=".08" />
-          <path d="M71.58 124.16s0 0 0 0" opacity=".56" />
-          <path d="M70.44 128.93s0 0 0 0" opacity=".08" />
-          <path d="M142.3 62.72s0 0 0 0m-5.6.3s0 0 0 0m-5.55.68s0 0 0 0" opacity=".72" />
+          <path d="M74.76 114.9s0 0 0 0m-1.74 4.58s0 0 0 0" stroke-opacity=".08" />
+          <path d="M71.58 124.16s0 0 0 0" stroke-opacity=".56" />
+          <path d="M70.44 128.93s0 0 0 0" stroke-opacity=".08" />
+          <path d="M142.3 62.72s0 0 0 0m-5.6.3s0 0 0 0m-5.55.68s0 0 0 0" stroke-opacity=".72" />
           <path d="M125.65 64.77s0 0 0 0" />
-          <path d="M120.24 66.21s0 0 0 0" opacity=".56" />
-          <path d="M114.94 68.02s0 0 0 0m-5.16 2.18s0 0 0 0" opacity=".72" />
-          <path d="M104.78 72.72s0 0 0 0" opacity=".56" />
-          <path d="M99.97 75.58s0 0 0 0" opacity=".24" />
-          <path d="M95.37 78.77s0 0 0 0" opacity=".08" />
-          <path d="M91 82.27s0 0 0 0m-4.12 3.79s0 0 0 0" opacity=".24" />
-          <path d="M83.03 90.13s0 0 0 0" opacity=".56" />
+          <path d="M120.24 66.21s0 0 0 0" stroke-opacity=".56" />
+          <path d="M114.94 68.02s0 0 0 0m-5.16 2.18s0 0 0 0" stroke-opacity=".72" />
+          <path d="M104.78 72.72s0 0 0 0" stroke-opacity=".56" />
+          <path d="M99.97 75.58s0 0 0 0" stroke-opacity=".24" />
+          <path d="M95.37 78.77s0 0 0 0" stroke-opacity=".08" />
+          <path d="M91 82.27s0 0 0 0m-4.12 3.79s0 0 0 0" stroke-opacity=".24" />
+          <path d="M83.03 90.13s0 0 0 0" stroke-opacity=".56" />
           <path d="M79.47 94.45s0 0 0 0M76.21 99s0 0 0 0" />
-          <path d="M73.28 103.78s0 0 0 0" opacity=".56" />
+          <path d="M73.28 103.78s0 0 0 0" stroke-opacity=".56" />
           <path d="M68.44 113.87s0 0 0 0m-1.88 5.27s0 0 0 0" />
-          <path d="M65.04 124.53s0 0 0 0" opacity=".24" />
-          <path d="M142.3 56.48s0 0 0 0" opacity=".88" />
+          <path d="M65.04 124.53s0 0 0 0" stroke-opacity=".24" />
+          <path d="M142.3 56.48s0 0 0 0" stroke-opacity=".88" />
           <path d="M133.75 57.05s0 0 0 0" />
-          <path d="M125.3 58.46s0 0 0 0" opacity=".88" />
+          <path d="M125.3 58.46s0 0 0 0" stroke-opacity=".88" />
           <path d="M117.02 60.68s0 0 0 0" />
-          <path d="M109 63.71s0 0 0 0" opacity=".56" />
-          <path d="M101.31 67.51s0 0 0 0" opacity=".08" />
-          <path d="M94.04 72.04s0 0 0 0" opacity=".72" />
-          <path d="M87.24 77.27s0 0 0 0" opacity=".08" />
-          <path d="M81 83.13s0 0 0 0" opacity=".56" />
-          <path d="M75.35 89.58s0 0 0 0" opacity=".24" />
-          <path d="M70.36 96.56s0 0 0 0m-4.28 7.42s0 0 0 0" opacity=".56" />
+          <path d="M109 63.71s0 0 0 0" stroke-opacity=".56" />
+          <path d="M101.31 67.51s0 0 0 0" stroke-opacity=".08" />
+          <path d="M94.04 72.04s0 0 0 0" stroke-opacity=".72" />
+          <path d="M87.24 77.27s0 0 0 0" stroke-opacity=".08" />
+          <path d="M81 83.13s0 0 0 0" stroke-opacity=".56" />
+          <path d="M75.35 89.58s0 0 0 0" stroke-opacity=".24" />
+          <path d="M70.36 96.56s0 0 0 0m-4.28 7.42s0 0 0 0" stroke-opacity=".56" />
           <path d="M62.55 111.8s0 0 0 0m-2.75 8.12s0 0 0 0" />
-          <path d="M57.87 128.26s0 0 0 0" opacity=".08" />
-          <path d="M56.76 136.76s0 0 0 0" opacity=".56" />
-          <path d="M140.11 50.3s0 0 0 0m-5.23.36s0 0 0 0" opacity=".72" />
-          <path d="M129.67 51.3s0 0 0 0" opacity=".88" />
-          <path d="M124.5 52.25s0 0 0 0" opacity=".24" />
-          <path d="M119.4 53.47s0 0 0 0" opacity=".72" />
-          <path d="M114.37 54.99s0 0 0 0" opacity=".88" />
+          <path d="M57.87 128.26s0 0 0 0" stroke-opacity=".08" />
+          <path d="M56.76 136.76s0 0 0 0" stroke-opacity=".56" />
+          <path d="M140.11 50.3s0 0 0 0m-5.23.36s0 0 0 0" stroke-opacity=".72" />
+          <path d="M129.67 51.3s0 0 0 0" stroke-opacity=".88" />
+          <path d="M124.5 52.25s0 0 0 0" stroke-opacity=".24" />
+          <path d="M119.4 53.47s0 0 0 0" stroke-opacity=".72" />
+          <path d="M114.37 54.99s0 0 0 0" stroke-opacity=".88" />
           <path d="M109.44 56.78s0 0 0 0m-4.83 2.06s0 0 0 0" />
-          <path d="M99.9 61.17s0 0 0 0m-4.56 2.6s0 0 0 0" opacity=".56" />
-          <path d="M90.93 66.6s0 0 0 0" opacity=".24" />
-          <path d="M86.68 69.7s0 0 0 0" opacity=".88" />
-          <path d="M82.62 73.02s0 0 0 0" opacity=".08" />
-          <path d="M78.74 76.56s0 0 0 0" opacity=".56" />
-          <path d="M75.07 80.31s0 0 0 0" opacity=".88" />
+          <path d="M99.9 61.17s0 0 0 0m-4.56 2.6s0 0 0 0" stroke-opacity=".56" />
+          <path d="M90.93 66.6s0 0 0 0" stroke-opacity=".24" />
+          <path d="M86.68 69.7s0 0 0 0" stroke-opacity=".88" />
+          <path d="M82.62 73.02s0 0 0 0" stroke-opacity=".08" />
+          <path d="M78.74 76.56s0 0 0 0" stroke-opacity=".56" />
+          <path d="M75.07 80.31s0 0 0 0" stroke-opacity=".88" />
           <path d="M71.62 84.27s0 0 0 0m-3.22 4.14s0 0 0 0" />
-          <path d="M65.4 92.73s0 0 0 0m-2.73 4.47s0 0 0 0" opacity=".56" />
-          <path d="M60.18 101.83s0 0 0 0" opacity=".24" />
+          <path d="M65.4 92.73s0 0 0 0m-2.73 4.47s0 0 0 0" stroke-opacity=".56" />
+          <path d="M60.18 101.83s0 0 0 0" stroke-opacity=".24" />
           <path d="M57.96 106.58s0 0 0 0" />
-          <path d="M56 111.46s0 0 0 0" opacity=".24" />
+          <path d="M56 111.46s0 0 0 0" stroke-opacity=".24" />
           <path d="M54.33 116.43s0 0 0 0m-2.5 10.19s0 0 0 0" />
-          <path d="M51 131.8s0 0 0 0" opacity=".56" />
-          <path d="M50.48 137.03s0 0 0 0" opacity=".24" />
+          <path d="M51 131.8s0 0 0 0" stroke-opacity=".56" />
+          <path d="M50.48 137.03s0 0 0 0" stroke-opacity=".24" />
           <path d="M50.24 142.28s0 0 0 0" />
-          <path d="M142.59 44s0 0 0 0" opacity=".72" />
-          <path d="M137.37 44.2s0 0 0 0" opacity=".88" />
+          <path d="M142.59 44s0 0 0 0" stroke-opacity=".72" />
+          <path d="M137.37 44.2s0 0 0 0" stroke-opacity=".88" />
           <path d="M132.16 44.68s0 0 0 0m-5.17.74s0 0 0 0" />
-          <path d="M121.86 46.44s0 0 0 0" opacity=".72" />
-          <path d="M116.8 47.72s0 0 0 0" opacity=".88" />
-          <path d="M111.8 49.27s0 0 0 0" opacity=".72" />
+          <path d="M121.86 46.44s0 0 0 0" stroke-opacity=".72" />
+          <path d="M116.8 47.72s0 0 0 0" stroke-opacity=".88" />
+          <path d="M111.8 49.27s0 0 0 0" stroke-opacity=".72" />
           <path d="M106.9 51.07s0 0 0 0" />
-          <path d="M102.1 53.13s0 0 0 0" opacity=".24" />
+          <path d="M102.1 53.13s0 0 0 0" stroke-opacity=".24" />
           <path d="M97.4 55.44s0 0 0 0" />
-          <path d="M92.84 57.99s0 0 0 0" opacity=".72" />
-          <path d="M88.42 60.77s0 0 0 0" opacity=".08" />
-          <path d="M84.15 63.79s0 0 0 0" opacity=".24" />
+          <path d="M92.84 57.99s0 0 0 0" stroke-opacity=".72" />
+          <path d="M88.42 60.77s0 0 0 0" stroke-opacity=".08" />
+          <path d="M84.15 63.79s0 0 0 0" stroke-opacity=".24" />
           <path d="M80.05 67.02s0 0 0 0" />
-          <path d="M76.11 70.46s0 0 0 0" opacity=".72" />
+          <path d="M76.11 70.46s0 0 0 0" stroke-opacity=".72" />
           <path d="M72.37 74.1s0 0 0 0m-3.55 3.84s0 0 0 0m-6.48 8.2s0 0 0 0" />
-          <path d="M59.43 90.49s0 0 0 0" opacity=".24" />
-          <path d="M56.76 94.97s0 0 0 0m-2.44 4.63s0 0 0 0m-2.19 4.74s0 0 0 0" opacity=".72" />
-          <path d="M50.19 109.2s0 0 0 0" opacity=".08" />
+          <path d="M59.43 90.49s0 0 0 0" stroke-opacity=".24" />
+          <path d="M56.76 94.97s0 0 0 0m-2.44 4.63s0 0 0 0m-2.19 4.74s0 0 0 0" stroke-opacity=".72" />
+          <path d="M50.19 109.2s0 0 0 0" stroke-opacity=".08" />
           <path d="M48.5 114.14s0 0 0 0m-1.42 5.03s0 0 0 0" />
-          <path d="M45.93 124.27s0 0 0 0m-.89 5.15s0 0 0 0" opacity=".24" />
-          <path d="M44.42 134.6s0 0 0 0" opacity=".72" />
-          <path d="M44.07 139.82s0 0 0 0" opacity=".56" />
+          <path d="M45.93 124.27s0 0 0 0m-.89 5.15s0 0 0 0" stroke-opacity=".24" />
+          <path d="M44.42 134.6s0 0 0 0" stroke-opacity=".72" />
+          <path d="M44.07 139.82s0 0 0 0" stroke-opacity=".56" />
           <path d="M44 145.05s0 0 0 0" />
         </g>
         <defs>

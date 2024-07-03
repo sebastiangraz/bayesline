@@ -158,7 +158,7 @@ export const Asset: React.FC<Props> = React.memo(
                 custom={{ i: index, random: imageDirections }}
                 style={{ color: svg.fg, x: 'var(--x)', y: 'var(--y)' }}
               >
-                <motion.svg
+                <svg
                   width={svg.width}
                   height={svg.height}
                   preserveAspectRatio="xMidYMid meet"
@@ -169,7 +169,7 @@ export const Asset: React.FC<Props> = React.memo(
                   className={`${style.foregroundSvg}`}
                 >
                   {svg.src()}
-                </motion.svg>
+                </svg>
               </motion.g>
             </motion.g>
           );
