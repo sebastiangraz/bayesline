@@ -196,7 +196,7 @@ figure[data-rehype-pretty-code-figure] {
   grid-row: auto;
 
   border-radius: var(--radius);
-  background: var(--foreground);
+  background: hsl(var(--brand-0));
   position: relative;
   z-index: 1;
 
@@ -205,6 +205,7 @@ figure[data-rehype-pretty-code-figure] {
   }
 
   .code {
+    color: hsl(var(--steel-4));
     padding: 1.5em;
     mark {
       all: unset;

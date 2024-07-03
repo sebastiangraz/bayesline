@@ -16,7 +16,7 @@ export function Brand() {
         </Card>
         <Card dataTheme={2}>
           <div className="card-header">
-            <Text.H4>Flow fields</Text.H4>
+            <Text.H4>Vector Fields</Text.H4>
           </div>
           <Flex wrap>
             <VectorField variant="swirl" />

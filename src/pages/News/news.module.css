@@ -3,10 +3,13 @@
   padding: 0;
 
   li {
-    box-shadow: var(--border-b) var(--foreground-border);
+    box-shadow: var(--border-b) inset var(--foreground-border);
     background: var(--background);
     color: var(--foreground);
     grid-column: 1 / 26;
+    &:first-child {
+      box-shadow: none;
+    }
     &:has(.wrapper:hover) .thumbnail svg,
     .thumbnail img {
       /* transform: translateY(-0.1em); */

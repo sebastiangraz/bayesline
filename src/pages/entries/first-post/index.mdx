@@ -31,12 +31,12 @@ export function* FibonacciSequence() {
 ```css showLineNumbers /inline-block/ /Other/ /2rem/ /code[data-line-numbers-max-digits='3']/
 code > [data-line]::before {
   counter-increment: line;
-  content: counter(line); // [!code highlight]
+  content: counter(line); # [!code highlight]
   /* Other styling */
   display: inline-block;
 }
 
-code[data-line-numbers-max-digits='2'] > [data-line]::before { // [!code highlight]
+code[data-line-numbers-max-digits='2'] > [data-line]::before { # [!code highlight]
   width: 2rem;
 }
 
