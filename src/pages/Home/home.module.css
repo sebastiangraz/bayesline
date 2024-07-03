@@ -1,19 +1,6 @@
-.sidebar {
+.cardField {
+  grid-area: 2/1;
 }
-.meta {
-  padding: 2em;
-  @media (--md) {
-    padding: 2rem;
-  }
-}
-.box {
-  padding: 2em;
-  @media (--md) {
-    padding: 2em 1em;
-  }
-}
-
-.avatar {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+.cardImage {
+  grid-area: 2/1;
 }

@@ -1,9 +1,10 @@
-import { useMotionValue, useTransform, useSpring, motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useMotionValue, useTransform, useSpring, motion, useInView } from 'framer-motion';
+import { useCallback, useRef } from 'react';
 import style from './vectorfield.module.css';
 
 interface VectorFieldProps {
-  variant: 'swirl' | 'straight';
+  variant?: 'swirl' | 'straight' | 'radial';
+  className?: string;
 }
 
 const arrowVariants = {
@@ -15,13 +16,12 @@ const arrowVariants = {
     scale: 1,
     transition: {
       duration: 0.5 + i * 0.01,
-
       ease: [1, 0.2, 0, 0.2]
     }
   })
 };
 
-export const VectorField = () => {
+export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) => {
   const svgSize = 192; // Size of the SVG canvas
   const svgPadding = 10; // Padding around the canvas
   const size = svgSize - svgPadding * 2; // Size of the vector field
@@ -34,6 +34,10 @@ export const VectorField = () => {
   const mouseY = useMotionValue(size / 2 + svgPadding);
   const svgRef = useRef<SVGSVGElement>(null);
 
+  const isInView = useInView(svgRef, {
+    amount: 'some'
+  });
+
   const handleMouseMove = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     const rect = svgRef.current!.getBoundingClientRect();
     mouseX.set(event.clientX - rect.left);
@@ -45,13 +49,32 @@ export const VectorField = () => {
   const arrows = Array.from({ length: numArrows * numArrows }, (_, index) => {
     const x = (index % numArrows) * (arrowSize + arrowPadding) + svgPadding + arrowSize / 2;
     const y = Math.floor(index / numArrows) * (arrowSize + arrowPadding) + svgPadding + arrowSize / 2;
-
+    let bufferVariable = null;
     const angle = useTransform<number, number>([mouseX, mouseY], ([latestX, latestY]) => {
       const dx = latestX - x;
       const dy = latestY - y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
       const baseAngle = Math.atan2(dy, dx);
-      const bufferRadius = dist / 2;
+
+      switch (variant) {
+        case 'swirl':
+          bufferVariable = dist / 2;
+          break;
+
+        case 'straight':
+          bufferVariable = 0 - Math.min(0, dist);
+          break;
+
+        case 'radial':
+          bufferVariable = 100 - Math.min(100, dist);
+          break;
+
+        default:
+          bufferVariable = 0;
+          break;
+      }
+
+      const bufferRadius = bufferVariable;
 
       const offsetAngle = baseAngle + (bufferRadius / Math.max(dist, bufferRadius)) * (Math.PI / 2);
 
@@ -72,8 +95,9 @@ export const VectorField = () => {
     return { x, y, x2, y2, angle: radialIndex };
   });
 
+  const classNames = `${style.vectorfield} ${className}`;
   return (
-    <svg ref={svgRef} width={svgSize} height={svgSize} onMouseMove={handleMouseMove} className={style.vectorfield}>
+    <svg ref={svgRef} width={svgSize} height={svgSize} onMouseMove={handleMouseMove} className={classNames}>
       {arrows.map((arrow, index) => (
         <motion.line
           vectorEffect={'non-scaling-stroke' as any}
@@ -86,7 +110,7 @@ export const VectorField = () => {
           strokeWidth="1"
           variants={arrowVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? 'visible' : 'hidden'}
           custom={{ i: arrow.angle }}
         />
       ))}

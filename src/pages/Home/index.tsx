@@ -1,5 +1,5 @@
 import style from './home.module.css';
-import { Hero, Button, Card, Cards, Text } from '@/components';
+import { Hero, Button, Card, Cards, Text, VectorField } from '@/components';
 import composition from '@/assets/composition.png';
 import sidebar from '@/assets/sidebar.png';
 
@@ -35,7 +35,8 @@ export function Home() {
                 Run reports in comparison mode, zooming into the relative performance of different models and settings.
               </Text.Body>
             </div>
-            <img src={sidebar} />
+            <img src={sidebar} className={style.cardImage} />
+            <VectorField variant="radial" className={style.cardField} />
           </Card>
           <Card>
             <div className="card-header">

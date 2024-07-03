@@ -32,6 +32,7 @@
     gap: 0.5em;
   }
   img {
+    place-self: end;
     mask-image: radial-gradient(ellipse at top center, #ffff 50%, #fff0 150%);
   }
 }
