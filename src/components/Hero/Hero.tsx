@@ -4,6 +4,35 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Flex, Text } from '@/components';
 import hero from '@/assets/homepage-hero.png';
 
+import { ReactP5Wrapper } from '@p5-wrapper/react';
+
+function sketch(p5: any) {
+  //set padding for canvas
+  p5.setup = () => {
+    p5.createCanvas(184, 184, p5.WEBGL);
+    p5.colorMode(p5.HSB);
+  };
+  //set variable for spacing
+  let spacing = 12;
+
+  p5.draw = () => {
+    p5.background(255, 255, 255, 0);
+    p5.stroke(42.8, 10, 72);
+    p5.strokeWeight(1);
+    p5.noFill();
+    p5.translate(-p5.width / 2 + 8, -p5.height / 2 + 8);
+    p5.translate(0, 0);
+    for (let x = 4; x < p5.width; x += spacing) {
+      for (let y = 4; y < p5.height; y += spacing) {
+        p5.push();
+        p5.translate(x, y);
+        p5.rotate(p5.atan2(p5.mouseY - y, p5.mouseX - x));
+        p5.line(4, 6, 0, 0); // (x1, y1, x2, y2)
+        p5.pop();
+      }
+    }
+  };
+}
 interface HeroProps {
   title?: string;
 }
@@ -32,8 +61,14 @@ export const Hero = (props: HeroProps) => {
         </Flex>
       </div>
       <div className={`col ${style.ui}`}>
+        <div className={`${style.cue}`}>
+          <ReactP5Wrapper sketch={sketch} />
+        </div>
         <img src={hero} alt="hero" />
       </div>
+      {/* <div className={`col ${style.cue}`}>
+        <ReactP5Wrapper sketch={sketch} />
+      </div> */}
     </div>
   );
 };
