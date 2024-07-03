@@ -94,9 +94,25 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       { stiffness: 400, damping: 20, mass: 0.1 }
     );
 
+    const opacity = useTransform<number, number>([mouseX, mouseY, angle], ([latestX, latestY, latestAngle]) => {
+      const distance = Math.sqrt((latestX - x) ** 2 + (latestY - y) ** 2);
+      switch (variant) {
+        case 'swirl':
+          return Math.max(0.1, Math.sin(distance / 50 + (index % numArrows)));
+        case 'straight':
+          return Math.max(0.1, 1 - distance / size);
+        case 'radial':
+          return 0.2 + Math.abs(Math.cos((latestAngle * Math.PI) / 180));
+        case 'checker':
+          return 0.5 + 0.5 * Math.sin(index / numArrows);
+        default:
+          return 0.1;
+      }
+    });
+
     const radialIndex = Math.floor((225 + angle.get()) % 180);
 
-    return { x, y, x2, y2, angle: radialIndex };
+    return { x, y, x2, y2, angle: radialIndex, opacity: opacity };
   });
 
   const classNames = `${style.vectorfield} ${className}`;
@@ -111,6 +127,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
           x2={arrow.x2}
           y2={arrow.y2}
           stroke="currentColor"
+          strokeOpacity={arrow.opacity}
           strokeWidth={1.33}
           variants={arrowVariants}
           initial="hidden"
