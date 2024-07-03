@@ -1,5 +1,3 @@
-.avatar {
-  width: 5rem;
-  border-radius: 99em;
-  overflow: hidden;
+.vectorfield {
+  display: grid;
 }

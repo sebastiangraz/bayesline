@@ -73,7 +73,7 @@ export const VectorField = () => {
   });
 
   return (
-    <svg ref={svgRef} width={svgSize} height={svgSize} onMouseMove={handleMouseMove}>
+    <svg ref={svgRef} width={svgSize} height={svgSize} onMouseMove={handleMouseMove} className={style.vectorfield}>
       {arrows.map((arrow, index) => (
         <motion.line
           vectorEffect={'non-scaling-stroke' as any}
@@ -82,7 +82,7 @@ export const VectorField = () => {
           y1={arrow.y}
           x2={arrow.x2}
           y2={arrow.y2}
-          stroke="var(--background-3)"
+          stroke="currentColor"
           strokeWidth="1"
           variants={arrowVariants}
           initial="hidden"
