@@ -11,12 +11,12 @@ export const VectorField = () => {
   const svgPadding = 10; // Padding around the canvas
   const size = svgSize - svgPadding * 2; // Size of the vector field
 
-  const numArrows = 15; // Number of arrows along one dimension
-  const arrowPadding = 4; // Padding between arrows
+  const numArrows = 14; // Number of arrows along one dimension
+  const arrowPadding = 6; // Padding between arrows
   const arrowSize = (size - arrowPadding * (numArrows - 1)) / numArrows;
 
-  const mouseX = useMotionValue(size / 2);
-  const mouseY = useMotionValue(size / 2);
+  const mouseX = useMotionValue(size / 2 + svgPadding);
+  const mouseY = useMotionValue(size / 2 + svgPadding);
   const svgRef = useRef<SVGSVGElement>(null);
 
   const handleMouseMove = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
@@ -34,7 +34,7 @@ export const VectorField = () => {
     const angle = useTransform<number, number>([mouseX, mouseY], ([latestX, latestY]) => {
       const dx = latestX - x;
       const dy = latestY - y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
       const baseAngle = Math.atan2(dy, dx);
       const bufferRadius = dist / 2;
 
