@@ -13,3 +13,4 @@ export { Logo } from './Logo';
 export { Navigation } from './Navigation';
 export { Text } from './Text';
 export { Vector } from './Vector';
+export { VectorField } from './VectorField';

@@ -16,11 +16,10 @@
   grid-column: 12/26;
   grid-row: 1;
   align-self: end;
-  max-height: 584px;
+  max-height: 576px;
 
   img {
-    z-index: 1;
-    position: relative;
+    isolation: isolate;
     max-height: 100%;
     max-width: 100%;
   }
@@ -28,20 +27,13 @@
 
 .cue {
   aspect-ratio: 1;
-  align-self: start;
-  margin-top: -4em;
   z-index: 0;
-  display: grid;
-  justify-content: start;
-  align-items: start;
   position: absolute;
-  > div {
+
+  > svg {
     position: relative;
     left: 2em;
+    top: -4em;
     display: flex;
-  }
-  canvas {
-    grid-area: 1/1;
-    aspect-ratio: 1;
   }
 }
