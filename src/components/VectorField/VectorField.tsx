@@ -10,12 +10,13 @@ const arrowVariants = {
   hidden: {
     scale: 0
   },
-
   visible: ({ i }: { i: number }) => ({
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.1 + i * 0.015
+      duration: 0.5 + i * 0.01,
+
+      ease: [1, 0.2, 0, 0.2]
     }
   })
 };
@@ -66,7 +67,7 @@ export const VectorField = () => {
       { stiffness: 400, damping: 20 }
     );
 
-    const radialIndex = Math.floor((angle.get() + 360) % 360);
+    const radialIndex = Math.floor((225 + angle.get()) % 180);
 
     return { x, y, x2, y2, angle: radialIndex };
   });
