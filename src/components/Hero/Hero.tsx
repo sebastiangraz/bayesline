@@ -7,8 +7,10 @@ import { useRef } from 'react';
 
 const VectorField = () => {
   const size = 288; // Size of the SVG canvas
-  const numArrows = 10; // Number of arrows along one dimension
-  const arrowSize = size / numArrows; // Size of each arrow space
+  const numArrows = 12; // Number of arrows along one dimension
+
+  const arrowPadding = 12; // Padding between arrows
+  const arrowSize = (size - arrowPadding * (numArrows - 1)) / numArrows;
 
   const mouseX = useMotionValue(size / 2);
   const mouseY = useMotionValue(size / 2);
@@ -23,15 +25,14 @@ const VectorField = () => {
   };
 
   const arrows = Array.from({ length: numArrows * numArrows }, (_, index) => {
-    const x = (index % numArrows) * arrowSize;
-    const y = Math.floor(index / numArrows) * arrowSize;
+    const x = (index % numArrows) * (arrowSize + arrowPadding);
+    const y = Math.floor(index / numArrows) * (arrowSize + arrowPadding);
 
     const angle = useTransform<number, number>([mouseX, mouseY], ([latestX, latestY]) => {
       return Math.atan2(latestY - y, latestX - x) * (180 / Math.PI);
     });
     return { x, y, angle };
   });
-
   return (
     <svg ref={svgRef} width={size} height={size} onMouseMove={handleMouseMove}>
       {arrows.map((arrow, index) => (
