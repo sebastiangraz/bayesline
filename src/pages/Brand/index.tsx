@@ -32,7 +32,7 @@ export function Brand() {
             <ShapeField variant="radial" />
             <ShapeField variant="grid" />
             <ShapeField variant="checker" />
-            <ShapeField variant="plus" />
+
             <ShapeField variant="pcb" />
             <ShapeField variant="pcb" columns={20} rows={20} padding={3} />
           </div>

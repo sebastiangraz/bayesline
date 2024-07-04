@@ -8,7 +8,7 @@ interface ShapeFieldProps {
   columns?: number;
   padding?: number;
   interpolationValue?: number;
-  variant?: 'swirl' | 'dithered-gradient' | 'radial' | 'checker' | 'grid' | 'plus' | 'pcb';
+  variant?: 'swirl' | 'dithered-gradient' | 'radial' | 'checker' | 'grid' | 'pcb';
   color1?: string;
   color2?: string;
 }
@@ -19,6 +19,44 @@ interface ShapeProps {
   size: number;
   type: 'rect' | 'ellipse' | 'line';
   opacity: number;
+}
+
+function gaussian(x: number, mean: number, variance: number) {
+  return (1 / Math.sqrt(2 * Math.PI * variance)) * Math.exp(-Math.pow(x - mean, 2) / (2 * variance));
+}
+
+function bayesianCurve(col: number, row: number, rows: number, columns: number) {
+  const mean = columns / 2;
+  const variance = Math.pow(columns / 7, 3.2); // Adjust this for wider/narrower curves
+  const baseHeight = gaussian(col, mean, variance);
+  const normalizedHeight = baseHeight * row; // Normalize height to fit rows
+  return normalizedHeight;
+}
+const tornado = (col: number, row: number, rows: number, columns: number) => {
+  const angle = Math.atan2(row - rows / 2, col - columns / 2);
+  const radius = Math.sqrt(Math.pow(row - rows / 2, 2) + Math.pow(col - columns / 2, 2));
+  const spiral = Math.sin(angle * 3 + radius / 10);
+  return spiral;
+};
+
+function pcbPattern(col: number, row: number) {
+  // Variability in the grid spacing
+  let gridSizes = [2, 5, 9, 27, 1, 1, 1];
+  const gridSize = gridSizes[Math.floor(Math.random() * gridSizes.length * 0.2)];
+
+  // Establish connections based on variable grid sizes
+  const connections =
+    col % gridSizes[(col % gridSize) * 1] > gridSize || row % gridSizes[(row % gridSize) * 8] === 0 ? 1 : 0;
+
+  // Looks like generated text
+  // const connections =
+  // col % gridSizes[(col % gridSize) * 20] > gridSize || row % gridSizes[(row % gridSize) * 8] === 0 ? 1 : 0;
+
+  // Looks like icons with text
+  //   const connections =
+  //     col % gridSizes[(row % gridSize) * 2] < 2 || row % gridSizes[gridSize * 12 + col] === 0 ? 0 : 0.6;
+
+  return connections;
 }
 
 const Shape = ({ x, y, type, size = 8, opacity }: ShapeProps) => {
@@ -120,49 +158,6 @@ export const ShapeField = React.memo(
       const baseNoise = (0.5 - Math.random()) * 0.66; // Between -0.1 and 0.1
       const noise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 2; // Oscillates between -1 and 1, normalized to 0-1
 
-      function gaussian(x: number, mean: number, variance: number) {
-        return (1 / Math.sqrt(2 * Math.PI * variance)) * Math.exp(-Math.pow(x - mean, 2) / (2 * variance));
-      }
-
-      function bayesianCurve(col: number, row: number, rows: number, columns: number) {
-        const mean = columns / 2;
-        const variance = Math.pow(columns / 7, 3.2); // Adjust this for wider/narrower curves
-        const baseHeight = gaussian(col, mean, variance);
-        const normalizedHeight = baseHeight * row; // Normalize height to fit rows
-        return normalizedHeight;
-      }
-      const tornado = (col: number, row: number, rows: number, columns: number) => {
-        const angle = Math.atan2(row - rows / 2, col - columns / 2);
-        const radius = Math.sqrt(Math.pow(row - rows / 2, 2) + Math.pow(col - columns / 2, 2));
-        const spiral = Math.sin(angle * 3 + radius / 10);
-        return spiral;
-      };
-      const softenedPlus = (col: number, row: number, rows: number, columns: number) => {
-        const center = Math.abs(col - columns / 2) < 2 || Math.abs(row - rows / 2) < 2;
-        const blurEffect = gaussian(baseNoise, (rx + ry * dx - dy) * noise, 0.08);
-        return center ? blurEffect : blurEffect * 0.3549;
-      };
-
-      function pcbPattern(col: number, row: number) {
-        // Variability in the grid spacing
-        let gridSizes = [2, 5, 9, 27, 1, 1, 1];
-        const gridSize = gridSizes[Math.floor(Math.random() * gridSizes.length * 0.2)];
-
-        // Establish connections based on variable grid sizes
-        const connections =
-          col % gridSizes[(col % gridSize) * 1] > gridSize || row % gridSizes[(row % gridSize) * 8] === 0 ? 1 : 0;
-
-        // Looks like generated text
-        // const connections =
-        // col % gridSizes[(col % gridSize) * 20] > gridSize || row % gridSizes[(row % gridSize) * 8] === 0 ? 1 : 0;
-
-        // Looks like icons with text
-        //   const connections =
-        //     col % gridSizes[(row % gridSize) * 2] < 2 || row % gridSizes[gridSize * 12 + col] === 0 ? 0 : 0.6;
-
-        return connections;
-      }
-
       let shapeType: ShapeProps['type'];
 
       switch (variant) {
@@ -185,10 +180,6 @@ export const ShapeField = React.memo(
 
         case 'checker':
           shapeType = index % 2 === 0 ? 'rect' : 'ellipse'; // Alternates every cell
-          break;
-
-        case 'plus':
-          shapeType = softenedPlus(col, row, rows, columns) > 0.5 ? 'rect' : 'ellipse'; // Alternates every cell
           break;
 
         case 'pcb':
@@ -225,9 +216,17 @@ export const ShapeField = React.memo(
     });
 
     return (
-      <svg width={width} height={height} ref={svgRef}>
+      <motion.svg
+        width={width}
+        height={height}
+        ref={svgRef}
+        initial={{
+          opacity: 0
+        }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      >
         {shapes}
-      </svg>
+      </motion.svg>
     );
   }
 );
