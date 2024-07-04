@@ -3,7 +3,7 @@ import { useCallback, useRef } from 'react';
 import style from './vectorfield.module.css';
 
 interface VectorFieldProps {
-  variant?: 'swirl' | 'straight' | 'radial' | 'checker';
+  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'plus';
   className?: string;
 }
 
@@ -26,7 +26,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
   const svgPadding = 6; // Padding around the canvas
   const size = svgSize - svgPadding * 2; // Size of the vector field
 
-  const numArrows = 14; // Number of arrows along one dimension
+  const numArrows = 16; // Number of arrows along one dimension
   const arrowPadding = 6; // Padding between arrows
   const arrowSize = (size - arrowPadding * (numArrows - 1)) / numArrows;
 
@@ -55,6 +55,14 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       const dy = latestY - y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
       const baseAngle = Math.atan2(dy, dx);
+      const gaussianFactor = Math.exp(-(dist * dist) / (2 * (size / 4) * (size / 4)));
+      const vortexFactor = Math.atan2(dy, dx) + dist / (size / 2);
+      const axisDistance = Math.min(Math.abs(x - size / 2), Math.abs(y - size / 2));
+
+      const distToVertical = Math.abs(x - size / 2);
+      const distToHorizontal = Math.abs(y - size / 2);
+      const minDist = Math.min(distToVertical, distToHorizontal);
+      const axisWidth = arrowSize - 0.5 * 2;
 
       switch (variant) {
         case 'swirl':
@@ -65,21 +73,22 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
           bufferVariable = 0 - Math.min(0, dist);
           break;
 
-        // case 'straight':
-        //   // make a plus shaped vector field, 2 arrows wide
-        //   if (
-        //     //x
-        //     (Math.abs(x - latestX) < size && Math.abs(y - latestY) < (arrowSize - 0.5) * 2) ||
-        //     //y
-        //     (Math.abs(y - latestY) > size && Math.abs(x - latestX) < (arrowSize - 0.5) * 2)
-        //   ) {
-        //     return Math.min(0, dist);
-        //   } else {
-        //     return size - Math.min(size, dist);
-        //   }
-
         case 'radial':
           bufferVariable = 100 - Math.min(100, dist);
+          break;
+
+        case 'plus':
+          if (
+            //x
+            (Math.abs(x - latestX) < size && Math.abs(y - latestY) < (arrowSize - 0.5) * 2) ||
+            //y
+            (Math.abs(y - latestY) < size && Math.abs(x - latestX) < (arrowSize - 0.5) * 2)
+          ) {
+            bufferVariable = 0;
+          } else {
+            bufferVariable = 0;
+          }
+
           break;
 
         case 'checker':
@@ -109,6 +118,10 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
     const opacity = useTransform<number, number>([mouseX, mouseY, angle], ([latestX, latestY, latestAngle]) => {
       const distance = Math.sqrt((latestX - x) ** 2 + (latestY - y) ** 2);
+      const distToVertical = Math.abs(x - size / 2);
+      const distToHorizontal = Math.abs(y - size / 2);
+      const axisDistance = Math.min(distToVertical, distToHorizontal);
+
       switch (variant) {
         case 'swirl':
           // make a spiral by multiplying the index each revolution by the distance from the cursor
@@ -135,6 +148,11 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
         case 'checker':
           // should return every other arrow
           return Math.floor((index % numArrows) + Math.floor(index / numArrows)) % 2 === 0 ? 1 : 0.5;
+
+        case 'plus':
+          // make it look like a grid pattern
+          return Math.max(0.48, 3 - (axisDistance * distance) / (numArrows / 2));
+
         default:
           return 1;
       }
