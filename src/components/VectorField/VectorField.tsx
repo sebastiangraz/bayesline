@@ -65,6 +65,19 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
           bufferVariable = 0 - Math.min(0, dist);
           break;
 
+        // case 'straight':
+        //   // make a plus shaped vector field, 2 arrows wide
+        //   if (
+        //     //x
+        //     (Math.abs(x - latestX) < size && Math.abs(y - latestY) < (arrowSize - 0.5) * 2) ||
+        //     //y
+        //     (Math.abs(y - latestY) > size && Math.abs(x - latestX) < (arrowSize - 0.5) * 2)
+        //   ) {
+        //     return Math.min(0, dist);
+        //   } else {
+        //     return size - Math.min(size, dist);
+        //   }
+
         case 'radial':
           bufferVariable = 100 - Math.min(100, dist);
           break;
@@ -98,15 +111,32 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       const distance = Math.sqrt((latestX - x) ** 2 + (latestY - y) ** 2);
       switch (variant) {
         case 'swirl':
-          return Math.max(0.1, Math.sin(distance / 50 + (index % numArrows)));
+          // make a spiral by multiplying the index each revolution by the distance from the cursor
+          return 1;
+
         case 'straight':
-          return Math.max(0.1, 1 - distance / size);
+          // should return a plus shaped vector field, 2 arrows wide
+          if (
+            //x
+            (Math.abs(x - latestX) < size && Math.abs(y - latestY) < (arrowSize - 0.5) * 2) ||
+            //y
+            (Math.abs(y - latestY) < size && Math.abs(x - latestX) < (arrowSize - 0.5) * 2)
+          ) {
+            return 1;
+          } else {
+            return 0.5;
+          }
+
         case 'radial':
-          return 0.2 + Math.abs(Math.cos((latestAngle * Math.PI) / 180));
+          return Math.max(
+            0.5,
+            Math.min(1, Math.sin(distance / (arrowSize * 2) + ((index % (arrowSize * 3)) / size) * 2)) / 2 + 0.5
+          );
         case 'checker':
-          return 0.5 + 0.5 * Math.sin(index / numArrows);
+          // should return every other arrow
+          return Math.floor((index % numArrows) + Math.floor(index / numArrows)) % 2 === 0 ? 1 : 0.5;
         default:
-          return 0.1;
+          return 1;
       }
     });
 
