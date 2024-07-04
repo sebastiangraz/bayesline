@@ -1,9 +1,9 @@
 import { useMotionValue, useTransform, useSpring, motion, useInView } from 'framer-motion';
-import { useCallback, useRef } from 'react';
+import { useRef } from 'react';
 import style from './vectorfield.module.css';
 
 interface VectorFieldProps {
-  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'grid';
+  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'grid' | 'magnify';
   className?: string;
 }
 
@@ -26,7 +26,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
   const svgPadding = 6; // Padding around the canvas
   const size = svgSize - svgPadding * 2; // Size of the vector field
 
-  const numArrows = 16; // Number of arrows along one dimension
+  const numArrows = 14; // Number of arrows along one dimension
   const arrowPadding = 6; // Padding between arrows
   const arrowSize = (size - arrowPadding * (numArrows - 1)) / numArrows;
 
@@ -35,6 +35,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
   const svgRef = useRef<SVGSVGElement>(null);
 
   const isInView = useInView(svgRef, {
+    once: true,
     amount: 'some'
   });
 
@@ -76,6 +77,10 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
           bufferVariable = ((index % numArrows) * 45 + Math.floor(index / numArrows) * 45) % 90;
           break;
 
+        case 'magnify':
+          bufferVariable = Math.sqrt((x - svgSize / 2) ** 2 + (y - svgSize / 2) ** 2) > svgSize / 3.5 ? 0 : 100;
+          break;
+
         default:
           bufferVariable = 0;
           break;
@@ -96,7 +101,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       const cellCenterX = (cellX + 0.5) * cellSize;
       const cellCenterY = (cellY + 0.5) * cellSize;
 
-      const lineWidth = arrowSize * 2;
+      const lineWidth = arrowSize * 1;
       const distToCellCenter = Math.sqrt(Math.pow(x - cellCenterX, 2) + Math.pow(y - cellCenterY, 2));
 
       const axisDistInCell = Math.min(Math.abs(x - cellCenterX), Math.abs(y - cellCenterY));
@@ -125,7 +130,17 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
             Math.min(1, Math.sin(distance / (arrowSize * 2) + ((index % (arrowSize * 3)) / size) * 2)) / 2 + 0.5
           );
         case 'checker':
-          return Math.floor((index % numArrows) + Math.floor(index / numArrows)) % 2 === 0 ? 1 : 0.5;
+          return Math.floor((index % numArrows) + Math.floor(index / numArrows)) % 2 === 0
+            ? Math.min(1, Math.sin((distance / size) * 2)) / 2 + 0.4
+            : 0.1;
+
+        case 'magnify':
+          // if within the circle, return 1, else 0
+          if (Math.sqrt((x - svgSize / 2) ** 2 + (y - svgSize / 2) ** 2) > svgSize / 3.5) {
+            return distance < svgSize / 10 ? 1 : 0.4;
+          } else {
+            return distance < svgSize / 3.5 ? 1 : 0.4;
+          }
 
         case 'grid':
           if (axisDistInCell < lineWidth) {
@@ -164,6 +179,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={classNames}
+      style={{ visibility: isInView ? 'visible' : 'hidden' }}
     >
       {arrows.map((arrow, index) => (
         <motion.line

@@ -17,7 +17,7 @@ interface ShapeProps {
   x: number;
   y: number;
   size: number;
-  type: 'rect' | 'ellipse' | 'line';
+  type: 'rect' | 'ellipse' | 'line' | null;
   opacity: number;
 }
 
@@ -35,8 +35,27 @@ function bayesianCurve(col: number, row: number, rows: number, columns: number) 
 const tornado = (col: number, row: number, rows: number, columns: number) => {
   const angle = Math.atan2(row - rows / 2, col - columns / 2);
   const radius = Math.sqrt(Math.pow(row - rows / 2, 2) + Math.pow(col - columns / 2, 2));
-  const spiral = Math.sin(angle * 3 + radius / 10);
+  const spiral = Math.sin(angle * 3 + radius / 0.7);
   return spiral;
+};
+
+const childVariants = {
+  hidden: ({ shimmer }: { shimmer: number }) => ({
+    opacity: 0,
+    transition: {
+      duration: 0.05 * shimmer
+    }
+  }),
+  visible: ({ shimmer }: { shimmer: number }) => ({
+    opacity: [1, 0.5, 1],
+    transition: {
+      repeat: 1,
+      repeatType: 'loop',
+      duration: 2,
+      delay: shimmer * 0.003,
+      ease: 'easeInOut'
+    }
+  })
 };
 
 function pcbPattern(col: number, row: number) {
@@ -59,53 +78,26 @@ function pcbPattern(col: number, row: number) {
   return connections;
 }
 
-const Shape = ({ x, y, type, size = 8, opacity }: ShapeProps) => {
+const Shape = React.memo(({ x, y, type, size = 8, opacity }: ShapeProps) => {
+  if (!type) return null;
+  const commonProps = {
+    stroke: 'currentColor',
+    vectorEffect: 'non-scaling-stroke',
+    strokeWidth: 1.25,
+    strokeOpacity: opacity,
+    fill: 'none'
+  };
   switch (type) {
     case 'line':
-      return (
-        <line
-          x1={x}
-          y1={y}
-          x2={x + size}
-          y2={y + size}
-          stroke="currentColor"
-          vectorEffect={'non-scaling-stroke'}
-          strokeWidth={1.25}
-          strokeOpacity={opacity}
-        />
-      );
+      return <line x1={x} y1={y + size / 2} x2={x + size} y2={y + size / 2} {...commonProps} />;
     case 'rect':
-      return (
-        <rect
-          x={x}
-          y={y}
-          width={size}
-          height={size}
-          stroke="currentColor"
-          vectorEffect={'non-scaling-stroke'}
-          fill="none"
-          strokeWidth={1.25}
-          strokeOpacity={opacity}
-        />
-      );
+      return <rect x={x} y={y} width={size} height={size} {...commonProps} />;
     case 'ellipse':
-      return (
-        <ellipse
-          cx={x + size / 2}
-          cy={y + size / 2}
-          rx={size / 2}
-          ry={size / 2}
-          stroke="currentColor"
-          vectorEffect={'non-scaling-stroke'}
-          fill="none"
-          strokeWidth={1.25}
-          strokeOpacity={opacity}
-        />
-      );
+      return <ellipse cx={x + size / 2} cy={y + size / 2} rx={size / 2} ry={size / 2} {...commonProps} />;
     default:
       return null;
   }
-};
+});
 
 export const ShapeField = React.memo(
   ({
@@ -120,7 +112,7 @@ export const ShapeField = React.memo(
   }: ShapeFieldProps) => {
     const svgRef = useRef<SVGSVGElement>(null);
     const isInView = useInView(svgRef, {
-      once: true,
+      once: false,
       amount: 'some'
     });
 
@@ -133,88 +125,104 @@ export const ShapeField = React.memo(
     const midX = width / 2 - cellWidth / 2;
     const midY = height / 2 - cellHeight / 2;
 
-    const shapes = Array.from({ length: rows * columns }, (_, index) => {
-      const col = index % columns;
-      const row = Math.floor(index / columns);
-      const x = col * (cellWidth + padding) + padding / 2;
-      const y = row * (cellHeight + padding) + padding / 2;
+    const shapes = React.useMemo(
+      () =>
+        Array.from({ length: rows * columns }, (_, index) => {
+          const col = index % columns;
+          const row = Math.floor(index / columns);
+          const x = col * (cellWidth + padding) + padding / 2;
+          const y = row * (cellHeight + padding) + padding / 2;
 
-      const shapeSize = Math.min(cellWidth, cellHeight) - padding;
+          const shapeSize = Math.min(cellWidth, cellHeight) - padding;
 
-      //radial tools
-      const rx = (x - midX) / width;
-      const ry = (y - midY) / height;
-      const rdistance = Math.sqrt(rx * rx + ry * ry);
+          //radial tools
+          const rx = (x - midX) / width;
+          const ry = (y - midY) / height;
+          const rdistance = Math.sqrt(rx * rx + ry * ry);
 
-      //linear tools
-      const dx = col / columns;
-      const dy = row / rows;
-      const interpolation = Math.abs(rx - ry);
-      const xdistance = x / width;
-      const ydistance = y / height;
-      const diagDistance = Math.sqrt(dx * dx + dy * dy);
+          //linear tools
+          const dx = col / columns;
+          const dy = row / rows;
+          const interpolation = Math.abs(rx - ry);
+          const xdistance = x / width;
+          const ydistance = y / height;
+          const diagDistance = Math.sqrt(dx * dx + dy * dy);
 
-      //noise tools, noice indeed
-      const baseNoise = (0.5 - Math.random()) * 0.66; // Between -0.1 and 0.1
-      const noise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 2; // Oscillates between -1 and 1, normalized to 0-1
+          //noise tools, noice indeed
+          const baseNoise = (0.5 - Math.random()) * 0.66; // Between -0.1 and 0.1
+          const noise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 2; // Oscillates between -1 and 1, normalized to 0-1
 
-      let shapeType: ShapeProps['type'];
+          let shapeType: ShapeProps['type'];
 
-      switch (variant) {
-        case 'swirl':
-          // add a twist to the swirl by increasing the index each revolution
-          shapeType = tornado(col, row, rows, columns) > 0 ? 'line' : 'ellipse';
-          break;
+          function combinedType(value: number) {
+            let shapeType: ShapeProps['type'];
+            if (value <= 0.33) {
+              shapeType = 'rect';
+            } else if (value <= 0.66) {
+              shapeType = 'ellipse';
+            } else {
+              shapeType = 'line';
+            }
+            return shapeType;
+          }
 
-        case 'dithered-gradient':
-          shapeType = baseNoise + ydistance <= 0.5 ? 'rect' : 'line';
-          break;
+          switch (variant) {
+            case 'swirl':
+              // add a twist to the swirl by increasing the index each revolution
+              shapeType = tornado(col, row, rows, columns) > 0 ? 'line' : 'ellipse';
+              break;
 
-        case 'radial':
-          shapeType = baseNoise + noise <= 0.5 ? 'rect' : 'ellipse';
-          break;
+            case 'dithered-gradient':
+              shapeType = combinedType(baseNoise + ydistance);
+              break;
 
-        case 'grid':
-          shapeType = bayesianCurve(col, row, rows, columns) < 0.5 ? 'rect' : 'ellipse'; // Alternates every row
-          break;
+            case 'radial':
+              shapeType = baseNoise + noise <= 0.5 ? 'rect' : 'ellipse';
+              break;
 
-        case 'checker':
-          shapeType = index % 2 === 0 ? 'rect' : 'ellipse'; // Alternates every cell
-          break;
+            case 'grid':
+              shapeType = bayesianCurve(col, row, rows, columns) < 0.5 ? 'rect' : 'ellipse'; // Alternates every row
+              break;
 
-        case 'pcb':
-          shapeType = pcbPattern(col, row) > 0.5 ? 'rect' : 'ellipse';
-          break;
+            case 'checker':
+              shapeType = index % 2 === 0 ? 'rect' : 'ellipse'; // Alternates every cell
+              break;
 
-        default:
-          shapeType = 'rect';
-          break;
-      }
-      let opacity;
-      const combinedNoise = baseNoise + noise;
-      if (combinedNoise <= 0.33) {
-        opacity = 0.2;
-      } else if (combinedNoise <= 0.66) {
-        opacity = 0.6;
-      } else {
-        opacity = 1;
-      }
+            case 'pcb':
+              shapeType = pcbPattern(col, row) > 0.5 ? 'rect' : 'ellipse';
+              break;
 
-      const color = shapeType === 'rect' ? color1 : color2;
+            default:
+              shapeType = 'rect';
+              break;
+          }
+          let opacity;
+          const combinedNoise = baseNoise + noise;
+          if (combinedNoise <= 0.33) {
+            opacity = 0.2;
+          } else if (combinedNoise <= 0.66) {
+            opacity = 0.6;
+          } else {
+            opacity = 1;
+          }
 
-      return (
-        <motion.g
-          key={`${row}-${col}`}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-          transition={{ duration: 0.3 + index * 0.01, ease: [0.5, 0, 0.17, 1] }}
-          style={{ color: color }}
-        >
-          <Shape x={x} y={y} type={shapeType} size={shapeSize} opacity={opacity} />
-        </motion.g>
-      );
-    });
+          const color = shapeType === 'rect' ? color1 : color2;
 
+          return (
+            <motion.g
+              key={`${row}-${col}`}
+              variants={childVariants as any}
+              custom={{ shimmer: index * (index * 0.1) }}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              style={{ color: color }}
+            >
+              <Shape x={x} y={y} type={shapeType} size={shapeSize} opacity={opacity} />
+            </motion.g>
+          );
+        }),
+      [rows, columns, cellWidth, padding, cellHeight, midX, width, midY, height, variant, color1, color2, isInView]
+    );
     return (
       <motion.svg
         width={width}

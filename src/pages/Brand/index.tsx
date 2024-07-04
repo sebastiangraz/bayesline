@@ -22,6 +22,7 @@ export function Brand() {
             <VectorField variant="radial" />
             <VectorField variant="checker" />
             <VectorField variant="grid" />
+            <VectorField variant="magnify" />
           </Flex>
         </Card>
         <Card>
@@ -34,7 +35,6 @@ export function Brand() {
             <ShapeField variant="checker" />
 
             <ShapeField variant="pcb" />
-            <ShapeField variant="pcb" columns={20} rows={20} padding={3} />
           </div>
         </Card>
       </Cards>
