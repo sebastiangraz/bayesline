@@ -1,6 +1,4 @@
-import { Hero, Flex, Card, Cards, Text, VectorField, Logo } from '@/components';
-import composition from '@/assets/composition.png';
-import sidebar from '@/assets/sidebar.png';
+import { Flex, Card, Cards, Text, VectorField, Logo, ShapeField } from '@/components';
 
 export function Brand() {
   return (
@@ -28,7 +26,8 @@ export function Brand() {
         </Card>
         <Card>
           <div className="card-header">
-            <Text.H4>Brand</Text.H4>{' '}
+            <Text.H4>Shape Fields</Text.H4>
+            <ShapeField interpolationValue={Math.random(10)} />
           </div>
         </Card>
       </Cards>
