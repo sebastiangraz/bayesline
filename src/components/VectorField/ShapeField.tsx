@@ -25,7 +25,7 @@ function gaussian(x: number, mean: number, variance: number) {
   return (1 / Math.sqrt(2 * Math.PI * variance)) * Math.exp(-Math.pow(x - mean, 2) / (2 * variance));
 }
 
-function bayesianCurve(col: number, row: number, rows: number, columns: number) {
+function bayesianCurve(col: number, row: number, columns: number) {
   const mean = columns / 2;
   const variance = Math.pow(columns / 7, 3.2); // Adjust this for wider/narrower curves
   const baseHeight = gaussian(col, mean, variance);
@@ -181,7 +181,7 @@ export const ShapeField = React.memo(
               break;
 
             case 'grid':
-              shapeType = bayesianCurve(col, row, rows, columns) < 0.5 ? 'rect' : 'ellipse'; // Alternates every row
+              shapeType = bayesianCurve(col, row, columns) < 0.5 ? 'rect' : 'ellipse'; // Alternates every row
               break;
 
             case 'checker':
