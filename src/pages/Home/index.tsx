@@ -1,5 +1,5 @@
 import style from './home.module.css';
-import { Hero, Button, Card, Cards, Text, VectorField } from '@/components';
+import { Hero, Button, Card, Cards, Text, VectorField, ShapeField } from '@/components';
 import composition from '@/assets/composition.png';
 import sidebar from '@/assets/sidebar.png';
 
@@ -38,10 +38,11 @@ export function Home() {
             <img src={sidebar} className={style.cardImage} />
             <VectorField variant="straight" className={style.cardField} />
           </Card>
-          <Card>
+          <Card dataTheme={1}>
             <div className="card-header">
               <Text.H4>Automated suggestions</Text.H4>
               <Text.Body>Seamless tips and approval flows.</Text.Body>
+              <ShapeField variant="dithered-gradient" />
             </div>
           </Card>
         </Cards>

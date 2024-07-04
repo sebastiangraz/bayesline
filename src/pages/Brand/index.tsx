@@ -34,7 +34,7 @@ export function Brand() {
             <ShapeField variant="checker" />
             <ShapeField variant="plus" />
             <ShapeField variant="pcb" />
-            <ShapeField variant="pcb" columns={22} rows={22} />
+            <ShapeField variant="pcb" columns={20} rows={20} padding={3} />
           </div>
         </Card>
       </Cards>
