@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 interface ShapeFieldProps {
   width?: number;
@@ -80,6 +80,12 @@ export const ShapeField = React.memo(
     color2 = 'var(--foreground-accent)',
     variant = 'swirl'
   }: ShapeFieldProps) => {
+    const svgRef = useRef<SVGSVGElement>(null);
+    const isInView = useInView(svgRef, {
+      once: true,
+      amount: 'some'
+    });
+
     const paddedWidth = width - columns * padding; // Reduce total width by total horizontal padding
     const paddedHeight = height - rows * padding;
 
@@ -209,7 +215,7 @@ export const ShapeField = React.memo(
         <motion.g
           key={`${row}-${col}`}
           initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: opacity, scale: 1 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
           transition={{ duration: 0.3 + index * 0.01, ease: [0.5, 0, 0.17, 1] }}
           style={{ color: color }}
         >
@@ -219,7 +225,7 @@ export const ShapeField = React.memo(
     });
 
     return (
-      <svg width={width} height={height}>
+      <svg width={width} height={height} ref={svgRef}>
         {shapes}
       </svg>
     );
