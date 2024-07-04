@@ -93,7 +93,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       return offsetAngle * (180 / Math.PI);
     });
 
-    const opacity = useTransform<number, number>([mouseX, mouseY, angle], ([latestX, latestY, latestAngle]) => {
+    const opacity = useTransform<number, number>([mouseX, mouseY, angle], ([latestX, latestY]) => {
       const distance = Math.sqrt((latestX - x) ** 2 + (latestY - y) ** 2);
       const cellSize = svgSize / 4;
       const cellX = Math.floor(x / cellSize);

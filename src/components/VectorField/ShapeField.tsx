@@ -138,15 +138,15 @@ export const ShapeField = React.memo(
           //radial tools
           const rx = (x - midX) / width;
           const ry = (y - midY) / height;
-          const rdistance = Math.sqrt(rx * rx + ry * ry);
+          // const rdistance = Math.sqrt(rx * rx + ry * ry);
 
           //linear tools
           const dx = col / columns;
           const dy = row / rows;
-          const interpolation = Math.abs(rx - ry);
-          const xdistance = x / width;
+          // const interpolation = Math.abs(rx - ry);
+          // const xdistance = x / width;
           const ydistance = y / height;
-          const diagDistance = Math.sqrt(dx * dx + dy * dy);
+          //const diagDistance = Math.sqrt(dx * dx + dy * dy);
 
           //noise tools, noice indeed
           const baseNoise = (0.5 - Math.random()) * 0.66; // Between -0.1 and 0.1
