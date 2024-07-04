@@ -27,7 +27,14 @@ export function Brand() {
         <Card>
           <div className="card-header">
             <Text.H4>Shape Fields</Text.H4>
-            <ShapeField interpolationValue={Math.random(10)} />
+            <ShapeField variant="swirl" />
+            <ShapeField variant="dithered-gradient" />
+            <ShapeField variant="radial" />
+            <ShapeField variant="grid" />
+            <ShapeField variant="checker" />
+            <ShapeField variant="plus" />
+            <ShapeField variant="pcb" />
+            <ShapeField variant="pcb" columns={22} rows={22} />
           </div>
         </Card>
       </Cards>
