@@ -24,6 +24,7 @@ export function Brand() {
             <VectorField variant="radial" />
             <VectorField variant="checker" />
             <VectorField variant="plus" />
+            <VectorField variant="grid3x3" />
           </Flex>
         </Card>
         <Card>

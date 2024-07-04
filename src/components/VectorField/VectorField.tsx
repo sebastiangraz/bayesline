@@ -3,7 +3,7 @@ import { useCallback, useRef } from 'react';
 import style from './vectorfield.module.css';
 
 interface VectorFieldProps {
-  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'plus';
+  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'plus' | 'grid3x3';
   className?: string;
 }
 
@@ -55,14 +55,13 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       const dy = latestY - y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
       const baseAngle = Math.atan2(dy, dx);
-      const gaussianFactor = Math.exp(-(dist * dist) / (2 * (size / 4) * (size / 4)));
-      const vortexFactor = Math.atan2(dy, dx) + dist / (size / 2);
-      const axisDistance = Math.min(Math.abs(x - size / 2), Math.abs(y - size / 2));
+      const cellSize = size / 3;
+      const cellX = Math.floor(x / cellSize);
+      const cellY = Math.floor(y / cellSize);
+      const cellCenterX = (cellX + 0.5) * cellSize;
+      const cellCenterY = (cellY + 0.5) * cellSize;
 
-      const distToVertical = Math.abs(x - size / 2);
-      const distToHorizontal = Math.abs(y - size / 2);
-      const minDist = Math.min(distToVertical, distToHorizontal);
-      const axisWidth = arrowSize - 0.5 * 2;
+      const distToCellCenter = Math.sqrt(Math.pow(x - cellCenterX, 2) + Math.pow(y - cellCenterY, 2));
 
       switch (variant) {
         case 'swirl':
@@ -121,6 +120,15 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       const distToVertical = Math.abs(x - size / 2);
       const distToHorizontal = Math.abs(y - size / 2);
       const axisDistance = Math.min(distToVertical, distToHorizontal);
+      const cellSize = size / 3;
+      const cellX = Math.floor(x / cellSize);
+      const cellY = Math.floor(y / cellSize);
+      const cellCenterX = (cellX + 0.5) * cellSize;
+      const cellCenterY = (cellY + 0.5) * cellSize;
+
+      const distToCellCenter = Math.sqrt(Math.pow(x - cellCenterX, 2) + Math.pow(y - cellCenterY, 2));
+
+      const axisDistInCell = Math.min(Math.abs(x - cellCenterX), Math.abs(y - cellCenterY));
 
       switch (variant) {
         case 'swirl':
@@ -152,6 +160,9 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
         case 'plus':
           // make it look like a grid pattern
           return Math.max(0.48, 3 - (axisDistance * distance) / (numArrows / 2));
+
+        case 'grid3x3':
+          return Math.max(0.48, 3 - (axisDistInCell * distToCellCenter) / (cellSize / 2));
 
         default:
           return 1;
