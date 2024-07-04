@@ -3,7 +3,7 @@ import { useCallback, useRef } from 'react';
 import style from './vectorfield.module.css';
 
 interface VectorFieldProps {
-  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'plus' | 'grid3x3';
+  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'grid';
   className?: string;
 }
 
@@ -44,7 +44,10 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
     mouseY.set(event.clientY - rect.top);
   };
 
-  // Radius of the non-reactive buffer around the cursor
+  const handleMouseLeave = () => {
+    mouseX.set(size / 2 + svgPadding);
+    mouseY.set(size / 2 + svgPadding);
+  };
 
   const arrows = Array.from({ length: numArrows * numArrows }, (_, index) => {
     const x = (index % numArrows) * (arrowSize + arrowPadding) + svgPadding + arrowSize / 2;
@@ -55,13 +58,6 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       const dy = latestY - y;
       const dist = Math.sqrt(dx * dx + dy * dy) || 1;
       const baseAngle = Math.atan2(dy, dx);
-      const cellSize = size / 3;
-      const cellX = Math.floor(x / cellSize);
-      const cellY = Math.floor(y / cellSize);
-      const cellCenterX = (cellX + 0.5) * cellSize;
-      const cellCenterY = (cellY + 0.5) * cellSize;
-
-      const distToCellCenter = Math.sqrt(Math.pow(x - cellCenterX, 2) + Math.pow(y - cellCenterY, 2));
 
       switch (variant) {
         case 'swirl':
@@ -74,20 +70,6 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
         case 'radial':
           bufferVariable = 100 - Math.min(100, dist);
-          break;
-
-        case 'plus':
-          if (
-            //x
-            (Math.abs(x - latestX) < size && Math.abs(y - latestY) < (arrowSize - 0.5) * 2) ||
-            //y
-            (Math.abs(y - latestY) < size && Math.abs(x - latestX) < (arrowSize - 0.5) * 2)
-          ) {
-            bufferVariable = 0;
-          } else {
-            bufferVariable = 0;
-          }
-
           break;
 
         case 'checker':
@@ -117,15 +99,13 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
     const opacity = useTransform<number, number>([mouseX, mouseY, angle], ([latestX, latestY, latestAngle]) => {
       const distance = Math.sqrt((latestX - x) ** 2 + (latestY - y) ** 2);
-      const distToVertical = Math.abs(x - size / 2);
-      const distToHorizontal = Math.abs(y - size / 2);
-      const axisDistance = Math.min(distToVertical, distToHorizontal);
-      const cellSize = size / 3;
+      const cellSize = svgSize / 4;
       const cellX = Math.floor(x / cellSize);
       const cellY = Math.floor(y / cellSize);
       const cellCenterX = (cellX + 0.5) * cellSize;
       const cellCenterY = (cellY + 0.5) * cellSize;
 
+      const lineWidth = arrowSize * 2;
       const distToCellCenter = Math.sqrt(Math.pow(x - cellCenterX, 2) + Math.pow(y - cellCenterY, 2));
 
       const axisDistInCell = Math.min(Math.abs(x - cellCenterX), Math.abs(y - cellCenterY));
@@ -154,15 +134,14 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
             Math.min(1, Math.sin(distance / (arrowSize * 2) + ((index % (arrowSize * 3)) / size) * 2)) / 2 + 0.5
           );
         case 'checker':
-          // should return every other arrow
           return Math.floor((index % numArrows) + Math.floor(index / numArrows)) % 2 === 0 ? 1 : 0.5;
 
-        case 'plus':
-          // make it look like a grid pattern
-          return Math.max(0.48, 3 - (axisDistance * distance) / (numArrows / 2));
-
-        case 'grid3x3':
-          return Math.max(0.48, 3 - (axisDistInCell * distToCellCenter) / (cellSize / 2));
+        case 'grid':
+          if (axisDistInCell < lineWidth) {
+            return 1;
+          } else {
+            return Math.max(0.32, 1 - (axisDistInCell * distToCellCenter) / (cellSize / 2));
+          }
 
         default:
           return 1;
@@ -176,7 +155,14 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
   const classNames = `${style.vectorfield} ${className}`;
   return (
-    <svg ref={svgRef} width={svgSize} height={svgSize} onMouseMove={handleMouseMove} className={classNames}>
+    <svg
+      ref={svgRef}
+      width={svgSize}
+      height={svgSize}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={classNames}
+    >
       {arrows.map((arrow, index) => (
         <motion.line
           vectorEffect={'non-scaling-stroke' as any}
