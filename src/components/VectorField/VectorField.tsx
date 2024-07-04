@@ -88,15 +88,6 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
       return offsetAngle * (180 / Math.PI);
     });
 
-    const x2 = useSpring(
-      useTransform(angle, (a) => x + arrowSize * Math.cos((a * Math.PI) / 180)),
-      { stiffness: 400, damping: 20, mass: 0.1 }
-    );
-    const y2 = useSpring(
-      useTransform(angle, (a) => y + arrowSize * Math.sin((a * Math.PI) / 180)),
-      { stiffness: 400, damping: 20, mass: 0.1 }
-    );
-
     const opacity = useTransform<number, number>([mouseX, mouseY, angle], ([latestX, latestY, latestAngle]) => {
       const distance = Math.sqrt((latestX - x) ** 2 + (latestY - y) ** 2);
       const cellSize = svgSize / 4;
@@ -150,7 +141,18 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
     const radialIndex = Math.floor((225 + angle.get()) % 180);
 
-    return { x, y, x2, y2, angle: radialIndex, opacity: opacity };
+    const x2 = useSpring(
+      useTransform(angle, (a) => x + arrowSize * Math.cos((a * Math.PI) / 180)),
+      { stiffness: 400, damping: 20, mass: 0.1 }
+    );
+    const y2 = useSpring(
+      useTransform(angle, (a) => y + arrowSize * Math.sin((a * Math.PI) / 180)),
+      { stiffness: 400, damping: 20, mass: 0.1 }
+    );
+
+    const springOpacity = useSpring(opacity, { stiffness: 400, damping: 20, mass: 0.1 });
+
+    return { x, y, x2, y2, angle: radialIndex, opacity: springOpacity };
   });
 
   const classNames = `${style.vectorfield} ${className}`;
