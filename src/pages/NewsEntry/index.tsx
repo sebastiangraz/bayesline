@@ -1,6 +1,6 @@
 import { Asset, Text } from '@/components';
 import { MDXProvider } from '@mdx-js/react';
-import { Route } from '@/routes/news.$postId';
+import { Route } from '@/routes/news/$postId';
 import style from './newsentry.module.css';
 import { components } from './components';
 import { entryMeta } from '@/pages/News/entryMeta';
