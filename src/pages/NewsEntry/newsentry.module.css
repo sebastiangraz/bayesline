@@ -21,6 +21,43 @@
   }
 }
 
+.more {
+  gap: 1em 0;
+  background: var(--background);
+  ul {
+    li {
+      box-shadow: var(--border-b) inset var(--foreground-border);
+      padding: 1em 0;
+      a {
+        display: flex;
+        gap: 0 3em;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .thumbnail {
+    background: var(--background-accent);
+    aspect-ratio: 1;
+    flex-basis: 3em;
+    svg,
+    img {
+      box-shadow: var(--shadow);
+      width: 100%;
+    }
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    gap: 0.5em 1em;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
 .excerpt {
   grid-column: 15 / span 10;
   color: var(--foreground-accent);
