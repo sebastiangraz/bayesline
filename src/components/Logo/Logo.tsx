@@ -6,7 +6,7 @@ interface LogoProps {
   type?: boolean;
 }
 
-export const Logo = ({ className = '', type }: LogoProps) => {
+export const Logo = ({ className = '', type = true }: LogoProps) => {
   const parentVariant = {
     hidden: {
       transition: {
