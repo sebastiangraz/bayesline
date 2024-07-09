@@ -31,7 +31,8 @@ export function Brand() {
             <ShapeField variant="swirl" />
             <ShapeField variant="dithered-gradient" />
             <ShapeField variant="radial" />
-            <ShapeField variant="grid" />
+            <ShapeField variant="bayesian" rows={55} columns={55} padding={1} static />
+            <ShapeField variant="bayesian" rows={28} columns={28} padding={1} static />
             <ShapeField variant="checker" />
 
             <ShapeField variant="pcb" />

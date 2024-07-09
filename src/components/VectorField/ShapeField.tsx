@@ -8,9 +8,10 @@ interface ShapeFieldProps {
   columns?: number;
   padding?: number;
   interpolationValue?: number;
-  variant?: 'swirl' | 'dithered-gradient' | 'radial' | 'checker' | 'grid' | 'pcb';
+  variant?: 'swirl' | 'dithered-gradient' | 'radial' | 'checker' | 'bayesian' | 'pcb';
   color1?: string;
   color2?: string;
+  static?: boolean;
 }
 
 interface ShapeProps {
@@ -91,14 +92,15 @@ export const ShapeField = React.memo(
       (col: number, row: number, baseNoise: number, noise: number, index: number, y: number) => {
         let shapeType: ShapeProps['type'];
         const ydistance = y / height;
+
         function combinedType(value: number) {
           let shapeType: ShapeProps['type'];
           if (value <= 0.33) {
-            shapeType = 'rect';
-          } else if (value <= 0.66) {
+            shapeType = 'line';
+          } else if (value <= 0.55) {
             shapeType = 'ellipse';
           } else {
-            shapeType = 'line';
+            shapeType = 'rect';
           }
           return shapeType;
         }
@@ -116,8 +118,8 @@ export const ShapeField = React.memo(
             shapeType = baseNoise + noise <= 0.5 ? 'rect' : 'ellipse';
             break;
 
-          case 'grid':
-            shapeType = bayesianCurve(col, row, columns) < 0.5 ? 'rect' : 'ellipse';
+          case 'bayesian':
+            shapeType = combinedType(bayesianCurve(col, row, columns, rows));
             break;
 
           case 'checker':
@@ -225,12 +227,16 @@ function gaussian(x: number, mean: number, variance: number) {
   return (1 / Math.sqrt(2 * Math.PI * variance)) * Math.exp(-Math.pow(x - mean, 2) / (2 * variance));
 }
 
-function bayesianCurve(col: number, row: number, columns: number) {
+function bayesianCurve(col: number, row: number, columns: number, rows: number) {
   const mean = columns / 2;
-  const variance = Math.pow(columns / 7, 3.2); // Adjust this for wider/narrower curves
-  const baseHeight = gaussian(col, mean, variance);
-  const normalizedHeight = baseHeight * row; // Normalize height to fit rows
-  return normalizedHeight;
+  const varianceH = Math.pow(columns / 12, 1.8);
+  const varianceW = Math.pow(columns / 6, 2.12); // Adjust this for wider/narrower curves
+  const baseHeight = gaussian(col, mean, varianceH);
+  const baseWidth = gaussian(row, mean, varianceW);
+  const normalizedHeight = baseHeight * columns;
+  const normalizedWidth = baseWidth * rows;
+
+  return (normalizedHeight / 14) * 0.8 + (normalizedWidth / 6) * 0.95;
 }
 const tornado = (col: number, row: number, rows: number, columns: number) => {
   const angle = Math.atan2(row - rows / 2, col - columns / 2);
