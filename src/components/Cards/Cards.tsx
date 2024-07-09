@@ -12,6 +12,7 @@ interface CardProps {
 interface CardsProps {
   children: React.ReactNode;
   className?: string;
+  layout?: 'grid-left' | 'grid-col' | 'grid-right';
 }
 
 // This interface extends the types to include the specific styled variants
@@ -67,8 +68,16 @@ export const Card: BaseCardComponent = Object.assign(BaseCard, {
 });
 
 // Define the Cards wrapper component
-export const Cards: React.FunctionComponent<CardsProps> = ({ children, className = '', ...otherProps }) => {
-  const classNames = `col ${styles.cards} ${className}`;
+export const Cards: React.FunctionComponent<CardsProps> = ({
+  children,
+  className = '',
+  layout = 'grid-col',
+  ...otherProps
+}) => {
+  const layoutClasses =
+    layout === 'grid-left' ? styles.cardsGridLeft : layout === 'grid-right' ? styles.cardsGridRight : '';
+
+  const classNames = `col ${styles.cards} ${layoutClasses} ${className} `;
   return (
     <div className={classNames} {...otherProps}>
       {children}

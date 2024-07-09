@@ -8,7 +8,85 @@ export function Home() {
     <>
       <Hero />
       <div className="col">
-        <Cards>
+        <Cards layout="grid-left">
+          <Card dataTheme={1}>
+            <div className="card-header">
+              <Text.H4>Ultimate flexibility</Text.H4>
+              <Text.Body>
+                Bring your own data, hierarchies, factor exposures, or use our pre-canned and optimized models. Select
+                from industry standard reports, or new ways to look at risk.
+              </Text.Body>
+              <Button
+                bgColor="hsl(var(--brand-2))"
+                fgColor="var(--foreground)"
+                type="primary"
+                href="https://calendar.app.google/qq4pjZcmDdzTjBme7"
+                target="_blank"
+              >
+                <Text.Caps>Schedule a Demo</Text.Caps>
+              </Button>
+            </div>
+            <img src={composition} />
+          </Card>
+          <Card dataTheme={3}>
+            <div className="card-header">
+              <Text.H4>Compare models</Text.H4>
+              <Text.Body>
+                Run reports in comparison mode, zooming into the relative performance of different models and settings.
+              </Text.Body>
+            </div>
+            <img src={sidebar} className={style.cardImage} />
+            <VectorField variant="straight" className={style.cardField} />
+          </Card>
+          <Card dataTheme={1}>
+            <div className="card-header">
+              <Text.H4>Automated suggestions</Text.H4>
+              <Text.Body>Seamless tips and approval flows.</Text.Body>
+              <ShapeField variant="bayesian" rows={23} columns={23} padding={2} isStatic />
+            </div>
+          </Card>
+        </Cards>
+
+        <Cards layout="grid-col">
+          <Card dataTheme={1}>
+            <div className="card-header">
+              <Text.H4>Ultimate flexibility</Text.H4>
+              <Text.Body>
+                Bring your own data, hierarchies, factor exposures, or use our pre-canned and optimized models. Select
+                from industry standard reports, or new ways to look at risk.
+              </Text.Body>
+              <Button
+                bgColor="hsl(var(--brand-2))"
+                fgColor="var(--foreground)"
+                type="primary"
+                href="https://calendar.app.google/qq4pjZcmDdzTjBme7"
+                target="_blank"
+              >
+                <Text.Caps>Schedule a Demo</Text.Caps>
+              </Button>
+            </div>
+            <img src={composition} />
+          </Card>
+          <Card dataTheme={3}>
+            <div className="card-header">
+              <Text.H4>Compare models</Text.H4>
+              <Text.Body>
+                Run reports in comparison mode, zooming into the relative performance of different models and settings.
+              </Text.Body>
+            </div>
+            <img src={sidebar} className={style.cardImage} />
+            <VectorField variant="straight" className={style.cardField} />
+          </Card>
+          <Card dataTheme={1}>
+            <div className="card-header">
+              <Text.H4>Automated suggestions</Text.H4>
+              <Text.Body>Seamless tips and approval flows.</Text.Body>
+              <ShapeField variant="bayesian" rows={23} columns={23} padding={2} isStatic />
+            </div>
+          </Card>
+        </Cards>
+
+        <Cards layout="grid-right">
           <Card dataTheme={1}>
             <div className="card-header">
               <Text.H4>Ultimate flexibility</Text.H4>
