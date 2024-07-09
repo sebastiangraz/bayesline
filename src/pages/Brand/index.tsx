@@ -28,14 +28,14 @@ export function Brand() {
         <Card>
           <div className="card-header">
             <Text.H4>Shape Fields</Text.H4>
-            <ShapeField variant="swirl" />
-            <ShapeField variant="dithered-gradient" />
-            <ShapeField variant="radial" />
-            <ShapeField variant="bayesian" rows={55} columns={55} padding={1} static />
-            <ShapeField variant="bayesian" rows={28} columns={28} padding={1} static />
-            <ShapeField variant="checker" />
+            <ShapeField isStatic variant="swirl" />
+            <ShapeField isStatic variant="dithered-gradient" />
+            <ShapeField isStatic variant="radial" />
+            <ShapeField isStatic variant="bayesian" rows={55} columns={55} padding={1} />
+            <ShapeField isStatic variant="bayesian" rows={28} columns={28} padding={1} />
+            <ShapeField isStatic variant="checker" />
 
-            <ShapeField variant="pcb" />
+            <ShapeField isStatic variant="pcb" />
           </div>
         </Card>
       </Cards>

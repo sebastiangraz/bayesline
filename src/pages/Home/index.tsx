@@ -42,7 +42,7 @@ export function Home() {
             <div className="card-header">
               <Text.H4>Automated suggestions</Text.H4>
               <Text.Body>Seamless tips and approval flows.</Text.Body>
-              <ShapeField variant="bayesian" rows={23} columns={23} padding={2} static />
+              <ShapeField variant="bayesian" rows={23} columns={23} padding={2} isStatic />
             </div>
           </Card>
         </Cards>

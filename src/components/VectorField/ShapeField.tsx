@@ -11,7 +11,7 @@ interface ShapeFieldProps {
   variant?: 'swirl' | 'dithered-gradient' | 'radial' | 'checker' | 'bayesian' | 'pcb';
   color1?: string;
   color2?: string;
-  static?: boolean;
+  isStatic?: boolean;
 }
 
 interface ShapeProps {
@@ -71,7 +71,8 @@ export const ShapeField = React.memo(
     padding = 4.5,
     color1 = 'var(--foreground)',
     color2 = 'var(--foreground-accent)',
-    variant = 'swirl'
+    variant = 'swirl',
+    isStatic = false
   }: ShapeFieldProps) => {
     const svgRef = useRef<SVGSVGElement>(null);
     const isInView = useInView(svgRef, {
@@ -180,7 +181,7 @@ export const ShapeField = React.memo(
           return (
             <motion.g
               key={`${row}-${col}`}
-              variants={childVariants as any}
+              variants={!isStatic ? (childVariants as any) : {}}
               custom={{ shimmer: index * (index * 0.1) }}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
@@ -204,6 +205,7 @@ export const ShapeField = React.memo(
         getShapeType,
         color1,
         color2,
+        isStatic,
         isInView
       ]
     );
