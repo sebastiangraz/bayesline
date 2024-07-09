@@ -7,7 +7,6 @@ import { createRootRouteWithContext, Outlet, useRouter, ScrollRestoration } from
 export const Route = createRootRouteWithContext<ThemeValueContext>()({
   component: () => {
     const router = useRouter();
-
     const findThemeValue = [...router.state.matches].reverse().find((d) => d.routeContext.themeValue);
     const theme = findThemeValue?.routeContext.themeValue || 0;
     const themeClass = themeClasses[theme] || '';
@@ -18,7 +17,6 @@ export const Route = createRootRouteWithContext<ThemeValueContext>()({
           <>
             <ScrollRestoration />
             <div className="tile theme"></div>
-            <Navigation />
             <Outlet />
           </>
         </Layout>

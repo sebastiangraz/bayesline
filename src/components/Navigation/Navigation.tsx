@@ -4,7 +4,7 @@ import style from './navigation.module.css';
 import { Logo } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 
-export const Navigation = () => {
+export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => {
   const [isSticky, setIsSticky] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -22,9 +22,12 @@ export const Navigation = () => {
     })();
   }, []);
 
+  const entryStyle = backbutton ? style.entry : '';
+  const stickyStyle = isSticky ? style.sticky : '';
+
   return (
-    <>
-      <nav ref={headerRef} className={`theme ${style.navigation}`}>
+    <div className={`col theme ${style.navigation} ${entryStyle} ${stickyStyle}`}>
+      <nav ref={headerRef} className={`col ${style.nav}`}>
         <div className={`${style.logowrapper}`}>
           <Link to="/" className={`${style.logo} ${style.link}`}>
             <div className={style.logosentinel}>
@@ -50,6 +53,11 @@ export const Navigation = () => {
           </Link>
         </div>
       </nav>
-    </>
+      {backbutton && (
+        <div className={`col ${style.back}`}>
+          <Link to="/news">{'Back to news'}</Link>
+        </div>
+      )}
+    </div>
   );
 };

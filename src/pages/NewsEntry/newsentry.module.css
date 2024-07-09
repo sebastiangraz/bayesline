@@ -1,9 +1,9 @@
 .hero {
   grid-column: 1 / span 26;
-  padding-bottom: 3em;
+  padding-bottom: 0em;
   gap: 2em 0;
-  padding-top: 4em;
-  margin-top: -3em;
+  padding-top: 2em;
+  margin-top: -1em;
   background: var(--background);
   color: var(--foreground);
 }
