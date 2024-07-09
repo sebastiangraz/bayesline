@@ -98,7 +98,7 @@ export const ShapeField = React.memo(
           let shapeType: ShapeProps['type'];
           if (value <= 0.33) {
             shapeType = 'line';
-          } else if (value <= 0.55) {
+          } else if (value <= 0.66) {
             shapeType = 'ellipse';
           } else {
             shapeType = 'rect';
@@ -233,14 +233,14 @@ function gaussian(x: number, mean: number, variance: number) {
 
 function bayesianCurve(col: number, row: number, columns: number, rows: number) {
   const mean = columns / 2;
-  const varianceH = Math.pow(columns / 12, 1.8);
-  const varianceW = Math.pow(columns / 6, 2.12); // Adjust this for wider/narrower curves
+  const varianceH = Math.pow(columns / 7, 1.85);
+  const varianceW = Math.pow(columns / 4, 1.9); // Adjust this for wider/narrower curves
   const baseHeight = gaussian(col, mean, varianceH);
   const baseWidth = gaussian(row, mean, varianceW);
   const normalizedHeight = baseHeight * columns;
   const normalizedWidth = baseWidth * rows;
 
-  return (normalizedHeight / 14) * 0.8 + (normalizedWidth / 6) * 0.95;
+  return (normalizedHeight / 2) * 0.12 + (normalizedWidth / 4) * 0.75;
 }
 const tornado = (col: number, row: number, rows: number, columns: number) => {
   const angle = Math.atan2(row - rows / 2, col - columns / 2);

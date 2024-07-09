@@ -15,5 +15,8 @@
     :global .bleed {
       grid-column: 1 / 26;
     }
+    :global & > * + * {
+      margin-bottom: 4em;
+    }
   }
 }
