@@ -7,5 +7,6 @@
   grid-area: 2/1;
   color: var(--background-4);
   place-self: end center;
-  margin-left: -4em;
+  margin-left: -5em;
+  width: 4em;
 }

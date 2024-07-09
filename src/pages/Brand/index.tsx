@@ -34,7 +34,6 @@ export function Brand() {
             <ShapeField isStatic variant="bayesian" rows={55} columns={55} padding={1} />
             <ShapeField isStatic variant="bayesian" rows={28} columns={28} padding={1} />
             <ShapeField isStatic variant="checker" />
-
             <ShapeField isStatic variant="pcb" />
           </div>
         </Card>

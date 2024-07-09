@@ -157,7 +157,7 @@ export const ShapeField = React.memo(
 
           const shapeSize = Math.min(cellWidth, cellHeight) - padding;
 
-          //radial tools
+          // radial tools
           const rx = (x - midX) / width;
           const ry = (y - midY) / height;
           // const rdistance = Math.sqrt(rx * rx + ry * ry);
@@ -167,10 +167,10 @@ export const ShapeField = React.memo(
           // const dy = row / rows;
           // const interpolation = Math.abs(rx - ry);
           // const xdistance = x / width;
-          //const ydistance = y / height;
-          //const diagDistance = Math.sqrt(dx * dx + dy * dy);
+          // const ydistance = y / height;
+          // const diagDistance = Math.sqrt(dx * dx + dy * dy);
 
-          //noise tools, noice indeed
+          // noise tools, noice indeed
           const baseNoise = (0.5 - Math.random()) * 0.66;
           const noise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 2;
 
@@ -211,8 +211,10 @@ export const ShapeField = React.memo(
     );
     return (
       <motion.svg
-        width={width}
-        height={height}
+        // width={width}
+        // height={height}
+        preserveAspectRatio="xMidYMid meet"
+        viewBox={`0 0 ${width} ${height}`}
         ref={svgRef}
         initial={{
           opacity: 0

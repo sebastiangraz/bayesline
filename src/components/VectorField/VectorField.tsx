@@ -41,8 +41,9 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
   const handleMouseMove = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     const rect = svgRef.current!.getBoundingClientRect();
-    mouseX.set(event.clientX - rect.left);
-    mouseY.set(event.clientY - rect.top);
+    const scale = svgSize / rect.width; // Calculate scale factor based on current width
+    mouseX.set((event.clientX - rect.left) * scale);
+    mouseY.set((event.clientY - rect.top) * scale);
   };
 
   const handleMouseLeave = () => {
@@ -174,12 +175,20 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
   return (
     <svg
       ref={svgRef}
-      width={svgSize}
-      height={svgSize}
+      width={'100%'}
+      // width={svgSize}
+      // height={'100%'}
+      preserveAspectRatio="xMidYMid meet"
+      viewBox={`0 0 ${svgSize} ${svgSize}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={classNames}
-      style={{ visibility: isInView ? 'visible' : 'hidden' }}
+      style={{
+        visibility: isInView ? 'visible' : 'hidden'
+        // aspectRatio: 1
+        // maxWidth: svgSize,
+        // width: '100%'
+      }}
     >
       {arrows.map((arrow, index) => (
         <motion.line
