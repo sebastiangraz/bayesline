@@ -50,6 +50,7 @@
   align-content: start;
   grid-template-rows: 1fr auto;
   border-radius: var(--radius);
+  gap: 1em;
   :global .card-header {
     display: flex;
     flex-direction: column;

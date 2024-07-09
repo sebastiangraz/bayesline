@@ -34,3 +34,6 @@
   composes: caps from global;
   composes: small from global;
 }
+.balance {
+  text-wrap: balance;
+}

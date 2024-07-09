@@ -6,12 +6,13 @@ interface TextProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   as?: React.ElementType;
   variant?: keyof typeof styles; // Now optional, because the specific heading components will provide it
+  balance?: boolean;
   ref?: React.Ref<HTMLElement>;
 }
 
 const TextBase = React.forwardRef<HTMLElement, TextProps>(
-  ({ children, className, as: Component = 'span', variant, ...props }, ref) => {
-    const finalClassName = `${variant ? styles[variant] : ''} ${className || ''}`.trim();
+  ({ children, className, as: Component = 'span', variant, balance, ...props }, ref) => {
+    const finalClassName = `${variant ? styles[variant] : ''} ${className || ''} ${balance ? styles.balance : ''}`;
 
     return (
       <Component ref={ref} className={finalClassName} {...props}>

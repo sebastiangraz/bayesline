@@ -1,5 +1,5 @@
 import style from './home.module.css';
-import { Hero, Button, Card, Cards, Text, VectorField, ShapeField, Flex } from '@/components';
+import { Hero, Button, Card, Cards, Text, VectorField, ShapeField, Flex, Icon } from '@/components';
 import composition from '@/assets/composition.png';
 import sidebar from '@/assets/sidebar.png';
 
@@ -49,29 +49,26 @@ export function Home() {
 
       <Cards layout="grid-col">
         <Card dataTheme={0}>
-          <Text.Body>
+          <Icon name="chart" />
+          <Text.Body balance>
             We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
             to highly customizable and blazing fast.
           </Text.Body>
-
-          <img src={sidebar} className={style.cardImage} />
         </Card>
         <Card dataTheme={0}>
-          <Text.Body>
+          <Icon name="layers" />
+          <Text.Body balance>
             Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align with
             realistic investment universes or styles - we're changing that.
           </Text.Body>
-
-          <img src={sidebar} className={style.cardImage} />
         </Card>
-        <Card.Secondary dataTheme={0}>
-          <Text.Body>
+        <Card dataTheme={0}>
+          <Icon name="globe" />
+          <Text.Body balance>
             We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
             to highly customizable and blazing fast.
           </Text.Body>
-
-          <img src={sidebar} className={style.cardImage} />
-        </Card.Secondary>
+        </Card>
       </Cards>
     </>
   );
