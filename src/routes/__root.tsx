@@ -1,4 +1,4 @@
-import { Navigation, Layout } from '@/components';
+import { Layout } from '@/components';
 import { themeClasses } from '@/helpers/utils';
 import { createRootRouteWithContext, Outlet, useRouter, ScrollRestoration } from '@tanstack/react-router';
 

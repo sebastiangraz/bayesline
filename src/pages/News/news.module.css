@@ -10,22 +10,31 @@
     &:first-child {
       box-shadow: none;
     }
-    &:has(.wrapper:hover) .thumbnail svg,
-    .thumbnail img {
-      /* transform: translateY(-0.1em); */
+    &:has(.wrapper:hover) .thumbnail {
+      background: color-mix(in srgb, var(--background-accent), var(--foreground) 4%);
     }
-    /* &:hover .thumbnail {
-      filter: saturate(0);
-    } */
+  }
+  li:has(.featured) {
+    opacity: 0.5;
   }
   li a {
     text-decoration: none;
     list-style: none;
   }
+  li.featured + li {
+    margin-top: 4em;
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+  li:has(+ li.featured) {
+    margin-top: 0;
+    margin-bottom: 4em;
+  }
 }
 
 .heading {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+  min-height: 2em;
 }
 
 .wrapper {
