@@ -90,19 +90,21 @@ export const ShapeField = React.memo(
     const midY = height / 2 - cellHeight / 2;
 
     const getShapeType = useCallback(
-      (col: number, row: number, baseNoise: number, noise: number, index: number, y: number) => {
+      (col: number, row: number, baseNoise: number, radialNoise: number, index: number, y: number) => {
         let shapeType: ShapeProps['type'];
         const ydistance = y / height;
 
-        function combinedType(value: number) {
+        function combinedType(value: number, offset = 0) {
+          const offsetValue = value + offset;
           let shapeType: ShapeProps['type'];
           if (value <= 0.33) {
             shapeType = 'line';
-          } else if (value <= 0.66) {
+          } else if (offsetValue <= 0.66) {
             shapeType = 'ellipse';
           } else {
             shapeType = 'rect';
           }
+
           return shapeType;
         }
 
@@ -116,11 +118,11 @@ export const ShapeField = React.memo(
             break;
 
           case 'radial':
-            shapeType = baseNoise + noise <= 0.5 ? 'rect' : 'ellipse';
+            shapeType = combinedType(radialNoise, 0.26);
             break;
 
           case 'bayesian':
-            shapeType = combinedType(bayesianCurve(col, row, columns, rows));
+            shapeType = combinedType(bayesianCurve(col, row, columns, rows), 0.26);
             break;
 
           case 'checker':
@@ -173,9 +175,9 @@ export const ShapeField = React.memo(
           // noise tools, noice indeed
           const baseNoise = (0.5 - Math.random()) * 0.66;
           const noise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 2;
-
+          const radialNoise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 4;
           const opacity = getOpacity(baseNoise + noise);
-          const shapeType = getShapeType(col, row, baseNoise, noise, index, y);
+          const shapeType = getShapeType(col, row, baseNoise, radialNoise, index, y);
           const color = shapeType === 'rect' ? color1 : color2;
 
           return (
@@ -232,20 +234,24 @@ function gaussian(x: number, mean: number, variance: number) {
 }
 
 function bayesianCurve(col: number, row: number, columns: number, rows: number) {
-  const mean = columns / 2;
-  const varianceH = Math.pow(columns / 7, 1.85);
-  const varianceW = Math.pow(columns / 4, 1.9); // Adjust this for wider/narrower curves
-  const baseHeight = gaussian(col, mean, varianceH);
-  const baseWidth = gaussian(row, mean, varianceW);
-  const normalizedHeight = baseHeight * columns;
-  const normalizedWidth = baseWidth * rows;
+  const meanW = columns / 2;
+  const meanH = rows / 2;
 
-  return (normalizedHeight / 2) * 0.12 + (normalizedWidth / 4) * 0.75;
+  const varianceW = Math.pow(columns / 8, 1.85);
+  const varianceH = Math.pow(rows / 4, 1.9);
+
+  const baseWidth = gaussian(col, meanW, varianceW);
+  const baseHeight = gaussian(row, meanH, varianceH);
+
+  const normalizedWidth = baseWidth * columns;
+  const normalizedHeight = baseHeight * rows;
+
+  return (normalizedWidth / 2) * 0.12 + normalizedHeight / 5.3;
 }
 const tornado = (col: number, row: number, rows: number, columns: number) => {
   const angle = Math.atan2(row - rows / 2, col - columns / 2);
   const radius = Math.sqrt(Math.pow(row - rows / 2, 2) + Math.pow(col - columns / 2, 2));
-  const spiral = Math.sin(angle * 3 + radius / 0.7);
+  const spiral = Math.sin(angle * 1.2 + radius / 0.7);
   return spiral;
 };
 

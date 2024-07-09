@@ -35,7 +35,7 @@ export function Brand() {
             <ShapeField isStatic variant="swirl" />
             <ShapeField isStatic variant="dithered-gradient" />
             <ShapeField isStatic variant="radial" />
-
+            <ShapeField isStatic variant="radial" rows={36} columns={36} padding={2} />
             <ShapeField isStatic variant="checker" />
             <ShapeField isStatic variant="pcb" />
           </div>
