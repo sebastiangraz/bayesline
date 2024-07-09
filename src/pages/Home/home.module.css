@@ -8,12 +8,20 @@
 .cardImage {
   grid-area: 2/1;
   pointer-events: none;
+  margin-top: -2em;
 }
 
-.cardField {
+.cardVectorField {
   grid-area: 2/1;
   color: var(--background-4);
   place-self: end center;
   margin-left: -5em;
   width: 4em;
+}
+
+.cardShapeField {
+  grid-area: 2/1;
+  margin-top: -1em;
+  place-self: start start;
+  width: 6em;
 }

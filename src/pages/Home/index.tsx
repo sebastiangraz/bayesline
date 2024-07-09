@@ -36,14 +36,23 @@ export function Home() {
             </Text.Body>
           </div>
           <img src={sidebar} className={style.cardImage} />
-          <VectorField variant="straight" className={style.cardField} />
+          <VectorField variant="straight" className={style.cardVectorField} />
         </Card.Secondary>
         <Card.Secondary dataTheme={1}>
           <div className="card-header">
             <Text.H4>Automated suggestions</Text.H4>
             <Text.Body>Seamless tips and approval flows.</Text.Body>
-            <ShapeField variant="bayesian" rows={32} columns={32} padding={2} isStatic />
           </div>
+          <ShapeField
+            variant="dithered-gradient"
+            rows={24}
+            columns={24}
+            padding={2}
+            color1="var(--accent-3)"
+            color2="var(--accent-3)"
+            isStatic
+            className={style.cardShapeField}
+          />
         </Card.Secondary>
       </Cards>
 

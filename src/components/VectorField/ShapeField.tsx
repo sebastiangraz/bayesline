@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import style from './vectorfield.module.css';
 
 interface ShapeFieldProps {
   width?: number;
@@ -12,6 +13,7 @@ interface ShapeFieldProps {
   color1?: string;
   color2?: string;
   isStatic?: boolean;
+  className?: string;
 }
 
 interface ShapeProps {
@@ -72,7 +74,8 @@ export const ShapeField = React.memo(
     color1 = 'var(--foreground)',
     color2 = 'var(--foreground-accent)',
     variant = 'swirl',
-    isStatic = false
+    isStatic = false,
+    className = ''
   }: ShapeFieldProps) => {
     const svgRef = useRef<SVGSVGElement>(null);
     const isInView = useInView(svgRef, {
@@ -211,10 +214,13 @@ export const ShapeField = React.memo(
         isInView
       ]
     );
+    const classNames = `${style.shapefield} ${className}`;
+
     return (
       <motion.svg
         // width={width}
         // height={height}
+        className={classNames}
         preserveAspectRatio="xMidYMid meet"
         viewBox={`0 0 ${width} ${height}`}
         ref={svgRef}
