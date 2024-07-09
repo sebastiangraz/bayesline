@@ -28,7 +28,7 @@ export function Home() {
           </div>
           <img src={composition} />
         </Card>
-        <Card dataTheme={3}>
+        <Card.Secondary dataTheme={3}>
           <div className="card-header">
             <Text.H4>Compare models</Text.H4>
             <Text.Body>
@@ -37,44 +37,41 @@ export function Home() {
           </div>
           <img src={sidebar} className={style.cardImage} />
           <VectorField variant="straight" className={style.cardField} />
-        </Card>
-        <Card dataTheme={1}>
+        </Card.Secondary>
+        <Card.Secondary dataTheme={1}>
           <div className="card-header">
             <Text.H4>Automated suggestions</Text.H4>
             <Text.Body>Seamless tips and approval flows.</Text.Body>
             <ShapeField variant="bayesian" rows={32} columns={32} padding={2} isStatic />
           </div>
-        </Card>
+        </Card.Secondary>
       </Cards>
 
       <Cards layout="grid-col">
         <Card dataTheme={0}>
-          <div className="card-header">
-            <Text.Body>
-              We are changing the way investment managers interact with financial analytics. From
-              one-size-doesn't-fit-all to highly customizable and blazing fast.
-            </Text.Body>
-          </div>
+          <Text.Body>
+            We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
+            to highly customizable and blazing fast.
+          </Text.Body>
+
           <img src={sidebar} className={style.cardImage} />
         </Card>
         <Card dataTheme={0}>
-          <div className="card-header">
-            <Text.Body>
-              Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align with
-              realistic investment universes or styles - we're changing that.
-            </Text.Body>
-          </div>
+          <Text.Body>
+            Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align with
+            realistic investment universes or styles - we're changing that.
+          </Text.Body>
+
           <img src={sidebar} className={style.cardImage} />
         </Card>
-        <Card dataTheme={0}>
-          <div className="card-header">
-            <Text.Body>
-              We are changing the way investment managers interact with financial analytics. From
-              one-size-doesn't-fit-all to highly customizable and blazing fast.
-            </Text.Body>
-          </div>
+        <Card.Secondary dataTheme={0}>
+          <Text.Body>
+            We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
+            to highly customizable and blazing fast.
+          </Text.Body>
+
           <img src={sidebar} className={style.cardImage} />
-        </Card>
+        </Card.Secondary>
       </Cards>
     </>
   );

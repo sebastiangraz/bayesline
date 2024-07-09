@@ -1,4 +1,5 @@
 .vectorfield {
   display: grid;
   overflow: visible;
+  color: var(--foreground);
 }

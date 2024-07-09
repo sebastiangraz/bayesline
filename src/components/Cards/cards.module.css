@@ -47,7 +47,6 @@
 
 .card {
   display: grid;
-  background: var(--background-accent);
   align-content: start;
   grid-template-rows: 1fr auto;
   border-radius: var(--radius);
@@ -61,4 +60,10 @@
     place-self: end;
     mask-image: radial-gradient(ellipse at top center, #ffff 50%, #fff0 150%);
   }
+}
+.card.primary {
+  background: var(--background);
+}
+.card.secondary {
+  background: var(--background-accent);
 }

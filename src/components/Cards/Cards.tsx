@@ -19,7 +19,6 @@ interface CardsProps {
 interface BaseCardComponent extends React.FunctionComponent<CardProps> {
   Primary: React.FunctionComponent<CardProps>;
   Secondary: React.FunctionComponent<CardProps>;
-  Tertiary: React.FunctionComponent<CardProps>;
 }
 
 const BaseCard: React.FunctionComponent<CardProps> = ({ children, className = '', dataTheme = 0, ...otherProps }) => {
@@ -32,7 +31,6 @@ const BaseCard: React.FunctionComponent<CardProps> = ({ children, className = ''
   );
 };
 
-// Create styled variants using the base card component
 const PrimaryCard: React.FunctionComponent<CardProps> = ({ children, className = '', ...otherProps }) => {
   const typeClassName = `${styles.primary} ${className}`;
   return (
@@ -51,20 +49,10 @@ const SecondaryCard: React.FunctionComponent<CardProps> = ({ children, className
   );
 };
 
-const TertiaryCard: React.FunctionComponent<CardProps> = ({ children, className = '', ...otherProps }) => {
-  const typeClassName = `${styles.tertiary} ${className}`;
-  return (
-    <BaseCard className={typeClassName} {...otherProps}>
-      {children}
-    </BaseCard>
-  );
-};
-
-// Attach subcomponents to the main function
-export const Card: BaseCardComponent = Object.assign(BaseCard, {
+// Make Primary the default
+export const Card: BaseCardComponent = Object.assign(PrimaryCard, {
   Primary: PrimaryCard,
-  Secondary: SecondaryCard,
-  Tertiary: TertiaryCard
+  Secondary: SecondaryCard
 });
 
 // Define the Cards wrapper component

@@ -29,9 +29,9 @@
   aspect-ratio: 1;
   z-index: 0;
   position: absolute;
-  color: var(--background-3);
 
   > svg {
+    color: var(--background-3);
     position: relative;
     width: 4em;
     left: 2em;
