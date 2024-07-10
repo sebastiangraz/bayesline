@@ -1,6 +1,7 @@
 import { defineConfig, UserConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import { patchCssModules } from 'vite-css-modules';
+import { imagetools } from 'vite-imagetools';
 import { fileURLToPath, URL } from 'url';
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
 import remarkFrontmatter from 'remark-frontmatter';
@@ -32,6 +33,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
     //use patchCssModules until VITE 5.3 is released
     plugins: [
       patchCssModules(),
+      imagetools(),
       mdx.default({
         remarkPlugins: [
           // [remarkToc, { heading: 'contents' }],

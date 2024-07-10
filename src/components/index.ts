@@ -8,6 +8,7 @@ export { Footer } from './Footer';
 export { Hero } from './Hero';
 export { Icon } from './Icon';
 export { Illustration } from './Illustration';
+export { Img } from './Img';
 export { Layout } from './Layout';
 export { Logo } from './Logo';
 export { Navigation } from './Navigation';

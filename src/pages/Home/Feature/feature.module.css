@@ -10,7 +10,7 @@
 }
 
 .text {
-  margin: 2em 2em 0 2em;
+  margin: 2em 4em 0 2em;
   grid-area: row-top;
   grid-row: 1;
 }

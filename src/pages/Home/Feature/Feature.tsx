@@ -1,6 +1,6 @@
 import { StaggerText } from '@/helpers/StaggerText';
 import style from './feature.module.css';
-import { Button, Flex, Text, VectorField } from '@/components';
+import { Button, Flex, Text, VectorField, Img } from '@/components';
 import hero from '@/assets/homepage-hero.png';
 
 interface HeroProps {
@@ -11,10 +11,10 @@ export const Feature = (props: HeroProps) => {
   return (
     <div className={`col bleed ${style.feature}`}>
       <div className={`${style.cue}`}>
-        <section>
+        <Flex column>
           <Text.H5>Invest in time.</Text.H5>
           <Text.Body>Build model reports 56% faster</Text.Body>
-        </section>
+        </Flex>
         <section>
           <VectorField />
           <Text.Small>Build model reports 56% faster</Text.Small>
@@ -37,7 +37,8 @@ export const Feature = (props: HeroProps) => {
         </Flex>
       </Flex>
       <div className={`col ${style.ui}`}>
-        <img src={hero} alt="hero" />
+        {/* <img src={hero} alt="hero" /> */}
+        <Img src={hero} />
       </div>
     </div>
   );
