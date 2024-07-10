@@ -1,0 +1,34 @@
+.picture {
+  position: relative;
+  aspect-ratio: var(--picture-w) / var(--picture-h);
+  z-index: 0;
+  img,
+  source {
+    display: flex;
+    pointer-events: none;
+    width: 100%;
+    height: auto;
+  }
+}
+/* example image dimensions 432 x 328 */
+/* 28px sprite thickness */
+/* 328 x distance to sprite x, 589 y distance to sprite */
+.picture.border {
+  &:before {
+    border-image-source: url('@/assets/device-slice-shadow.avif');
+    border-image-width: 373px calc(180px * 432 / 328);
+    border-image-outset: 319px 182px;
+    border-image-slice: 49.97%;
+    z-index: 10;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  img,
+  source {
+    border-radius: 1em;
+  }
+}

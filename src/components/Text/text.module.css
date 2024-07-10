@@ -37,3 +37,7 @@
 .balance {
   text-wrap: balance;
 }
+
+.secondary {
+  color: var(--foreground-accent);
+}

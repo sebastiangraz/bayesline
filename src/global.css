@@ -169,7 +169,7 @@
   :is(p, a, pre, ul, ol, table, blockquote, hr, figure, .paragraph) {
     margin: 0;
     font-size: var(--body);
-    color: var(--foreground-accent);
+    color: var(--foreground);
     letter-spacing: -0.01em;
   }
 

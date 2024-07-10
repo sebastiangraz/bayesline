@@ -13,7 +13,7 @@ export function Home() {
         <Card dataTheme={1}>
           <div className="card-header">
             <Text.H4>Ultimate flexibility</Text.H4>
-            <Text.Body>
+            <Text.Body secondary>
               Bring your own data, hierarchies, factor exposures, or use our pre-canned and optimized models. Select
               from industry standard reports, or new ways to look at risk.
             </Text.Body>
@@ -32,7 +32,7 @@ export function Home() {
         <Card.Secondary dataTheme={3}>
           <div className="card-header">
             <Text.H4>Compare models</Text.H4>
-            <Text.Body>
+            <Text.Body secondary>
               Run reports in comparison mode, zooming into the relative performance of different models and settings.
             </Text.Body>
           </div>
@@ -42,7 +42,7 @@ export function Home() {
         <Card.Secondary dataTheme={1}>
           <div className="card-header">
             <Text.H4>Automated suggestions</Text.H4>
-            <Text.Body>Seamless tips and approval flows.</Text.Body>
+            <Text.Body secondary>Seamless tips and approval flows.</Text.Body>
           </div>
           <ShapeField
             variant="dithered-gradient"

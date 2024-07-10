@@ -17,7 +17,7 @@ export const Hero = (props: HeroProps) => {
           <Text.H1>
             <StaggerText>{title}</StaggerText>
           </Text.H1>
-          <Text.Body>
+          <Text.Body secondary balance>
             We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
             blazing fast.
           </Text.Body>

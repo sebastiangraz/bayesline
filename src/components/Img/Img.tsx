@@ -1,11 +1,5 @@
-import { OutputMetadata, useState } from 'react';
-
-export interface ImageData {
-  name: string;
-  width?: number;
-  height?: number;
-  alt: string;
-}
+import type { OutputMetadata } from 'react';
+import style from './img.module.css';
 
 interface ImgProps {
   src: string;
@@ -24,15 +18,17 @@ const pictures = import.meta.glob(`@/assets/*.{jpg,jpeg,png}`, {
   eager: true
 });
 
-export const Img = ({ src, alt = 'Image asset', ignoreShadow = false, deviceBorder = false }: ImgProps) => {
+export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = false }: ImgProps) => {
   // match the src to the pictures object
   const pictureSrc = Object.keys(pictures).find((key) => key.includes(src)) as string;
   const meta = pictures[pictureSrc] as OutputMetadata[];
   const pngData = meta.find((m) => m.format === 'png') as OutputMetadata;
   const avifData = meta.find((m) => m.format === 'avif') as OutputMetadata;
 
+  const classNames = `${style.picture} ${deviceBorder ? style.border : ''} ${className}`;
+
   return (
-    <picture>
+    <picture className={classNames} style={{ '--picture-w': pngData.width, '--picture-h': pngData.height }}>
       {avifData.src && <source srcSet={avifData.src} type="image/avif" />}
       <img loading="lazy" src={pngData.src} alt={alt} width={pngData.width} height={pngData.height} />
     </picture>
