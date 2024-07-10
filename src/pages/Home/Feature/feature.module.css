@@ -17,19 +17,22 @@
 }
 
 .ui {
-  aspect-ratio: 768/584;
+  /* aspect-ratio: 768/584; */
   align-self: end;
   max-height: 576px;
   grid-area: row-bottom;
-  margin-left: 2em;
-  img {
-    background: var(--background-3);
-    padding: 0.9125em;
+  padding-left: 1em;
+  overflow: clip;
+  margin-top: -1em;
+  picture {
+    /* padding: 0.9125em; */
     max-height: 100%;
+    top: 1em;
+    left: 1em;
+    position: relative;
     max-width: 100%;
   }
 }
-
 .cue {
   background: var(--accent-2);
   height: 100%;
