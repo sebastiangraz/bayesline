@@ -1,25 +1,23 @@
 .feature {
   background: var(--background-accent);
-  padding: 2em;
-  aspect-ratio: 0.6666667;
-  grid-row: 1;
-  grid-column: start/ span 12;
+  grid-column: start/ end;
 }
 
-.feature p {
-  padding-right: 3em;
+.text {
+  margin-top: 2em;
+  grid-column: 11 / span 8;
+  grid-row: 1;
 }
 
 .ui {
   background: white;
   aspect-ratio: 768/584;
-  grid-column: 12 / end;
+  grid-column: 11 / end;
   grid-row: 1;
   align-self: end;
   max-height: 576px;
 
   img {
-    isolation: isolate;
     max-height: 100%;
     max-width: 100%;
   }
@@ -29,15 +27,21 @@
   background: var(--accent-2);
   aspect-ratio: 1;
   z-index: 0;
-  grid-row: 1;
-  grid-column: 4 / span 5;
-  margin-top: -2em;
+
+  grid-column: 3 / span 6;
+  bottom: 2em;
+  position: relative;
   padding: 1em 0.5em;
   text-align: center;
-  gap: 1em;
+  gap: 1.5em;
   display: grid;
 
-  > svg {
+  section {
+    display: grid;
+    gap: 0.2em;
+  }
+  svg {
+    padding: 0 0.5em;
     color: var(--accent-1);
   }
 }

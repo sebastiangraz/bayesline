@@ -10,6 +10,7 @@
   & > * {
     color: inherit;
     z-index: 1;
+    white-space: nowrap;
     /* mix-blend-mode: plus-lighter; */
   }
   & > svg {
