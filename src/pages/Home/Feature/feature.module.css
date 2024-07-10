@@ -1,0 +1,43 @@
+.feature {
+  background: var(--background-accent);
+  padding: 2em;
+  aspect-ratio: 0.6666667;
+  grid-row: 1;
+  grid-column: start/ span 12;
+}
+
+.feature p {
+  padding-right: 3em;
+}
+
+.ui {
+  background: white;
+  aspect-ratio: 768/584;
+  grid-column: 12 / end;
+  grid-row: 1;
+  align-self: end;
+  max-height: 576px;
+
+  img {
+    isolation: isolate;
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+.cue {
+  background: var(--accent-2);
+  aspect-ratio: 1;
+  z-index: 0;
+  grid-row: 1;
+  grid-column: 4 / span 5;
+  margin-top: -2em;
+  padding: 1em 0.5em;
+  text-align: center;
+  gap: 1em;
+  display: grid;
+
+  > svg {
+    color: var(--accent-1);
+  }
+}

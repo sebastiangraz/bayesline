@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import style from './vectorfield.module.css';
 
 interface VectorFieldProps {
-  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'grid' | 'magnify';
+  variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'grid' | 'magnify' | 'twist';
   className?: string;
 }
 
@@ -63,7 +63,11 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
       switch (variant) {
         case 'swirl':
-          bufferVariable = dist / 2;
+          bufferVariable = dist / -2;
+          break;
+
+        case 'twist':
+          bufferVariable = dist / -2;
           break;
 
         case 'straight':
@@ -107,10 +111,20 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
 
       const axisDistInCell = Math.min(Math.abs(x - cellCenterX), Math.abs(y - cellCenterY));
 
+      const twist = (col: number, row: number, length: number) => {
+        const angle = Math.atan2(row - length / 2, col - length / 2);
+        const radius = Math.sqrt(Math.pow(row - length / 2, 2) + Math.pow(col - length / 2, 2));
+        const spiral = Math.sin(angle * 0.5 + radius / 0.5);
+        return spiral;
+      };
+
       switch (variant) {
         case 'swirl':
           // make a spiral by multiplying the index each revolution by the distance from the cursor
           return 1;
+
+        case 'twist':
+          return twist(index, index, numArrows) >= 0.5 ? 1 : 0.2;
 
         case 'straight':
           // should return a plus shaped vector field, 2 arrows wide

@@ -2,6 +2,7 @@ import style from './home.module.css';
 import { Hero, Button, Card, Cards, Text, VectorField, ShapeField, Flex, Icon } from '@/components';
 import composition from '@/assets/composition.png';
 import sidebar from '@/assets/sidebar.png';
+import { Feature } from './Feature';
 
 export function Home() {
   return (
@@ -79,6 +80,7 @@ export function Home() {
           </Text.Body>
         </Card>
       </Cards>
+      <Feature />
     </>
   );
 }
