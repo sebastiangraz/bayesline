@@ -5,11 +5,7 @@ import hero from '@/assets/homepage-hero.png';
 import y from '@/assets/x.png';
 import x from '@/assets/y.png';
 
-interface HeroProps {
-  title?: string;
-}
-
-export const Feature = (props: HeroProps) => {
+export const Feature = () => {
   return (
     <div className={`col bleed ${style.feature}`}>
       <div className={`${style.cue}`}>

@@ -15,7 +15,7 @@ export const Footer = () => {
             <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
               <pre className="caps">Schedule a Demo</pre>
             </Button>
-            <p className="w-prose balance center small">
+            <p className="balance center small">
               For general inquiries you can reach us at <a href="mailto:info@bayesline.com">info@bayesline.com</a>.
             </p>
             <p className="small balance center">© Copyright 2024 · Bayesline</p>

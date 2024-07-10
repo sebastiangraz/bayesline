@@ -14,7 +14,9 @@ function tableOfContents(toc: any) {
         {toc.map((item: any) => {
           return (
             <li key={item.id}>
-              <a href={`#${item.id}`}>{item.value}</a>
+              <a href={`#${item.id}`}>
+                <Text.Body secondary>{item.value}</Text.Body>
+              </a>
             </li>
           );
         })}
@@ -48,13 +50,12 @@ export function NewsEntry() {
   return (
     <div className={`col bleed`}>
       <div className={`col theme ${style.hero}`}>
-        <Text.H2 className={`col ${style.title}`}>
-          {title}{' '}
-          <span className={`${style.date}`}>
-            <p>{date}</p>
-          </span>
-        </Text.H2>
-
+        <div className={`col ${style.title}`}>
+          <Text.H2>{title}</Text.H2>
+          <Text.Body secondary className={`${style.date}`}>
+            {date}
+          </Text.Body>
+        </div>
         <Text.H5 className={`col ${style.excerpt}`}>{excerpt}</Text.H5>
         <div className={`col ${style.entryImage}`}>
           <Thumbnail />
@@ -100,7 +101,9 @@ export function NewsEntry() {
 
                     <div className={`col ${style.meta}`}>
                       {<Text.Body>{title}</Text.Body>}
-                      <Text.Caps className={`${style.date}`}>{date}</Text.Caps>
+                      <Text.Caps secondary className={`${style.date}`}>
+                        {date}
+                      </Text.Caps>
                     </div>
                   </Link>
                 </li>

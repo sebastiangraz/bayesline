@@ -14,10 +14,8 @@
     text-transform: capitalize;
   }
   .date {
-    font-size: var(--h5);
-    display: grid;
+    display: block;
     margin-top: 1.5em;
-    font-weight: normal;
   }
 }
 
@@ -77,8 +75,11 @@
     display: grid;
     grid-column: 20 / end;
     height: 1ch;
+    color: var(--foreground-accent);
+    font-size: var(--body-small);
     p {
-      font-size: var(--body-small);
+      color: inherit;
+      font-size: inherit;
     }
   }
 
@@ -86,6 +87,7 @@
     border-collapse: collapse;
     display: inline-grid;
     font-family: var(--mono);
+    color: var(--foreground-accent);
     width: 100%;
     thead,
     tbody,
@@ -104,6 +106,8 @@
       box-shadow: 0 0 0 -1px;
     }
     th {
+      font-size: var(--body-small);
+      color: var(--foreground);
       border-right: 1px solid var(--foreground-border);
       &:last-of-type {
         border-right: none;
@@ -167,6 +171,7 @@
   }
 
   p {
+    color: var(--foreground-accent);
     display: grid;
     grid-column: start / span 5;
     background: linear-gradient(0deg, var(--background) 95%, transparent 100%);
@@ -197,7 +202,7 @@
     display: grid;
     gap: 1em 0;
     p {
-      font-size: var(--body-small);
+      font-size: var(--body);
     }
     > ul {
       display: grid;
@@ -212,6 +217,7 @@
           text-decoration: none;
           &:hover {
             text-decoration: underline;
+            text-decoration-color: var(--foreground-accent);
           }
         }
       }

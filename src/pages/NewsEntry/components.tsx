@@ -10,15 +10,19 @@ export const components = {
     </div>
   ),
   aside: (props: any) => (
-    <aside className={`${style.aside}`} {...props}>
+    <p className={`aside ${style.aside}`} {...props}>
       {props.children}
-    </aside>
+    </p>
   ),
   h2: (props: any) => <Text.H2 {...props}>{props.children}</Text.H2>,
   h3: (props: any) => <Text.H3 {...props}>{props.children}</Text.H3>,
   h4: (props: any) => <Text.H4 {...props}>{props.children}</Text.H4>,
   h5: (props: any) => <Text.H5 {...props}>{props.children}</Text.H5>,
-  p: (props: any) => <Text.Body {...props}>{props.children}</Text.Body>,
+  p: (props: any) => (
+    <Text.Body secondary {...props}>
+      {props.children}
+    </Text.Body>
+  ),
   table: (props: any) => {
     let firstChildProps;
     if (isArrayofObjects(props.children)) {

@@ -51,7 +51,7 @@ export function News() {
                   </div>
 
                   <div className={`col ${style.excerpt}`}>
-                    <Text.Body>{excerpt}</Text.Body>
+                    <Text.Body secondary>{excerpt}</Text.Body>
                   </div>
                 </div>
               </Link>

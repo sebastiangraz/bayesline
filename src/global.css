@@ -166,7 +166,7 @@
     scrollbar-gutter: stable;
   }
 
-  :is(p, a, pre, ul, ol, table, blockquote, hr, figure, .paragraph) {
+  :is(p, a, pre, ul, ol, table, blockquote, aside, hr, figure, .paragraph) {
     margin: 0;
     font-size: var(--body);
     color: var(--foreground);
@@ -310,10 +310,6 @@
 
   .w-100 {
     width: 100%;
-  }
-
-  .w-prose {
-    max-width: 52ch;
   }
 
   .w-title {

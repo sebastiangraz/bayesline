@@ -60,21 +60,21 @@ export function Home() {
       <Cards layout="grid-col">
         <Card dataTheme={0}>
           <Icon name="chart" />
-          <Text.Body balance>
+          <Text.Body balance secondary>
             We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
             to highly customizable and blazing fast.
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="layers" />
-          <Text.Body balance>
+          <Text.Body balance secondary>
             Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align with
             realistic investment universes or styles - we're changing that.
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="globe" />
-          <Text.Body balance>
+          <Text.Body balance secondary>
             We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
             to highly customizable and blazing fast.
           </Text.Body>
