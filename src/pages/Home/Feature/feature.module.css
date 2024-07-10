@@ -1,22 +1,27 @@
 .feature {
   background: var(--background-accent);
-  grid-column: start/ end;
+  grid-column: start / end;
+  grid-template-areas:
+    'mar col row-top '
+    'mar col row-bottom ';
+  grid-template-columns: 2em 6em 1fr;
+  grid-template-rows: auto auto;
+  gap: 2em 0;
 }
 
 .text {
-  margin-top: 2em;
-  grid-column: 11 / span 8;
+  margin: 2em 2em 0 2em;
+  grid-area: row-top;
   grid-row: 1;
 }
 
 .ui {
   background: white;
   aspect-ratio: 768/584;
-  grid-column: 11 / end;
-  grid-row: 1;
   align-self: end;
   max-height: 576px;
-
+  grid-area: row-bottom;
+  margin-left: 2em;
   img {
     max-height: 100%;
     max-width: 100%;
@@ -25,10 +30,9 @@
 
 .cue {
   background: var(--accent-2);
-  aspect-ratio: 1;
+  height: 100%;
   z-index: 0;
-
-  grid-column: 3 / span 6;
+  grid-area: col;
   bottom: 2em;
   position: relative;
   padding: 1em 0.5em;
