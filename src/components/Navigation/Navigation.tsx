@@ -55,6 +55,10 @@ export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => 
       </nav>
       {backbutton && (
         <div className={`col ${style.back}`}>
+          <svg width="13" height="14" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.5 11L2 6.5M2 6.5L11 6.5M2 6.5L6.5 2" stroke="currentColor" />
+          </svg>
+
           <Link to="/news">{'Back to news'}</Link>
         </div>
       )}

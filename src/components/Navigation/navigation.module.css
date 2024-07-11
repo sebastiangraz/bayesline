@@ -22,7 +22,15 @@
   align-items: center;
   justify-content: center;
   grid-column: span 3 / end;
-  text-decoration: none;
+  color: var(--foreground-accent);
+  svg {
+    margin-right: 0.125em;
+  }
+  a {
+    font-size: var(--body-small);
+    text-decoration: none;
+    line-height: 1;
+  }
   &:hover {
     text-decoration: underline;
   }
