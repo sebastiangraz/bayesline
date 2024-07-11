@@ -33,12 +33,13 @@ The starting point is a universe of five assets (or rather asset classes), cash,
 
 The standard mean-variance problem maximizes the mean return subject to a volatility constraint. The (long-only) optimization problem reads,
 
+<aside>
+  <p>Lift($$L$$) can be determined by Lift Coefficient ($$C_L$$) like the following equation.</p>
+</aside>
+
 ```math
 \max_{w\geq0}{w^\top\mu} \quad\mathrm{subject\;to}\quad w^\top\Sigma w\leq\sigma^2,\quad w^\top1\leq1.
 ```
-
-Lift($$L$$) can be determined by Lift Coefficient ($$C_L$$) like the following
-equation.
 
 ```math
 L = \frac{1}{2} \rho v^2 S C_L

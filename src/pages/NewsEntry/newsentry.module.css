@@ -98,6 +98,7 @@
     display: inline-grid;
     font-family: var(--mono);
     color: var(--foreground-accent);
+    font-size: var(--body-small);
     width: 100%;
     thead,
     tbody,
@@ -107,17 +108,18 @@
       grid-template-columns: subgrid;
     }
     thead:has(+ tbody) {
-      border-bottom: 1px solid var(--foreground-accent);
+      border-bottom: 1px solid var(--foreground-border);
     }
     td,
     th {
       padding: 0.5em 1em;
       display: block;
       box-shadow: 0 0 0 -1px;
+      text-align: left;
     }
     th {
-      font-size: var(--body-small);
       color: var(--foreground);
+      white-space: nowrap;
       border-right: 1px solid var(--foreground-border);
       &:last-of-type {
         border-right: none;
@@ -144,6 +146,7 @@
     z-index: 0;
     justify-content: center;
     display: grid;
+    margin: 2em 0;
     img {
       border-radius: var(--radius);
     }
