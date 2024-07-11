@@ -1,7 +1,5 @@
 import style from './home.module.css';
 import { Hero, Button, Card, Cards, Text, VectorField, ShapeField, Flex, Icon, Img } from '@/components';
-import composition from '@/assets/composition.png';
-import sidebar from '@/assets/sidebar.png';
 import { Feature } from './Feature';
 
 export function Home() {
@@ -28,7 +26,7 @@ export function Home() {
             </Button>
           </div>
 
-          <Img src="/src/assets/composition.png" />
+          <Img src="composition.png" />
         </Card>
         <Card dataTheme={3}>
           <div className="card-header">
@@ -37,7 +35,7 @@ export function Home() {
               Run reports in comparison mode, zooming into the relative performance of different models and settings.
             </Text.Body>
           </div>
-          <Img src={sidebar} className={style.cardImage} />
+          <Img src="sidebar.png" className={style.cardImage} />
           <VectorField variant="straight" className={style.cardVectorField} />
         </Card>
         <Card.Secondary dataTheme={1}>

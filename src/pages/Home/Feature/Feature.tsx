@@ -1,6 +1,5 @@
 import style from './feature.module.css';
 import { Button, Flex, Text, VectorField, Img } from '@/components';
-import hero from '@/assets/homepage-hero.png';
 
 export const Feature = () => {
   return (
@@ -42,7 +41,7 @@ export const Feature = () => {
         </Flex>
       </Flex>
       <div className={`col ${style.ui}`}>
-        <Img src={hero} deviceBorder />
+        <Img src="homepage-hero.png" deviceBorder />
       </div>
     </div>
   );
