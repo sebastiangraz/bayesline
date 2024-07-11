@@ -33,16 +33,16 @@ The starting point is a universe of five assets (or rather asset classes), cash,
 
 The standard mean-variance problem maximizes the mean return subject to a volatility constraint. The (long-only) optimization problem reads,
 
-$$
+```math
 \max_{w\geq0}{w^\top\mu} \quad\mathrm{subject\;to}\quad w^\top\Sigma w\leq\sigma^2,\quad w^\top1\leq1.
-$$
+```
 
 Lift($$L$$) can be determined by Lift Coefficient ($$C_L$$) like the following
 equation.
 
-$$
+```math
 L = \frac{1}{2} \rho v^2 S C_L
-$$
+```
 
 Here, $w$ is the vector of weights we are trying to optimize, $\mu$ is the expected return vector, $\Sigma$ is the covariance matrix of asset returns, and $\sigma$ is the volatility constraint, also called the risk budget. For a risk-budget of 6\%, i.e. $\sigma=0.06$, the solution to the optimization problem is depicted below, on the left without private assets, and on the right with all assets included. Notable is the zero allocation to public equity on the right. Given the high risk-reward ratio of private equity, and its correlation with public equity encoded in our assumptions, the optimizer chooses not to invest in public equity at all.
 

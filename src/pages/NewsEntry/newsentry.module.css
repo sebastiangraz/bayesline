@@ -68,6 +68,16 @@
   grid-column: 1 / 26;
   gap: 2rem 0;
   padding: 2em 0;
+
+  :global .katex-display {
+    z-index: 1;
+    grid-column: 1 / 26;
+    font-size: var(--h5);
+  }
+  :global .katex {
+    color: var(--foreground);
+  }
+
   > * {
     grid-column: 8 / span 11;
   }
@@ -132,6 +142,8 @@
   p:has(img) {
     grid-column: start / end;
     z-index: 0;
+    justify-content: center;
+    display: grid;
     img {
       border-radius: var(--radius);
     }
@@ -141,7 +153,6 @@
 .image {
   display: grid;
   grid-column: 1 / 26;
-
   grid-template-columns: subgrid;
 }
 
@@ -297,7 +308,7 @@ figure[data-rehype-pretty-code-figure] {
       padding: 0 2ch 0 1ch;
       margin-left: -2.5ch;
       text-align: right;
-      color: gray;
+      color: gray; /* TODO: fix this */
       z-index: 1;
     }
 
