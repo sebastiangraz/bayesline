@@ -28,7 +28,7 @@ export function Home() {
             </Button>
           </div>
 
-          <Img src={composition} />
+          <Img src="/src/assets/composition.png" />
         </Card>
         <Card dataTheme={3}>
           <div className="card-header">

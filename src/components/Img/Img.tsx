@@ -19,9 +19,10 @@ const pictures = import.meta.glob(`@/assets/*.{jpg,jpeg,png}`, {
 });
 
 export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = false }: ImgProps) => {
-  if (!src) throw new Error(`Image not found, ${src}`);
   if (!src) return null;
   const pictureSrc = Object.keys(pictures).find((key) => key.includes(src)) as string;
+  console.log(pictureSrc);
+
   const meta = pictures[pictureSrc!] as OutputMetadata[];
   const pngData = meta?.find((m) => m.format === 'png') as OutputMetadata;
   const avifData = meta?.find((m) => m.format === 'avif') as OutputMetadata;
