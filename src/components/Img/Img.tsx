@@ -28,7 +28,7 @@ export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = f
 
   return (
     <picture className={classNames} style={{ '--picture-w': pngData?.width, '--picture-h': pngData?.height }}>
-      {avifData.src && <source srcSet={avifData?.src} type="image/avif" />}
+      {avifData?.src && <source srcSet={avifData?.src} type="image/avif" />}
       <img loading="lazy" src={pngData?.src} alt={alt} width={pngData?.width} height={pngData?.height} />
     </picture>
   );
