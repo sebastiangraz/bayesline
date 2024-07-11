@@ -147,6 +147,7 @@
     justify-content: center;
     display: grid;
     margin: 2em 0;
+    mix-blend-mode: darken;
     img {
       border-radius: var(--radius);
     }
