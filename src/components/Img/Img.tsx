@@ -27,9 +27,9 @@ export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = f
   const classNames = `${style.picture} ${deviceBorder ? style.border : ''} ${className}`;
 
   return (
-    <picture className={classNames} style={{ '--picture-w': pngData.width, '--picture-h': pngData.height }}>
-      {avifData.src && <source srcSet={avifData.src} type="image/avif" />}
-      <img loading="lazy" src={pngData.src} alt={alt} width={pngData.width} height={pngData.height} />
+    <picture className={classNames} style={{ '--picture-w': pngData?.width, '--picture-h': pngData?.height }}>
+      {avifData.src && <source srcSet={avifData?.src} type="image/avif" />}
+      <img loading="lazy" src={pngData?.src} alt={alt} width={pngData?.width} height={pngData?.height} />
     </picture>
   );
 };
