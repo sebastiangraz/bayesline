@@ -9,13 +9,14 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import remarkgfm from 'remark-gfm';
 import remarkemoji from 'remark-emoji';
 import rehypeSlug from 'rehype-slug';
+import remarkMath from 'remark-math';
 import withToc from '@stefanprobst/rehype-extract-toc';
 import withTocExport from '@stefanprobst/rehype-extract-toc/mdx';
 import rehypePrettyCode, { Options } from 'rehype-pretty-code';
 import fs from 'fs';
 import { transformerNotationHighlight } from '@shikijs/transformers';
 import rehypeMdxImportMedia from 'rehype-mdx-import-media';
-
+import rehypeKatex from 'rehype-katex';
 const options = {
   theme: JSON.parse(fs.readFileSync('./src/helpers/bayesyntax.json', 'utf-8')),
   defaultLang: 'plaintext',
@@ -35,14 +36,15 @@ export default defineConfig(async (): Promise<UserConfig> => {
       patchCssModules(),
       imagetools(),
       mdx.default({
-        remarkPlugins: [
-          // [remarkToc, { heading: 'contents' }],
-          remarkgfm,
-          remarkFrontmatter,
-          remarkMdxFrontmatter,
-          remarkemoji
+        remarkPlugins: [remarkMath, remarkgfm, remarkFrontmatter, remarkMdxFrontmatter, remarkemoji],
+        rehypePlugins: [
+          rehypeSlug,
+          rehypeKatex,
+          withToc,
+          withTocExport,
+          [rehypePrettyCode, options],
+          rehypeMdxImportMedia
         ],
-        rehypePlugins: [rehypeSlug, withToc, withTocExport, [rehypePrettyCode, options], rehypeMdxImportMedia],
         providerImportSource: '@mdx-js/react'
       }),
       react(),

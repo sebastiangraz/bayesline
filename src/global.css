@@ -1,3 +1,5 @@
+@import './assets/katex.css';
+
 :root {
   /* COLOR PRIMITIVES (HSL) */
   --coral: 20 94% 33%;
@@ -114,26 +116,30 @@
   @font-face {
     font-family: 'national2';
     font-weight: normal;
-    src: url('./assets/national-2-regular.woff2');
+    src: url('./assets/fonts/national-2-regular.woff2');
   }
   @font-face {
     font-family: 'national2';
-    font-weight: 500;
-    src: url('./assets/national-2-medium.woff2');
+    font-weight: bold;
+    src: url('./assets/fonts/national-2-medium.woff2');
   }
   @font-face {
     font-family: 'national2';
     font-weight: 300;
-    src: url('./assets/national-2-light.woff2');
+    src: url('./assets/fonts/national-2-light.woff2');
   }
   @font-face {
     font-family: 'sohnemono';
-    font-style: monospace;
-    src: url('./assets/sohnemono-buch.woff2');
+    src: url('./assets/fonts/sohnemono-buch.woff2');
+  }
+  @font-face {
+    font-family: 'sohnemono';
+    font-weight: bold;
+    src: url('./assets/fonts/sohnemono-kraftig.woff2');
   }
   @font-face {
     font-family: 'B';
-    src: url('./assets/BayeslineVF.woff2');
+    src: url('./assets/fonts/BayeslineVF.woff2');
   }
 
   @custom-media --sm (min-width: 560px);
@@ -166,7 +172,7 @@
     scrollbar-gutter: stable;
   }
 
-  :is(p, a, pre, ul, ol, table, blockquote, aside, hr, figure, .paragraph) {
+  :is(p, a, pre, ul, ol, span, table, blockquote, aside, hr, figure, .paragraph) {
     margin: 0;
     font-size: var(--body);
     color: var(--foreground);
