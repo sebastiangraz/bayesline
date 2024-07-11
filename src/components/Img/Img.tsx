@@ -19,6 +19,7 @@ const pictures = import.meta.glob(`@/assets/*.{jpg,jpeg,png}`, {
 });
 
 export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = false }: ImgProps) => {
+  if (!src) return null;
   const pictureSrc = Object.keys(pictures).find((key) => key.includes(src)) as string;
   const meta = pictures[pictureSrc!] as OutputMetadata[];
   const pngData = meta?.find((m) => m.format === 'png') as OutputMetadata;
