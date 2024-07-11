@@ -30,7 +30,7 @@ export function Home() {
 
           <Img src={composition} />
         </Card>
-        <Card.Secondary dataTheme={3}>
+        <Card dataTheme={3}>
           <div className="card-header">
             <Text.H4>Compare models</Text.H4>
             <Text.Body secondary>
@@ -39,7 +39,7 @@ export function Home() {
           </div>
           <Img src={sidebar} className={style.cardImage} />
           <VectorField variant="straight" className={style.cardVectorField} />
-        </Card.Secondary>
+        </Card>
         <Card.Secondary dataTheme={1}>
           <div className="card-header">
             <Text.H4>Automated suggestions</Text.H4>
