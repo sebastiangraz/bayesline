@@ -4,24 +4,46 @@ import style from './vectorfield.module.css';
 
 interface VectorFieldProps {
   variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'grid' | 'magnify' | 'twist';
+  loop?: boolean;
   className?: string;
 }
 
-const arrowVariants = {
+const arrowVariant = {
   hidden: {
     scale: 0
   },
   visible: ({ i }: { i: number }) => ({
-    opacity: 1,
     scale: 1,
+    opacity: 1,
     transition: {
       duration: 0.5 + i * 0.01,
-      ease: [1, 0.2, 0, 0.2]
+      ease: [1, 0.2, 0.3, 0.9]
     }
   })
 };
 
-export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) => {
+const loopArrowVariant = {
+  hidden: {
+    scale: 0
+  },
+  visible: ({ i }: { i: number }) => ({
+    scale: [0.2, 1, 1, 0.2],
+    transition: {
+      duration: 1,
+      ease: 'linear',
+      scale: {
+        ease: [1, 0.2, 0.3, 0.9],
+
+        duration: 2,
+        delay: i * 0.005,
+        repeat: Infinity,
+        repeatType: 'loop'
+      }
+    }
+  })
+};
+
+export const VectorField = ({ variant = 'swirl', loop = false, className }: VectorFieldProps) => {
   const svgSize = 192; // Size of the SVG canvas
   const svgPadding = 6; // Padding around the canvas
   const size = svgSize - svgPadding * 2; // Size of the vector field
@@ -35,7 +57,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
   const svgRef = useRef<SVGSVGElement>(null);
 
   const isInView = useInView(svgRef, {
-    once: true,
+    once: false,
     amount: 'some'
   });
 
@@ -215,7 +237,7 @@ export const VectorField = ({ variant = 'swirl', className }: VectorFieldProps) 
           stroke="currentColor"
           strokeOpacity={arrow.opacity}
           strokeWidth={1.33}
-          variants={arrowVariants}
+          variants={loop ? loopArrowVariant : arrowVariant}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           custom={{ i: arrow.angle }}

@@ -1,9 +1,6 @@
-import { StaggerText } from '@/helpers/StaggerText';
 import style from './feature.module.css';
 import { Button, Flex, Text, VectorField, Img } from '@/components';
 import hero from '@/assets/homepage-hero.png';
-import y from '@/assets/x.png';
-import x from '@/assets/y.png';
 
 export const Feature = () => {
   return (
@@ -16,14 +13,14 @@ export const Feature = () => {
           </Text.Small>
         </Flex>
         <section>
-          <VectorField />
+          <VectorField loop />
           <Flex center gap={1}>
             <Text.Small>Bayesline</Text.Small>
             <Text.Small secondary>Seconds</Text.Small>
           </Flex>
         </section>
         <section>
-          <VectorField variant="twist" />
+          <VectorField variant="twist" loop />
           <Flex center gap={1}>
             <Text.Small>Traditional tools</Text.Small>
             <Text.Small secondary>Weeks</Text.Small>
@@ -45,8 +42,6 @@ export const Feature = () => {
         </Flex>
       </Flex>
       <div className={`col ${style.ui}`}>
-        {/* <img src={hero} alt="hero" /> */}
-
         <Img src={hero} deviceBorder />
       </div>
     </div>
