@@ -19,11 +19,10 @@ const pictures = import.meta.glob(`@/assets/*.{jpg,jpeg,png}`, {
 });
 
 export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = false }: ImgProps) => {
-  // match the src to the pictures object
   const pictureSrc = Object.keys(pictures).find((key) => key.includes(src)) as string;
-  const meta = pictures[pictureSrc] as OutputMetadata[];
-  const pngData = meta.find((m) => m.format === 'png') as OutputMetadata;
-  const avifData = meta.find((m) => m.format === 'avif') as OutputMetadata;
+  const meta = pictures[pictureSrc!] as OutputMetadata[];
+  const pngData = meta?.find((m) => m.format === 'png') as OutputMetadata;
+  const avifData = meta?.find((m) => m.format === 'avif') as OutputMetadata;
 
   const classNames = `${style.picture} ${deviceBorder ? style.border : ''} ${className}`;
 
