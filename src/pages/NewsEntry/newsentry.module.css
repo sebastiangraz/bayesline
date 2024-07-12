@@ -285,9 +285,26 @@
         text-wrap: balance;
         a {
           text-decoration: none;
+          display: inline-flex;
+          align-items: baseline;
           &:hover {
             text-decoration: underline;
             text-decoration-color: var(--foreground-accent);
+            &:before {
+              background-color: var(--foreground-accent);
+              box-shadow: none;
+            }
+          }
+          &:before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            bottom: 2px;
+            position: relative;
+            display: inline-flex;
+            flex: 0 0 auto;
+            box-shadow: var(--border) inset var(--foreground-accent);
+            margin-right: 0.5em;
           }
         }
       }
