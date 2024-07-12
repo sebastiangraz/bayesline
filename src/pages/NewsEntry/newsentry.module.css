@@ -81,15 +81,22 @@
   > * {
     grid-column: 8 / span 11;
   }
+  p {
+    color: var(--foreground-accent-opaque);
+  }
   > aside {
     display: grid;
     grid-column: 20 / end;
-    height: 1ch;
-    color: var(--foreground-accent);
+    height: auto;
+    grid-row: span 1;
+    color: var(--foreground-accent-opaque);
     font-size: var(--body-small);
     p {
       color: inherit;
       font-size: inherit;
+    }
+    @media (--lg) {
+      height: 1ch;
     }
   }
 
@@ -97,7 +104,7 @@
     border-collapse: collapse;
     display: inline-grid;
     font-family: var(--mono);
-    color: var(--foreground-accent);
+    color: var(--foreground-accent-opaque);
     font-size: var(--body-small);
     width: 100%;
     thead,
@@ -151,6 +158,42 @@
       border-radius: var(--radius);
     }
   }
+  :global .footnotes {
+    grid-column: start / end;
+    padding-top: 0.5em;
+    margin-top: 1em;
+    box-shadow: var(--border-t) var(--foreground-border);
+  }
+
+  /* Hide the section label for visual users. */
+  :global .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    word-wrap: normal;
+    border: 0;
+  }
+
+  /* Place `[` and `]` around footnote references. */
+
+  :global [data-footnote-ref] {
+    text-decoration: none;
+    color: var(--foreground);
+    &:hover {
+      color: var(--foreground-accent-opaque);
+    }
+  }
+
+  :global [data-footnote-ref]::before {
+    content: '[';
+  }
+
+  :global [data-footnote-ref]::after {
+    content: ']';
+  }
 }
 
 .image {
@@ -185,7 +228,7 @@
   }
 
   p {
-    color: var(--foreground-accent);
+    color: var(--foreground-accent-opaque);
     display: grid;
     grid-column: start / span 5;
     background: linear-gradient(0deg, var(--background) calc(100% - 5px), transparent 100%);
