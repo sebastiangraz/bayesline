@@ -101,22 +101,22 @@ const generateSVGs = (seed: string) => {
     });
 };
 
+const directionsArr = [
+  { clip: 'inset(0% 0% 25% 0%)' },
+  { clip: 'inset(25% 0% 0% 0%)' },
+  { clip: 'inset(0% 25% 0% 0%)' },
+  { clip: 'inset(0% 0% 0% 25%)' }
+];
+
+const imageDirectionsArr = [
+  { '--y': '-4px', '--x': '0px' },
+  { '--y': '4px', '--x': '0px' },
+  { '--y': '0px', '--x': '-4px' },
+  { '--y': '0px', '--x': '4px' }
+];
+
 export const Asset: React.FC<Props> = React.memo(
   ({ seed }) => {
-    const directionsArr = [
-      { clip: 'inset(0% 0% 25% 0%)' },
-      { clip: 'inset(25% 0% 0% 0%)' },
-      { clip: 'inset(0% 25% 0% 0%)' },
-      { clip: 'inset(0% 0% 0% 25%)' }
-    ];
-
-    const imageDirectionsArr = [
-      { '--y': '-4px', '--x': '0px' },
-      { '--y': '4px', '--x': '0px' },
-      { '--y': '0px', '--x': '-4px' },
-      { '--y': '0px', '--x': '4px' }
-    ];
-
     const svgs = useMemo(() => generateSVGs(seed).filter((svg) => svg.visible), [seed]);
 
     const ref = useRef(null);

@@ -129,7 +129,33 @@ Our white paper embarks on a captivating investigative journey, delving into the
 
 <aside>We do not just present theories or generic advice–we conduct a thorough investigation to.</aside>
 
-### A new emerging trend
+## A new emerging trend
+
+The figure below dives deeper into the private market choices. The left graph shows the standardized allocation to the different asset classes, delineated by vintage. With each area being roughly equal in size, the portfolio appears to be vintage-diversified. The right graph shows the commitments to each private asset by year, as a percentage of the total wealth in the same year. During the ramp up phase, we commit more. Overall the allocations remain relatively stable through time, ensuring vintage diversification.
+
+### Let's break this down
+
+The structure of our optimization alogorithm allows us to gradually remove the complicating assumptions that private assets introduce, and thereby converge to the mean-variance benchmark. We start by removing the vintage specific volatility and setting to zero. Running the same optimization we achieve the new projected holdings and portfolio weights below. Unsurprisingly we again start with the pure-public mean-variance optimum at the start. But interestingly, we now converge neatly to the mean-variance optimimum over time. The lower allocation to private assets that we saw above is thus explained entirely by vintage specific volatility.
+
+## In practice
+
+With no vintage specific volatility, the benefit of vintage diversification disappears entirely, and we see very concentrated investments into some vintages. Looking at the commitments below, the optimization tries to bulk up on private assets as soon as possible by making very large investments at the start, and then committing nothing until year five.
+
+#### Let's break this down
+
+This post outlines some of the considerations of building a strategic asset allocation plan. Naturally, not everything goes according to plan. The good news is that we can just re-run the plan starting from whatever situation we find ourselves in. So like in a typical application, we make a projection for 20 years, execute the first year, and then roll forward and plan again for the next 20 years given the prevailing private holdings and capital market assumptions, and so on. Therefore, asset allocation with private assets is not a one-of exercise, but a repeated plan that is adjusted based on realized calls and distributions.
+
+##### Let's break this down Despite its simplicity, our analysis reveals important insights for allocators.
+
+- Investors should not steer towards classical mean-variance allocations, as they are suboptimal and will overallocate to private markets.
+- Smaller investors should hold less in private assets compared to larger ones, as they cannot diverisify between funds as efficiently.
+- Commitments should be smoothed out over time to ensure an allocation remains diversified between vintages. This is especially important for smaller investors.
+- When a portfolio is not in equilibrium, the liquid sleeve should be optimized to be as complementary as possible to the private assets that do exist. When no private assets are held yet, the optimum aligns with the mean-variance optimum excluding private assets.
+
+1. Investors should not steer towards classical mean-variance allocations, as they are suboptimal and will overallocate to private markets.
+2. Smaller investors should hold less in private assets compared to larger ones, as they cannot diverisify between funds as efficiently.
+3. Commitments should be smoothed out over time to ensure an allocation remains diversified between vintages. This is especially important for smaller investors.
+4. When a portfolio is not in equilibrium, the liquid sleeve should be optimized to be as complementary as possible to the private assets that do exist. When no private assets are held yet, the optimum aligns with the mean-variance optimum excluding private assets.
 
 <aside>
   Despite the importance of NWC management, many companies struggle to optimize their working capital. This is often due

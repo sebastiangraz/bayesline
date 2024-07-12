@@ -84,6 +84,16 @@
   p {
     color: var(--foreground-accent-opaque);
   }
+  ul,
+  ol {
+    li {
+      color: var(--foreground-accent-opaque);
+      &::marker {
+        color: var(--foreground);
+      }
+    }
+  }
+
   > aside {
     display: grid;
     grid-column: 20 / end;
