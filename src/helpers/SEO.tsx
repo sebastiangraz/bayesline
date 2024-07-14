@@ -9,13 +9,16 @@ export const SEO = (props: SEOProps) => {
   const { title, description } = props;
 
   const siteTitle = 'Bayesline';
+  const siteDescription =
+    'Bayesline is a financial analytics tool that delivers the analytics that investment managers are already familiar with, but hyper-customizable and blazing fast.';
 
   const metaTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+  const metaDescription = description ? description : siteDescription;
 
   return (
     <Helmet>
       <title data-rh="true">{metaTitle}</title>
-      <meta name="description" content={description} data-rh="true" />
+      <meta name="description" content={metaDescription} data-rh="true" />
       <meta property="og:title" content={metaTitle} data-rh="true" />
       {/* <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
