@@ -15,9 +15,13 @@ export const Route = createFileRoute('/news/$postId')({
   component: NewsEntry,
   beforeLoad: ({ params }) => {
     const post = entryMeta.find((p) => p.id === params.postId);
+    const title = post?.title;
+    const description = post?.excerpt;
 
     return {
-      themeValue: post?.theme
+      themeValue: post?.theme,
+      title: title,
+      description: description
     };
   },
   loader: async ({ params }) => {

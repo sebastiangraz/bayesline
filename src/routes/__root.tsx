@@ -1,4 +1,5 @@
 import { Layout } from '@/components';
+import { SEO } from '@/helpers/SEO';
 import { themeClasses } from '@/helpers/utils';
 import { createRootRouteWithContext, Outlet, useRouter, ScrollRestoration } from '@tanstack/react-router';
 
@@ -7,8 +8,12 @@ import { createRootRouteWithContext, Outlet, useRouter, ScrollRestoration } from
 export const Route = createRootRouteWithContext<ThemeValueContext>()({
   component: () => {
     const router = useRouter();
-    const findThemeValue = [...router.state.matches].reverse().find((d) => d.routeContext.themeValue);
-    const theme = findThemeValue?.routeContext.themeValue || 0;
+    const findRouteContext = [...router.state.matches].reverse().find((d) => d.routeContext);
+
+    const title = findRouteContext?.routeContext.title || '';
+    const description = findRouteContext?.routeContext.description || '';
+    const theme = findRouteContext?.routeContext.themeValue || 0;
+
     const themeClass = themeClasses[theme] || '';
 
     return (
@@ -18,6 +23,7 @@ export const Route = createRootRouteWithContext<ThemeValueContext>()({
             <ScrollRestoration />
             <div className="tile theme"></div>
             <Outlet />
+            <SEO title={title} description={description} />
           </>
         </Layout>
         {/* <div style={{ fontSize: '16px' }}>
@@ -39,4 +45,9 @@ export const Route = createRootRouteWithContext<ThemeValueContext>()({
 
 export interface ThemeValueContext {
   themeValue: number;
+  title: string;
+  meta: Array<{
+    name: string;
+    content: string;
+  }>;
 }
