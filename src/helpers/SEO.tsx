@@ -14,9 +14,9 @@ export const SEO = (props: SEOProps) => {
 
   return (
     <Helmet>
-      <title>{metaTitle}</title>
-      <meta name="description" content={description} />
-      <meta property="og:title" content={metaTitle} />
+      <title data-rh="true">{metaTitle}</title>
+      <meta name="description" content={description} data-rh="true" />
+      <meta property="og:title" content={metaTitle} data-rh="true" />
       {/* <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
