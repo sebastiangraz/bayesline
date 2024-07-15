@@ -32,7 +32,7 @@ export const Feature = () => {
           blazing fast.
         </Text.Body>
         <Flex gap={4}>
-          <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+          <Button type="secondary" theme={1} href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
             <Text.Caps>Book a Demo</Text.Caps>
           </Button>
           <Text.Small balance secondary>

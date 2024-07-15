@@ -80,7 +80,8 @@ export const themeClasses: Record<number, string> = {
   0: '',
   1: 'dark',
   2: 'accent',
-  3: 'highlight'
+  3: 'highlight',
+  4: 'tertiary'
 };
 
 type Subdivision = {

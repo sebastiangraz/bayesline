@@ -5,7 +5,10 @@ import style from './vectorfield.module.css';
 interface VectorFieldProps {
   variant?: 'swirl' | 'straight' | 'radial' | 'checker' | 'grid' | 'magnify' | 'twist';
   loop?: boolean;
+  count?: number;
+  padding?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const arrowVariant = {
@@ -43,13 +46,20 @@ const loopArrowVariant = {
   })
 };
 
-export const VectorField = ({ variant = 'swirl', loop = false, className }: VectorFieldProps) => {
+export const VectorField = ({
+  variant = 'swirl',
+  loop = false,
+  count = 14,
+  padding = 6,
+  className,
+  ...props
+}: VectorFieldProps) => {
   const svgSize = 192; // Size of the SVG canvas
   const svgPadding = 6; // Padding around the canvas
   const size = svgSize - svgPadding * 2; // Size of the vector field
 
-  const numArrows = 14; // Number of arrows along one dimension
-  const arrowPadding = 6; // Padding between arrows
+  const numArrows = count; // Number of arrows along one dimension
+  const arrowPadding = padding; // Padding between arrows
   const arrowSize = (size - arrowPadding * (numArrows - 1)) / numArrows;
 
   const mouseX = useMotionValue(size / 2 + svgPadding);
@@ -220,10 +230,11 @@ export const VectorField = ({ variant = 'swirl', loop = false, className }: Vect
       onMouseLeave={handleMouseLeave}
       className={classNames}
       style={{
-        visibility: isInView ? 'visible' : 'hidden'
+        visibility: isInView ? 'visible' : 'hidden',
         // aspectRatio: 1
         // maxWidth: svgSize,
         // width: '100%'
+        ...props.style
       }}
     >
       {arrows.map((arrow, index) => (

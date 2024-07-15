@@ -19,6 +19,7 @@ export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => 
         { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
       );
       observer.observe(headerRef.current as HTMLDivElement);
+      return () => observer.disconnect();
     })();
   }, []);
 
@@ -36,7 +37,7 @@ export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => 
           </Link>
         </div>
         <div className={` ${style.links}`}>
-          <Link to="/mission" className={style.link}>
+          <Link to="/brand" className={style.link}>
             Mission
           </Link>
           <Link to="/news" className={style.link}>

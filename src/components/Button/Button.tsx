@@ -2,16 +2,18 @@ import style from './button.module.css';
 import { motion } from 'framer-motion';
 import { Link } from '@tanstack/react-router';
 
+import { VectorField } from '../VectorField';
+import { themeClasses } from '@/helpers/utils';
+
 interface ButtonProps {
   type?: 'primary' | 'secondary';
+  size?: 'default' | 'small';
   children: React.ReactNode;
   className?: string;
   href?: string;
   target?: string;
   to?: string;
-  bgColor?: string;
-  fgColor?: string;
-  nodeColor?: string;
+  theme?: keyof typeof themeClasses;
 }
 
 interface ButtonNodeProps {
@@ -41,47 +43,43 @@ const dotVariants = {
   }
 };
 
-export const Button = (props: ButtonProps) => {
-  const { children, type, ...rest } = props;
-
-  const background = type === 'primary' ? style.primary : style.secondary;
-  const className = rest.className ? rest.className : '';
+export const Button = ({
+  children,
+  type = 'primary',
+  size = 'default',
+  href = '',
+  to = '',
+  theme = 0,
+  ...rest
+}: ButtonProps) => {
   const MotionComponent = motion(Link);
 
-  const backgroundColor = rest.bgColor ? rest.bgColor : '';
-  const foregroundColor = rest.fgColor ? rest.fgColor : '';
-  const nodeColor = rest.nodeColor ? rest.nodeColor : '';
-  const buttonStyle = `${style.button} ${style[background]} ${background} ${className}`;
+  const themeValue = themeClasses[theme || 0];
+  const typeValue = type === 'primary' ? style.primary : style.secondary;
+  const className = rest.className ? rest.className : '';
+  const sizeValue = size === 'small' ? style.small : '';
 
-  if (rest.to) {
-    return (
-      <MotionComponent
-        {...rest}
-        className={buttonStyle}
-        whileHover="hover"
-        initial="default"
-        animate="default"
-        style={{ backgroundColor: backgroundColor, color: foregroundColor }}
-      >
-        {children}
-        <ButtonNodes style={{ color: nodeColor }} />
-      </MotionComponent>
-    );
-  } else {
-    return (
-      <motion.a
-        {...rest}
-        className={buttonStyle}
-        whileHover="hover"
-        initial="default"
-        animate="default"
-        style={{ backgroundColor: backgroundColor, color: foregroundColor }}
-      >
-        {children}
-        <ButtonNodes style={{ color: nodeColor }} />
-      </motion.a>
-    );
-  }
+  const buttonStyle = `theme ${style.button} ${typeValue} ${sizeValue} ${className} `;
+
+  const destination = href ? href : to;
+
+  return (
+    <MotionComponent
+      {...rest}
+      data-theme={themeValue}
+      className={buttonStyle}
+      whileHover="hover"
+      initial="default"
+      animate="default"
+      to={destination}
+      target={href ? '_blank' : ''}
+
+      // style={{ backgroundColor: themeClasses[theme] }}
+    >
+      {children}
+      <VectorField variant="straight" count={9} padding={13} className={style.field} />
+    </MotionComponent>
+  );
 };
 
 const ButtonNodes = (props: ButtonNodeProps) => {

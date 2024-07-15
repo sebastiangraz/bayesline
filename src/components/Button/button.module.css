@@ -1,52 +1,62 @@
 .button {
-  padding: 1rem 2rem;
+  background: var(--background);
+  color: var(--foreground);
+  overflow: clip;
   transition: 0.2s ease opacity;
   border-radius: var(--radius);
+  grid-auto-rows: 1.25em;
   text-transform: uppercase;
-  display: flex;
+  display: inline-grid;
   align-items: center;
   justify-content: center;
   place-self: start;
-  & > * {
+
+  & > *:not(svg) {
+    padding: 0 1.5rem;
+    display: inline-grid;
+    height: 1em;
+    align-content: center;
+    justify-content: center;
+    pointer-events: none;
+    grid-area: 1/1;
     color: inherit;
     z-index: 1;
     white-space: nowrap;
-    /* mix-blend-mode: plus-lighter; */
-  }
-  & > svg {
-    transition: transform 0.2s ease-out;
-  }
-  &:hover {
-    & > * {
-      opacity: 0.9;
-    }
-    & > svg {
-      transform: scale(0.98);
-    }
   }
 }
 
+.button .field {
+  color: var(--background-accent);
+  position: relative;
+  grid-area: 1/1;
+  z-index: 0;
+  max-width: 4em;
+  min-width: 3.5em;
+  width: max-content;
+  place-self: center center;
+  transition:
+    transform 0.2s ease-out,
+    opacity 0.2s ease-out;
+}
+
 .primary {
-  background-color: var(--foreground);
-  color: var(--background);
   text-decoration: none;
   position: relative;
   font-size: inherit;
 }
 .secondary {
-  background-color: var(--background);
+  background: var(--background-accent);
   text-decoration: none;
   position: relative;
   font-size: inherit;
-  padding: 0.5rem;
+  .field {
+    color: color-mix(in srgb, var(--foreground) 20%, var(--background-accent));
+  }
 }
 
-.buttonNode {
-  position: absolute;
-  mix-blend-mode: plus-lighter;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  color: color-mix(in srgb, var(--background) 60%, var(--foreground));
+.small {
+  font-size: var(--h3);
+  > *:not(svg) {
+    font-size: var(--label);
+  }
 }
