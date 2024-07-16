@@ -79,8 +79,8 @@
   /* DARK THEME */
 
   [data-theme='one'] {
-    &.theme,
-    &:has(.theme) .theme {
+    &:not(.theme) .theme,
+    &.theme {
       --foreground: hsl(var(--steel-5));
       --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
       --foreground-border: hsl(var(--steel-5) / var(--opacity-2));
@@ -91,8 +91,8 @@
   }
 
   [data-theme='two'] {
-    &.theme,
-    &:has(.theme) .theme {
+    &:not(.theme) .theme,
+    &.theme {
       --foreground: hsl(var(--steel-5));
       --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
       --foreground-border: hsl(var(--steel-5) / var(--opacity-2));
@@ -103,8 +103,8 @@
   }
 
   [data-theme='three'] {
-    &.theme,
-    &:has(.theme) .theme {
+    &:not(.theme) .theme,
+    &.theme {
       --background: hsl(var(--steel-3) / 1);
       --background-accent: hsl(var(--steel-2) / var(--opacity));
       --navigation: hsl(var(--steel-4) / 1);
@@ -112,8 +112,8 @@
   }
 
   [data-theme='four'] {
-    &.theme,
-    &:has(.theme) .theme {
+    &:not(.theme) .theme,
+    &.theme {
       --foreground: hsl(var(--steel-0) / var(--opacity));
       --foreground-accent: hsl(var(--steel-0) / var(--opacity-7));
       --background: var(--accent-2);

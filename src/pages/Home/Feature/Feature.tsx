@@ -1,5 +1,5 @@
 import style from './feature.module.css';
-import { Button, Flex, Text, VectorField, Img } from '@/components';
+import { Button, Flex, Text, VectorField, Img, ShapeField } from '@/components';
 
 const FeatureSpeed = () => {
   return (
@@ -49,11 +49,28 @@ const FeatureSpeed = () => {
 
 const FeaturePowerful = () => {
   return (
-    <div data-theme="one" className={`theme ${style.powerful}`}>
-      <Text.H1>Powerful.</Text.H1>
-      <Text.Body balance>
-        Traditional models don't align with realistic portfolios, and can't be adjusted to reflect market changes
-      </Text.Body>
+    <div data-theme="one" className={`theme col ${style.powerful}`}>
+      <div className={`${style.copy}`}>
+        <Text.H1>Powerful.</Text.H1>
+        <Text.Body balance secondary as="span">
+          <Text.Body as="span"> Traditional models don't align with realistic portfolios, </Text.Body>
+          and can't be adjusted to reflect market changes
+        </Text.Body>
+      </div>
+      <ShapeField
+        color1="var(--accent-1)"
+        color2="var(--accent-3)"
+        variant="pcb"
+        rows={37}
+        columns={37}
+        padding={1.5}
+        className={`col ${style.shapefield}`}
+      />
+      <div className={`${style.copy}`}>
+        <Button type="secondary" theme={4} href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+          <Text.Caps>Learn more</Text.Caps>
+        </Button>
+      </div>
     </div>
   );
 };

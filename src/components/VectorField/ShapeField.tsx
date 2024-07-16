@@ -25,20 +25,18 @@ interface ShapeProps {
 }
 
 const childVariants = {
-  hidden: ({ shimmer }: { shimmer: number }) => ({
-    opacity: 0,
-    transition: {
-      duration: 0.05 * shimmer
-    }
+  hidden: () => ({
+    strokeOpacity: 0
   }),
   visible: ({ shimmer }: { shimmer: number }) => ({
-    opacity: [1, 0.5, 1],
+    strokeOpacity: [1, 0, 1],
     transition: {
-      repeat: 1,
+      repeat: Infinity,
       repeatType: 'loop',
-      duration: 2,
-      delay: shimmer * 0.003,
-      ease: 'easeInOut'
+      // duration: (0.9 / shimmer) * 1000,
+      duration: 3,
+      delay: (shimmer * 0.01) / -0.025,
+      ease: 'easeIn'
     }
   })
 };
@@ -49,7 +47,7 @@ const Shape = React.memo(({ x, y, type, size = 8, opacity }: ShapeProps) => {
     stroke: 'currentColor',
     vectorEffect: 'non-scaling-stroke',
     strokeWidth: 1.25,
-    strokeOpacity: opacity,
+    opacity: opacity,
     fill: 'none'
   };
   switch (type) {
@@ -133,7 +131,7 @@ export const ShapeField = React.memo(
             break;
 
           case 'pcb':
-            shapeType = pcbPattern(col, row) > 0.5 ? 'rect' : 'ellipse';
+            shapeType = combinedType(pcbPattern(col, row));
             break;
 
           default:
@@ -146,10 +144,38 @@ export const ShapeField = React.memo(
       [columns, height, rows, variant]
     );
 
-    const getOpacity = useCallback((combinedNoise: number) => {
+    const opacitySteps = useCallback((combinedNoise: number) => {
       if (combinedNoise <= 0.33) return 0.2;
       if (combinedNoise <= 0.66) return 0.6;
       return 1;
+    }, []);
+
+    const getOpacity = useCallback((combinedNoise: number, variant: string, col: number, row: number) => {
+      let opacityType: ShapeProps['opacity'];
+      switch (variant) {
+        case 'swirl':
+          opacityType = opacitySteps(combinedNoise);
+          break;
+        case 'dithered-gradient':
+          opacityType = opacitySteps(combinedNoise);
+          break;
+        case 'radial':
+          opacityType = opacitySteps(combinedNoise);
+          break;
+        case 'bayesian':
+          opacityType = opacitySteps(combinedNoise);
+          break;
+        case 'checker':
+          opacityType = opacitySteps(combinedNoise);
+          break;
+        case 'pcb':
+          opacityType = pcbPattern(col, row) > 0.5 ? 0.5 : 1;
+          break;
+        default:
+          opacityType = opacitySteps(combinedNoise);
+          break;
+      }
+      return opacityType;
     }, []);
 
     const shapes = React.useMemo(
@@ -179,7 +205,7 @@ export const ShapeField = React.memo(
           const baseNoise = (0.5 - Math.random()) * 0.66;
           const noise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 2;
           const radialNoise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 4;
-          const opacity = getOpacity(baseNoise + noise);
+          const opacity = getOpacity(baseNoise + noise, variant, col, row);
           const shapeType = getShapeType(col, row, baseNoise, radialNoise, index, y);
           const color = shapeType === 'rect' ? color1 : color2;
 
@@ -187,7 +213,7 @@ export const ShapeField = React.memo(
             <motion.g
               key={`${row}-${col}`}
               variants={!isStatic ? (childVariants as any) : {}}
-              custom={{ shimmer: index * (index * 0.1) }}
+              custom={{ shimmer: index * (index * 0.01) }}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
               style={{ color: color }}
@@ -207,6 +233,7 @@ export const ShapeField = React.memo(
         midY,
         height,
         getOpacity,
+        variant,
         getShapeType,
         color1,
         color2,
