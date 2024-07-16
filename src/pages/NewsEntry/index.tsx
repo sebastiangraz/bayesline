@@ -5,7 +5,7 @@ import style from './newsentry.module.css';
 import { components } from './components';
 import { entryMeta } from '@/pages/News/entryMeta';
 import { Link } from '@tanstack/react-router';
-import { readableDate, themeClasses } from '@/helpers/utils';
+import { readableDate } from '@/helpers/utils';
 function tableOfContents(toc: any) {
   return (
     <div className={`${style.toc}`}>
@@ -73,8 +73,7 @@ export function NewsEntry() {
         <div className={`col ${style.more}`}>
           <Text.H5 className={`col`}>More articles</Text.H5>
           <ul className={`col`}>
-            {entryByDateExcludeCurrent.slice(0, 3).map(({ title, fileName, theme, published, thumbnail, seed }) => {
-              const themeValue = themeClasses[theme] || '';
+            {entryByDateExcludeCurrent.slice(0, 3).map(({ title, fileName, published, thumbnail, seed }) => {
               const date = readableDate(published);
               const seedValue = seed || `${title}-${published}`;
 
@@ -87,7 +86,7 @@ export function NewsEntry() {
               }
 
               return (
-                <li key={fileName} data-theme={themeValue} className={`col`}>
+                <li key={fileName} className={`col`}>
                   <Link
                     className={`col`}
                     to={`/news/$postId`}
@@ -95,7 +94,7 @@ export function NewsEntry() {
                       postId: `${fileName}`
                     }}
                   >
-                    <div className={`col  ${style.thumbnail}`}>
+                    <div className={`col ${style.thumbnail}`}>
                       <Thumbnail />
                     </div>
 

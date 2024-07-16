@@ -6,7 +6,6 @@ export function Home() {
   return (
     <>
       <Hero />
-
       <Cards layout="grid-left">
         <Card dataTheme={1}>
           <div className="card-header">
@@ -73,7 +72,8 @@ export function Home() {
           </Text.Body>
         </Card>
       </Cards>
-      <Feature />
+      <Feature.Speed />
+      <Feature.Powerful />
     </>
   );
 }

@@ -1,9 +1,9 @@
 import style from './feature.module.css';
 import { Button, Flex, Text, VectorField, Img } from '@/components';
 
-export const Feature = () => {
+const FeatureSpeed = () => {
   return (
-    <div className={`col bleed ${style.feature}`}>
+    <div className={`col bleed ${style.speed}`}>
       <div className={`${style.cue}`}>
         <Flex column>
           <Text.H5>Move with the markets.</Text.H5>
@@ -46,3 +46,22 @@ export const Feature = () => {
     </div>
   );
 };
+
+const FeaturePowerful = () => {
+  return (
+    <div data-theme="one" className={`theme ${style.powerful}`}>
+      <Text.H1>Powerful.</Text.H1>
+      <Text.Body balance>
+        Traditional models don't align with realistic portfolios, and can't be adjusted to reflect market changes
+      </Text.Body>
+    </div>
+  );
+};
+
+export const Feature = Object.assign(
+  {},
+  {
+    Speed: FeatureSpeed,
+    Powerful: FeaturePowerful
+  }
+);

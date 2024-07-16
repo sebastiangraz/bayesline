@@ -77,44 +77,49 @@
 
 @layer theme {
   /* DARK THEME */
-  [data-theme='dark'],
-  [data-theme='dark']:is(.theme) {
-    --foreground: hsl(var(--steel-5));
-    --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
-    --foreground-border: hsl(var(--steel-5) / var(--opacity-2));
-    --background: hsl(var(--brand-0) / 1);
-    --background-accent: hsl(var(--brand-1) / var(--opacity));
-    --navigation: hsl(var(--brand-1));
+
+  [data-theme='one'] {
+    &.theme,
+    &:has(.theme) .theme {
+      --foreground: hsl(var(--steel-5));
+      --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
+      --foreground-border: hsl(var(--steel-5) / var(--opacity-2));
+      --background: hsl(var(--brand-0) / 1);
+      --background-accent: hsl(var(--brand-1) / var(--opacity));
+      --navigation: hsl(var(--brand-1));
+    }
   }
 
-  [data-theme='accent'],
-  [data-theme='accent']:is(.theme) {
-    --foreground: hsl(var(--steel-5));
-    --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
-    --foreground-border: hsl(var(--steel-5) / var(--opacity-2));
-    --background: hsl(var(--brand-1) / 1);
-    --background-accent: hsl(var(--coral) / var(--opacity));
-    --navigation: hsl(var(--brand-0));
+  [data-theme='two'] {
+    &.theme,
+    &:has(.theme) .theme {
+      --foreground: hsl(var(--steel-5));
+      --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
+      --foreground-border: hsl(var(--steel-5) / var(--opacity-2));
+      --background: hsl(var(--brand-1) / 1);
+      --background-accent: hsl(var(--coral) / var(--opacity));
+      --navigation: hsl(var(--brand-0));
+    }
   }
 
-  [data-theme='highlight'],
-  [data-theme='highlight']:is(.theme) {
-    /* --foreground: hsl(var(--steel-5));
-      /* --foreground: hsl(var(--steel-5));
-    --foreground-accent: hsl(var(--steel-5) / var(--opacity-6));
-    --foreground-border: hsl(var(--steel-5) / var(--opacity-2)); */
-    --background: hsl(var(--steel-3) / 1);
-    --background-accent: hsl(var(--steel-2) / var(--opacity));
-    --navigation: hsl(var(--steel-4) / 1);
+  [data-theme='three'] {
+    &.theme,
+    &:has(.theme) .theme {
+      --background: hsl(var(--steel-3) / 1);
+      --background-accent: hsl(var(--steel-2) / var(--opacity));
+      --navigation: hsl(var(--steel-4) / 1);
+    }
   }
 
-  [data-theme='tertiary'],
-  [data-theme='tertiary']:is(.theme) {
-    --foreground: hsl(var(--steel-0) / var(--opacity));
-    --foreground-accent: hsl(var(--steel-0) / var(--opacity-7));
-    --background: var(--accent-2);
-    --background-accent: hsl(var(--steel-4) / var(--opacity));
-    --navigation: color-mix(in srgb, hsl(var(--steel-5)) calc(var(--opacity-5) * 100%), var(--accent-2));
+  [data-theme='four'] {
+    &.theme,
+    &:has(.theme) .theme {
+      --foreground: hsl(var(--steel-0) / var(--opacity));
+      --foreground-accent: hsl(var(--steel-0) / var(--opacity-7));
+      --background: var(--accent-2);
+      --background-accent: hsl(var(--steel-4) / var(--opacity));
+      --navigation: color-mix(in srgb, hsl(var(--steel-5)) calc(var(--opacity-5) * 100%), var(--accent-2));
+    }
   }
 }
 
@@ -182,7 +187,7 @@
   :is(p, a, pre, ul, ol, table, blockquote, aside, hr, figure, .paragraph) {
     margin: 0;
     font-size: var(--body);
-    /* color: var(--foreground); */
+    color: var(--foreground);
     letter-spacing: -0.01em;
   }
 

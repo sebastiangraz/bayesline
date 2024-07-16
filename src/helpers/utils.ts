@@ -78,10 +78,10 @@ export const recursiveDivider = (
 
 export const themeClasses: Record<number, string> = {
   0: '',
-  1: 'dark',
-  2: 'accent',
-  3: 'highlight',
-  4: 'tertiary'
+  1: 'one',
+  2: 'two',
+  3: 'three',
+  4: 'four'
 };
 
 type Subdivision = {
