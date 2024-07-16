@@ -10,12 +10,24 @@
       box-shadow: none;
     }
     &:has(.wrapper:hover) .thumbnail {
-      background: color-mix(in srgb, var(--background-accent), var(--foreground) 4%);
+      background: color-mix(in srgb, currentColor, var(--foreground) 8%);
+    }
+  }
+  li:is(.theme) {
+    .thumbnail {
+      background: var(--background);
+      color: var(--background);
     }
   }
   li:is(.featured) {
     background: var(--background);
+    color: var(--background);
+    .thumbnail {
+      background: var(--background-accent);
+      color: var(--background-accent);
+    }
   }
+
   li a {
     text-decoration: none;
     list-style: none;
@@ -51,7 +63,9 @@
 }
 
 .thumbnail {
+  transition: background ease 0.2s;
   background: var(--background-accent);
+  color: var(--background-accent);
   padding: 1.5rem;
   aspect-ratio: 1;
   grid-column: 1 / 4;

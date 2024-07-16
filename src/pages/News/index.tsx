@@ -24,6 +24,10 @@ export function News() {
           const date = readableDate(published);
           const seedValue = seed || `${title}-${published}`;
 
+          const featuredClass = featured ? `theme ${style.featured}` : '';
+          const hasThemeClass = themeValue !== '' ? `theme ${style.theme}` : '';
+          const classNames = `${featuredClass} ${hasThemeClass}`;
+
           function getImageUrl(name: string) {
             return new URL(`../entries/${fileName}/${name}`, import.meta.url).href;
           }
@@ -33,11 +37,7 @@ export function News() {
           }
 
           return (
-            <li
-              key={fileName}
-              data-theme={featured ? themeValue : ''}
-              className={`col theme ${featured ? style.featured : ''}`}
-            >
+            <li key={fileName} data-theme={featured ? themeValue : ''} className={`col ${classNames}`}>
               <Link
                 className={`col ${style.wrapper}`}
                 to={`/news/$postId`}
@@ -45,7 +45,7 @@ export function News() {
                   postId: `${fileName}`
                 }}
               >
-                <div className={`col ${style.thumbnail}`}>
+                <div data-theme={themeValue} className={`col theme ${style.thumbnail}`}>
                   <Thumbnail />
                 </div>
                 <div className={`col ${style.meta}`}>
