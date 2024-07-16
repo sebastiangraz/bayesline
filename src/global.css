@@ -1,7 +1,5 @@
 @import './assets/katex.css';
-@view-transition {
-  navigation: auto;
-}
+
 :root {
   /* COLOR PRIMITIVES (HSL) */
   --coral: 20 94% 33%;
