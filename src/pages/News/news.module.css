@@ -4,7 +4,6 @@
 
   li {
     box-shadow: var(--border-b) inset var(--foreground-border);
-    background: var(--background);
     color: var(--foreground);
     grid-column: 1 / 26;
     &:first-child {
@@ -14,8 +13,8 @@
       background: color-mix(in srgb, var(--background-accent), var(--foreground) 4%);
     }
   }
-  li:has(.featured) {
-    opacity: 0.5;
+  li:is(.featured) {
+    background: var(--background);
   }
   li a {
     text-decoration: none;

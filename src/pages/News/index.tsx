@@ -33,7 +33,11 @@ export function News() {
           }
 
           return (
-            <li key={fileName} data-theme={themeValue} className={`col theme ${featured ? style.featured : ''}`}>
+            <li
+              key={fileName}
+              data-theme={featured ? themeValue : ''}
+              className={`col theme ${featured ? style.featured : ''}`}
+            >
               <Link
                 className={`col ${style.wrapper}`}
                 to={`/news/$postId`}

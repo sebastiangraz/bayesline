@@ -1,5 +1,6 @@
 .asset {
   display: flex;
+  aspect-ratio: 1;
 }
 .foregroundSvg {
   & > svg {
