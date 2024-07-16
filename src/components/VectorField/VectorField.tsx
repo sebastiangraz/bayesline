@@ -17,7 +17,6 @@ const arrowVariant = {
   },
   visible: ({ i }: { i: number }) => ({
     scale: 1,
-    opacity: 1,
     transition: {
       duration: 0.5 + i * 0.01,
       ease: [1, 0.2, 0.3, 0.9]

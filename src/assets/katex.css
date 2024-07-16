@@ -915,7 +915,7 @@
   stroke-miterlimit: 4;
   stroke-dasharray: none;
   stroke-dashoffset: 0;
-  stroke-opacity: 1;
+  strokeopacity: 1;
   display: block;
   height: inherit;
   position: absolute;

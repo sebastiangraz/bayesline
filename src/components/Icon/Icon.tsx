@@ -24,7 +24,7 @@ const IconPaths = {
         <path
           d="M29.5 36L29.5 10M23.5 36L23.5 16M17.5 36L17.5 22M11.5 36L11.5 28M35.5 36L35.5 4M5.5 32L5.5 36"
           stroke="currentColor"
-          stroke-opacity="0.56"
+          strokeOpacity="0.56"
           vectorEffect={'non-scaling-stroke'}
         />
       </>
@@ -36,7 +36,7 @@ const IconPaths = {
         <path
           d="M20.5 4V20V36M8.5 8V16M14.5 18L14.5 6M26.5 18V6M32.5 8V16M2.5 10V14M38.5 10V14M8.5 24V32M14.5 34L14.5 22M26.5 34V22M32.5 24V32M2.5 26V30M38.5 26V30"
           stroke="currentColor"
-          stroke-opacity="0.56"
+          strokeOpacity="0.56"
           vectorEffect={'non-scaling-stroke'}
         />
       </>
@@ -48,7 +48,7 @@ const IconPaths = {
         <path
           d="M36 11.5H4M2 17.5H38M4 29.5H36M30 35.5H10M2 23.5H38M30 5.5H10"
           stroke="currentColor"
-          stroke-opacity="0.56"
+          strokeOpacity="0.56"
           vectorEffect={'non-scaling-stroke'}
         />
       </>
