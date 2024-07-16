@@ -1,6 +1,6 @@
 import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
-import { Flex, Text, VectorField } from '@/components';
+import { Button, Flex, Text, VectorField } from '@/components';
 import hero from '@/assets/homepage-hero.png';
 
 interface HeroProps {
@@ -21,6 +21,14 @@ export const Hero = (props: HeroProps) => {
             We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
             blazing fast.
           </Text.Body>
+          <Button
+            theme={1}
+            type="primary-interactive"
+            href="https://calendar.app.google/qq4pjZcmDdzTjBme7"
+            target="_blank"
+          >
+            <Text.Caps>Book a Demo</Text.Caps>
+          </Button>
         </Flex>
       </div>
       <div className={`col ${style.ui}`}>

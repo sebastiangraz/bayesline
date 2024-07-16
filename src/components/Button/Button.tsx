@@ -6,7 +6,7 @@ import { VectorField } from '../VectorField';
 import { themeClasses } from '@/helpers/utils';
 
 interface ButtonProps {
-  type?: 'primary' | 'secondary';
+  type?: 'primary-interactive' | 'primary' | 'secondary';
   size?: 'default' | 'small';
   children: React.ReactNode;
   className?: string;
@@ -58,6 +58,7 @@ export const Button = ({
   const typeValue = type === 'primary' ? style.primary : style.secondary;
   const className = rest.className ? rest.className : '';
   const sizeValue = size === 'small' ? style.small : '';
+  const isInteractive = type === 'primary-interactive';
 
   const buttonStyle = `theme ${style.button} ${typeValue} ${sizeValue} ${className} `;
 
@@ -77,7 +78,7 @@ export const Button = ({
       // style={{ backgroundColor: themeClasses[theme] }}
     >
       {children}
-      <VectorField variant="straight" count={9} padding={13} className={style.field} />
+      {isInteractive && <VectorField variant="straight" count={9} padding={13} className={style.field} />}
     </MotionComponent>
   );
 };
