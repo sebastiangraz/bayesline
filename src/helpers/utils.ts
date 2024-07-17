@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import seedrandom, { PRNG } from 'seedrandom';
 
 export function getPrevPathFromExtension(path: string, extension = '.mdx') {

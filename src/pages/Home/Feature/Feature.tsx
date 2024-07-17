@@ -2,7 +2,7 @@ import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import style from './feature.module.css';
 import { Button, Flex, Text, VectorField, Img, ShapeField, Logo } from '@/components';
 import { useState } from 'react';
-import { flushSync } from 'react-dom';
+import debounce from 'lodash.debounce';
 
 const FeatureSpeed = () => {
   return (
@@ -161,21 +161,7 @@ const FeatureTicker = () => {
             >
               <Text.Body>{`${item.featureTitle}`}</Text.Body>
 
-              {item === selectedTab ? (
-                <motion.div
-                  style={{
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    position: 'absolute',
-                    boxShadow: '0px 0px 0px 1px red',
-                    zIndex: 0
-                  }}
-                  className="underline"
-                  layoutId="underline"
-                />
-              ) : null}
+              {item === selectedTab ? <motion.div className={style.underline} layoutId="underline" /> : null}
             </button>
           );
         })}
