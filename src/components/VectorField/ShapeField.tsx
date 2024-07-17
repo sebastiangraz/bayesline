@@ -30,13 +30,13 @@ const childVariants = {
   hidden: () => ({
     strokeOpacity: 0
   }),
-  visible: ({ shimmer }: { shimmer: number }) => ({
-    strokeOpacity: [1, 0, 1],
+  visible: ({ shimmer, opacity }: { shimmer: number; opacity: number }) => ({
+    strokeOpacity: [1, 0.2, 0, 1, 1],
     transition: {
       repeat: Infinity,
       repeatType: 'loop',
       duration: 3,
-      delay: (shimmer * 0.01) / -0.025,
+      delay: opacity * ((shimmer * 0.8) / -5.2) * opacity,
       ease: 'linear'
     }
   })
@@ -109,7 +109,6 @@ export const ShapeField = React.memo(
           } else {
             shapeType = 'rect';
           }
-
           return shapeType;
         }
 
@@ -135,7 +134,7 @@ export const ShapeField = React.memo(
             break;
 
           case 'pcb':
-            shapeType = combinedType(pcbPattern(col, row), 0.3);
+            shapeType = combinedType(pcbPattern(col, row), 0);
             break;
 
           default:
@@ -217,7 +216,8 @@ export const ShapeField = React.memo(
             <motion.g
               key={`${row}-${col}`}
               variants={!isStatic ? (childVariants as any) : {}}
-              custom={{ shimmer: index * (index * 0.01) }}
+              custom={{ shimmer: index, opacity: opacity }}
+              // custom={{ shimmer: opacity * index * 0.03 * (index * 0.01) }}
               initial="hidden"
               animate="visible"
             >
