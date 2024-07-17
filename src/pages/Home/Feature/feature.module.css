@@ -84,7 +84,12 @@
     place-self: center;
     grid-area: 1/1;
     justify-content: center;
-    width: 5em;
+    left: -0.033em;
+    position: relative;
+    & > *:not(svg) {
+      background: radial-gradient(var(--background) 30%, transparent 120%);
+      padding: 0.25em;
+    }
     svg {
       display: none;
     }
