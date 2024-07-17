@@ -23,19 +23,18 @@ interface ShapeProps {
   type: 'rect' | 'ellipse' | 'line' | null;
   opacity: number;
   isStatic?: boolean;
+  color: string;
 }
 
 const childVariants = {
   hidden: () => ({
     strokeOpacity: 0
   }),
-  visible: ({ shimmer, opacity }: { shimmer: number; opacity: number }) => ({
+  visible: ({ shimmer }: { shimmer: number }) => ({
     strokeOpacity: [1, 0, 1],
-    // strokeOpacity: [1, 0, 1],
     transition: {
       repeat: Infinity,
       repeatType: 'loop',
-      // duration: (0.9 / shimmer) * 1000,
       duration: 3,
       delay: (shimmer * 0.01) / -0.025,
       ease: 'linear'
@@ -43,15 +42,17 @@ const childVariants = {
   })
 };
 
-const Shape = React.memo(({ x, y, type, size = 8, opacity, isStatic }: ShapeProps) => {
+const Shape = React.memo(({ x, y, type, size = 8, opacity, isStatic, color }: ShapeProps) => {
   if (!type) return null;
   // don’t add strokeOpacity if isStatic is
+  const isStaticProps = isStatic ? { strokeOpacity: opacity } : {};
   const commonProps = {
     stroke: 'currentColor',
     vectorEffect: 'non-scaling-stroke',
     strokeWidth: 1.25,
-    strokeOpacity: opacity,
-    fill: 'none'
+    fill: 'none',
+    style: { color },
+    ...isStaticProps
   };
   switch (type) {
     case 'line':
@@ -211,7 +212,7 @@ export const ShapeField = React.memo(
           const opacity = getOpacity(baseNoise + noise, variant, col, row);
           const shapeType = getShapeType(col, row, baseNoise, radialNoise, index, y);
           const color = shapeType === 'rect' ? color1 : color2;
-          const strokeOpacity = isStatic ? { strokeOpacity: opacity } : {};
+
           return (
             <motion.g
               key={`${row}-${col}`}
@@ -219,9 +220,16 @@ export const ShapeField = React.memo(
               custom={{ shimmer: index * (index * 0.01) }}
               initial="hidden"
               animate="visible"
-              style={{ color: color, ...strokeOpacity }}
             >
-              <Shape x={x} y={y} type={shapeType} size={shapeSize} isStatic={isStatic} />
+              <Shape
+                x={x}
+                y={y}
+                type={shapeType}
+                size={shapeSize}
+                isStatic={isStatic}
+                opacity={opacity}
+                color={color}
+              />
             </motion.g>
           );
         }),
@@ -247,17 +255,14 @@ export const ShapeField = React.memo(
 
     return (
       <motion.svg
-        // width={width}
-        // height={height}
         className={classNames}
         preserveAspectRatio="xMidYMid meet"
         viewBox={`0 0 ${width} ${height}`}
         // ref={svgRef}
         // initial={{
-        //   opacity: 0,
         //   visibility: 'hidden'
         // }}
-        // animate={isInView ? { opacity: 1, visibility: 'visible' } : { opacity: 0, visibility: 'hidden' }}
+        // animate={isInView ? { opacity: 1, visibility: 'visible' } : { visibility: 'hidden' }}
       >
         {shapes}
       </motion.svg>
