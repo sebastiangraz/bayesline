@@ -123,7 +123,7 @@ export const ShapeField = React.memo(
             break;
 
           case 'bayesian':
-            shapeType = combinedType(bayesianCurve(col, row, columns, rows), 0.26);
+            shapeType = combinedType(bayesianCurve(col, row, columns, rows), 1);
             break;
 
           case 'checker':
@@ -131,7 +131,7 @@ export const ShapeField = React.memo(
             break;
 
           case 'pcb':
-            shapeType = combinedType(pcbPattern(col, row));
+            shapeType = combinedType(pcbPattern(col, row), 0.3);
             break;
 
           default:

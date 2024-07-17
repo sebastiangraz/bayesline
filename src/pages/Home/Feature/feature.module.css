@@ -68,11 +68,25 @@
     text-align: center;
     grid-column: 8 / span 9;
   }
-  .shapefield {
+  .cpu {
     grid-column: 10 / span 5;
     place-self: center;
-
-    aspect-ratio: 1;
-    max-height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  .shapefield {
+    grid-area: 1/1;
+    width: 100%;
+  }
+  .logo {
+    color: var(--accent-1);
+    place-self: center;
+    grid-area: 1/1;
+    justify-content: center;
+    width: 5em;
+    svg {
+      display: none;
+    }
   }
 }

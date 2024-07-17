@@ -4,9 +4,10 @@ import style from './logo.module.css';
 interface LogoProps {
   className?: string;
   type?: boolean;
+  loop?: boolean;
 }
 
-export const Logo = ({ className = '', type = true }: LogoProps) => {
+export const Logo = ({ className = '', type = true, loop = false }: LogoProps) => {
   const parentVariant = {
     hidden: {
       transition: {
@@ -38,7 +39,7 @@ export const Logo = ({ className = '', type = true }: LogoProps) => {
   };
 
   return (
-    <div className={`${className} ${style.logo}`}>
+    <div className={`${className} ${loop ? style.loop : ''} ${style.logo}`}>
       <motion.div
         // animate={type ? { fontSize: 'calc(100cqw * 42 / 42)' } : { fontSize: 'calc(100cqw * 42 / 242)' }}
         // transition={{ duration: 0.5, ease: [0.9, 0.3, 0.1, 0.8] }}
