@@ -1,5 +1,8 @@
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import style from './feature.module.css';
 import { Button, Flex, Text, VectorField, Img, ShapeField, Logo } from '@/components';
+import { useState } from 'react';
+import { flushSync } from 'react-dom';
 
 const FeatureSpeed = () => {
   return (
@@ -78,10 +81,138 @@ const FeaturePowerful = () => {
   );
 };
 
+const selectorVariant = {
+  hidden: {
+    opacity: 0,
+    y: 8
+  },
+  visible: {
+    opacity: 1,
+    y: 0
+  },
+  hide: {
+    opacity: 0,
+    y: -8
+  }
+};
+
+const selectorImageVariant = {
+  hidden: {
+    y: 14,
+    opacity: 0
+  },
+  visible: {
+    y: 0,
+    opacity: 1
+  },
+  hide: {
+    y: -14,
+    opacity: 0
+  }
+};
+
+const selectorTransitionDelay = {
+  type: 'spring',
+  duration: 0.5
+};
+
+const data = {
+  header: "What's next",
+  features: [
+    {
+      id: '1',
+      featureTitle: 'Speed',
+      featureDescription:
+        'We deliver the analytics that investment managers are already familiar with, but hyper-customizable and blazing fast.',
+      image: 'homepage-hero.png'
+    },
+    {
+      id: '2',
+      featureTitle: 'Powerful',
+      featureDescription:
+        "Traditional models don't align with realistic portfolios, and can't be adjusted to reflect market changes",
+      image: 'homepage-hero.png'
+    },
+    {
+      id: '3',
+      featureTitle: 'Ticker',
+      featureDescription:
+        "Our ticker is a new way to view your portfolio, and it's built on top of our models. It's a great way to see how your portfolio is performing, and how it's doing compared to the market.",
+      image: 'homepage-hero.png'
+    }
+  ]
+};
+
+const FeatureTicker = () => {
+  const [selectedTab, setSelectedTab] = useState(data?.features[0]);
+  return (
+    <div className={`col ${style.ticker}`}>
+      <nav>
+        {data?.features.map((item) => {
+          console.log({ item, selectedTab }, item === selectedTab);
+
+          return (
+            <button
+              key={item.id}
+              className={item === selectedTab ? 'selected' : ''}
+              onClick={() => {
+                setSelectedTab(item);
+              }}
+            >
+              <Text.Body>{`${item.featureTitle}`}</Text.Body>
+
+              {item === selectedTab ? (
+                <motion.div
+                  style={{
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    position: 'absolute',
+                    boxShadow: '0px 0px 0px 1px red',
+                    zIndex: 0
+                  }}
+                  className="underline"
+                  layoutId="underline"
+                />
+              ) : null}
+            </button>
+          );
+        })}
+      </nav>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selectedTab.id ? selectedTab.id : ''}
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -10, opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Flex>
+            <Text.H4>{selectedTab ? selectedTab.featureDescription : ''}</Text.H4>
+          </Flex>
+          <div>
+            <motion.div
+              variants={selectorImageVariant}
+              transition={selectorTransitionDelay}
+              initial="hidden"
+              animate="visible"
+              exit="hide"
+            >
+              <Img src={selectedTab.image} />
+            </motion.div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export const Feature = Object.assign(
   {},
   {
     Speed: FeatureSpeed,
-    Powerful: FeaturePowerful
+    Powerful: FeaturePowerful,
+    Ticker: FeatureTicker
   }
 );

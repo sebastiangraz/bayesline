@@ -74,6 +74,7 @@ export function Home() {
       </Cards>
       <Feature.Speed />
       <Feature.Powerful />
+      <Feature.Ticker />
     </>
   );
 }
