@@ -64,7 +64,7 @@ const FeaturePowerful = () => {
           color2="var(--accent-3)"
           variant="pcb"
           rows={33}
-          columns={20}
+          columns={19}
           padding={1.5}
           className={`col ${style.shapefield}`}
         />
