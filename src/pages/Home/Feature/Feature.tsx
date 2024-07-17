@@ -177,17 +177,16 @@ const FeatureTicker = () => {
           <Flex>
             <Text.H4>{selectedTab ? selectedTab.featureDescription : ''}</Text.H4>
           </Flex>
-          <div>
-            <motion.div
-              variants={selectorImageVariant}
-              transition={selectorTransitionDelay}
-              initial="hidden"
-              animate="visible"
-              exit="hide"
-            >
-              <Img src={selectedTab.image} />
-            </motion.div>
-          </div>
+
+          <motion.div
+            variants={selectorImageVariant}
+            transition={selectorTransitionDelay}
+            initial="hidden"
+            animate="visible"
+            exit="hide"
+          >
+            <Img deviceBorder src={selectedTab.image} className={style.image} />
+          </motion.div>
         </motion.div>
       </AnimatePresence>
     </div>
