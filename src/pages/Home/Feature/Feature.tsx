@@ -122,8 +122,7 @@ const data = {
     {
       id: '1',
       featureTitle: 'Speed',
-      featureDescription:
-        'We deliver the analytics that investment managers are already familiar with, but hyper-customizable and blazing fast.',
+      featureDescription: 'hmm',
       image: 'homepage-hero.png'
     },
     {
@@ -163,29 +162,27 @@ const FeatureTicker = () => {
             </button>
           );
         })}
-      </nav>
+      </nav>{' '}
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedTab.id ? selectedTab.id : ''}
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -10, opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={selectorVariant}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
         >
-          <Flex>
-            <Text.H4>{selectedTab ? selectedTab.featureDescription : ''}</Text.H4>
-          </Flex>
-
+          <div className={` ${style.content}`}>
+            <Text.H4>{selectedTab ? selectedTab.featureDescription : ''}</Text.H4>{' '}
+          </div>
           <motion.div
+            className={` ${style.image}`}
             variants={selectorImageVariant}
             transition={selectorTransitionDelay}
             initial="hidden"
             animate="visible"
             exit="hide"
           >
-            {' '}
-            <Img browserBorder src={selectedTab.image} className={style.image} />
-            <Img deviceBorder src={selectedTab.image} className={style.image} />
+            <Img browserBorder src={selectedTab.image} />
           </motion.div>
         </motion.div>
       </AnimatePresence>
