@@ -1,5 +1,6 @@
 import type { OutputMetadata } from 'react';
 import style from './img.module.css';
+import { allImagePaths } from './imports';
 
 interface ImgProps {
   src: string;
@@ -12,18 +13,14 @@ interface ImgProps {
   className?: string;
   alt?: string;
 }
-const pictures = import.meta.glob(`@/assets/*.{jpg,jpeg,png}`, {
-  query: { format: 'avif;png', as: 'meta:src;format;aspect;width;height' },
-  import: 'default',
-  eager: true
-});
 
 export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = false }: ImgProps) => {
   if (!src) return null;
-  const srcPath = `/src/assets/${src}`;
-  const pictureSrc = Object.keys(pictures).find((key) => key.includes(srcPath)) as string;
 
-  const meta = pictures[pictureSrc!] as OutputMetadata[];
+  const pictureSrc = Object.keys(allImagePaths).find((key) => key.includes(src)) as string;
+
+  const meta = allImagePaths[pictureSrc!] as OutputMetadata[];
+
   const pngData = meta?.find((m) => m.format === 'png') as OutputMetadata;
   const avifData = meta?.find((m) => m.format === 'avif') as OutputMetadata;
 

@@ -44,7 +44,7 @@ const FeatureSpeed = () => {
         </Flex>
       </Flex>
       <div className={`col ${style.ui}`}>
-        <Img src="homepage-hero.png" deviceBorder />
+        <Img src="/src/assets/homepage-hero.png" deviceBorder />
       </div>
     </div>
   );
@@ -149,8 +149,6 @@ const FeatureTicker = () => {
     <div className={`col ${style.ticker}`}>
       <nav>
         {data?.features.map((item) => {
-          console.log({ item, selectedTab }, item === selectedTab);
-
           return (
             <button
               key={item.id}
