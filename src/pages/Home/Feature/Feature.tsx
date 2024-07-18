@@ -183,6 +183,8 @@ const FeatureTicker = () => {
             animate="visible"
             exit="hide"
           >
+            {' '}
+            <Img browserBorder src={selectedTab.image} className={style.image} />
             <Img deviceBorder src={selectedTab.image} className={style.image} />
           </motion.div>
         </motion.div>

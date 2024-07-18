@@ -10,11 +10,18 @@ interface ImgProps {
    */
   ignoreShadow?: boolean;
   deviceBorder?: boolean;
+  browserBorder?: boolean;
   className?: string;
   alt?: string;
 }
 
-export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = false }: ImgProps) => {
+export const Img = ({
+  src,
+  alt = 'Image asset',
+  className = '',
+  deviceBorder = false,
+  browserBorder = false
+}: ImgProps) => {
   if (!src) return null;
 
   const pictureSrc = Object.keys(allImagePaths).find((key) => key.includes(src)) as string;
@@ -24,7 +31,7 @@ export const Img = ({ src, alt = 'Image asset', className = '', deviceBorder = f
   const pngData = meta?.find((m) => m.format === 'png') as OutputMetadata;
   const avifData = meta?.find((m) => m.format === 'avif') as OutputMetadata;
 
-  const classNames = `${style.picture} ${deviceBorder ? style.border : ''} ${className}`;
+  const classNames = `${style.picture} ${deviceBorder ? style.deviceBorder : ''} ${browserBorder ? style.browserBorder : ''} ${className}`;
 
   return (
     <picture className={classNames} style={{ '--picture-w': pngData?.width, '--picture-h': pngData?.height }}>
