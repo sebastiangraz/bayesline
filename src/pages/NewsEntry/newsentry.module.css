@@ -102,9 +102,10 @@
     grid-column: 20 / end;
     height: auto;
     grid-row: span 1;
+    gap: 0.5em 0;
     color: var(--foreground-accent-opaque);
     font-size: var(--body-small);
-    p {
+    & p > * {
       color: inherit;
       font-size: inherit;
     }
