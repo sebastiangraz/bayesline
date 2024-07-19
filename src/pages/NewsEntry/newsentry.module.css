@@ -60,15 +60,16 @@
   grid-column: 15 / span 10;
   color: var(--foreground-accent);
 }
-.prose p:has(img) {
+.prose p:has(img),
+.prose picture {
   grid-column: 8 / end;
   z-index: 0;
   justify-content: start;
   display: grid;
   margin: 2em 0;
-  img {
+  /* img {
     border-radius: var(--radius);
-  }
+  } */
 }
 
 .prose {

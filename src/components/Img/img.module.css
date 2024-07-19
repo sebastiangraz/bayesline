@@ -27,7 +27,7 @@
   img,
   source {
     grid-area: 1/1;
-    border-radius: 0.5em;
+    border-radius: 0 0 2rem 2rem;
   }
 }
 
