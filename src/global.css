@@ -59,6 +59,7 @@
   --body: clamp(0.9375rem, round(0.902rem, 1px) + round(0.142vw, 1px), 1rem);
   --body-small: clamp(0.8125rem, 0.777rem + 0.142vw, 0.875rem);
   --label: clamp(0.6875rem, 0.652rem + 0.142vw, 0.75rem);
+  --reset: clamp(1rem, 0rem + round(up, 4vw, 1px), 3rem);
 
   --mono: 'sohnemono', monospace;
 
@@ -177,7 +178,7 @@
     padding: 0;
     color: var(--foreground);
     background-color: var(--background);
-    font-size: clamp(1rem, 0rem + round(up, 4vw, 1px), 3rem);
+    font-size: var(--reset);
   }
 
   html {

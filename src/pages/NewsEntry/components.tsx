@@ -1,5 +1,5 @@
 import style from './newsentry.module.css';
-import { Text } from '@/components';
+import { Img, Text } from '@/components';
 import { isArrayofObjects } from '@/helpers/utils';
 
 export const components = {
@@ -43,6 +43,6 @@ export const components = {
     return <code className={`${style.code}`} {...props}></code>;
   },
   img: (props: any) => {
-    return <img className={`${style.image}`} {...props}></img>;
+    return <Img className={`${style.image}`} {...props}></Img>;
   }
 };

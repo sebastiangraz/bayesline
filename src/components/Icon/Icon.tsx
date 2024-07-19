@@ -1,14 +1,13 @@
+import { warning } from 'framer-motion';
 import style from './icon.module.css';
 
 interface IconProps {
-  name: string;
+  name?: string;
   className?: string;
 }
 
-export const Icon = (props: IconProps) => {
-  const { name, ...rest } = props;
-
-  const paths = IconPaths[name].path;
+export const Icon = ({ name = 'chart', ...rest }: IconProps) => {
+  const paths = IconPaths[name]?.path;
 
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className={`${style.icon} ${rest.className}`}>
@@ -47,6 +46,18 @@ const IconPaths = {
       <>
         <path
           d="M36 11.5H4M2 17.5H38M4 29.5H36M30 35.5H10M2 23.5H38M30 5.5H10"
+          stroke="currentColor"
+          strokeOpacity="0.56"
+          vectorEffect={'non-scaling-stroke'}
+        />
+      </>
+    )
+  },
+  warning: {
+    path: (
+      <>
+        <path
+          d="M20.5 36V30M20.5 4V26M8.5 20V36M14.5 36L14.5 12M26.5 36V12M32.5 20V36M2.5 30V36M38.5 30V36"
           stroke="currentColor"
           strokeOpacity="0.56"
           vectorEffect={'non-scaling-stroke'}
