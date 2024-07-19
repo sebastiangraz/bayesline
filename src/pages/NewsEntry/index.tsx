@@ -71,29 +71,34 @@ export function NewsEntry() {
 
       <div className={`col ${style.disclaimer}`}>
         <Icon name="warning" className={style.icon} />
-        <div>
-          <Text.Caps secondary>Disclaimer</Text.Caps>
-          <Text.Small>
-            This website is a general communication being provided for informational purposes only. It is educational in
-            nature and not designed to be a recommendation for any specific investment product, strategy, plan feature
-            or other purposes. By receiving this communicationyou agree with the intended purpose described above. Any
-            examples used in this material are generic, hypothetical and for illustration purposes only. None of
-            Bayesline, Inc., its affiliates or representatives is suggesting that the recipient or any other person take
-            a specific course of action or any action at all.
-          </Text.Small>
-          <Text.Small secondary>
-            Communications such as this are not impartial and are provided in connection with the advertising and
-            marketing of products and services. Prior to making any investment or financial decisions, an investor
-            should seek individualized advice from personal financial, legal, tax and other professionals that take into
-            account all of the particular facts and circumstances of an investor's own situation.
-          </Text.Small>
-          <Text.Small secondary>
-            Opinions and statements of financial market trends that are based on current market conditions constitute
-            our judgment and are subject to change without notice. We believe the information provided here is reliable
-            but should not be assumed to be accurate or complete. The views and strategies described may not be suitable
-            for all investors.
-          </Text.Small>
-        </div>
+        <details>
+          <summary>
+            {' '}
+            <Text.Small>
+              This website is a general communication being provided for informational purposes only. It is educational
+              in nature and not designed to be a recommendation for any specific investment product, strategy, plan
+              feature or other purposes. By receiving this communicationyou agree with the intended purpose described
+              above. Any examples used in this material are generic, hypothetical and for illustration purposes only.
+              None of Bayesline, Inc., its affiliates or representatives is suggesting that the recipient or any other
+              person take a specific course of action or any action at all.
+            </Text.Small>{' '}
+            <Text.Small secondary>Expand</Text.Small>
+          </summary>
+          <div>
+            <Text.Small secondary>
+              Communications such as this are not impartial and are provided in connection with the advertising and
+              marketing of products and services. Prior to making any investment or financial decisions, an investor
+              should seek individualized advice from personal financial, legal, tax and other professionals that take
+              into account all of the particular facts and circumstances of an investor's own situation.
+            </Text.Small>
+            <Text.Small secondary>
+              Opinions and statements of financial market trends that are based on current market conditions constitute
+              our judgment and are subject to change without notice. We believe the information provided here is
+              reliable but should not be assumed to be accurate or complete. The views and strategies described may not
+              be suitable for all investors.
+            </Text.Small>
+          </div>
+        </details>
       </div>
 
       {entryByDate.length > 0 && (
