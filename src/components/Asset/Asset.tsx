@@ -117,6 +117,14 @@ const imageDirectionsArr = [
 
 export const Asset: React.FC<Props> = React.memo(
   ({ seed }) => {
+    // const [count, setCount] = React.useState(Math.floor(Math.random() * 1000));
+    // React.useEffect(() => {
+    //   const interval = setInterval(() => {
+    //     setCount((count) => count + 1);
+    //   }, 1500);
+    //   return () => clearInterval(interval);
+    // }, []);
+    // seed = `${seed}-${count}`;
     const svgs = useMemo(() => generateSVGs(seed).filter((svg) => svg.visible), [seed]);
 
     const ref = useRef(null);

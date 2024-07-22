@@ -26,7 +26,8 @@ export const recursiveDivider = (
   width: number,
   height: number,
   depth: number,
-  rng: PRNG
+  rng: PRNG,
+  occupiedSpaces: { x: number; y: number; width: number; height: number }[] = []
 ): Subdivision[] => {
   const visible = [true, false];
 
@@ -37,6 +38,12 @@ export const recursiveDivider = (
   let sizes = [192, 96, 48];
   let result = [] as Subdivision[];
 
+  const isOverlapping = (x: number, y: number, width: number, height: number) => {
+    return occupiedSpaces.some(
+      (space) => x < space.x + space.width && x + width > space.x && y < space.y + space.height && y + height > space.y
+    );
+  };
+
   for (let size of sizes) {
     if (size <= width && size <= height) {
       let countX = Math.floor(width / size);
@@ -44,13 +51,14 @@ export const recursiveDivider = (
 
       for (let i = 0; i < countX; i++) {
         for (let j = 0; j < countY; j++) {
-          result.push({
-            x: x + i * size,
-            y: y + j * size,
-            width: size,
-            height: size,
-            visible: true
-          });
+          let newX = x + i * size;
+          let newY = y + j * size;
+          let newBox = { x: newX, y: newY, width: size, height: size, visible: true };
+
+          if (!isOverlapping(newX, newY, size, size)) {
+            result.push(newBox);
+            occupiedSpaces.push({ x: newX, y: newY, width: size, height: size });
+          }
         }
       }
 
@@ -63,12 +71,16 @@ export const recursiveDivider = (
       let remainingWidth = width - countX * size;
 
       if (remainingWidth > 0) {
-        result = result.concat(recursiveDivider(x + countX * size, y, remainingWidth, height, depth - 1, rng));
+        result = result.concat(
+          recursiveDivider(x + countX * size, y, remainingWidth, height, depth - 1, rng, occupiedSpaces)
+        );
       }
 
       let remainingHeight = height - countY * size;
       if (remainingHeight > 0) {
-        result = result.concat(recursiveDivider(x, y + countY * size, width, remainingHeight, depth - 1, rng));
+        result = result.concat(
+          recursiveDivider(x, y + countY * size, width, remainingHeight, depth - 1, rng, occupiedSpaces)
+        );
       }
 
       break;
