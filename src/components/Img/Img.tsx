@@ -39,13 +39,10 @@ export const Img = ({
     return <img loading="lazy" src={src} alt={alt} />;
   } else {
     return (
-      <figure>
-        <picture className={classNames} style={{ '--picture-w': pngData?.width, '--picture-h': pngData?.height }}>
-          {avifData?.src && <source srcSet={avifData?.src} type="image/avif" />}
-          <img loading="lazy" src={pngData?.src} alt={alt} width={pngData?.width} height={pngData?.height} />
-          <figcaption>{JSON.stringify(meta)}</figcaption>
-        </picture>
-      </figure>
+      <picture className={classNames} style={{ '--picture-w': pngData?.width, '--picture-h': pngData?.height }}>
+        {avifData?.src && <source srcSet={avifData?.src} type="image/avif" />}
+        <img loading="lazy" src={pngData?.src} alt={alt} width={pngData?.width} height={pngData?.height} />
+      </picture>
     );
   }
 };

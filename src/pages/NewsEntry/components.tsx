@@ -43,6 +43,6 @@ export const components = {
     return <code className={`${style.code}`} {...props}></code>;
   },
   img: (props: any) => {
-    return <Img className={`${style.image}`} {...props}></Img>;
+    return <img className={`${style.image}`} {...props}></img>;
   }
 };
