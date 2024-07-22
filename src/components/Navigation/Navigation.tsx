@@ -49,7 +49,7 @@ export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => 
           <Link to="https://app.bayesline.com/" target="_blank" className={style.link}>
             Docs
           </Link>
-          <Link to="/signup" className={`${style.link} ${style.highlight}`}>
+          <Link to="https://app.bayesline.com/signup/" target="_blank" className={`${style.link} ${style.highlight}`}>
             Sign up
           </Link>
         </div>

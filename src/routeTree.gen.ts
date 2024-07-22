@@ -17,17 +17,17 @@ import { Route as NewsPostIdImport } from './routes/news/$postId'
 
 // Create Virtual Routes
 
-const SignupLazyImport = createFileRoute('/signup')()
+const PricingLazyImport = createFileRoute('/pricing')()
 const BrandLazyImport = createFileRoute('/brand')()
 const IndexLazyImport = createFileRoute('/')()
 const NewsIndexLazyImport = createFileRoute('/news/')()
 
 // Create/Update Routes
 
-const SignupLazyRoute = SignupLazyImport.update({
-  path: '/signup',
+const PricingLazyRoute = PricingLazyImport.update({
+  path: '/pricing',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/signup.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/pricing.lazy').then((d) => d.Route))
 
 const BrandLazyRoute = BrandLazyImport.update({
   path: '/brand',
@@ -67,11 +67,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BrandLazyImport
       parentRoute: typeof rootRoute
     }
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupLazyImport
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingLazyImport
       parentRoute: typeof rootRoute
     }
     '/news/$postId': {
@@ -96,7 +96,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   BrandLazyRoute,
-  SignupLazyRoute,
+  PricingLazyRoute,
   NewsPostIdRoute,
   NewsIndexLazyRoute,
 })
@@ -111,7 +111,7 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/",
         "/brand",
-        "/signup",
+        "/pricing",
         "/news/$postId",
         "/news/"
       ]
@@ -122,8 +122,8 @@ export const routeTree = rootRoute.addChildren({
     "/brand": {
       "filePath": "brand.lazy.tsx"
     },
-    "/signup": {
-      "filePath": "signup.lazy.tsx"
+    "/pricing": {
+      "filePath": "pricing.lazy.tsx"
     },
     "/news/$postId": {
       "filePath": "news/$postId.tsx"

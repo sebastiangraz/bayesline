@@ -1,0 +1,7 @@
+.page {
+  gap: 0.5em;
+}
+.title {
+  margin-bottom: 1em;
+  min-height: 2em;
+}
