@@ -24,7 +24,7 @@ const childVariant = {
     clipPath: 'inset(0% 0% 0% 0%)',
     opacity: 1,
     transition: {
-      duration: 0.5 + i * 0.3,
+      duration: 0.1 + i * 0.2,
       ease: [1, 0, 0.17, 1],
       opacity: {
         duration: 0.25
@@ -50,7 +50,7 @@ const imageVariant = {
     '--y': '0px',
     opacity: 1,
     transition: {
-      duration: 0.5 + i * 0.3,
+      duration: 0.1 + i * 0.2,
       ease: [1, 0, 0.17, 1]
     }
   })
@@ -121,7 +121,7 @@ export const Asset: React.FC<Props> = React.memo(
     // React.useEffect(() => {
     //   const interval = setInterval(() => {
     //     setCount((count) => count + 1);
-    //   }, 1500);
+    //   }, 700);
     //   return () => clearInterval(interval);
     // }, []);
     // seed = `${seed}-${count}`;
