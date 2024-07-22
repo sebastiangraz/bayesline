@@ -5,6 +5,8 @@ published: 2024-07-01
 excerpt: We are excited to announce that we have raised a $10M Series A round led by XYZ Capital. This funding will help us accelerate our growth and expand our team.
 ---
 
+import { Img } from '@/components';
+
 # One does not simply invest in private assets
 
 In this blog post we are going to take the position of an new investor that is building a strategic asset allocation that includes private assets. We will use our asset allocation API to build a 20-year plan that maximizes returns for a given annual risk budget. In the process, we will introduce concepts like commitment pacing, vintage diversification, and liquid sleeves.
@@ -44,6 +46,8 @@ The standard mean-variance problem maximizes the mean return subject to a volati
 Here, $w$ is the vector of weights we are trying to optimize, $\mu$ is the expected return vector, $\Sigma$ is the covariance matrix of asset returns, and $\sigma$ is the volatility constraint, also called the risk budget. For a risk-budget of 6\%, i.e. $\sigma=0.06$, the solution to the optimization problem is depicted below, on the left without private assets, and on the right with all assets included. Notable is the zero allocation to public equity on the right. Given the high risk-reward ratio of private equity, and its correlation with public equity encoded in our assumptions, the optimizer chooses not to invest in public equity at all.
 
 ![image](mean_variance.svg)
+
+<Img src="mean_variance.svg" browserBorder />
 
 # The full-fledged plan
 
