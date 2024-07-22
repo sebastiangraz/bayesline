@@ -80,7 +80,7 @@ const generateSVGs = (seed: string) => {
   const themeKeys = Object.keys(themes);
   const selectedTheme = themes[themeKeys[Math.floor(rng() * themeKeys.length)]];
 
-  let subdivisions = recursiveDivider(0, 0, width, height, 2, rng);
+  let subdivisions = recursiveDivider(0, 0, width, height, rng);
 
   let getColor = createColorGenerator(selectedTheme, subdivisions);
 

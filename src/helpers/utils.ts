@@ -20,70 +20,121 @@ export const readableDate = (date: string) =>
     day: 'numeric'
   });
 
+const templates = [
+  //prettier-ignore
+  [ 
+    2, 2, 1, 
+    2, 2, 0, 
+    0, 0, 1
+  ],
+  //prettier-ignore
+  [ 
+    1, 2, 2, 
+    0, 2, 2, 
+    0, 0, 1
+  ],
+  //prettier-ignore
+  [ 
+    1, 0, 0, 
+    0, 2, 2, 
+    1, 2, 2
+  ],
+  //prettier-ignore
+  [ 
+    1, 0, 0, 
+    2, 2, 0, 
+    2, 2, 1
+  ],
+  //prettier-ignore
+  [ 
+    0, 2, 2, 
+    0, 2, 2, 
+    1, 0, 0
+  ],
+  //prettier-ignore
+  [ 
+    0, 0, 1, 
+    2, 2, 0, 
+    2, 2, 0
+  ],
+  //prettier-ignore
+  [ 
+    1, 2, 2, 
+    2, 2, 2, 
+    2, 2, 0
+  ],
+  //prettier-ignore
+  [ 
+    1, 0, 0, 
+    1, 2, 2, 
+    1, 2, 2
+  ],
+  //prettier-ignore
+  [ 
+    1, 0, 1, 
+    0, 1, 0, 
+    1, 0, 1
+  ]
+];
+
 export const recursiveDivider = (
   x: number,
   y: number,
   width: number,
   height: number,
-  depth: number,
-  rng: PRNG,
-  occupiedSpaces: { x: number; y: number; width: number; height: number }[] = []
+  rng: () => number
 ): Subdivision[] => {
-  const visible = [true, false];
-
-  if (width < 48 || height < 48 || depth === 0) {
+  const TILE_SIZE = 96;
+  const GRID_SIZE = 3;
+  const MIN_SIZE = TILE_SIZE;
+  if (width < MIN_SIZE || height < MIN_SIZE) {
     return [];
   }
 
-  let sizes = [192, 96, 48];
-  let result = [] as Subdivision[];
+  let result: Subdivision[] = [];
 
-  const isOverlapping = (x: number, y: number, width: number, height: number) => {
-    return occupiedSpaces.some(
-      (space) => x < space.x + space.width && x + width > space.x && y < space.y + space.height && y + height > space.y
-    );
-  };
+  // Randomly select a template
+  const template = templates[Math.floor(rng() * templates.length)];
 
-  for (let size of sizes) {
-    if (size <= width && size <= height) {
-      let countX = Math.floor(width / size);
-      let countY = Math.floor(height / size);
-
-      for (let i = 0; i < countX; i++) {
-        for (let j = 0; j < countY; j++) {
-          let newX = x + i * size;
-          let newY = y + j * size;
-          let newBox = { x: newX, y: newY, width: size, height: size, visible: true };
-
-          if (!isOverlapping(newX, newY, size, size)) {
-            result.push(newBox);
-            occupiedSpaces.push({ x: newX, y: newY, width: size, height: size });
-          }
+  // Convert the template into actual tile placements
+  for (let i = 0; i < GRID_SIZE; i++) {
+    for (let j = 0; j < GRID_SIZE; j++) {
+      const value = template[i * GRID_SIZE + j];
+      if (value === 2) {
+        // Ensure we only add the top-left corner of the 2x2 tile to avoid duplication
+        if (
+          i + 1 < GRID_SIZE &&
+          j + 1 < GRID_SIZE &&
+          template[i * GRID_SIZE + j + 1] === 2 &&
+          template[(i + 1) * GRID_SIZE + j] === 2 &&
+          template[(i + 1) * GRID_SIZE + j + 1] === 2
+        ) {
+          result.push({
+            x: x + j * TILE_SIZE,
+            y: y + i * TILE_SIZE,
+            width: TILE_SIZE * 2,
+            height: TILE_SIZE * 2,
+            visible: true
+            // visible: true
+          });
         }
-      }
-
-      if (size !== sizes[0]) {
-        result.forEach((sub) => {
-          sub.visible = visible[Math.floor(rng() * visible.length)];
+      } else if (value === 1) {
+        result.push({
+          x: x + j * TILE_SIZE,
+          y: y + i * TILE_SIZE,
+          width: TILE_SIZE,
+          height: TILE_SIZE,
+          visible: true
+        });
+      } else {
+        result.push({
+          x: x + j * TILE_SIZE,
+          y: y + i * TILE_SIZE,
+          width: TILE_SIZE,
+          height: TILE_SIZE,
+          visible: false
         });
       }
-
-      let remainingWidth = width - countX * size;
-
-      if (remainingWidth > 0) {
-        result = result.concat(
-          recursiveDivider(x + countX * size, y, remainingWidth, height, depth - 1, rng, occupiedSpaces)
-        );
-      }
-
-      let remainingHeight = height - countY * size;
-      if (remainingHeight > 0) {
-        result = result.concat(
-          recursiveDivider(x, y + countY * size, width, remainingHeight, depth - 1, rng, occupiedSpaces)
-        );
-      }
-
-      break;
     }
   }
 
