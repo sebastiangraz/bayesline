@@ -2289,7 +2289,6 @@ export const assets: AssetObject[] = [
         />
         <path
           stroke="currentColor"
-          vector-effect="non-scaling-stroke"
           stroke-width="1px"
           stroke-linecap="round"
           strokeOpacity=".74"
@@ -2297,7 +2296,6 @@ export const assets: AssetObject[] = [
         />
         <path
           stroke="currentColor"
-          vector-effect="non-scaling-stroke"
           stroke-width="1px"
           stroke-linecap="round"
           strokeOpacity=".62"
@@ -2305,7 +2303,6 @@ export const assets: AssetObject[] = [
         />
         <path
           stroke="currentColor"
-          vector-effect="non-scaling-stroke"
           stroke-width="1px"
           stroke-linecap="round"
           strokeOpacity=".5"
@@ -2313,7 +2310,6 @@ export const assets: AssetObject[] = [
         />
         <path
           stroke="currentColor"
-          vector-effect="non-scaling-stroke"
           stroke-width="1px"
           stroke-linecap="round"
           strokeOpacity=".38"
@@ -2321,7 +2317,6 @@ export const assets: AssetObject[] = [
         />
         <path
           stroke="currentColor"
-          vector-effect="non-scaling-stroke"
           stroke-width="1px"
           stroke-linecap="round"
           strokeOpacity=".26"
@@ -2352,12 +2347,26 @@ export const themes: Theme = {
   theme2: [
     { fg: 'var(--accent-2)', bg: 'hsl(var(--brand-2))' },
     { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-1))' },
-    { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-1))' },
+    { fg: 'var(--accent-2)', bg: 'hsl(var(--brand-0))' },
     { fg: 'hsl(var(--brand-2))', bg: 'var(--accent-2)' }
   ],
   theme3: [
+    { fg: 'var(--accent-1)', bg: 'var(--accent-2)' },
+    { fg: 'var(--background-4)', bg: 'var(--background-1)' },
+    { fg: 'var(--background-0)', bg: 'var(--accent-2)' }
+  ],
+  theme4: [
     { fg: 'hsl(var(--steel-5))', bg: 'var(--background-0)' },
     { fg: 'var(--accent-2)', bg: 'var(--background-1)' },
     { fg: 'var(--background-4)', bg: 'var(--background-2)' }
+  ],
+  theme5: [
+    { fg: 'hsl(var(--brand-0))', bg: 'var(--accent-3)' },
+    { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-1))' }
+  ],
+  theme6: [
+    { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-0))' },
+    { fg: 'var(--background-4)', bg: 'hsl(var(--brand-1))' },
+    { fg: 'var(--accent-3)', bg: 'hsl(var(--brand-2))' }
   ]
 };

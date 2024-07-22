@@ -61,6 +61,7 @@ export const recursiveDivider = (
       }
 
       let remainingWidth = width - countX * size;
+
       if (remainingWidth > 0) {
         result = result.concat(recursiveDivider(x + countX * size, y, remainingWidth, height, depth - 1, rng));
       }
