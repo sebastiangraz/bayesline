@@ -24,6 +24,8 @@ export const Img = ({
 }: ImgProps) => {
   if (!src) return null;
 
+  const isSvg = src.includes('.svg');
+
   const pictureSrc = Object.keys(allImagePaths).find((key) => key.includes(src)) as string;
 
   const meta = allImagePaths[pictureSrc!] as OutputMetadata[];
@@ -33,10 +35,14 @@ export const Img = ({
 
   const classNames = `${style.picture} ${deviceBorder ? style.deviceBorder : ''} ${browserBorder ? style.browserBorder : ''} ${className}`;
 
-  return (
-    <picture className={classNames} style={{ '--picture-w': pngData?.width, '--picture-h': pngData?.height }}>
-      {avifData?.src && <source srcSet={avifData?.src} type="image/avif" />}
-      <img loading="lazy" src={pngData?.src} alt={alt} width={pngData?.width} height={pngData?.height} />
-    </picture>
-  );
+  if (isSvg) {
+    return <img loading="lazy" src={src} alt={alt} />;
+  } else {
+    return (
+      <picture className={classNames} style={{ '--picture-w': pngData?.width, '--picture-h': pngData?.height }}>
+        {avifData?.src && <source srcSet={avifData?.src} type="image/avif" />}
+        <img loading="lazy" src={pngData?.src} alt={alt} width={pngData?.width} height={pngData?.height} />
+      </picture>
+    );
+  }
 };
