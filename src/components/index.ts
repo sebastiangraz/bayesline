@@ -14,4 +14,3 @@ export { Logo } from './Logo';
 export { Navigation } from './Navigation';
 export { ShapeField, VectorField } from './VectorField';
 export { Text } from './Text';
-export { Vector } from './Vector';

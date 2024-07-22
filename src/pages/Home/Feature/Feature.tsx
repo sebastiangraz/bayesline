@@ -1,8 +1,8 @@
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import style from './feature.module.css';
-import { Button, Flex, Text, VectorField, Img, ShapeField, Logo } from '@/components';
+import { Button, Flex, Text, VectorField, Img, ShapeField, Logo, Icon } from '@/components';
 import { useState } from 'react';
-import debounce from 'lodash.debounce';
+import radial from '@/assets/radial.svg';
 
 const FeatureSpeed = () => {
   return (
@@ -121,22 +121,26 @@ const data = {
   features: [
     {
       id: '1',
-      featureTitle: 'Speed',
-      featureDescription: 'hmm',
-      image: 'homepage-hero.png'
+      featureTitle: 'Overview',
+      featureIcon: 'chart',
+      featureDescription:
+        'We deliver the analytics that investment managers are already familiar with, but hyper-customizable and blazing fast.',
+      image: 'browser-slice.png'
     },
     {
       id: '2',
-      featureTitle: 'Powerful',
+      featureTitle: 'Smart Insights',
+      featureIcon: 'layers',
       featureDescription:
         "Traditional models don't align with realistic portfolios, and can't be adjusted to reflect market changes",
       image: 'homepage-hero.png'
     },
     {
       id: '3',
-      featureTitle: 'Ticker',
+      featureTitle: 'Growth Trends',
+      featureIcon: 'globe',
       featureDescription:
-        "Our ticker is a new way to view your portfolio, and it's built on top of our models. It's a great way to see how your portfolio is performing, and how it's doing compared to the market.",
+        "It's a great way to see how your portfolio is performing, and how it's doing compared to the market.",
       image: 'homepage-hero.png'
     }
   ]
@@ -156,7 +160,10 @@ const FeatureTicker = () => {
                 setSelectedTab(item);
               }}
             >
-              <Text.Body>{`${item.featureTitle}`}</Text.Body>
+              <div className={style.featureTitle}>
+                <Icon name={item.featureIcon} />
+                <Text.Body>{`${item.featureTitle}`}</Text.Body>
+              </div>
 
               {item === selectedTab ? <motion.div className={style.underline} layoutId="underline" /> : null}
             </button>
@@ -165,15 +172,14 @@ const FeatureTicker = () => {
       </nav>{' '}
       <AnimatePresence mode="wait">
         <motion.div
+          className={`${style.content}`}
           key={selectedTab.id ? selectedTab.id : ''}
           variants={selectorVariant}
           initial="hidden"
           animate="visible"
           exit="hidden"
         >
-          <div className={` ${style.content}`}>
-            <Text.H4>{selectedTab ? selectedTab.featureDescription : ''}</Text.H4>{' '}
-          </div>
+          <Text.H4 className={`${style.text}`}>{selectedTab ? selectedTab.featureDescription : ''}</Text.H4>{' '}
           <motion.div
             className={` ${style.image}`}
             variants={selectorImageVariant}
@@ -182,10 +188,11 @@ const FeatureTicker = () => {
             animate="visible"
             exit="hide"
           >
-            <Img browserBorder src={selectedTab.image} />
+            <Img deviceBorder src={selectedTab.image} />
           </motion.div>
         </motion.div>
       </AnimatePresence>
+      <img src={radial} className={style.bgImage} />
     </div>
   );
 };

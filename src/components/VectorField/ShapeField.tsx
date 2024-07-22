@@ -153,33 +153,36 @@ export const ShapeField = React.memo(
       return 1;
     }, []);
 
-    const getOpacity = useCallback((combinedNoise: number, variant: string, col: number, row: number) => {
-      let opacityType: ShapeProps['opacity'];
-      switch (variant) {
-        case 'swirl':
-          opacityType = opacitySteps(combinedNoise);
-          break;
-        case 'dithered-gradient':
-          opacityType = opacitySteps(combinedNoise);
-          break;
-        case 'radial':
-          opacityType = opacitySteps(combinedNoise);
-          break;
-        case 'bayesian':
-          opacityType = opacitySteps(combinedNoise);
-          break;
-        case 'checker':
-          opacityType = opacitySteps(combinedNoise);
-          break;
-        case 'pcb':
-          opacityType = pcbPattern(col, row) > 0.5 ? 0.5 : 1;
-          break;
-        default:
-          opacityType = opacitySteps(combinedNoise);
-          break;
-      }
-      return opacityType;
-    }, []);
+    const getOpacity = useCallback(
+      (combinedNoise: number, variant: string, col: number, row: number) => {
+        let opacityType: ShapeProps['opacity'];
+        switch (variant) {
+          case 'swirl':
+            opacityType = opacitySteps(combinedNoise);
+            break;
+          case 'dithered-gradient':
+            opacityType = opacitySteps(combinedNoise);
+            break;
+          case 'radial':
+            opacityType = opacitySteps(combinedNoise);
+            break;
+          case 'bayesian':
+            opacityType = opacitySteps(combinedNoise);
+            break;
+          case 'checker':
+            opacityType = opacitySteps(combinedNoise);
+            break;
+          case 'pcb':
+            opacityType = pcbPattern(col, row) > 0.5 ? 0.5 : 1;
+            break;
+          default:
+            opacityType = opacitySteps(combinedNoise);
+            break;
+        }
+        return opacityType;
+      },
+      [opacitySteps]
+    );
 
     const shapes = React.useMemo(
       () =>

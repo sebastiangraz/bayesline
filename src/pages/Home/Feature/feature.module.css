@@ -102,27 +102,56 @@
     'left right ';
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  padding: 2em 0;
+  padding: 0;
   gap: 2em 0;
   display: grid;
   justify-items: center;
-  text-align: center;
+  position: relative;
   background: var(--background-accent);
   color: var(--foreground);
-  padding-bottom: 4em;
-  div:has(.content) {
-    grid-template-areas:
-      'nav nav '
-      'left right ';
+
+  overflow: clip;
+  .featureTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .content {
     display: grid;
     grid-column: left / right;
+    grid-template-columns: subgrid;
+    z-index: 1;
   }
-
+  .image {
+    grid-column: right;
+    margin-bottom: -1em;
+    margin-right: -1em;
+  }
+  .text {
+    grid-column: left;
+    padding: 0 4em;
+  }
+  .bgImage {
+    grid-column: left / right;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 20%;
+    width: 70%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+    pointer-events: none;
+  }
+  .shapefield {
+    grid-column: left;
+  }
   nav {
     display: grid;
     grid-auto-flow: column;
     width: 100%;
     gap: 1rem;
+    padding: 0 2em;
     grid-area: nav;
     justify-content: stretch;
     align-items: center;
@@ -137,12 +166,15 @@
       position: relative;
       cursor: pointer;
       list-style: none;
-      padding: 0.25rem 0.75rem;
+      padding: 4rem 0.75rem 2rem 0.75rem;
       &:hover,
       &:focus-visible {
         box-shadow: 0 2px 0 -1px var(--foreground-border);
       }
-
+      p,
+      svg {
+        color: var(--foreground-accent);
+      }
       .underline {
         inset: 0;
         position: absolute;
@@ -152,10 +184,9 @@
         box-shadow: 0 2px 0 -1px var(--foreground);
       }
     }
-    :global button.selected {
-      height: 100%;
-      display: flex;
-      align-items: center;
+    :global button.selected p,
+    :global button.selected svg {
+      color: var(--foreground);
     }
   }
 }
