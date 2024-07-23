@@ -2,7 +2,7 @@ import { warning } from 'framer-motion';
 import style from './icon.module.css';
 
 interface IconProps {
-  name?: string;
+  name?: keyof typeof IconPaths;
   className?: string;
 }
 
@@ -62,6 +62,20 @@ const IconPaths = {
           strokeOpacity="0.56"
           vectorEffect={'non-scaling-stroke'}
         />
+      </>
+    )
+  },
+  experiment: {
+    path: (
+      <>
+        <path d="M24 11H16M16 17H24M8 29H32M36 35H4M12 23H28M26 5H14" stroke="currentColor" />
+      </>
+    )
+  },
+  enterprise: {
+    path: (
+      <>
+        <path d="M11 38L11 16M17 38L17 2M23 38L23 6M29 38L29 10M5 38L5 12M35 14L35 38" stroke="currentColor" />
       </>
     )
   }

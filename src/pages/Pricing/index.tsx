@@ -1,4 +1,4 @@
-import { Box, Button, Card, Cards, Flex, Logo, Text } from '@/components';
+import { Box, Button, Card, Cards, Flex, Icon, Logo, Text } from '@/components';
 import { Link } from '@tanstack/react-router';
 import style from './pricing.module.css';
 
@@ -7,46 +7,47 @@ export function Pricing() {
     <>
       <div className={`col ${style.page}`}>
         <Text.H2 className={`col ${style.title}`}>Transparent pricing.</Text.H2>
-        <Cards layout="grid-left" className={`${style.tiers}`}>
-          <Card dataTheme={0}>
-            <div className="card-header">
-              <Text.H4>Free</Text.H4>
-              <Text.Body secondary>
-                We are changing the way investment managers interact with financial analytics. From
-                one-size-doesn't-fit-all to highly customizable and blazing fast.
-              </Text.Body>
-              <Button type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-                <Text.Caps>Start for free</Text.Caps>
-              </Button>
-              <ul>
-                <li>Unlimited users</li>
-                <li>Unlimited reports</li>
-                <li>Unlimited data</li>
-              </ul>
-            </div>
-          </Card>
-          <Card.Secondary dataTheme={0}>
-            <div className="card-header">
-              <Text.H4>Enterprise</Text.H4>
-              <Text.Body secondary>
-                Our enterprise pricing is tailored to your needs. From one-size-doesn't-fit-all to highly customizable.
-              </Text.Body>
-              <Button type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-                <Text.Caps>Schedule a Demo</Text.Caps>
-              </Button>
-              <ul>
-                <li>Unlimited users</li>
-                <li>Unlimited reports</li>
-                <li>Unlimited data</li>
-                <li>Unlimited models</li>
-                <li>Unlimited users</li>
-                <li>Unlimited reports</li>
-                <li>Unlimited data</li>
-                <li>Unlimited models</li>
-              </ul>
-            </div>
-          </Card.Secondary>
-        </Cards>
+        <div className={`${style.tiers}`}>
+          <div className={style.card}>
+            <Icon name="experiment" />
+            <Text.H4>Free</Text.H4>
+            <Text.Body secondary balance>
+              Try the platform with no strings attached. Granular controls and customization to scale and expand your
+              portfolio globally.
+            </Text.Body>
+            <Button theme={1} type="secondary" href="https://app.bayesline.com/signup/" target="_blank">
+              <Text.Caps>Start for free</Text.Caps>
+            </Button>
+            <ul>
+              <li>Model Reports</li>
+              <li>Automated expense management</li>
+              <li>Real-time saving insights</li>
+              <li>Custom controls and advanced user roles</li>
+            </ul>
+          </div>
+          <hr />
+          <div className={style.card}>
+            <Icon name="enterprise" />
+            <Text.H4>Enterprise</Text.H4>
+            <Text.Body secondary balance>
+              Where investors level up. Enhanced security, compliance, and dedicated support to operate efficiently.{' '}
+            </Text.Body>
+            <Button theme={1} type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+              <Text.Caps>Contact us</Text.Caps>
+            </Button>
+            <ul>
+              <li>Custom controls and advanced user roles</li>
+              <li>Unlimited customizations</li>
+              <li>Procurement automation and PO management</li>
+              <li>Advanced ERP integrations with multi-entity support</li>
+              <li>Custom implementation</li>
+              <li>Enterprise ERP integrations</li>
+              <li>Local card issuance</li>
+              <li>SOX compliance customizations</li>
+              <li>Premium support</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </>
   );

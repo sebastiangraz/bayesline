@@ -209,6 +209,29 @@
     margin: 0;
   }
 
+  ol {
+    list-style-type: decimal;
+    & > li::marker {
+      color: color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-5)), var(--background));
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+    & > li::marker {
+      color: color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-4)), var(--background));
+    }
+  }
+
+  li {
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+    color: var(--foreground-accent-opaque);
+    &:has(ul) > * {
+      margin-bottom: 0.5em;
+    }
+  }
+
   a:hover {
     text-decoration: none;
   }
