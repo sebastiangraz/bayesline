@@ -49,6 +49,39 @@
 .logomark {
   width: 6em;
   color: var(--accent-1);
+  & > * {
+    font-feature-settings: 'ss02' on;
+    animation-name: loop;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes loop {
+  0% {
+    opacity: 0;
+    font-variation-settings:
+      'LOOP' 0,
+      'opsz' 100;
+  }
+  25% {
+    opacity: 1;
+    font-variation-settings:
+      'LOOP' 32,
+      'opsz' 25;
+  }
+  75% {
+    opacity: 1;
+    font-variation-settings:
+      'LOOP' 84,
+      'opsz' 75;
+  }
+  100% {
+    opacity: 0;
+    font-variation-settings:
+      'LOOP' 128,
+      'opsz' 100;
+  }
 }
 
 .logoimage {
