@@ -13,7 +13,7 @@ export const Footer = () => {
         </div>
         <div className={`${style.logo}`}>
           <div className={style.logowrapper}>
-            <Logo.Mark className={style.logomark} />
+            <Logo.Mark loop className={style.logomark} />
           </div>
           <img src={footer} className={style.logoimage} alt="radial" />
         </div>
