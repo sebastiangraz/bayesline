@@ -3,6 +3,7 @@
   padding: 0;
 
   li {
+    margin: 0;
     box-shadow: var(--border-b) inset var(--foreground-border);
     color: var(--foreground);
     grid-column: 1 / 26;
