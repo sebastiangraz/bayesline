@@ -24,7 +24,7 @@ const childVariant = {
     clipPath: 'inset(0% 0% 0% 0%)',
     opacity: 1,
     transition: {
-      duration: 0.1 + i * 0.2,
+      duration: 0.1 + i * 0.3,
       ease: [1, 0, 0.17, 1],
       opacity: {
         duration: 0.25
@@ -50,7 +50,7 @@ const imageVariant = {
     '--y': '0px',
     opacity: 1,
     transition: {
-      duration: 0.1 + i * 0.2,
+      duration: 0.1 + i * 0.3,
       ease: [1, 0, 0.17, 1]
     }
   })
