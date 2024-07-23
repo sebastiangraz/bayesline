@@ -17,6 +17,7 @@ export const Footer = () => {
           </div>
           <img src={footer} className={style.logoimage} alt="radial" />
         </div>
+        <hr />
         <div className={style.menu}>
           <Button type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
             <Text.Caps secondary>Schedule a Demo</Text.Caps>

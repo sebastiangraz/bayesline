@@ -9,6 +9,7 @@
 .content {
   grid-template-areas:
     'top-left top-right'
+    'hr hr'
     'bottom-left bottom-right';
   grid-template-columns: 1fr 1em;
   grid-template-rows: auto auto;
@@ -16,6 +17,9 @@
   display: grid;
   align-items: center;
   justify-content: center;
+  hr {
+    grid-area: hr;
+  }
 }
 
 .slogan {
