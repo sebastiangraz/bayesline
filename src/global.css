@@ -24,8 +24,8 @@
 
   --foreground: hsl(var(--brand-0));
   --foreground-accent: hsl(var(--brand-0) / var(--opacity-6));
-  --foreground-accent-opaque: hsl(309 8% 43%);
   --foreground-border: hsl(var(--brand-0) / var(--opacity-2));
+  --foreground-accent-opaque: hsl(309 8% 43%);
 
   --background-0: hsl(var(--steel-0));
   --background-1: hsl(var(--steel-1));
@@ -106,6 +106,9 @@
   [data-theme='three'] {
     &:not(.theme) .theme,
     &.theme {
+      --foreground: hsl(var(--brand-0));
+      --foreground-accent: hsl(var(--brand-0) / var(--opacity-6));
+      --foreground-border: hsl(var(--brand-0) / var(--opacity-2));
       --background: hsl(var(--steel-3) / 1);
       --background-accent: hsl(var(--steel-2) / var(--opacity));
       --navigation: hsl(var(--steel-4) / 1);
@@ -117,6 +120,7 @@
     &.theme {
       --foreground: hsl(var(--steel-0) / var(--opacity));
       --foreground-accent: hsl(var(--steel-0) / var(--opacity-7));
+      --foreground-border: hsl(var(--steel-0) / var(--opacity-2));
       --background: var(--accent-2);
       --background-accent: hsl(var(--steel-4) / var(--opacity));
       --navigation: color-mix(in srgb, hsl(var(--steel-5)) calc(var(--opacity-5) * 100%), var(--accent-2));

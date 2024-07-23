@@ -61,7 +61,7 @@ const FeaturePowerful = () => {
         </Text.Body>
       </div>
       <div className={style.cpu}>
-        <Logo loop type={false} className={style.logo} />
+        <Logo.Mark loop className={style.logo} />
         <ShapeField
           color1="var(--accent-1)"
           color2="var(--accent-3)"

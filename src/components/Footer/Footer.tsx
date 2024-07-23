@@ -1,30 +1,31 @@
 import style from './footer.module.css';
-import footer from '@/assets/footer.webp';
-import { Button, Flex } from '@/components';
-import { StaggerText } from '@/helpers/StaggerText';
+import { Button, Flex, Logo, Text } from '@/components';
+import footer from '@/assets/footer.svg';
 
 export const Footer = () => {
+  const currentTimestamp = Date.now();
+  const date = new Date(currentTimestamp);
   return (
-    <>
-      {/* <div className={`${style.wrapper}`}>
-        <div className="s-2 e-10">
-          <Flex center column gap={3}>
-            <h1 className="w-title">
-              <StaggerText>financial analytics rethought</StaggerText>
-            </h1>
-            <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-              <pre className="caps">Schedule a Demo</pre>
-            </Button>
-            <p className="balance center small">
-              For general inquiries you can reach us at <a href="mailto:info@bayesline.com">info@bayesline.com</a>.
-            </p>
-            <p className="small balance center">© Copyright 2024 · Bayesline</p>
-          </Flex>
+    <div className={`col theme ${style.footer}`} data-theme="two">
+      <div className={`col ${style.content}`}>
+        <div className={style.slogan}>
+          <Text.H3>Financial analytics rethought</Text.H3>
+        </div>
+        <div className={`${style.logo}`}>
+          <div className={style.logowrapper}>
+            <Logo.Mark className={style.logomark} />
+          </div>
+          <img src={footer} className={style.logoimage} alt="radial" />
+        </div>
+        <div className={style.menu}>
+          <Button type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+            <Text.Caps secondary>Schedule a Demo</Text.Caps>
+          </Button>
+        </div>
+        <div className={style.copyright}>
+          <Text.Body secondary>© Copyright {date.getFullYear()} · Bayesline</Text.Body>
         </div>
       </div>
-      <div className={style.footer}>
-        <img src={footer} alt="footer" />
-      </div> */}
-    </>
+    </div>
   );
 };

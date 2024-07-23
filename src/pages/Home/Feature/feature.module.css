@@ -90,9 +90,6 @@
       background: radial-gradient(var(--background) 30%, transparent 120%);
       padding: 0.25em;
     }
-    svg {
-      display: none;
-    }
   }
 }
 

@@ -2,74 +2,75 @@
 /* Animation loop 0-128 : font-variation-settings: 'LOOP' 0; */
 /* Reveal variant : font-feature-settings: 'ss01' on; */
 /* Reveal alt variant : font-feature-settings: 'ss02' on; */
-
-.logo {
-  container-type: inline-size;
-  align-items: center;
-  display: inline-flex;
-  flex-direction: row;
-  gap: calc(100% * 10 / 242);
-  width: 100%;
-  color: var(--foreground);
-  &:hover {
-    cursor: pointer;
-    .mark {
-      font-feature-settings: 'ss02' off;
-      font-variation-settings: 'LOOP' 0;
-      animation-name: loop;
-      animation-duration: 1s;
-      animation-timing-function: cubic-bezier(0.3, 0.1, 0.2, 0.3);
-      animation-iteration-count: infinite;
+@layer logo {
+  .logo {
+    container-type: inline-size;
+    align-items: center;
+    display: inline-flex;
+    flex-direction: row;
+    gap: calc(100% * 10 / 242);
+    width: 100%;
+    color: var(--foreground);
+    &:hover {
+      cursor: pointer;
+      .mark {
+        font-feature-settings: 'ss02' off;
+        font-variation-settings: 'LOOP' 0;
+        animation-name: loop;
+        animation-duration: 1s;
+        animation-timing-function: cubic-bezier(0.3, 0.1, 0.2, 0.3);
+        animation-iteration-count: infinite;
+      }
     }
   }
-}
-.loop .mark {
-  font-feature-settings: 'ss02' off;
-  animation-name: loop;
-  animation-duration: 4s;
-  animation-timing-function: cubic-bezier(0.3, 0.1, 0.2, 0.3);
-  animation-iteration-count: infinite;
-  animation-delay: 0.5s;
-}
-
-.mark {
-  color: currentColor;
-  font-family: 'B';
-  line-height: 1;
-  display: inline;
-  user-select: none;
-  font-size: calc(100cqw * 42 / 242);
-  font-weight: normal;
-  font-feature-settings: 'ss02' on;
-  transition:
-    font-variation-settings 0.8s cubic-bezier(0.9, 0.3, 0.1, 0.8),
-    opacity 0.5s cubic-bezier(0.9, 0.3, 0.1, 0.8);
-  font-variation-settings:
-    'LOOP' 128,
-    'opsz' 100;
-  opacity: 1;
-  @starting-style {
-    opacity: 0;
-    font-variation-settings:
-      'LOOP' 0,
-      'opsz' 100;
+  .loop .mark {
+    font-feature-settings: 'ss02' off;
+    animation-name: loop;
+    animation-duration: 4s;
+    animation-timing-function: cubic-bezier(0.3, 0.1, 0.2, 0.3);
+    animation-iteration-count: infinite;
+    animation-delay: 0.5s;
   }
-}
 
-.type {
-  width: calc(100% * 188 / 242);
-  position: relative;
-}
-
-@keyframes loop {
-  0% {
-    font-variation-settings:
-      'LOOP' 0,
-      'opsz' 100;
-  }
-  100% {
+  .mark {
+    color: currentColor;
+    font-family: 'B';
+    line-height: 1;
+    display: inline;
+    user-select: none;
+    font-size: calc(100cqw * 42 / 242);
+    font-weight: normal;
+    font-feature-settings: 'ss02' on;
+    transition:
+      font-variation-settings 0.8s cubic-bezier(0.9, 0.3, 0.1, 0.8),
+      opacity 0.5s cubic-bezier(0.9, 0.3, 0.1, 0.8);
     font-variation-settings:
       'LOOP' 128,
       'opsz' 100;
+    opacity: 1;
+    @starting-style {
+      opacity: 0;
+      font-variation-settings:
+        'LOOP' 0,
+        'opsz' 100;
+    }
+  }
+
+  .type {
+    width: calc(100% * 188 / 242);
+    position: relative;
+  }
+
+  @keyframes loop {
+    0% {
+      font-variation-settings:
+        'LOOP' 0,
+        'opsz' 100;
+    }
+    100% {
+      font-variation-settings:
+        'LOOP' 128,
+        'opsz' 100;
+    }
   }
 }
