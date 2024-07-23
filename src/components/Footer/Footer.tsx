@@ -23,7 +23,7 @@ export const Footer = () => {
           </Button>
         </div>
         <div className={style.copyright}>
-          <Text.Body secondary>© Copyright {date.getFullYear()} · Bayesline</Text.Body>
+          <Text.Caps secondary>© Copyright {date.getFullYear()} · Bayesline</Text.Caps>
         </div>
       </div>
     </div>
