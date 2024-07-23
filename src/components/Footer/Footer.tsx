@@ -6,7 +6,7 @@ export const Footer = () => {
   const currentTimestamp = Date.now();
   const date = new Date(currentTimestamp);
   return (
-    <div className={`col theme ${style.footer}`} data-theme="two">
+    <div className={`col theme ${style.footer}`} data-theme="one">
       <div className={`col ${style.content}`}>
         <div className={style.slogan}>
           <Text.H3>Financial analytics rethought</Text.H3>
