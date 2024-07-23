@@ -1,8 +1,6 @@
-import { Asset, Icon, Text } from '@/components';
-import { MDXProvider } from '@mdx-js/react';
+import { Asset, Icon, Markdown, Text } from '@/components';
 import { Route } from '@/routes/news/$postId';
 import style from './newsentry.module.css';
-import { components } from './components';
 import { entryMeta } from '@/pages/News/entryMeta';
 import { Link } from '@tanstack/react-router';
 import { readableDate } from '@/helpers/utils';
@@ -63,12 +61,9 @@ export function NewsEntry() {
         <div className={`col ${style.chapters}`}>{toc.length >= 2 && tableOfContentsComponent}</div>
       </div>
 
-      <div className={`col ${style.prose}`}>
-        <MDXProvider components={components}>
-          <Page />
-        </MDXProvider>
-      </div>
-
+      <Markdown>
+        <Page />
+      </Markdown>
       <div className={`col ${style.disclaimer}`}>
         <Icon name="warning" className={style.icon} />
         <details>

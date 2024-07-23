@@ -1,4 +1,4 @@
-import style from './newsentry.module.css';
+import style from './markdown.module.css';
 import { Img, Text } from '@/components';
 import { isArrayofObjects } from '@/helpers/utils';
 
@@ -44,5 +44,14 @@ export const components = {
   },
   img: (props: any) => {
     return <img className={`${style.image}`} {...props}></img>;
+  },
+  ul: (props: any) => {
+    return <ul className={`${style.unorderedList}`} {...props}></ul>;
+  },
+  ol: (props: any) => {
+    return <ol className={`${style.orderedList}`} {...props}></ol>;
+  },
+  li: (props: any) => {
+    return <li className={`${style.listItem}`} {...props}></li>;
   }
 };

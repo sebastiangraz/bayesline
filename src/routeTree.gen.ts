@@ -17,12 +17,18 @@ import { Route as NewsPostIdImport } from './routes/news/$postId'
 
 // Create Virtual Routes
 
+const TosLazyImport = createFileRoute('/tos')()
 const PricingLazyImport = createFileRoute('/pricing')()
 const BrandLazyImport = createFileRoute('/brand')()
 const IndexLazyImport = createFileRoute('/')()
 const NewsIndexLazyImport = createFileRoute('/news/')()
 
 // Create/Update Routes
+
+const TosLazyRoute = TosLazyImport.update({
+  path: '/tos',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/tos.lazy').then((d) => d.Route))
 
 const PricingLazyRoute = PricingLazyImport.update({
   path: '/pricing',
@@ -74,6 +80,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingLazyImport
       parentRoute: typeof rootRoute
     }
+    '/tos': {
+      id: '/tos'
+      path: '/tos'
+      fullPath: '/tos'
+      preLoaderRoute: typeof TosLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/news/$postId': {
       id: '/news/$postId'
       path: '/news/$postId'
@@ -97,6 +110,7 @@ export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   BrandLazyRoute,
   PricingLazyRoute,
+  TosLazyRoute,
   NewsPostIdRoute,
   NewsIndexLazyRoute,
 })
@@ -112,6 +126,7 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/brand",
         "/pricing",
+        "/tos",
         "/news/$postId",
         "/news/"
       ]
@@ -124,6 +139,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/pricing": {
       "filePath": "pricing.lazy.tsx"
+    },
+    "/tos": {
+      "filePath": "tos.lazy.tsx"
     },
     "/news/$postId": {
       "filePath": "news/$postId.tsx"
