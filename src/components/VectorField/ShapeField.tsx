@@ -295,7 +295,7 @@ function bayesianCurve(col: number, row: number, columns: number, rows: number) 
 const tornado = (col: number, row: number, rows: number, columns: number) => {
   const angle = Math.atan2(row - rows / 2, col - columns / 2);
   const radius = Math.sqrt(Math.pow(row - rows / 2, 2) + Math.pow(col - columns / 2, 2));
-  const spiral = Math.sin(angle * 1.2 + radius / 0.7);
+  const spiral = Math.sin(angle * 1.2 + radius / 0.85);
   return spiral;
 };
 
