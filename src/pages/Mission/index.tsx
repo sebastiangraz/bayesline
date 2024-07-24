@@ -20,7 +20,7 @@ export function Mission() {
 
           <div className={`col ${style.illustration2}`}>
             <ShapeField
-              variant="bayesian"
+              variant="radial"
               color1="var(--accent-3)"
               color2="hsl(var(--brand-2))"
               rows={32}
