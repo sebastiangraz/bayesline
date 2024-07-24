@@ -121,10 +121,10 @@ const data = {
   features: [
     {
       id: '1',
-      featureTitle: 'Overview',
-      featureIcon: 'chart',
+      featureTitle: 'Deploy locally',
+      featureIcon: 'globe',
       featureDescription:
-        'We deliver the analytics that investment managers are already familiar with, but hyper-customizable and blazing fast.',
+        'We offer flexibility to deploy in your virtual private cloud environment, keeping your data and settings only visible to you at all times.',
       image: 'browser-slice.png'
     },
     {
@@ -138,7 +138,7 @@ const data = {
     {
       id: '3',
       featureTitle: 'Growth Trends',
-      featureIcon: 'globe',
+      featureIcon: 'chart',
       featureDescription:
         "It's a great way to see how your portfolio is performing, and how it's doing compared to the market.",
       image: 'homepage-hero.png'
