@@ -32,7 +32,7 @@ export function NewsEntry() {
   const currentTimestamp = Date.now();
 
   function getImageUrl(name: string) {
-    return new URL(`../entries/${fileName}/${name}`, import.meta.url).href;
+    return new URL(`./entries/${fileName}/${name}`, import.meta.url).href;
   }
 
   function Thumbnail() {
@@ -100,12 +100,12 @@ export function NewsEntry() {
         <div className={`col ${style.more}`}>
           <Text.H5 className={`col`}>More articles</Text.H5>
           <ul className={`col`}>
-            {entryByDateExcludeCurrent.slice(0, 3).map(({ title, fileName, published, thumbnail, seed }) => {
+            {entryByDateExcludeCurrent.slice(0, 4).map(({ title, fileName, published, thumbnail, seed }) => {
               const date = readableDate(published);
               const seedValue = seed || `${title}-${published}`;
 
               function getImageUrl(name: string) {
-                return new URL(`../entries/${fileName}/${name}`, import.meta.url).href;
+                return new URL(`./entries/${fileName}/${name}`, import.meta.url).href;
               }
 
               function Thumbnail() {

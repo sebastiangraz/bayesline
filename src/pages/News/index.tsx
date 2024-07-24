@@ -29,7 +29,7 @@ export function News() {
           const classNames = `${featuredClass} ${hasThemeClass}`;
 
           function getImageUrl(name: string) {
-            return new URL(`../entries/${fileName}/${name}`, import.meta.url).href;
+            return new URL(`../NewsEntry/entries/${fileName}/${name}`, import.meta.url).href;
           }
 
           function Thumbnail() {
