@@ -1,12 +1,12 @@
 import { Button, Icon, Text } from '@/components';
-import style from './pricing.module.css';
+import style from './mission.module.css';
 
 export function Mission() {
   return (
     <>
       <div className={`col ${style.page}`}>
         <Text.H2 className={`col ${style.title}`}>Mission</Text.H2>
-        <div className={`${style.tiers}`}>
+        {/* <div className={`${style.tiers}`}>
           <div className={style.card}>
             <Icon name="experiment" />
             <Text.H4>Free</Text.H4>
@@ -46,7 +46,7 @@ export function Mission() {
               <li>Premium support</li>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -19,6 +19,7 @@ import { Route as NewsPostIdImport } from './routes/news/$postId'
 
 const TosLazyImport = createFileRoute('/tos')()
 const PricingLazyImport = createFileRoute('/pricing')()
+const MissionLazyImport = createFileRoute('/mission')()
 const BrandLazyImport = createFileRoute('/brand')()
 const IndexLazyImport = createFileRoute('/')()
 const NewsIndexLazyImport = createFileRoute('/news/')()
@@ -34,6 +35,11 @@ const PricingLazyRoute = PricingLazyImport.update({
   path: '/pricing',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/pricing.lazy').then((d) => d.Route))
+
+const MissionLazyRoute = MissionLazyImport.update({
+  path: '/mission',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/mission.lazy').then((d) => d.Route))
 
 const BrandLazyRoute = BrandLazyImport.update({
   path: '/brand',
@@ -73,6 +79,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BrandLazyImport
       parentRoute: typeof rootRoute
     }
+    '/mission': {
+      id: '/mission'
+      path: '/mission'
+      fullPath: '/mission'
+      preLoaderRoute: typeof MissionLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/pricing': {
       id: '/pricing'
       path: '/pricing'
@@ -109,6 +122,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   BrandLazyRoute,
+  MissionLazyRoute,
   PricingLazyRoute,
   TosLazyRoute,
   NewsPostIdRoute,
@@ -125,6 +139,7 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/",
         "/brand",
+        "/mission",
         "/pricing",
         "/tos",
         "/news/$postId",
@@ -136,6 +151,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/brand": {
       "filePath": "brand.lazy.tsx"
+    },
+    "/mission": {
+      "filePath": "mission.lazy.tsx"
     },
     "/pricing": {
       "filePath": "pricing.lazy.tsx"
