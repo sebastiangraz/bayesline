@@ -1,6 +1,5 @@
 export { Asset } from './Asset';
 export { Avatar } from './Avatar';
-export { Box } from './Box';
 export { Button } from './Button';
 export { Card, Cards } from './Cards';
 export { Flex } from './Flex';

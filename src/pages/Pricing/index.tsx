@@ -1,4 +1,4 @@
-import { Box, Button, Card, Cards, Flex, Icon, Logo, Text } from '@/components';
+import { Button, Card, Cards, Flex, Icon, Logo, Text } from '@/components';
 import { Link } from '@tanstack/react-router';
 import style from './pricing.module.css';
 
