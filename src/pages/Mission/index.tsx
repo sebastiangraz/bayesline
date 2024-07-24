@@ -1,8 +1,7 @@
-import { Button, Icon, Illustration, Img, Logo, ShapeField, Text } from '@/components';
+import { Icon, Img, ShapeField, Text } from '@/components';
 import style from './mission.module.css';
-import sebastian from '@/assets/sebastian.jpg';
-import misha from '@/assets/misha.jpg';
 import progress from '@/assets/progress.svg';
+
 export function Mission() {
   return (
     <>
@@ -63,7 +62,7 @@ export function Mission() {
           <hr className="col" />
           <div className={`col ${style.founderlist} `}>
             <div className={`${style.founder}`}>
-              <Img src={sebastian} className={style.avatar} />
+              <Img src="sebastian" className={style.avatar} />
               <Text.H5>Sebastian Janisch</Text.H5>
               <Text.Caps secondary>Co-founder</Text.Caps>
               <ul>
@@ -96,7 +95,7 @@ export function Mission() {
               </ul>
             </div>
             <div className={`${style.founder}`}>
-              <Img src={misha} className={style.avatar} />
+              <Img src="misha" className={style.avatar} />
               <Text.H5>Misha van Beek</Text.H5>
               <Text.Caps secondary>Co-founder</Text.Caps>
               <ul>
