@@ -59,7 +59,6 @@
 
   .type {
     width: calc(100% * 188 / 242);
-    position: relative;
   }
 
   @keyframes loop {

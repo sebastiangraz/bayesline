@@ -101,7 +101,7 @@ const LogoType = (props: LogoTypeProps) => {
   return (
     <motion.svg
       id="logoSvg"
-      className={`${className}`}
+      className={`${className} ${style.type}`}
       variants={parentVariant}
       initial="hidden"
       animate={type ? 'show' : 'hidden'}
