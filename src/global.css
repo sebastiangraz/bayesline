@@ -189,7 +189,7 @@
     scrollbar-gutter: stable;
   }
 
-  :is(p, a, pre, ul, ol, table, blockquote, aside, hr, figure, .paragraph) {
+  :is(p, pre, ul, ol, table, blockquote, aside, hr, figure, .paragraph) {
     margin: 0;
     font-size: var(--body);
     color: var(--foreground);

@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 import style from './logo.module.css';
+import * as ContextMenu from '@radix-ui/react-context-menu';
+import { Link } from '@tanstack/react-router';
+import logoSvgUrl from '@/assets/logo.svg';
 
 interface LogoMarkProps {
   className?: string;
@@ -53,10 +56,33 @@ const childVariant = {
 };
 
 const BaseLogo = ({ children, className = '', loop = false, type = true, ...rest }: BaseLogoProps) => {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = logoSvgUrl;
+    link.download = 'logo.svg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
-    <div className={`${className} ${loop ? style.loop : ''} ${style.logo}`} {...rest}>
-      {children}
-    </div>
+    <ContextMenu.Root>
+      <ContextMenu.Trigger asChild>
+        <div className={`~RIGHT_CLICK_TO_DOWNLOAD~ ${className} ${loop ? style.loop : ''} ${style.logo}`} {...rest}>
+          {children}
+        </div>
+      </ContextMenu.Trigger>
+      <ContextMenu.Portal>
+        <ContextMenu.Content className={style.contextMenuContent}>
+          <ContextMenu.Item className={style.contextMenuItem} onSelect={handleDownload}>
+            Download SVG
+          </ContextMenu.Item>
+          <ContextMenu.Separator className={style.contextMenuSeparator} />
+          <ContextMenu.Item className={style.contextMenuItem}>
+            <Link to="/brand">Brand page</Link>
+          </ContextMenu.Item>
+        </ContextMenu.Content>
+      </ContextMenu.Portal>
+    </ContextMenu.Root>
   );
 };
 
@@ -74,7 +100,8 @@ const LogoType = (props: LogoTypeProps) => {
 
   return (
     <motion.svg
-      className={`${style.type}`}
+      id="logoSvg"
+      className={`${className}`}
       variants={parentVariant}
       initial="hidden"
       animate={type ? 'show' : 'hidden'}

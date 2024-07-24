@@ -13,6 +13,7 @@
   "dependencies": {
     "@mdx-js/react": "^3.0.1",
     "@mdx-js/rollup": "^3.0.1",
+    "@radix-ui/react-context-menu": "^2.2.1",
     "@typeform/embed-react": "^3.17.0",
     "framer-motion": "^11.2.12",
     "gray-matter": "^4.0.3",
