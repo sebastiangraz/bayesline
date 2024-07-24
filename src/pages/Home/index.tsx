@@ -40,10 +40,9 @@ export function Home() {
             variant="dithered-gradient"
             rows={24}
             columns={24}
-            padding={2}
+            padding={3}
             color1="var(--accent-3)"
-            color2="var(--accent-3)"
-            isStatic
+            color2="hsl(var(--brand-2))"
             className={style.cardShapeField}
           />
         </Card.Secondary>

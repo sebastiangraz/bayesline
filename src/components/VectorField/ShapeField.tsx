@@ -114,7 +114,7 @@ export const ShapeField = React.memo(
 
         switch (variant) {
           case 'swirl':
-            shapeType = tornado(col, row, rows, columns) > 0 ? 'line' : 'ellipse';
+            shapeType = combinedType(tornado(col, row, rows, columns));
             break;
 
           case 'dithered-gradient':
@@ -126,7 +126,7 @@ export const ShapeField = React.memo(
             break;
 
           case 'bayesian':
-            shapeType = combinedType(bayesianCurve(col, row, columns, rows), 1);
+            shapeType = combinedType(bayesianCurve(col, row, columns, rows), 0.328);
             break;
 
           case 'checker':

@@ -1,6 +1,8 @@
-import { Button, Icon, Illustration, ShapeField, Text } from '@/components';
+import { Button, Icon, Illustration, Img, Logo, ShapeField, Text } from '@/components';
 import style from './mission.module.css';
-
+import sebastian from '@/assets/sebastian.jpg';
+import misha from '@/assets/misha.jpg';
+import progress from '@/assets/progress.svg';
 export function Mission() {
   return (
     <>
@@ -13,31 +15,24 @@ export function Mission() {
           </div>
 
           <div className={`col ${style.illustration1}`}>
-            <ShapeField
-              color1="var(--accent-3)"
-              color2="hsl(var(--brand-2))"
-              variant="dithered-gradient"
-              rows={24}
-              columns={24}
-              padding={3}
-            />
+            <img src={progress} className={style.progress} />
           </div>
 
           <div className={`col ${style.illustration2}`}>
             <ShapeField
-              variant="radial"
+              variant="bayesian"
               color1="var(--accent-3)"
-              color2="var(--accent-3)"
-              rows={28}
-              columns={28}
-              padding={3}
+              color2="hsl(var(--brand-2))"
+              rows={32}
+              columns={29}
+              padding={2}
             />
           </div>
 
           <div className={`col ${style.valueprops}`}>
             <ul>
               <li>
-                <Icon name="chart" />
+                <Icon name="streamline" />
                 <Text.Small secondary balance>
                   We are changing the way investment managers interact with financial analytics. From
                   one-size-doesn't-fit-all to highly customizable and blazing fast.
@@ -51,13 +46,87 @@ export function Mission() {
                 </Text.Small>
               </li>
               <li>
-                <Icon name="enterprise" />
+                <Icon name="globe" />
                 <Text.Small secondary balance>
                   For example, if you run a mid-cap health care portfolio across the US and Europe, a geographically and
                   stylistically aligned model is only a few seconds away.
                 </Text.Small>
               </li>
             </ul>
+          </div>
+        </div>
+        <div className={`col ${style.founders}`}>
+          <Text.H4 balance className={`col ${style.header}`}>
+            Bayesline was founded on March 25th 2024 by Sebastian Janisch and Misha van Beek, with a mission to
+            reimagine financial analytics—putting flexibility and performance first.
+          </Text.H4>
+          <hr className="col" />
+          <div className={`col ${style.founderlist} `}>
+            <div className={`${style.founder}`}>
+              <Img src={sebastian} className={style.avatar} />
+              <Text.H5>Sebastian Janisch</Text.H5>
+              <Text.Caps secondary>Co-founder</Text.Caps>
+              <ul>
+                <li>
+                  <Text.Small balance>
+                    A software engineer with a passion for quant research, Sebastian has spent the last 10 years
+                    leveraging the power of machine learning to challenge, innovate, and reshape how institutions think
+                    about financial modeling.
+                  </Text.Small>
+                </li>
+                <li>
+                  <Text.Small balance>
+                    Prior to Bayesline, he was at Bloomberg where he incubated the next generation of customizable and
+                    actionable quant products as part of the Quant & AI Research group.
+                  </Text.Small>
+                </li>
+                <li>
+                  <Text.Small balance>
+                    Sebastian built his expertise in quant research during his time as a Director in BlackRock’s
+                    Financial Modeling Group where he researched and implemented equity risk models that analyze
+                    trillions in assets.
+                  </Text.Small>
+                </li>
+                <li>
+                  <Text.Small balance>
+                    Sebastian holds a Bachelor of Science in Information Systems from University of Hamburg and a
+                    Masters of Science in Finance & IT from Warwick Business School.
+                  </Text.Small>
+                </li>
+              </ul>
+            </div>
+            <div className={`${style.founder}`}>
+              <Img src={misha} className={style.avatar} />
+              <Text.H5>Misha van Beek</Text.H5>
+              <Text.Caps secondary>Co-founder</Text.Caps>
+              <ul>
+                <li>
+                  <Text.Small balance>
+                    Misha has spent the past 10 years coupling his professional quant training with his personal
+                    interest in all things AI and hands-on engineering.
+                  </Text.Small>
+                </li>
+                <li>
+                  <Text.Small balance>
+                    Before co-founding Bayesline, Misha was a Managing Director at BlackRock where he evolved Aladdin’s
+                    portfolio risk models spanning tens of trillions in assets.
+                  </Text.Small>
+                </li>
+                <li>
+                  <Text.Small balance>
+                    Under his leadership, his team also developed Aladdin’s economic scenario engine, as well as
+                    investment models that run roughly $400 billion in strategic asset allocations.
+                  </Text.Small>
+                </li>
+                <li>
+                  <Text.Small balance>
+                    Prior to BlackRock, he worked as a quant analyst at Rabobank. Misha holds a Master of Science in
+                    Finance & Economics from the London School of Economics and a PhD in Financial Mathematics from the
+                    University of Amsterdam.
+                  </Text.Small>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

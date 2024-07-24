@@ -9,6 +9,7 @@
     padding: 2em;
   }
 }
+
 .intro {
   grid-column: 1 / span 11;
   background: var(--background-4);
@@ -25,8 +26,16 @@
   }
 }
 .illustration2 {
+  padding: 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
   grid-column: 1 / span 9;
   background: hsl(var(--brand-0));
+  & > svg {
+    width: 17rem;
+    height: 17rem;
+  }
 }
 .valueprops {
   grid-column: 10 / span end;
@@ -48,6 +57,39 @@
       span {
         color: hsl(var(--steel-5));
       }
+    }
+  }
+}
+
+.founders {
+  padding: 2em;
+  background: white;
+  gap: 1em;
+
+  .header {
+    margin-bottom: 1em;
+    max-width: 48ch;
+  }
+  .founderlist {
+    display: grid;
+    grid-column: start / end;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em 2em;
+  }
+
+  .founder {
+    gap: 0.25em;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    .avatar {
+      width: 3em;
+      margin-bottom: 0.5em;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    li {
+      margin-left: 0;
     }
   }
 }

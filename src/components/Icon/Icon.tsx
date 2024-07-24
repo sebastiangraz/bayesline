@@ -74,5 +74,15 @@ const IconPaths = {
         <path d="M11 38L11 16M17 38L17 2M23 38L23 6M29 38L29 10M5 38L5 12M35 14L35 38" stroke="currentColor" />
       </>
     )
+  },
+  streamline: {
+    path: (
+      <>
+        <path
+          d="M23 4L23 12L23 17L17 23L17 28L17 36M29 12L29 4M35 12L35 4M17 4L17 12L17 16M5 12L5 4M23 36L23 28L23 24M29 36L29 28M35 36L35 28M5 36L5 28M29 24L29 16M35 24L35 16M5 24L5 16M11 12L11 4M11 36L11 28M11 24L11 16"
+          stroke="currentColor"
+        />
+      </>
+    )
   }
 } as const;
