@@ -30,6 +30,7 @@
   width: 100%;
   img {
     max-height: 2.25rem;
+    opacity: var(--opacity-6);
   }
   & > * {
     color: var(--foreground-accent);
