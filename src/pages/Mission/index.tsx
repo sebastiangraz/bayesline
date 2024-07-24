@@ -1,11 +1,11 @@
 import { Button, Icon, Text } from '@/components';
 import style from './pricing.module.css';
 
-export function Pricing() {
+export function Mission() {
   return (
     <>
       <div className={`col ${style.page}`}>
-        <Text.H2 className={`col ${style.title}`}>Transparent pricing.</Text.H2>
+        <Text.H2 className={`col ${style.title}`}>Mission</Text.H2>
         <div className={`${style.tiers}`}>
           <div className={style.card}>
             <Icon name="experiment" />

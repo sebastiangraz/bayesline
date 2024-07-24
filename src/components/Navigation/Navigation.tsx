@@ -4,6 +4,14 @@ import style from './navigation.module.css';
 import { Logo } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 
+const navItems = [
+  { to: '/mission', label: 'Mission' },
+  { to: '/news', label: 'News' },
+  { to: '/pricing', label: 'Pricing' },
+  { to: 'https://app.bayesline.com/', label: 'Docs' },
+  { to: 'https://app.bayesline.com/signup/', label: 'Sign up', highlight: true }
+];
+
 export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => {
   const [isSticky, setIsSticky] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -37,21 +45,15 @@ export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => 
           </Link>
         </div>
         <div className={` ${style.links}`}>
-          <Link to="/brand" className={style.link}>
-            Mission
-          </Link>
-          <Link to="/news" className={style.link}>
-            News
-          </Link>
-          <Link to="/pricing" className={style.link}>
-            Pricing
-          </Link>
-          <Link to="https://app.bayesline.com/" target="_blank" className={style.link}>
-            Docs
-          </Link>
-          <Link to="https://app.bayesline.com/signup/" target="_blank" className={`${style.link} ${style.highlight}`}>
-            Sign up
-          </Link>
+          {navItems.map((item) => {
+            const highlight = item.highlight ? style.highlight : '';
+            const isLink = item.to.startsWith('http');
+            return (
+              <Link to={item.to} target={isLink ? '_blank' : ''} className={`${style.link} ${highlight}`}>
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
       </nav>
       {backbutton && (
