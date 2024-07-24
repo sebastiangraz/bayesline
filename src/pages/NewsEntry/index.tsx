@@ -23,6 +23,10 @@ function tableOfContents(toc: any) {
   );
 }
 
+function getImageUrl(fileName: string, name: string) {
+  return new URL(`./entries/${fileName}/${name}`, import.meta.url).href;
+}
+
 export function NewsEntry() {
   const { post } = Route.useLoaderData();
   const { Page, title, fileName, excerpt, published, toc, thumbnail, seed } = post;
@@ -30,14 +34,7 @@ export function NewsEntry() {
   const tableOfContentsComponent = tableOfContents(toc);
   const seedValue = seed || `${title}-${published}`;
   const currentTimestamp = Date.now();
-
-  function getImageUrl(name: string) {
-    return new URL(`./entries/${fileName}/${name}`, import.meta.url).href;
-  }
-
-  function Thumbnail() {
-    return thumbnail ? <img src={getImageUrl(thumbnail)} /> : <Asset seed={seedValue} />;
-  }
+  const thumbnailBool = thumbnail ? true : false;
 
   const entryByDate = entryMeta
     .sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime())
@@ -56,7 +53,7 @@ export function NewsEntry() {
         </div>
         <Text.H5 className={`col ${style.excerpt}`}>{excerpt}</Text.H5>
         <div className={`col ${style.entryImage}`}>
-          <Thumbnail />
+          {thumbnailBool ? <img src={getImageUrl(fileName, thumbnail)} /> : <Asset seed={seedValue} />}
         </div>
         <div className={`col ${style.chapters}`}>{toc.length >= 2 && tableOfContentsComponent}</div>
       </div>
@@ -103,14 +100,7 @@ export function NewsEntry() {
             {entryByDateExcludeCurrent.slice(0, 4).map(({ title, fileName, published, thumbnail, seed }) => {
               const date = readableDate(published);
               const seedValue = seed || `${title}-${published}`;
-
-              function getImageUrl(name: string) {
-                return new URL(`./entries/${fileName}/${name}`, import.meta.url).href;
-              }
-
-              function Thumbnail() {
-                return thumbnail ? <img src={getImageUrl(thumbnail)} /> : <Asset seed={seedValue} />;
-              }
+              const thumbnailBool = thumbnail ? true : false;
 
               return (
                 <li key={fileName} className={`col`}>
@@ -122,7 +112,7 @@ export function NewsEntry() {
                     }}
                   >
                     <div className={`col ${style.thumbnail}`}>
-                      <Thumbnail />
+                      {thumbnailBool ? <img src={getImageUrl(fileName, thumbnail)} /> : <Asset seed={seedValue} />}
                     </div>
 
                     <div className={`col ${style.meta}`}>

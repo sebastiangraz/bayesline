@@ -5,6 +5,10 @@ import { Text, Asset } from '@/components';
 import { readableDate, themeClasses } from '@/helpers/utils';
 import { entryMeta } from './entryMeta';
 
+function getImageUrl(fileName: string, name: string) {
+  return new URL(`../NewsEntry/entries/${fileName}/${name}`, import.meta.url).href;
+}
+
 export function News() {
   const currentTimestamp = Date.now();
 
@@ -28,14 +32,6 @@ export function News() {
           const hasThemeClass = themeValue !== '' ? `theme ${style.theme}` : '';
           const classNames = `${featuredClass} ${hasThemeClass}`;
 
-          function getImageUrl(name: string) {
-            return new URL(`../NewsEntry/entries/${fileName}/${name}`, import.meta.url).href;
-          }
-
-          function Thumbnail() {
-            return thumbnail ? <img src={getImageUrl(thumbnail)} /> : <Asset seed={seedValue} />;
-          }
-
           return (
             <li key={fileName} data-theme={featured ? themeValue : ''} className={`col ${classNames}`}>
               <Link
@@ -46,7 +42,7 @@ export function News() {
                 }}
               >
                 <div data-theme={themeValue} className={`col theme ${style.thumbnail}`}>
-                  <Thumbnail />
+                  {thumbnail ? <img src={getImageUrl(fileName, thumbnail)} /> : <Asset seed={seedValue} />}
                 </div>
                 <div className={`col ${style.meta}`}>
                   <div className={`col ${style.link}`}>

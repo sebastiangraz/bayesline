@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import seedrandom from 'seedrandom';
 import style from './asset.module.css';
 import { assets, themes } from './assets';
-import { motion, useInView } from 'framer-motion';
+import { delay, motion, useInView } from 'framer-motion';
 import { recursiveDivider } from '@/helpers/utils';
 
 type Props = {
@@ -24,10 +24,12 @@ const childVariant = {
     clipPath: 'inset(0% 0% 0% 0%)',
     opacity: 1,
     transition: {
-      duration: 0.1 + i * 0.3,
+      duration: 0.3 + i * 0.35,
       ease: [1, 0, 0.17, 1],
+
       opacity: {
-        duration: 0.25
+        duration: 0.25,
+        delay: 0.1
       }
     }
   })
@@ -50,8 +52,9 @@ const imageVariant = {
     '--y': '0px',
     opacity: 1,
     transition: {
-      duration: 0.1 + i * 0.3,
-      ease: [1, 0, 0.17, 1]
+      duration: 0.3 + i * 0.35,
+      ease: [1, 0, 0.17, 1],
+      delay: 0.1
     }
   })
 };
