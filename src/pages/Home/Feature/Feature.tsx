@@ -144,10 +144,10 @@ const data = {
       image: 'homepage-hero.png'
     }
   ]
-};
+} as const;
 
 const FeatureTicker = () => {
-  const [selectedTab, setSelectedTab] = useState(data?.features[0]);
+  const [selectedTab, setSelectedTab] = useState<(typeof data.features)[number]>(data.features[0]);
   return (
     <div className={`col ${style.ticker}`}>
       <nav>

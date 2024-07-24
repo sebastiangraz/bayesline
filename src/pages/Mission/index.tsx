@@ -1,52 +1,65 @@
-import { Button, Icon, Text } from '@/components';
+import { Button, Icon, Illustration, ShapeField, Text } from '@/components';
 import style from './mission.module.css';
 
 export function Mission() {
   return (
     <>
       <div className={`col ${style.page}`}>
-        <Text.H2 className={`col ${style.title}`}>Mission</Text.H2>
-        {/* <div className={`${style.tiers}`}>
-          <div className={style.card}>
-            <Icon name="experiment" />
-            <Text.H4>Free</Text.H4>
-            <Text.Body secondary balance>
-              Try the platform with no strings attached. Granular controls and customization to scale and expand your
-              portfolio globally.
-            </Text.Body>
-            <Button theme={1} type="secondary" href="https://app.bayesline.com/signup/" target="_blank">
-              <Text.Caps>Start for free</Text.Caps>
-            </Button>
+        <div className={`col ${style.missionHero}`}>
+          <div className={`col ${style.intro}`}>
+            <Text.H3 balance>
+              We are reimagining <Text secondary>financial analytics on AI infrastructure.</Text>
+            </Text.H3>
+          </div>
+
+          <div className={`col ${style.illustration1}`}>
+            <ShapeField
+              color1="var(--accent-3)"
+              color2="hsl(var(--brand-2))"
+              variant="dithered-gradient"
+              rows={24}
+              columns={24}
+              padding={3}
+            />
+          </div>
+
+          <div className={`col ${style.illustration2}`}>
+            <ShapeField
+              variant="radial"
+              color1="var(--accent-3)"
+              color2="var(--accent-3)"
+              rows={28}
+              columns={28}
+              padding={3}
+            />
+          </div>
+
+          <div className={`col ${style.valueprops}`}>
             <ul>
-              <li>Model Reports</li>
-              <li>Automated expense management</li>
-              <li>Real-time saving insights</li>
-              <li>Custom controls and advanced user roles</li>
+              <li>
+                <Icon name="chart" />
+                <Text.Small secondary balance>
+                  We are changing the way investment managers interact with financial analytics. From
+                  one-size-doesn't-fit-all to highly customizable and blazing fast.
+                </Text.Small>
+              </li>
+              <li>
+                <Icon name="layers" />
+                <Text.Small secondary balance>
+                  Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align
+                  with realistic investment universes or styles - we're changing that.
+                </Text.Small>
+              </li>
+              <li>
+                <Icon name="enterprise" />
+                <Text.Small secondary balance>
+                  For example, if you run a mid-cap health care portfolio across the US and Europe, a geographically and
+                  stylistically aligned model is only a few seconds away.
+                </Text.Small>
+              </li>
             </ul>
           </div>
-          <hr />
-          <div className={style.card}>
-            <Icon name="enterprise" />
-            <Text.H4>Enterprise</Text.H4>
-            <Text.Body secondary balance>
-              Where investors level up. Enhanced security, compliance, and dedicated support to operate efficiently.{' '}
-            </Text.Body>
-            <Button theme={1} type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-              <Text.Caps>Contact us</Text.Caps>
-            </Button>
-            <ul>
-              <li>Custom controls and advanced user roles</li>
-              <li>Unlimited customizations</li>
-              <li>Procurement automation and PO management</li>
-              <li>Advanced ERP integrations with multi-entity support</li>
-              <li>Custom implementation</li>
-              <li>Enterprise ERP integrations</li>
-              <li>Local card issuance</li>
-              <li>SOX compliance customizations</li>
-              <li>Premium support</li>
-            </ul>
-          </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

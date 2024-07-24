@@ -45,11 +45,16 @@ export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => 
           </Link>
         </div>
         <div className={` ${style.links}`}>
-          {navItems.map((item) => {
+          {navItems.map((item, index) => {
             const highlight = item.highlight ? style.highlight : '';
             const isLink = item.to.startsWith('http');
             return (
-              <Link to={item.to} target={isLink ? '_blank' : ''} className={`${style.link} ${highlight}`}>
+              <Link
+                key={`${item.to}-${index}`}
+                to={item.to}
+                target={isLink ? '_blank' : ''}
+                className={`${style.link} ${highlight}`}
+              >
                 {item.label}
               </Link>
             );
