@@ -130,29 +130,33 @@ const getShapeType = (
 function shapes(
   rows: number,
   columns: number,
-  cellWidth: number,
-  cellHeight: number,
   padding: number,
   color1: string,
   color2: string,
   variant: string,
   isStatic: boolean,
-  midX: number,
-  midY: number,
   width: number,
   height: number
 ) {
   return Array.from({ length: rows * columns }, (_, index) => {
     const col = index % columns;
     const row = Math.floor(index / columns);
+
+    const cellWidth = (width - columns * padding) / columns;
+    const cellHeight = (height - rows * padding) / rows;
+
     const x = col * (cellWidth + padding) + padding / 2;
     const y = row * (cellHeight + padding) + padding / 2;
 
     const shapeSize = Math.min(cellWidth, cellHeight) - padding;
 
+    // const midX = width / 2 - cellWidth / 2;
+    const midY = height / 2 - cellHeight / 2;
+
     // radial tools
-    const rx = (x - midX) / width;
+    // const rx = (x - midX) / width;
     const ry = (y - midY) / height;
+
     // const rdistance = Math.sqrt(rx * rx + ry * ry);
 
     //linear tools
@@ -205,14 +209,12 @@ export const ShapeField = React.memo(
       amount: 'some'
     });
 
-    const paddedWidth = width - columns * padding;
-    const paddedHeight = height - rows * padding;
+    const shouldAnimate = !isStatic && isInView;
 
-    const cellWidth = paddedWidth / columns;
-    const cellHeight = paddedHeight / rows;
-
-    const midX = width / 2 - cellWidth / 2;
-    const midY = height / 2 - cellHeight / 2;
+    const memoizedShapes = useMemo(
+      () => shapes(rows, columns, padding, color1, color2, variant, !shouldAnimate, width, height),
+      [rows, columns, padding, color1, color2, variant, shouldAnimate, width, height]
+    );
 
     const classNames = `${style.shapefield} ${className}`;
 
@@ -221,27 +223,9 @@ export const ShapeField = React.memo(
         className={classNames}
         preserveAspectRatio="xMidYMid meet"
         viewBox={`0 0 ${width} ${height}`}
-        // ref={svgRef}
-        // initial={{
-        //   visibility: 'hidden'
-        // }}
-        // animate={isInView ? { opacity: 1, visibility: 'visible' } : { visibility: 'hidden' }}
+        ref={svgRef}
       >
-        {shapes(
-          rows,
-          columns,
-          cellWidth,
-          cellHeight,
-          padding,
-          color1,
-          color2,
-          variant,
-          isStatic,
-          midX,
-          midY,
-          width,
-          height
-        )}
+        {memoizedShapes}
       </motion.svg>
     );
   }
