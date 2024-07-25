@@ -8,6 +8,7 @@
     left: 0;
     width: 100%;
     min-height: 10em;
+    height: 100%;
     background: var(--background);
     z-index: -1;
     pointer-events: none;
@@ -38,6 +39,7 @@
 .nav {
   display: grid;
   grid-auto-flow: column;
+  justify-content: space-between;
   position: sticky;
   margin: 1em 0;
   top: 0;
@@ -48,6 +50,9 @@
   border-radius: var(--radius);
   @media (--lg) {
     grid-column: start / 14;
+  }
+  @media not (--sm) {
+    display: none;
   }
 }
 .links {
@@ -74,7 +79,7 @@
   font-size: 1rem;
   white-space: nowrap;
   align-self: center;
-  :global &.active {
+  :global &[data-status='active'] {
     opacity: 0.5;
   }
 }
@@ -113,7 +118,85 @@
   align-self: stretch;
   box-shadow: var(--border-r) var(--foreground-border);
   padding: 0 1em;
-  :global &.active {
+  :global &[data-status='active'] {
     opacity: unset;
+  }
+}
+
+/* MOBILE STYLES */
+
+.mobilenav {
+  display: grid;
+  grid-template-areas:
+    'logo burger'
+    'links links';
+  grid-column: start / end;
+  grid-template-rows: auto auto;
+  gap: 0;
+  position: sticky;
+  width: 100%;
+  margin: 1em 0;
+  top: 0;
+  z-index: 2;
+  color: var(--foreground);
+  transition: background 0.2s ease;
+
+  &.isOpaque {
+    background: var(--navigation);
+    box-shadow: var(--shadow);
+    .burger {
+      box-shadow: var(--border-l) var(--foreground-border);
+    }
+  }
+
+  @media (--sm) {
+    display: none;
+  }
+}
+
+.mobilelogo {
+  display: grid;
+  /* place-items: center; */
+  width: 3em;
+  padding: 0.75em;
+  grid-area: logo;
+  :global &[data-status='active'] {
+    opacity: unset;
+  }
+}
+
+.burger {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  grid-area: burger;
+  cursor: pointer;
+  place-self: end;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+
+  color: var(--foreground-accent);
+  &:hover {
+    color: var(--foreground);
+  }
+}
+
+.mobilelinks {
+  display: grid;
+  grid-area: links;
+  box-shadow: var(--border-b) inset var(--foreground-border);
+  overflow: clip;
+}
+
+.mobilelink {
+  color: inherit;
+  text-decoration: none;
+  font-size: var(--body-small);
+  white-space: nowrap;
+  align-self: center;
+  padding: 0.75em 1em;
+  :global &[data-status='active'] {
+    opacity: 0.5;
   }
 }

@@ -81,6 +81,7 @@
   }
   .logo {
     color: var(--accent-1);
+    width: 0.75em;
     place-self: center;
     grid-area: 1/1;
     justify-content: center;

@@ -51,7 +51,7 @@
 }
 
 .logomark {
-  width: 6em;
+  width: 1em;
   color: var(--accent-1);
   & > * {
     font-feature-settings: 'ss02' on;

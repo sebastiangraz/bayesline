@@ -334,6 +334,9 @@
     top: 0;
     z-index: 1;
     pointer-events: none;
+    @media not (--sm) {
+      display: none;
+    }
   }
 
   .debug {

@@ -55,6 +55,9 @@
         'LOOP' 0,
         'opsz' 100;
     }
+    &.isolated {
+      font-size: calc(100cqw * 42 / 44);
+    }
   }
 
   .type {

@@ -89,7 +89,7 @@ const BaseLogo = ({ children, className = '', loop = false, type = true, ...rest
 const LogoMark = (props: LogoMarkProps) => {
   const { className = '', ...rest } = props;
   return (
-    <motion.div className={`${style.mark} `} {...rest}>
+    <motion.div className={`${style.mark} ${className} `} {...rest}>
       B
     </motion.div>
   );
@@ -159,7 +159,7 @@ const LogoType = (props: LogoTypeProps) => {
 const MarkPrimitive = (props: LogoMarkProps) => {
   return (
     <BaseLogo {...props}>
-      <LogoMark />
+      <LogoMark className={style.isolated} />
     </BaseLogo>
   );
 };
