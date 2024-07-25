@@ -66,6 +66,19 @@ const getOpacity = (combinedNoise: number, variant: string, col: number, row: nu
   return opacityType;
 };
 
+function combinedType(value: number, offset = 0) {
+  const offsetValue = value + offset;
+  let shapeType: ShapeProps['type'];
+  if (value <= 0.33) {
+    shapeType = 'line';
+  } else if (offsetValue <= 0.66) {
+    shapeType = 'ellipse';
+  } else {
+    shapeType = 'rect';
+  }
+  return shapeType;
+}
+
 const getShapeType = (
   col: number,
   row: number,
@@ -80,19 +93,6 @@ const getShapeType = (
 ) => {
   let shapeType: ShapeProps['type'];
   const ydistance = y / height;
-
-  function combinedType(value: number, offset = 0) {
-    const offsetValue = value + offset;
-    let shapeType: ShapeProps['type'];
-    if (value <= 0.33) {
-      shapeType = 'line';
-    } else if (offsetValue <= 0.66) {
-      shapeType = 'ellipse';
-    } else {
-      shapeType = 'rect';
-    }
-    return shapeType;
-  }
 
   switch (variant) {
     case 'swirl':
