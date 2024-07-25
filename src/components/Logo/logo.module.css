@@ -107,9 +107,8 @@
   padding-left: 0.5em;
   user-select: none;
   outline: none;
-  & > * {
-    text-decoration: none;
-  }
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .contextMenuItem[data-highlighted],

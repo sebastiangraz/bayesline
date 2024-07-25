@@ -48,7 +48,7 @@ export function Home() {
         </Card.Secondary>
       </Cards>
 
-      <Cards layout="grid-col">
+      <Cards layout="grid-col" className={`${style.threeup}`}>
         <Card dataTheme={0}>
           <Icon name="chart" />
           <Text.Body balance secondary>

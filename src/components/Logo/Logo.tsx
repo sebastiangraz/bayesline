@@ -3,7 +3,7 @@ import style from './logo.module.css';
 import * as ContextMenu from '@radix-ui/react-context-menu';
 import { Link } from '@tanstack/react-router';
 import logoSvgUrl from '@/assets/logo.svg';
-
+import { Text } from '@/components';
 interface LogoMarkProps {
   className?: string;
   loop?: boolean;
@@ -73,11 +73,11 @@ const BaseLogo = ({ children, className = '', loop = false, type = true, ...rest
       </ContextMenu.Trigger>
       <ContextMenu.Portal>
         <ContextMenu.Content className={style.contextMenuContent}>
-          <ContextMenu.Item className={style.contextMenuItem} onSelect={handleDownload}>
-            Download SVG
+          <ContextMenu.Item className={style.contextMenuItem} onSelect={handleDownload} asChild>
+            <Text.Small>Download SVG</Text.Small>
           </ContextMenu.Item>
           <ContextMenu.Separator className={style.contextMenuSeparator} />
-          <ContextMenu.Item className={style.contextMenuItem}>
+          <ContextMenu.Item className={style.contextMenuItem} asChild>
             <Link to="/brand">Brand page</Link>
           </ContextMenu.Item>
         </ContextMenu.Content>

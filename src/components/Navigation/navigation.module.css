@@ -69,9 +69,7 @@
     grid-column: start / 14;
   }
   @media not (--sm) {
-    visibility: hidden;
-    height: 0px;
-    margin: 0;
+    display: none;
   }
 }
 
@@ -167,9 +165,7 @@
   }
 
   @media (--sm) {
-    visibility: hidden;
-    height: 0px;
-    margin: 0;
+    display: none;
   }
 }
 

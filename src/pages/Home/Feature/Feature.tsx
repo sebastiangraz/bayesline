@@ -7,13 +7,13 @@ import radial from '@/assets/radial.svg';
 const FeatureComparison = () => {
   return (
     <div className={`col bleed ${style.comparison}`}>
-      <div className={`${style.cue}`}>
-        <Flex column>
+      <div className={`${style.banner}`}>
+        <div className={`${style.bannertext}`}>
           <Text.H5>Move with the markets.</Text.H5>
           <Text.Small secondary balance>
             Build models and reports in real-time
           </Text.Small>
-        </Flex>
+        </div>
         <section>
           <VectorField loop />
           <Flex center gap={1}>
@@ -34,14 +34,14 @@ const FeatureComparison = () => {
           We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
           blazing fast.
         </Text.Body>
-        <Flex gap={4}>
+        <div className={`${style.cta}`}>
           <Button type="secondary" theme={1} href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
             <Text.Caps>Book a Demo</Text.Caps>
           </Button>
           <Text.Small balance secondary>
-            Be the first to know about our beta launch.
+            Talk to one of our founders directly.
           </Text.Small>
-        </Flex>
+        </div>
       </Flex>
       <div className={`col ${style.ui}`}>
         <Img src="/src/assets/homepage-hero.png" deviceBorder />

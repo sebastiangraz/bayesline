@@ -25,3 +25,10 @@
   place-self: start start;
   width: 6em;
 }
+
+.threeup {
+  & > * {
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+  }
+}
