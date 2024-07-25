@@ -43,7 +43,7 @@ export const Hero = (props: HeroProps) => {
         </div>
       </div>
       <div className={`col ${style.ui}`}>
-        <div className={`${style.cue}`}>
+        <div className={`col ${style.cue}`}>
           <VectorField />
         </div>
 
