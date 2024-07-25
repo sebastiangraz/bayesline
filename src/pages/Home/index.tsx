@@ -38,8 +38,8 @@ export function Home() {
           </div>
           <ShapeField
             variant="dithered-gradient"
-            rows={50}
-            columns={50}
+            rows={24}
+            columns={24}
             padding={1}
             color1="var(--accent-3)"
             color2="hsl(var(--brand-2))"
