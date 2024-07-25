@@ -1,4 +1,4 @@
-.speed {
+.comparison {
   background: var(--background-accent);
   grid-column: start / end;
   grid-template-areas:
@@ -55,7 +55,7 @@
   }
 }
 
-.powerful {
+.centerAsset {
   background: var(--background);
   padding: 2em 0;
   gap: 2em 0;

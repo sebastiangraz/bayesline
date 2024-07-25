@@ -4,9 +4,9 @@ import { Button, Flex, Text, VectorField, Img, ShapeField, Logo, Icon } from '@/
 import { useState } from 'react';
 import radial from '@/assets/radial.svg';
 
-const FeatureSpeed = () => {
+const FeatureComparison = () => {
   return (
-    <div className={`col bleed ${style.speed}`}>
+    <div className={`col bleed ${style.comparison}`}>
       <div className={`${style.cue}`}>
         <Flex column>
           <Text.H5>Move with the markets.</Text.H5>
@@ -50,9 +50,9 @@ const FeatureSpeed = () => {
   );
 };
 
-const FeaturePowerful = () => {
+const FeatureCenterAsset = () => {
   return (
-    <div data-theme="one" className={`theme col ${style.powerful}`}>
+    <div data-theme="one" className={`theme col ${style.centerAsset}`}>
       <div className={`${style.copy}`}>
         <Text.H1>Powerful.</Text.H1>
         <Text.Body balance secondary as="span">
@@ -200,8 +200,8 @@ const FeatureTicker = () => {
 export const Feature = Object.assign(
   {},
   {
-    Speed: FeatureSpeed,
-    Powerful: FeaturePowerful,
+    Comparison: FeatureComparison,
+    CenterAsset: FeatureCenterAsset,
     Ticker: FeatureTicker
   }
 );

@@ -71,8 +71,8 @@ export function Home() {
           </Text.Body>
         </Card>
       </Cards>
-      <Feature.Speed />
-      <Feature.Powerful />
+      <Feature.Comparison />
+      <Feature.CenterAsset />
       <Feature.Ticker />
     </>
   );
