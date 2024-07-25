@@ -1,8 +1,9 @@
 import { Link } from '@tanstack/react-router';
 import style from './navigation.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Logo, Text } from '@/components';
-import { useEffect, useRef, useState } from 'react';
+import { Logo } from '@/components';
+import { useRef, useState } from 'react';
+import { useStickyObserver } from '@/helpers/utils';
 
 const navItems = [
   { to: '/mission', label: 'Mission' },
@@ -13,10 +14,10 @@ const navItems = [
 ];
 
 const DesktopNavigation = (props: any) => {
-  const { isSticky, headerRef } = props;
+  const { isSticky } = props;
 
   return (
-    <nav ref={headerRef} className={`col ${style.nav}`}>
+    <nav className={`col ${style.desktop}`}>
       <div className={`${style.logowrapper}`}>
         <Link to="/" className={`${style.logo} ${style.link}`}>
           <div className={style.logosentinel}>
@@ -46,7 +47,7 @@ const DesktopNavigation = (props: any) => {
 };
 
 const MobileNavigation = (props: any) => {
-  const { isSticky, headerRef } = props;
+  const { isSticky } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isOpaque = isSticky || isMenuOpen ? style.isOpaque : '';
 
@@ -59,9 +60,9 @@ const MobileNavigation = (props: any) => {
   };
 
   return (
-    <nav ref={headerRef} className={`col ${style.mobilenav} ${isOpaque}`}>
+    <nav className={`col ${style.mobile} ${isOpaque}`}>
       <Link to="/" className={`${style.mobilelogo} ${style.link}`} onClick={() => handleNavClick()}>
-        <Logo.Mark className={`${style.mark} ${style.link}`} />
+        <Logo.Mark className={`${style.link}`} />
       </Link>
       <AnimatePresence>
         {isMenuOpen && (
@@ -93,57 +94,34 @@ const MobileNavigation = (props: any) => {
       </AnimatePresence>
 
       <div className={`${style.burger}`} onClick={() => handleMenuToggle()}>
-        <Text.Caps>Menu</Text.Caps>
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M34 25.5L6 25.5M34 19.5L6 19.5M34 13.5H6"
+            stroke="currentColor"
+            vectorEffect={'non-scaling-stroke'}
+            strokeWidth={1}
+          />
+        </svg>
       </div>
     </nav>
   );
 };
-function useStickyObserver(refs: React.RefObject<HTMLElement>[], options: IntersectionObserverInit) {
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const isCurrentlySticky = entry.intersectionRatio < 1;
-        if (refs.some((ref) => ref.current === entry.target)) {
-          setIsSticky(isCurrentlySticky);
-          if (document.body) {
-            document.body.dataset.sticky = isCurrentlySticky ? 'true' : 'false';
-          }
-        }
-      });
-    }, options);
-
-    refs.forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
-    });
-
-    return () => {
-      refs.forEach((ref) => {
-        if (ref.current) observer.unobserve(ref.current);
-      });
-      observer.disconnect();
-    };
-  }, [refs, options]); // Using refs here assumes refs is memoized or stable
-
-  return isSticky;
-}
 
 export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => {
-  const desktopHeaderRef = useRef<HTMLDivElement>(null);
-  const mobileHeaderRef = useRef<HTMLDivElement>(null);
-  const isSticky = useStickyObserver([desktopHeaderRef, mobileHeaderRef], {
+  const ref = useRef<HTMLDivElement>(null);
+  const isSticky = useStickyObserver(ref, {
     rootMargin: '-1px 0px 0px 0px',
     threshold: [1]
   });
 
   const entryStyle = backbutton ? style.entry : '';
-  const stickyStyle = isSticky ? style.sticky : '';
 
   return (
-    <div className={`col theme ${style.navigation} ${entryStyle} ${stickyStyle}`}>
-      <DesktopNavigation isSticky={isSticky} headerRef={desktopHeaderRef} />
-      <MobileNavigation isSticky={isSticky} headerRef={mobileHeaderRef} />
+    <div className={`col theme ${style.navigation} ${entryStyle}`}>
+      <div ref={ref} className={`col bleed ${style.switch}`}>
+        <DesktopNavigation isSticky={isSticky} />
+        <MobileNavigation isSticky={isSticky} />
+      </div>
       {backbutton && (
         <div className={`col ${style.back}`}>
           <svg width="13" height="14" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">

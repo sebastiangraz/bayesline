@@ -1,5 +1,5 @@
 .hero {
-  grid-column: 1 / 26;
+  grid-column: bleedstart / bleedend;
   padding-bottom: 0em;
   gap: 2em 0;
   padding-top: 2em;

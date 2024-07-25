@@ -15,6 +15,14 @@
   }
 }
 
+.switch {
+  z-index: 2;
+  display: grid;
+  position: sticky;
+  top: 0;
+  margin: 1em 0;
+}
+
 .back {
   grid-auto-flow: column;
   margin: 1em 0;
@@ -36,14 +44,10 @@
   }
 }
 
-.nav {
+.desktop {
   display: grid;
   grid-auto-flow: column;
   justify-content: space-between;
-  position: sticky;
-  margin: 1em 0;
-  top: 0;
-  z-index: 2;
   background: var(--navigation);
   color: var(--foreground);
   box-shadow: var(--shadow);
@@ -58,6 +62,7 @@
     margin: 0;
   }
 }
+
 .links {
   place-self: flex-end;
   display: flex;
@@ -66,7 +71,7 @@
   gap: 0.5em;
   min-height: calc(3rem - 1px);
   padding: 0.25rem;
-  padding-left: 0.5em;
+  padding-left: 0.35em;
   margin: 0;
   height: 100%;
   width: 100%;
@@ -127,22 +132,17 @@
 }
 
 /* MOBILE STYLES */
-
-.mobilenav {
+.mobile {
   display: grid;
-  visibility: visible;
-
   grid-template-areas:
     'logo burger'
     'links links';
   grid-column: start / end;
   grid-template-rows: auto auto;
   gap: 0;
-  position: sticky;
   width: 100%;
-  margin: 1em 0;
-  top: 0;
-  z-index: 2;
+  border-radius: var(--radius);
+  overflow: clip;
   color: var(--foreground);
   transition: background 0.2s ease;
 
@@ -182,7 +182,6 @@
   align-items: center;
   justify-content: center;
   user-select: none;
-
   color: var(--foreground-accent);
   &:hover {
     color: var(--foreground);
@@ -193,16 +192,19 @@
   display: grid;
   grid-area: links;
   box-shadow: var(--border-b) inset var(--foreground-border);
-  overflow: clip;
+  &:hover > *:not(:hover) {
+    color: var(--foreground-accent);
+  }
 }
 
 .mobilelink {
-  color: inherit;
+  color: var(--foreground);
   text-decoration: none;
   font-size: var(--body-small);
   white-space: nowrap;
   align-self: center;
   padding: 0.75em 1em;
+
   :global &[data-status='active'] {
     opacity: 0.5;
   }

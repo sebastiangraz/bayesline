@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import seedrandom, { PRNG } from 'seedrandom';
+import { useEffect, useState } from 'react';
 
 export function getPrevPathFromExtension(path: string, extension = '.mdx') {
   const regex = new RegExp(`/[^/]+${extension}$`);
@@ -19,63 +18,6 @@ export const readableDate = (date: string) =>
     month: 'long',
     day: 'numeric'
   });
-
-const templates = [
-  //prettier-ignore
-  [ 
-    2, 2, 1, 
-    2, 2, 0, 
-    0, 0, 1
-  ],
-  //prettier-ignore
-  [ 
-    1, 2, 2, 
-    0, 2, 2, 
-    0, 0, 1
-  ],
-  //prettier-ignore
-  [ 
-    1, 1, 0, 
-    1, 2, 2, 
-    0, 2, 2
-  ],
-  //prettier-ignore
-  [ 
-    1, 0, 0, 
-    2, 2, 0, 
-    2, 2, 1
-  ],
-  //prettier-ignore
-  [ 
-    0, 2, 2, 
-    0, 2, 2, 
-    1, 0, 0
-  ],
-  //prettier-ignore
-  [ 
-    0, 0, 1, 
-    2, 2, 0, 
-    2, 2, 0
-  ],
-  //prettier-ignore
-  [ 
-    1, 2, 2, 
-    2, 2, 2, 
-    2, 2, 0
-  ],
-  //prettier-ignore
-  [ 
-    0, 0, 1, 
-    0, 2, 2, 
-    1, 2, 2
-  ],
-  //prettier-ignore
-  [ 
-    0, 0, 1, 
-    0, 1, 0, 
-    1, 0, 1
-  ]
-];
 
 export const recursiveDivider = (
   x: number,
@@ -141,6 +83,63 @@ export const recursiveDivider = (
   return result;
 };
 
+const templates = [
+  //prettier-ignore
+  [ 
+    2, 2, 1, 
+    2, 2, 0, 
+    0, 0, 1
+  ],
+  //prettier-ignore
+  [ 
+    1, 2, 2, 
+    0, 2, 2, 
+    0, 0, 1
+  ],
+  //prettier-ignore
+  [ 
+    1, 1, 0, 
+    1, 2, 2, 
+    0, 2, 2
+  ],
+  //prettier-ignore
+  [ 
+    1, 0, 0, 
+    2, 2, 0, 
+    2, 2, 1
+  ],
+  //prettier-ignore
+  [ 
+    0, 2, 2, 
+    0, 2, 2, 
+    1, 0, 0
+  ],
+  //prettier-ignore
+  [ 
+    0, 0, 1, 
+    2, 2, 0, 
+    2, 2, 0
+  ],
+  //prettier-ignore
+  [ 
+    1, 2, 2, 
+    2, 2, 2, 
+    2, 2, 0
+  ],
+  //prettier-ignore
+  [ 
+    0, 0, 1, 
+    0, 2, 2, 
+    1, 2, 2
+  ],
+  //prettier-ignore
+  [ 
+    0, 0, 1, 
+    0, 1, 0, 
+    1, 0, 1
+  ]
+];
+
 export const themeClasses: Record<number, string> = {
   0: '',
   1: 'one',
@@ -148,6 +147,25 @@ export const themeClasses: Record<number, string> = {
   3: 'three',
   4: 'four'
 };
+
+export function useStickyObserver(ref: React.RefObject<HTMLElement>, options: IntersectionObserverInit) {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const observer = new IntersectionObserver(([e]) => {
+        if (document.body) {
+          document.body.dataset.sticky = e.intersectionRatio < 1 ? 'true' : 'false';
+          setIsSticky(e.intersectionRatio < 1);
+        }
+      }, options);
+      observer.observe(ref.current as HTMLDivElement);
+      return () => observer.disconnect();
+    })();
+  }, [ref, options]); // Using refs here assumes refs is memoized or stable
+
+  return isSticky;
+}
 
 type Subdivision = {
   x: number;

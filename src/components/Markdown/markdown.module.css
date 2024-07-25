@@ -11,13 +11,13 @@
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: subgrid;
-  grid-column: 1 / 26;
+  grid-column: bleedstart / bleedend;
   gap: 2rem 0;
   padding: 2em 0;
 
   :global .katex-display {
     z-index: 1;
-    grid-column: 1 / 26;
+    grid-column: bleedstart / bleedend;
     font-size: var(--h5);
   }
   :global .katex {
@@ -92,7 +92,7 @@
 
 .image {
   display: grid;
-  grid-column: 1 / 26;
+  grid-column: bleedstart / bleedend;
   grid-template-columns: subgrid;
 }
 

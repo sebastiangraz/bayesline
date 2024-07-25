@@ -43,7 +43,7 @@
 .ui {
   background: white;
   aspect-ratio: 768/584;
-  grid-column: 12/26;
+  grid-column: 12 / bleedend;
   grid-row: 1;
   align-self: end;
   max-height: 576px;

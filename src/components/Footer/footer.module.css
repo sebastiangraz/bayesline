@@ -3,7 +3,7 @@
   overflow: hidden;
   background: var(--background);
 
-  grid-column: 1 / 26;
+  grid-column: bleedstart / bleedend;
   padding: 2em 0;
 }
 .content {
