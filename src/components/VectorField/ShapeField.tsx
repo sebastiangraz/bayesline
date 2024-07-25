@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import style from './vectorfield.module.css';
-
+import { Shape, ShapeProps } from './Shape';
 interface ShapeFieldProps {
   width?: number;
   height?: number;
@@ -14,16 +14,6 @@ interface ShapeFieldProps {
   color2?: string;
   isStatic?: boolean;
   className?: string;
-}
-
-interface ShapeProps {
-  x: number;
-  y: number;
-  size: number;
-  type: 'rect' | 'ellipse' | 'line' | null;
-  opacity: number;
-  isStatic?: boolean;
-  color: string;
 }
 
 const childVariants = {
@@ -41,30 +31,6 @@ const childVariants = {
     }
   })
 };
-
-const Shape = React.memo(({ x, y, type, size = 8, opacity, isStatic, color }: ShapeProps) => {
-  if (!type) return null;
-  // don’t add strokeOpacity if isStatic is
-  const isStaticProps = isStatic ? { strokeOpacity: opacity } : {};
-  const commonProps = {
-    stroke: 'currentColor',
-    vectorEffect: 'non-scaling-stroke',
-    strokeWidth: 1.25,
-    fill: 'none',
-    style: { color },
-    ...isStaticProps
-  };
-  switch (type) {
-    case 'line':
-      return <line x1={x} y1={y + size / 2} x2={x + size} y2={y + size / 2} {...commonProps} />;
-    case 'rect':
-      return <rect x={x} y={y} width={size} height={size} {...commonProps} />;
-    case 'ellipse':
-      return <ellipse cx={x + size / 2} cy={y + size / 2} rx={size / 2} ry={size / 2} {...commonProps} />;
-    default:
-      return null;
-  }
-});
 
 export const ShapeField = React.memo(
   ({

@@ -38,9 +38,9 @@ export function Home() {
           </div>
           <ShapeField
             variant="dithered-gradient"
-            rows={24}
-            columns={24}
-            padding={3}
+            rows={50}
+            columns={50}
+            padding={1}
             color1="var(--accent-3)"
             color2="hsl(var(--brand-2))"
             className={style.cardShapeField}
