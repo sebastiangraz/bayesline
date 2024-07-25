@@ -16,20 +16,26 @@
 }
 
 .switch {
+  grid-row: 1;
   z-index: 2;
   display: grid;
   position: sticky;
   top: 0;
-  margin: 1em 0;
+  margin: 1.5em 0;
+  @media (--sm) {
+    margin: 1em 0;
+  }
 }
 
 .back {
+  isolation: isolate;
+  margin-bottom: 0.5em;
+  grid-row: 2;
   grid-auto-flow: column;
-  margin: 1em 0;
   display: grid;
   align-items: center;
-  justify-content: center;
-  grid-column: span 3 / end;
+  justify-content: start;
+
   color: var(--foreground-accent);
   svg {
     margin-right: 0.125em;
@@ -41,6 +47,12 @@
   }
   &:hover {
     text-decoration: underline;
+  }
+  @media (--lg) {
+    margin-bottom: 0;
+    justify-content: center;
+    grid-column: span 3 / end;
+    grid-row: 1;
   }
 }
 
