@@ -12,7 +12,6 @@ const navItems = [
   { to: 'https://app.bayesline.com/signup/', label: 'Sign up', highlight: true }
 ];
 
-//forwardRef props from Navigation
 const DesktopNavigation = (props: any) => {
   const { isSticky, headerRef } = props;
 
@@ -55,9 +54,13 @@ const MobileNavigation = (props: any) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleNavClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav ref={headerRef} className={`col ${style.mobilenav} ${isOpaque}`}>
-      <Link to="/" className={`${style.mobilelogo} ${style.link}`}>
+      <Link to="/" className={`${style.mobilelogo} ${style.link}`} onClick={() => handleNavClick()}>
         <Logo.Mark className={`${style.mark} ${style.link}`} />
       </Link>
       <AnimatePresence>
@@ -79,6 +82,7 @@ const MobileNavigation = (props: any) => {
                   to={item.to}
                   target={isLink ? '_blank' : ''}
                   className={`${style.mobilelink} ${highlight}`}
+                  onClick={() => handleNavClick()}
                 >
                   {item.label}
                 </Link>
@@ -94,33 +98,52 @@ const MobileNavigation = (props: any) => {
     </nav>
   );
 };
+function useStickyObserver(refs: React.RefObject<HTMLElement>[], options: IntersectionObserverInit) {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const isCurrentlySticky = entry.intersectionRatio < 1;
+        if (refs.some((ref) => ref.current === entry.target)) {
+          setIsSticky(isCurrentlySticky);
+          if (document.body) {
+            document.body.dataset.sticky = isCurrentlySticky ? 'true' : 'false';
+          }
+        }
+      });
+    }, options);
+
+    refs.forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
+
+    return () => {
+      refs.forEach((ref) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
+      observer.disconnect();
+    };
+  }, [refs, options]); // Using refs here assumes refs is memoized or stable
+
+  return isSticky;
+}
 
 export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => {
-  const [isSticky, setIsSticky] = useState(false);
-  const headerRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    (async () => {
-      const observer = new IntersectionObserver(
-        ([e]) => {
-          if (document.body) {
-            document.body.dataset.sticky = e.intersectionRatio < 1 ? 'true' : 'false';
-            setIsSticky(e.intersectionRatio < 1);
-          }
-        },
-        { rootMargin: '-1px 0px 0px 0px', threshold: [1] }
-      );
-      observer.observe(headerRef.current as HTMLDivElement);
-      return () => observer.disconnect();
-    })();
-  }, []);
+  const desktopHeaderRef = useRef<HTMLDivElement>(null);
+  const mobileHeaderRef = useRef<HTMLDivElement>(null);
+  const isSticky = useStickyObserver([desktopHeaderRef, mobileHeaderRef], {
+    rootMargin: '-1px 0px 0px 0px',
+    threshold: [1]
+  });
 
   const entryStyle = backbutton ? style.entry : '';
   const stickyStyle = isSticky ? style.sticky : '';
 
   return (
     <div className={`col theme ${style.navigation} ${entryStyle} ${stickyStyle}`}>
-      <DesktopNavigation isSticky={isSticky} headerRef={headerRef} />
-      <MobileNavigation isSticky={isSticky} headerRef={headerRef} />
+      <DesktopNavigation isSticky={isSticky} headerRef={desktopHeaderRef} />
+      <MobileNavigation isSticky={isSticky} headerRef={mobileHeaderRef} />
       {backbutton && (
         <div className={`col ${style.back}`}>
           <svg width="13" height="14" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">

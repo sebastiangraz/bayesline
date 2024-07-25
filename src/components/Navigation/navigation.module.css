@@ -48,11 +48,14 @@
   color: var(--foreground);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
+
   @media (--lg) {
     grid-column: start / 14;
   }
   @media not (--sm) {
-    display: none;
+    visibility: hidden;
+    height: 0px;
+    margin: 0;
   }
 }
 .links {
@@ -127,6 +130,8 @@
 
 .mobilenav {
   display: grid;
+  visibility: visible;
+
   grid-template-areas:
     'logo burger'
     'links links';
@@ -150,7 +155,9 @@
   }
 
   @media (--sm) {
-    display: none;
+    visibility: hidden;
+    height: 0px;
+    margin: 0;
   }
 }
 
