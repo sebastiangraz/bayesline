@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import style from './vectorfield.module.css';
 import { Shape, ShapeProps } from './Shape';
@@ -32,6 +32,160 @@ const childVariants = {
   })
 };
 
+const opacitySteps = (combinedNoise: number) => {
+  if (combinedNoise <= 0.33) return 0.2;
+  if (combinedNoise <= 0.66) return 0.6;
+  return 1;
+};
+
+const getOpacity = (combinedNoise: number, variant: string, col: number, row: number) => {
+  let opacityType: ShapeProps['opacity'];
+  switch (variant) {
+    case 'swirl':
+      opacityType = opacitySteps(combinedNoise);
+      break;
+    case 'dithered-gradient':
+      opacityType = opacitySteps(combinedNoise);
+      break;
+    case 'radial':
+      opacityType = opacitySteps(combinedNoise);
+      break;
+    case 'bayesian':
+      opacityType = opacitySteps(combinedNoise);
+      break;
+    case 'checker':
+      opacityType = opacitySteps(combinedNoise);
+      break;
+    case 'pcb':
+      opacityType = pcbPattern(col, row) > 0.5 ? 0.5 : 1;
+      break;
+    default:
+      opacityType = opacitySteps(combinedNoise);
+      break;
+  }
+  return opacityType;
+};
+
+const getShapeType = (
+  col: number,
+  row: number,
+  baseNoise: number,
+  radialNoise: number,
+  index: number,
+  y: number,
+  height: number,
+  variant: string,
+  rows: number,
+  columns: number
+) => {
+  let shapeType: ShapeProps['type'];
+  const ydistance = y / height;
+
+  function combinedType(value: number, offset = 0) {
+    const offsetValue = value + offset;
+    let shapeType: ShapeProps['type'];
+    if (value <= 0.33) {
+      shapeType = 'line';
+    } else if (offsetValue <= 0.66) {
+      shapeType = 'ellipse';
+    } else {
+      shapeType = 'rect';
+    }
+    return shapeType;
+  }
+
+  switch (variant) {
+    case 'swirl':
+      shapeType = combinedType(tornado(col, row, rows, columns));
+      break;
+
+    case 'dithered-gradient':
+      shapeType = combinedType(baseNoise + ydistance);
+      break;
+
+    case 'radial':
+      shapeType = combinedType(radialNoise, 0.26);
+      break;
+
+    case 'bayesian':
+      shapeType = combinedType(bayesianCurve(col, row, columns, rows), 0.328);
+      break;
+
+    case 'checker':
+      shapeType = index % 2 === 0 ? 'rect' : 'ellipse';
+      break;
+
+    case 'pcb':
+      shapeType = combinedType(pcbPattern(col, row), 0);
+      break;
+
+    default:
+      shapeType = 'rect';
+      break;
+  }
+
+  return shapeType;
+};
+
+function shapes(
+  rows: number,
+  columns: number,
+  cellWidth: number,
+  cellHeight: number,
+  padding: number,
+  color1: string,
+  color2: string,
+  variant: string,
+  isStatic: boolean,
+  midX: number,
+  midY: number,
+  width: number,
+  height: number
+) {
+  return Array.from({ length: rows * columns }, (_, index) => {
+    const col = index % columns;
+    const row = Math.floor(index / columns);
+    const x = col * (cellWidth + padding) + padding / 2;
+    const y = row * (cellHeight + padding) + padding / 2;
+
+    const shapeSize = Math.min(cellWidth, cellHeight) - padding;
+
+    // radial tools
+    const rx = (x - midX) / width;
+    const ry = (y - midY) / height;
+    // const rdistance = Math.sqrt(rx * rx + ry * ry);
+
+    //linear tools
+    const dx = col / columns;
+    // const dy = row / rows;
+    // const interpolation = Math.abs(rx - ry);
+    // const xdistance = x / width;
+    // const ydistance = y / height;
+    // const diagDistance = Math.sqrt(dx * dx + dy * dy);
+
+    // noise tools, noice indeed
+    const baseNoise = (0.5 - Math.random()) * 0.66;
+    const noise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 2;
+    const radialNoise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 4;
+    const opacity = getOpacity(baseNoise + noise, variant, col, row);
+    const shapeType = getShapeType(col, row, baseNoise, radialNoise, index, y, height, variant, rows, columns);
+    const color = shapeType === 'rect' ? color1 : color2;
+
+    return (
+      <motion.g
+        key={`${row}-${col}`}
+        variants={!isStatic ? (childVariants as any) : {}}
+        custom={{ shimmer: index, opacity: opacity }}
+        // custom={{ shimmer: opacity * index * 0.03 * (index * 0.01) }}
+        initial="hidden"
+        animate="visible"
+      >
+        <Shape x={x} y={y} type={shapeType} size={shapeSize} isStatic={isStatic} opacity={opacity} color={color} />
+      </motion.g>
+    );
+  });
+}
+
 export const ShapeField = React.memo(
   ({
     width = 240,
@@ -60,166 +214,6 @@ export const ShapeField = React.memo(
     const midX = width / 2 - cellWidth / 2;
     const midY = height / 2 - cellHeight / 2;
 
-    const getShapeType = useCallback(
-      (col: number, row: number, baseNoise: number, radialNoise: number, index: number, y: number) => {
-        let shapeType: ShapeProps['type'];
-        const ydistance = y / height;
-
-        function combinedType(value: number, offset = 0) {
-          const offsetValue = value + offset;
-          let shapeType: ShapeProps['type'];
-          if (value <= 0.33) {
-            shapeType = 'line';
-          } else if (offsetValue <= 0.66) {
-            shapeType = 'ellipse';
-          } else {
-            shapeType = 'rect';
-          }
-          return shapeType;
-        }
-
-        switch (variant) {
-          case 'swirl':
-            shapeType = combinedType(tornado(col, row, rows, columns));
-            break;
-
-          case 'dithered-gradient':
-            shapeType = combinedType(baseNoise + ydistance);
-            break;
-
-          case 'radial':
-            shapeType = combinedType(radialNoise, 0.26);
-            break;
-
-          case 'bayesian':
-            shapeType = combinedType(bayesianCurve(col, row, columns, rows), 0.328);
-            break;
-
-          case 'checker':
-            shapeType = index % 2 === 0 ? 'rect' : 'ellipse';
-            break;
-
-          case 'pcb':
-            shapeType = combinedType(pcbPattern(col, row), 0);
-            break;
-
-          default:
-            shapeType = 'rect';
-            break;
-        }
-
-        return shapeType;
-      },
-      [columns, height, rows, variant]
-    );
-
-    const opacitySteps = useCallback((combinedNoise: number) => {
-      if (combinedNoise <= 0.33) return 0.2;
-      if (combinedNoise <= 0.66) return 0.6;
-      return 1;
-    }, []);
-
-    const getOpacity = useCallback(
-      (combinedNoise: number, variant: string, col: number, row: number) => {
-        let opacityType: ShapeProps['opacity'];
-        switch (variant) {
-          case 'swirl':
-            opacityType = opacitySteps(combinedNoise);
-            break;
-          case 'dithered-gradient':
-            opacityType = opacitySteps(combinedNoise);
-            break;
-          case 'radial':
-            opacityType = opacitySteps(combinedNoise);
-            break;
-          case 'bayesian':
-            opacityType = opacitySteps(combinedNoise);
-            break;
-          case 'checker':
-            opacityType = opacitySteps(combinedNoise);
-            break;
-          case 'pcb':
-            opacityType = pcbPattern(col, row) > 0.5 ? 0.5 : 1;
-            break;
-          default:
-            opacityType = opacitySteps(combinedNoise);
-            break;
-        }
-        return opacityType;
-      },
-      [opacitySteps]
-    );
-
-    const shapes = React.useMemo(
-      () =>
-        Array.from({ length: rows * columns }, (_, index) => {
-          const col = index % columns;
-          const row = Math.floor(index / columns);
-          const x = col * (cellWidth + padding) + padding / 2;
-          const y = row * (cellHeight + padding) + padding / 2;
-
-          const shapeSize = Math.min(cellWidth, cellHeight) - padding;
-
-          // radial tools
-          const rx = (x - midX) / width;
-          const ry = (y - midY) / height;
-          // const rdistance = Math.sqrt(rx * rx + ry * ry);
-
-          //linear tools
-          const dx = col / columns;
-          // const dy = row / rows;
-          // const interpolation = Math.abs(rx - ry);
-          // const xdistance = x / width;
-          // const ydistance = y / height;
-          // const diagDistance = Math.sqrt(dx * dx + dy * dy);
-
-          // noise tools, noice indeed
-          const baseNoise = (0.5 - Math.random()) * 0.66;
-          const noise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 2;
-          const radialNoise = (Math.sin(dx * Math.PI) + Math.cos(ry * Math.PI)) / 4;
-          const opacity = getOpacity(baseNoise + noise, variant, col, row);
-          const shapeType = getShapeType(col, row, baseNoise, radialNoise, index, y);
-          const color = shapeType === 'rect' ? color1 : color2;
-
-          return (
-            <motion.g
-              key={`${row}-${col}`}
-              variants={!isStatic ? (childVariants as any) : {}}
-              custom={{ shimmer: index, opacity: opacity }}
-              // custom={{ shimmer: opacity * index * 0.03 * (index * 0.01) }}
-              initial="hidden"
-              animate="visible"
-            >
-              <Shape
-                x={x}
-                y={y}
-                type={shapeType}
-                size={shapeSize}
-                isStatic={isStatic}
-                opacity={opacity}
-                color={color}
-              />
-            </motion.g>
-          );
-        }),
-      [
-        cellHeight,
-        cellWidth,
-        color1,
-        color2,
-        columns,
-        getOpacity,
-        getShapeType,
-        height,
-        isStatic,
-        midX,
-        midY,
-        padding,
-        rows,
-        variant,
-        width
-      ]
-    );
     const classNames = `${style.shapefield} ${className}`;
 
     return (
@@ -233,7 +227,21 @@ export const ShapeField = React.memo(
         // }}
         // animate={isInView ? { opacity: 1, visibility: 'visible' } : { visibility: 'hidden' }}
       >
-        {shapes}
+        {shapes(
+          rows,
+          columns,
+          cellWidth,
+          cellHeight,
+          padding,
+          color1,
+          color2,
+          variant,
+          isStatic,
+          midX,
+          midY,
+          width,
+          height
+        )}
       </motion.svg>
     );
   }
