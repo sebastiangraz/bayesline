@@ -9,14 +9,14 @@ interface HeroProps {
 }
 
 export const Hero = (props: HeroProps) => {
-  const { title = 'Financial analytics rethought.' } = props;
+  const { title = '' } = props;
 
   return (
     <div className={`col bleed`}>
       <div className={`col ${style.hero}`}>
         <div className={`${style.content}`}>
           <Text.H1>
-            <StaggerText>{title}</StaggerText>
+            <StaggerText>Financial analytics rethought.</StaggerText>
           </Text.H1>
           <Text.Body secondary balance>
             We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
