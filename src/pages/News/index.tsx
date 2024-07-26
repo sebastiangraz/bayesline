@@ -45,7 +45,7 @@ export function News() {
                   {thumbnail ? <img src={getImageUrl(fileName, thumbnail)} /> : <Asset seed={seedValue} />}
                 </div>
                 <div className={`col ${style.meta}`}>
-                  <div className={`col ${style.link}`}>
+                  <div className={`col ${style.header}`}>
                     {featured ? <Text.H3>{title}</Text.H3> : <Text.H5>{title}</Text.H5>}
                     <Text.Body className={`${style.date}`}>{date}</Text.Body>
                   </div>
