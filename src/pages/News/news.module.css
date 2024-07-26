@@ -119,8 +119,10 @@
 
 .featured {
   .wrapper {
-    padding: 2em 0;
+    padding: 0em 0 2em 0;
+    grid-column: bleedstart / bleedend;
     @media (--sm) {
+      grid-column: start / end;
       padding: 6rem 0;
     }
   }
@@ -138,13 +140,21 @@
   }
 
   .thumbnail {
-    grid-column: 1 / end;
+    grid-column: bleedstart / bleedend;
+    grid-template-columns: subgrid;
+    display: grid;
+    aspect-ratio: auto;
     width: 100%;
     padding: 3em;
     svg,
     img {
+      grid-column: start / end;
       box-shadow: var(--shadow);
-      width: 100%;
+      width: 50%;
+      place-self: center;
+      @media (--sm) {
+        width: 100%;
+      }
     }
     @media (--sm) {
       grid-column: 1 / 10;
