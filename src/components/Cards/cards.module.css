@@ -3,7 +3,7 @@
   grid-template-columns: subgrid;
   grid-column: start / end;
   align-items: stretch;
-  gap: 2em;
+  gap: 2em 0;
   .card {
     width: 100%;
   }
