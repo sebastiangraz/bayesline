@@ -119,22 +119,35 @@
 
 .featured {
   .wrapper {
-    padding: 6rem 0;
+    padding: 2em 0;
+    @media (--sm) {
+      padding: 6rem 0;
+    }
   }
 
   .meta {
-    grid-column: 13 / end;
-    gap: 1em;
+    grid-column: start / end;
+    gap: 1em 0;
+    @media (--sm) {
+      grid-column: 12 / end;
+    }
+
+    @media (--lg) {
+      grid-column: 14 / end;
+    }
   }
 
   .thumbnail {
-    grid-column: 1 / 10;
+    grid-column: 1 / end;
     width: 100%;
     padding: 3em;
     svg,
     img {
       box-shadow: var(--shadow);
       width: 100%;
+    }
+    @media (--sm) {
+      grid-column: 1 / 10;
     }
   }
   .header {
