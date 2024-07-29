@@ -31,13 +31,17 @@
 
 .slogan {
   color: var(--foreground);
+  max-width: 12rem;
   grid-area: top-left;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-column: 1 / span 2;
   gap: 1em;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   z-index: 1;
+  @media (--sm) {
+    max-width: unset;
+  }
 }
 
 .logo {
