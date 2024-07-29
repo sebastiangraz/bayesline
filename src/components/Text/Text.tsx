@@ -48,5 +48,6 @@ Text.H6 = createStyledText('h6', 'h6');
 Text.Body = createStyledText('body', 'p');
 Text.Small = createStyledText('small', 'span');
 Text.Caps = createStyledText('caps', 'span');
+Text.SmallCaps = createStyledText('smallCaps', 'span');
 
 export { Text };

@@ -35,6 +35,11 @@
   composes: small from global;
 }
 
+.smallCaps {
+  composes: caps from global;
+  font-size: var(--label);
+}
+
 .balance {
   text-wrap: balance;
 }

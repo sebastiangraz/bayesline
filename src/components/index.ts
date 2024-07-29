@@ -10,6 +10,6 @@ export { Img } from './Img';
 export { Layout } from './Layout';
 export { Logo } from './Logo';
 export { Markdown } from './Markdown';
-export { Navigation } from './Navigation';
+export { Navigation, navItems } from './Navigation';
 export { ShapeField, VectorField } from './VectorField';
 export { Text } from './Text';

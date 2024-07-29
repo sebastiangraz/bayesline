@@ -5,13 +5,33 @@ import { Logo } from '@/components';
 import { useRef, useState } from 'react';
 import { useStickyObserver } from '@/helpers/utils';
 
-const navItems = [
-  { to: '/mission', label: 'Mission' },
-  { to: '/news', label: 'News' },
-  { to: '/pricing', label: 'Pricing' },
-  { to: 'https://app.bayesline.com/', label: 'Docs' },
-  { to: 'https://app.bayesline.com/signup/', label: 'Sign up', highlight: true }
-];
+export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isSticky = useStickyObserver(ref, {
+    rootMargin: '-1px 0px 0px 0px',
+    threshold: [1]
+  });
+
+  const entryStyle = backbutton ? style.entry : '';
+
+  return (
+    <div className={`col theme ${style.navigation} ${entryStyle}`}>
+      <div ref={ref} className={`col bleed ${style.switch}`}>
+        <DesktopNavigation isSticky={isSticky} />
+        <MobileNavigation isSticky={isSticky} />
+      </div>
+      {backbutton && (
+        <div className={`col ${style.back}`}>
+          <svg width="13" height="14" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.5 11L2 6.5M2 6.5L11 6.5M2 6.5L6.5 2" stroke="currentColor" />
+          </svg>
+
+          <Link to="/news">{'Back to news'}</Link>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const DesktopNavigation = (props: any) => {
   const { isSticky } = props;
@@ -107,30 +127,10 @@ const MobileNavigation = (props: any) => {
   );
 };
 
-export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isSticky = useStickyObserver(ref, {
-    rootMargin: '-1px 0px 0px 0px',
-    threshold: [1]
-  });
-
-  const entryStyle = backbutton ? style.entry : '';
-
-  return (
-    <div className={`col theme ${style.navigation} ${entryStyle}`}>
-      <div ref={ref} className={`col bleed ${style.switch}`}>
-        <DesktopNavigation isSticky={isSticky} />
-        <MobileNavigation isSticky={isSticky} />
-      </div>
-      {backbutton && (
-        <div className={`col ${style.back}`}>
-          <svg width="13" height="14" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.5 11L2 6.5M2 6.5L11 6.5M2 6.5L6.5 2" stroke="currentColor" />
-          </svg>
-
-          <Link to="/news">{'Back to news'}</Link>
-        </div>
-      )}
-    </div>
-  );
-};
+export const navItems = [
+  { to: '/mission', label: 'Mission' },
+  { to: '/news', label: 'News' },
+  { to: '/pricing', label: 'Pricing' },
+  { to: 'https://app.bayesline.com/', label: 'Docs' },
+  { to: 'https://app.bayesline.com/signup/', label: 'Sign up', highlight: true }
+] as { to: string; label: string; highlight?: boolean }[];

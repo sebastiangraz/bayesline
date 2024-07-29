@@ -1,10 +1,14 @@
 import style from './footer.module.css';
-import { Button, Flex, Logo, Text } from '@/components';
+import { Button, Flex, Logo, Text, navItems } from '@/components';
 import footer from '@/assets/footer.svg';
+import { Link } from '@tanstack/react-router';
+
+const footerItems = [{ to: '/tos', label: 'Terms' }];
 
 export const Footer = () => {
   const currentTimestamp = Date.now();
   const date = new Date(currentTimestamp);
+  const mergedItems = [...footerItems, ...navItems];
   return (
     <div className={`col theme ${style.footer}`} data-theme="one">
       <div className={`col ${style.content}`}>
@@ -19,12 +23,19 @@ export const Footer = () => {
         </div>
         <hr />
         <div className={style.menu}>
-          <Button type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-            <Text.Caps secondary>Schedule a Demo</Text.Caps>
-          </Button>
+          <nav>
+            {mergedItems.map((item, index) => {
+              const isLink = item.to.startsWith('http');
+              return (
+                <Link key={index} to={item.to} target={isLink ? '_blank' : ''} className={`${style.menuItem}`}>
+                  <Text.SmallCaps secondary>{item.label}</Text.SmallCaps>
+                </Link>
+              );
+            })}
+          </nav>
         </div>
         <div className={style.copyright}>
-          <Text.Caps secondary>© Copyright {date.getFullYear()} · Bayesline</Text.Caps>
+          <Text.SmallCaps secondary>© {date.getFullYear()} · Bayesline</Text.SmallCaps>
         </div>
       </div>
     </div>
