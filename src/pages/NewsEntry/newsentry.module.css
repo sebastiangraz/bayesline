@@ -9,13 +9,16 @@
 }
 
 .title {
-  grid-column: start / span 11;
+  grid-column: start / end;
   &::first-letter {
     text-transform: capitalize;
   }
   .date {
     display: block;
     margin-top: 1.5em;
+  }
+  @media (--sm) {
+    grid-column: start / span 11;
   }
 }
 
@@ -94,26 +97,38 @@
 }
 
 .excerpt {
-  grid-column: 15 / span 10;
+  grid-column: start / end;
   color: var(--foreground-accent);
+  @media (--sm) {
+    grid-column: 15 / span 10;
+  }
 }
 
 .entryImage {
   display: grid;
-  grid-column: span 12;
+  grid-column: bleedstart / bleedend;
   padding: 2em 0;
   background: var(--background-accent);
   grid-template-columns: subgrid;
   svg,
   img {
     box-shadow: var(--shadow);
-    grid-column: start / span 9;
+    grid-column: 9 / span 9;
     width: 100%;
+    @media (--sm) {
+      grid-column: start / span 9;
+    }
+  }
+  @media (--sm) {
+    grid-column: span 12;
   }
 }
 
 .chapters {
-  grid-column: 15 / span 10;
+  grid-column: start / end;
+  @media (--sm) {
+    grid-column: 15 / span 10;
+  }
   .toc {
     display: grid;
     gap: 1em 0;
