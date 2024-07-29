@@ -113,7 +113,7 @@ const MobileNavigation = (props: any) => {
         )}
       </AnimatePresence>
 
-      <div className={`${style.burger}`} onClick={() => handleMenuToggle()}>
+      <div className={`${style.burger} ${isMenuOpen ? style.open : ''}`} onClick={() => handleMenuToggle()}>
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M34 25.5L6 25.5M34 19.5L6 19.5M34 13.5H6"

@@ -190,8 +190,14 @@
   justify-content: center;
   user-select: none;
   color: var(--foreground-accent);
+  svg {
+    transition: color 0.3s ease;
+  }
   &:hover {
     color: var(--foreground);
+  }
+  &.open svg {
+    color: var(--foreground-border);
   }
 }
 
