@@ -100,6 +100,7 @@
   all: unset;
   display: contents;
   box-sizing: border-box;
+
   h1 {
     font-size: var(--body-small);
     grid-column: start / end;
@@ -122,14 +123,31 @@
   }
 
   p {
+    z-index: 1;
     color: var(--foreground-accent-opaque);
     display: grid;
-    grid-column: start / span 5;
-    background: linear-gradient(0deg, var(--background) calc(100% - 5px), transparent 100%);
+    grid-column: bleedstart / bleedend;
+    background: var(--background);
+    padding: 3.5rem 1.5rem 0.5em 1.5rem;
+    font-size: var(--body-small);
     position: sticky;
-    top: 5em;
+    top: 0;
     align-self: stretch;
-    display: grid;
+    display: inline;
+    min-height: 4lh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    @media (--sm) {
+      display: grid;
+      text-align: left;
+      top: 5em;
+      padding: unset;
+      white-space: normal;
+      grid-column: start / span 5;
+      background: linear-gradient(0deg, var(--background) calc(100% - 5px), transparent 100%);
+    }
   }
 }
 table {

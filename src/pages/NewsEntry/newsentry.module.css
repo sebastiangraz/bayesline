@@ -126,6 +126,7 @@
 
 .chapters {
   grid-column: start / end;
+  padding-bottom: 2em;
   @media (--sm) {
     grid-column: 15 / span 10;
   }
