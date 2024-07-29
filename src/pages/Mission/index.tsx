@@ -14,7 +14,7 @@ export function Mission() {
           </div>
 
           <div className={`col ${style.illustration1}`}>
-            <img src={progress} className={style.progress} />
+            <img src={progress} />
           </div>
 
           <div className={`col ${style.illustration2}`}>

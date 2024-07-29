@@ -5,24 +5,34 @@
 .missionHero {
   gap: 0;
   align-items: stretch;
+  grid-auto-flow: column dense;
   & > * {
     padding: 2em;
   }
 }
 
 .intro {
-  grid-column: 1 / span 11;
+  grid-column: 1 / span end;
   background: var(--background-4);
+  @media (--md) {
+    grid-column: 1 / span 11;
+  }
 }
 .illustration1 {
   grid-column: 12 / span end;
   background: hsl(var(--brand-1));
-  display: grid;
+  display: none;
   align-items: center;
   justify-content: center;
   & > svg {
     width: 22rem;
     height: 14rem;
+  }
+  @media (--sm) {
+    display: grid;
+  }
+  @media (--md) {
+    grid-column: 12 / span end;
   }
 }
 .illustration2 {
@@ -30,15 +40,28 @@
   display: grid;
   align-items: center;
   justify-content: center;
-  grid-column: 1 / span 9;
+  grid-column: start / end;
+  overflow: clip;
   background: hsl(var(--brand-0));
   & > svg {
-    width: 17rem;
-    height: 17rem;
+    padding: 2rem;
+    width: 100%;
+    height: auto;
+    @media (--sm) {
+      padding: 1rem;
+      width: 100%;
+      height: 17rem;
+    }
+  }
+  @media (--sm) {
+    grid-column: 1 / span 11;
+  }
+  @media (--md) {
+    grid-column: 1 / span 9;
   }
 }
 .valueprops {
-  grid-column: 10 / span end;
+  grid-column: start / end;
   background: hsl(var(--brand-2));
   ul {
     display: grid;
@@ -58,6 +81,9 @@
         color: hsl(var(--steel-5));
       }
     }
+  }
+  @media (--md) {
+    grid-column: 10 / span end;
   }
 }
 
