@@ -1,10 +1,13 @@
 .prose p:has(img),
 .prose picture {
-  grid-column: 8 / end;
+  grid-column: start / end;
   z-index: 0;
   justify-content: start;
   display: grid;
   margin: 2em 0;
+  @media (--sm) {
+    grid-column: 8 / end;
+  }
 }
 
 .prose {
@@ -25,7 +28,10 @@
   }
 
   > * {
-    grid-column: 8 / span 11;
+    grid-column: start / end;
+    @media (--sm) {
+      grid-column: 8 / span 11;
+    }
   }
   p {
     color: var(--foreground-accent-opaque);
@@ -37,7 +43,7 @@
 
   > aside {
     display: grid;
-    grid-column: 20 / end;
+    grid-column: start / end;
     height: auto;
     grid-row: span 1;
     gap: 0.5em 0;
@@ -46,6 +52,9 @@
     & * {
       color: inherit;
       font-size: inherit;
+    }
+    @media (--sm) {
+      grid-column: 20 / end;
     }
     @media (--lg) {
       height: 1ch;
@@ -126,22 +135,21 @@
     z-index: 1;
     color: var(--foreground-accent-opaque);
     display: grid;
-    grid-column: bleedstart / bleedend;
+    grid-column: start / end;
     background: var(--background);
-    padding: 3.5rem 1.5rem 0.5em 1.5rem;
+    padding: 0.5em 0 0.5em 0;
     font-size: var(--body-small);
     position: sticky;
-    top: 0;
+    top: 3rem;
     align-self: stretch;
     display: inline;
-    min-height: 4lh;
+
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    text-align: center;
+    text-align: left;
     @media (--sm) {
       display: grid;
-      text-align: left;
       top: 5em;
       padding: unset;
       white-space: normal;

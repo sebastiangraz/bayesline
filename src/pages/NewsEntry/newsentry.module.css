@@ -68,8 +68,11 @@
       margin: 0;
       a {
         display: flex;
-        gap: 0 3em;
+        gap: 0 1.5em;
         text-decoration: none;
+        @media (--sm) {
+          gap: 0 3em;
+        }
         &:hover {
           text-decoration: underline;
         }
@@ -79,11 +82,14 @@
   .thumbnail {
     background: var(--background-accent);
     aspect-ratio: 1;
-    flex-basis: 3em;
+    flex-basis: 6em;
     svg,
     img {
       box-shadow: var(--shadow);
       width: 100%;
+    }
+    @media (--sm) {
+      flex-basis: 3em;
     }
   }
   .meta {
