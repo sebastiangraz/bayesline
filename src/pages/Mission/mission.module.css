@@ -99,8 +99,12 @@
   .founderlist {
     display: grid;
     grid-column: start / end;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em 2em;
+    grid-template-columns: 1fr;
+    gap: 2em 2em;
+    @media (--md) {
+      gap: 1em 2em;
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .founder {
