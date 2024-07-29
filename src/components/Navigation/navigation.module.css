@@ -217,3 +217,9 @@
     opacity: 0.5;
   }
 }
+
+@media print {
+  .navigation {
+    display: none;
+  }
+}

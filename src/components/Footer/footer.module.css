@@ -154,3 +154,9 @@
     place-self: start end;
   }
 }
+
+@media print {
+  .footer {
+    display: none;
+  }
+}

@@ -425,3 +425,28 @@
     }
   }
 }
+
+@print {
+  @page {
+    size: A4;
+    margin: 1cm;
+    padding: 1cm;
+  }
+
+  img,
+  table,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li {
+    page-break-inside: avoid;
+  }
+
+  img {
+    width: 100%;
+  }
+}

@@ -180,3 +180,41 @@
     }
   }
 }
+
+@media print {
+  /* :root body :global .theme {
+    --background: transparent !important;
+    --foreground: black !important;
+  } */
+
+  .title {
+    grid-column: start / end;
+    h2 {
+      font-size: 32pt;
+    }
+  }
+
+  .excerpt {
+    color: black;
+    grid-column: start / end;
+  }
+
+  .chapters {
+    grid-column: start / end;
+  }
+
+  .toc p {
+    color: black;
+  }
+
+  .date {
+    color: black;
+  }
+
+  .more {
+    display: none;
+  }
+  .disclaimer {
+    display: none;
+  }
+}
