@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import style from './navigation.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Logo } from '@/components';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useStickyObserver } from '@/helpers/utils';
 
 export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => {
@@ -69,57 +69,59 @@ const DesktopNavigation = (props: any) => {
 const MobileNavigation = (props: any) => {
   const { isSticky } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isOpaque = isSticky || isMenuOpen ? style.isOpaque : '';
+  const navRef = useRef(null); // Ref to the nav element
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const handleMenuToggle = () => setIsMenuOpen(!isMenuOpen);
+  const handleNavClick = () => setIsMenuOpen(false);
 
-  const handleNavClick = () => {
-    setIsMenuOpen(false);
-  };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const navElement = navRef.current as HTMLElement | null;
+      if (navElement && !navElement.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [navRef]);
 
   return (
-    <nav className={`col ${style.mobile} ${isOpaque}`}>
-      <Link to="/" className={`${style.mobilelogo} ${style.link}`} onClick={() => handleNavClick()}>
-        <Logo.Mark className={`${style.link}`} />
+    <nav className={`col ${style.mobile} ${isSticky || isMenuOpen ? style.isOpaque : ''}`} ref={navRef}>
+      <Link to="/" className={`${style.mobilelogo} ${style.link}`} onClick={handleNavClick}>
+        <Logo.Mark className={style.link} />
       </Link>
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className={`${style.mobilelinks}`}
+            className={style.mobilelinks}
             layout="size"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
           >
-            {navItems.map((item, index) => {
-              const highlight = item.highlight ? style.highlight : '';
-
-              const isLink = item.to.startsWith('http');
-              return (
-                <Link
-                  key={`${item.to}-${index}`}
-                  to={item.to}
-                  target={isLink ? '_blank' : ''}
-                  className={`${style.mobilelink} ${highlight}`}
-                  onClick={() => handleNavClick()}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+            {navItems.map((item, index) => (
+              <Link
+                key={`${item.to}-${index}`}
+                to={item.to}
+                target={item.to.startsWith('http') ? '_blank' : ''}
+                className={`${style.mobilelink} ${item.highlight ? style.highlight : ''}`}
+                onClick={handleNavClick}
+              >
+                {item.label}
+              </Link>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
-
-      <div className={`${style.burger} ${isMenuOpen ? style.open : ''}`} onClick={() => handleMenuToggle()}>
+      <div className={`${style.burger} ${isMenuOpen ? style.open : ''}`} onClick={handleMenuToggle}>
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M34 25.5L6 25.5M34 19.5L6 19.5M34 13.5H6"
+            d="M34 25.5H6M34 19.5H6M34 13.5H6"
             stroke="currentColor"
-            vectorEffect={'non-scaling-stroke'}
-            strokeWidth={1}
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
           />
         </svg>
       </div>
