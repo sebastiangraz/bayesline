@@ -20,8 +20,11 @@
 
   :global .katex-display {
     z-index: 1;
-    grid-column: bleedstart / bleedend;
-    font-size: var(--h5);
+    grid-column: start / end;
+    font-size: var(--body-small);
+    @media (--sm) {
+      font-size: var(--h5);
+    }
   }
   :global .katex {
     color: var(--foreground);
@@ -30,6 +33,9 @@
   > * {
     grid-column: start / end;
     @media (--sm) {
+      grid-column: 8 / span end;
+    }
+    @media (--md) {
       grid-column: 8 / span 11;
     }
   }
@@ -54,6 +60,9 @@
       font-size: inherit;
     }
     @media (--sm) {
+      grid-column: 8 / end;
+    }
+    @media (--md) {
       grid-column: 20 / end;
     }
     @media (--lg) {
@@ -158,6 +167,17 @@
     }
   }
 }
+.table {
+  overflow: auto;
+  grid-column: start / end;
+  @media (--sm) {
+    grid-column: 8 / span end;
+  }
+  @media (--lg) {
+    grid-column: 8 / span end;
+    overflow: visible;
+  }
+}
 table {
   border-collapse: collapse;
   display: inline-grid;
@@ -217,13 +237,16 @@ span[data-rehype-pretty-code-figure] {
 
 figure[data-rehype-pretty-code-figure] {
   display: inline-grid;
-  grid-column: 8 / end;
+  grid-column: start end;
   grid-row: auto;
-
   border-radius: var(--radius);
   background: hsl(var(--brand-0));
   position: relative;
   z-index: 1;
+
+  @media (--md) {
+    grid-column: 8 / end;
+  }
 
   pre {
     overflow-x: auto;
