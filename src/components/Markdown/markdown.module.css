@@ -10,10 +10,6 @@
   }
 }
 
-.table {
-  composes: scrollbar from global;
-}
-
 @keyframes mask-up {
   100% {
     mask-size:
@@ -65,6 +61,22 @@
 
     @media (--sm) {
       font-size: var(--h5);
+    }
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      height: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: color-mix(in srgb, var(--foreground) calc(100% * var(--opacity-3)), transparent);
+    }
+    &::-webkit-scrollbar-track {
+      background-color: var(--foreground-border);
+    }
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--foreground-accent);
+      }
     }
   }
 
@@ -210,8 +222,25 @@
   }
 }
 .table {
-  overflow: auto;
+  composes: scrollbar from global;
   grid-column: start / end;
+  overflow-y: hidden;
+  mask:
+    linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
+    linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
+    linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
+  mask-composite: exclude;
+
+  &:local {
+    animation:
+      mask-up both linear,
+      mask-down both linear;
+    animation-timeline: scroll(x self);
+    animation-range:
+      0 2em,
+      calc(100% - 2em) 100%;
+  }
+
   @media (--sm) {
     grid-column: 8 / span end;
   }
