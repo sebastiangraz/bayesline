@@ -125,7 +125,7 @@ const data = {
       featureIcon: 'globe',
       featureDescription:
         'We offer flexibility to deploy in your virtual private cloud environment, keeping your data and settings only visible to you at all times.',
-      image: 'browser-slice.png'
+      image: 'homepage-hero.png'
     },
     {
       id: '2',

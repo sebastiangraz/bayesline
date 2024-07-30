@@ -22,8 +22,12 @@
 .cardShapeField {
   grid-area: 2/1;
   margin-top: -1em;
-  place-self: start start;
-  width: 6em;
+  place-self: end start;
+  width: 50%;
+
+  @media (--md) {
+    width: 6em;
+  }
 }
 
 .threeup {
