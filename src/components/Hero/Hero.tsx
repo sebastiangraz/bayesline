@@ -22,14 +22,14 @@ export const Hero = (props: HeroProps) => {
             We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
             blazing fast.
           </Text.Body>
-          <Button
-            theme={1}
-            type="primary-interactive"
-            href="https://calendar.app.google/qq4pjZcmDdzTjBme7"
-            target="_blank"
-          >
-            <Text.Caps>Book a Demo</Text.Caps>
-          </Button>
+          <div className={`${style.ctas}`}>
+            <Button size="small" theme={1} type="primary-interactive" href="https://app.bayesline.com" target="_blank">
+              <Text.Caps>Try for Free</Text.Caps>
+            </Button>
+            <Button size="small" theme={3} type="primary" href="http://schedule30.bayesline.com" target="_blank">
+              <Text.Caps>Learn More</Text.Caps>
+            </Button>
+          </div>
           <div className={`${style.badges}`}>
             <div className={`${style.badge}`}>
               <img src={ycomb} alt="badge" />
