@@ -35,7 +35,7 @@ const FeatureComparison = () => {
           blazing fast.
         </Text.Body>
         <div className={`${style.cta}`}>
-          <Button type="secondary" theme={1} href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+          <Button type="secondary" theme={1} href="http://schedule30.bayesline.com" target="_blank">
             <Text.Caps>Book a Demo</Text.Caps>
           </Button>
           <Text.Small balance secondary>

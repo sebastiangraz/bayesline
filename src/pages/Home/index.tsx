@@ -14,7 +14,7 @@ export function Home() {
               Bring your own data, hierarchies, factor exposures, or use our pre-canned and optimized models. Select
               from industry standard reports, or new ways to look at risk.
             </Text.Body>
-            <Button type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+            <Button type="secondary" href="http://schedule30.bayesline.com" target="_blank">
               <Text.Caps>Schedule a Demo</Text.Caps>
             </Button>
           </div>

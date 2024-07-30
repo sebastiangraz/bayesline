@@ -31,7 +31,7 @@ export function Pricing() {
             <Text.Body secondary balance>
               Where investors level up. Enhanced security, compliance, and dedicated support to operate efficiently.{' '}
             </Text.Body>
-            <Button theme={1} type="secondary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
+            <Button theme={1} type="secondary" href="http://schedule30.bayesline.com" target="_blank">
               <Text.Caps>Contact us</Text.Caps>
             </Button>
             <ul>
