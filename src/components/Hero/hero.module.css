@@ -85,8 +85,10 @@
     grid-column: 12 / end;
   }
 
-  img {
+  .image {
     background: white;
+    border-radius: var(--radius);
+    overflow: clip;
     isolation: isolate;
     max-height: 100%;
     max-width: 100%;

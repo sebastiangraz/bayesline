@@ -1,6 +1,6 @@
 import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
-import { Button, Flex, Text, VectorField } from '@/components';
+import { Button, Flex, Img, Text, VectorField } from '@/components';
 import hero from '@/assets/homepage-hero.png';
 import nvidia from '@/assets/nvidia.svg';
 import ycomb from '@/assets/ycomb.svg';
@@ -47,7 +47,7 @@ export const Hero = (props: HeroProps) => {
           <VectorField />
         </div>
 
-        <img src={hero} alt="hero" />
+        <Img src="homepage-hero.png" alt="hero" className={style.image} />
       </div>
     </div>
   );
