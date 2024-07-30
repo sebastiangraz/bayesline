@@ -10,6 +10,27 @@
   }
 }
 
+.table {
+  composes: scrollbar from global;
+}
+
+@keyframes mask-up {
+  100% {
+    mask-size:
+      3em 100%,
+      100% 100%,
+      3em 100%;
+  }
+}
+@keyframes mask-down {
+  100% {
+    mask-size:
+      3em 100%,
+      100% 100%,
+      0 100%;
+  }
+}
+
 .prose {
   display: grid;
   grid-auto-flow: row;
@@ -19,13 +40,34 @@
   padding: 2em 0;
 
   :global .katex-display {
+    padding: 1.5em;
+    display: grid;
     z-index: 1;
     grid-column: start / end;
     font-size: var(--body-small);
+    overflow-x: auto;
+    overflow-y: hidden;
+    mask:
+      linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
+      linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
+      linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
+    mask-composite: exclude;
+
+    &:local {
+      animation:
+        mask-up both linear,
+        mask-down both linear;
+      animation-timeline: scroll(x self);
+      animation-range:
+        0 2em,
+        calc(100% - 2em) 100%;
+    }
+
     @media (--sm) {
       font-size: var(--h5);
     }
   }
+
   :global .katex {
     color: var(--foreground);
   }
