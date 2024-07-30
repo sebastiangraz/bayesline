@@ -67,8 +67,8 @@ export function Home() {
         <Card dataTheme={0}>
           <Icon name="globe" />
           <Text.Body balance secondary>
-            We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
-            to highly customizable and blazing fast.
+            You are only a few seconds away from a geographically and stylistically aligned risk model, that can be
+            changed at any time to move with the speed of the markets.
           </Text.Body>
         </Card>
       </Cards>
