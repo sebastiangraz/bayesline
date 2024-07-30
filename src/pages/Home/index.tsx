@@ -9,10 +9,12 @@ export function Home() {
       <Cards layout="grid-left">
         <Card dataTheme={1}>
           <div className="card-header">
-            <Text.H4>Ultimate flexibility</Text.H4>
+            <Text.H4>The Industry Standard<br />Just More Of It</Text.H4>
             <Text.Body secondary>
-              Bring your own data, hierarchies, factor exposures, or use our pre-canned and optimized models. Select
-              from industry standard reports, or new ways to look at risk.
+              Build on top of your existing risk model vendor data. 
+              We use industry standard factor risk model methodologies without shortcuts.
+              Use our analytics engine to create custom models with portfolio 
+              aligned universes, factors and settings.
             </Text.Body>
             <Button type="secondary" href="http://schedule30.bayesline.com" target="_blank">
               <Text.Caps>Schedule a Demo</Text.Caps>
@@ -23,9 +25,10 @@ export function Home() {
         </Card>
         <Card dataTheme={3}>
           <div className="card-header">
-            <Text.H4>Compare models</Text.H4>
+            <Text.H4>Bring Your Own Data</Text.H4>
             <Text.Body secondary>
-              Run reports in comparison mode, zooming into the relative performance of different models and settings.
+              Proprietary crowding factors, third party alpha libraries, custom industry hierarchies. 
+              Bring your own data with easy and use them in your risk models.
             </Text.Body>
           </div>
           <Img src="comparemodels.png" className={style.cardImage} />
@@ -33,7 +36,7 @@ export function Home() {
         </Card>
         <Card.Secondary dataTheme={1}>
           <div className="card-header">
-            <Text.H4>Automated suggestions</Text.H4>
+            <Text.H4>Deploy On Your Cloud<br />Consume API First</Text.H4>
             <Text.Body secondary>Seamless tips and approval flows.</Text.Body>
           </div>
           <Img src="suggestions.png" className={style.cardImage} />
@@ -53,22 +56,23 @@ export function Home() {
         <Card dataTheme={0}>
           <Icon name="chart" />
           <Text.Body balance secondary>
-            We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
-            to highly customizable and blazing fast.
+            Research Alignment<br />Move with the speed of research. Iterate quickly on research and backtesting.
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="layers" />
           <Text.Body balance secondary>
-            Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align with
-            realistic investment universes or styles - we're changing that.
+            Market Alignment<br />
+            React to changing market conditions and use reliable and relevant analytics when they are most needed.
+
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="globe" />
           <Text.Body balance secondary>
-            You are only a few seconds away from a geographically and stylistically aligned risk model, that can be
-            changed at any time to move with the speed of the markets.
+            Portfolio Alignment<br />
+            Align your risk models with your universe, styles and preferences. 
+            Gain a better sense of granularity, accuracy and performance.
           </Text.Body>
         </Card>
       </Cards>

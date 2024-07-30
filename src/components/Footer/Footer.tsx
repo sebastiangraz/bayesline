@@ -13,7 +13,7 @@ export const Footer = () => {
     <div className={`col theme ${style.footer}`} data-theme="one">
       <div className={`col ${style.content}`}>
         <div className={style.slogan}>
-          <Text.H3>Financial analytics rethought</Text.H3>
+          <Text.H3>Unlock alpha in your risk models.</Text.H3>
         </div>
         <div className={`${style.logo}`}>
           <div className={style.logowrapper}>
