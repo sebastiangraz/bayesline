@@ -36,6 +36,7 @@ export function Home() {
             <Text.H4>Automated suggestions</Text.H4>
             <Text.Body secondary>Seamless tips and approval flows.</Text.Body>
           </div>
+          <Img src="suggestions.png" className={style.cardImage} />
           <ShapeField
             variant="dithered-gradient"
             rows={24}
