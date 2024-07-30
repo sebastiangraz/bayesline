@@ -28,7 +28,7 @@ export function Home() {
               Run reports in comparison mode, zooming into the relative performance of different models and settings.
             </Text.Body>
           </div>
-          <Img src="sidebar.png" className={style.cardImage} />
+          <Img src="comparemodels.png" className={style.cardImage} />
           <VectorField variant="straight" className={style.cardVectorField} />
         </Card>
         <Card.Secondary dataTheme={1}>
