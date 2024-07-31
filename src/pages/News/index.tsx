@@ -19,7 +19,7 @@ export function News() {
   return (
     <div className="col bleed">
       <div className={`col ${style.heading}`}>
-        <Text.H2>News</Text.H2>
+        <Text.H2>Blog</Text.H2>
       </div>
 
       <ul className={`col  ${style.ul}`}>

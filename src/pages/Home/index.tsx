@@ -11,13 +11,14 @@ export function Home() {
           <div className="card-header">
             <Text.H4>The Industry Standard<br />Just More Of It</Text.H4>
             <Text.Body secondary>
-              Build on top of your existing risk model vendor data. 
               We use industry standard factor risk model methodologies without shortcuts.
               Use our analytics engine to create custom models with portfolio 
               aligned universes, factors and settings.
+              <br /><br />
+              Creating custom risk models and sophisticated portfolio reports was never this easy.
             </Text.Body>
             <Button type="secondary" href="http://schedule30.bayesline.com" target="_blank">
-              <Text.Caps>Schedule a Demo</Text.Caps>
+              <Text.Caps>Book a Demo</Text.Caps>
             </Button>
           </div>
 
@@ -25,10 +26,11 @@ export function Home() {
         </Card>
         <Card dataTheme={3}>
           <div className="card-header">
-            <Text.H4>Bring Your Own Data</Text.H4>
+            <Text.H4>Bring Vendor Data<br />And Also Your Own</Text.H4>
             <Text.Body secondary>
-              Proprietary crowding factors, third party alpha libraries, custom industry hierarchies. 
-              Bring your own data with easy and use them in your risk models.
+              Build on top of your existing risk model vendor data. Add proprietary crowding factors, third party alpha libraries, 
+              custom industry hierarchies and more. 
+              Bring your own data with ease and use them in your risk models - all within your own private cloud. 
             </Text.Body>
           </div>
           <Img src="comparemodels.png" className={style.cardImage} />
@@ -36,10 +38,14 @@ export function Home() {
         </Card>
         <Card.Secondary dataTheme={1}>
           <div className="card-header">
-            <Text.H4>Deploy On Your Cloud<br />Consume API First</Text.H4>
-            <Text.Body secondary>Seamless tips and approval flows.</Text.Body>
+            <Text.H4>API First<br />UX Native</Text.H4>
+            <Text.Body secondary>
+              Use our programmatic API to speed up research workflows and integrate with existing systems.
+              <br /><br />
+              Slice and dice your risk reports with our intuitive user interface for maximum insight.
+            </Text.Body>
           </div>
-          <Img src="suggestions.png" className={style.cardImage} />
+          
           <ShapeField
             variant="dithered-gradient"
             rows={24}
@@ -56,13 +62,13 @@ export function Home() {
         <Card dataTheme={0}>
           <Icon name="chart" />
           <Text.Body balance secondary>
-            Research Alignment<br />Move with the speed of research. Iterate quickly on research and backtesting.
+            <b>Research Alignment</b><br />Move with the speed of research. Iterate quickly on research and backtesting.
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="layers" />
           <Text.Body balance secondary>
-            Market Alignment<br />
+            <b>Market Alignment</b><br />
             React to changing market conditions and use reliable and relevant analytics when they are most needed.
 
           </Text.Body>
@@ -70,7 +76,7 @@ export function Home() {
         <Card dataTheme={0}>
           <Icon name="globe" />
           <Text.Body balance secondary>
-            Portfolio Alignment<br />
+            <b>Portfolio Alignment</b><br />
             Align your risk models with your universe, styles and preferences. 
             Gain a better sense of granularity, accuracy and performance.
           </Text.Body>

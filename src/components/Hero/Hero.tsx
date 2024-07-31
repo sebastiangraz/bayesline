@@ -19,7 +19,7 @@ export const Hero = (props: HeroProps) => {
             <StaggerText>Unlock alpha in your risk models.</StaggerText>
           </Text.H1>
           <Text.Body secondary balance>
-            Build more predictive risk models in seconds. 
+            Use our next generation infrastructure to build more insightful equity risk models in seconds. 
             Configure your own universe, bring custom factors, run backtests and reports on the fly.
           </Text.Body>
           <div className={`${style.ctas}`}>
