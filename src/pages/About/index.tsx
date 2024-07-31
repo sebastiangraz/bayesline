@@ -1,4 +1,4 @@
-import { Icon, Img, ShapeField, Text } from '@/components';
+import { Flex, Icon, Img, ShapeField, Text } from '@/components';
 import style from './about.module.css';
 import progress from '@/assets/progress.svg';
 
@@ -63,8 +63,18 @@ export function About() {
           <div className={`col ${style.founderlist} `}>
             <div className={`${style.founder}`}>
               <Img src="sebastian" className={style.avatar} />
+
               <Text.H5>Sebastian Janisch</Text.H5>
-              <Text.Caps secondary>Co-founder</Text.Caps>
+
+              <Flex gap={2} className={style.social}>
+                <Text.Caps secondary>Co-founder</Text.Caps>
+                <hr />
+                <Text.SmallCaps secondary>
+                  <a href="https://www.linkedin.com/in/sebastianjanisch/" target="_blank">
+                    Connect
+                  </a>
+                </Text.SmallCaps>
+              </Flex>
               <ul>
                 <li>
                   <Text.Small balance>
@@ -97,7 +107,17 @@ export function About() {
             <div className={`${style.founder}`}>
               <Img src="misha" className={style.avatar} />
               <Text.H5>Misha van Beek</Text.H5>
-              <Text.Caps secondary>Co-founder</Text.Caps>
+
+              <Flex gap={2} className={style.social}>
+                <Text.Caps secondary>Co-founder</Text.Caps>
+                <hr />
+                <Text.SmallCaps secondary>
+                  <a href="https://www.linkedin.com/in/mishavanbeek/" target="_blank">
+                    Connect{' '}
+                  </a>
+                </Text.SmallCaps>
+              </Flex>
+
               <ul>
                 <li>
                   <Text.Small balance>

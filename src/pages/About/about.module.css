@@ -118,6 +118,23 @@
       border-radius: var(--radius);
       overflow: hidden;
     }
+    .social {
+      align-items: center;
+      flex-wrap: wrap;
+      align-content: start;
+      a {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      & > * {
+        place-self: center;
+      }
+      hr {
+        place-self: stretch;
+      }
+    }
     li {
       margin-left: 0;
     }
