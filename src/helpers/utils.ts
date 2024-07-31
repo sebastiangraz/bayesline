@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
 
 // Utility function to recursively extract strings from component children
 export const extractTextFromChildren = (children: React.ReactNode): string => {

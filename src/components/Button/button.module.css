@@ -65,8 +65,9 @@
 }
 
 .small {
-  font-size: var(--h3);
-  > *:not(svg) {
-    font-size: var(--label);
+  min-height: 1rem;
+  grid-auto-rows: 2.5rem;
+  & > *:not(svg) {
+    padding: 0 1rem;
   }
 }

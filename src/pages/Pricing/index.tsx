@@ -11,11 +11,11 @@ export function Pricing() {
             <Icon name="experiment" />
             <Text.H4>Free</Text.H4>
             <Text.Body secondary balance>
-              Try the platform with no strings attached on a sample dataset covering US equities.
-              Sign up with your email and get started in minutes. No credit card required. 
+              Try the platform with no strings attached on a sample dataset covering US equities. Sign up with your
+              email and get started in minutes. No credit card required.
             </Text.Body>
             <Button theme={1} type="secondary" href="https://app.bayesline.com/signup/" target="_blank">
-              <Text.Caps>Try for free</Text.Caps>
+              Try for free
             </Button>
             <ul>
               <li>Use API or GUI</li>
@@ -30,10 +30,11 @@ export function Pricing() {
             <Icon name="enterprise" />
             <Text.H4>Enterprise</Text.H4>
             <Text.Body secondary balance>
-              Talk to us about your specific use case.<br />
+              Talk to us about your specific use case.
+              <br />
             </Text.Body>
             <Button theme={1} type="secondary" href="http://schedule30.bayesline.com" target="_blank">
-              <Text.Caps>Book a Demo</Text.Caps>
+              Book a Demo
             </Button>
             <ul>
               <li>Everything in the free tier</li>

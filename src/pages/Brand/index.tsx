@@ -8,22 +8,22 @@ export function Brand() {
           <div className="card-header">
             <Text.Body secondary>Primary theme prop</Text.Body>
             <Button href="https://www.example.com" target="_blank">
-              <Text.Caps>Default theme </Text.Caps>
+              Default theme
             </Button>
             <Button theme={0} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme zero</Text.Caps>
+              Theme zero
             </Button>
             <Button theme={1} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme one</Text.Caps>
+              Theme one
             </Button>
             <Button theme={2} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme two</Text.Caps>
+              Theme two
             </Button>
             <Button theme={3} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme three</Text.Caps>
+              Theme three
             </Button>
             <Button theme={4} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme four</Text.Caps>
+              Theme four
             </Button>
           </div>
         </Card.Secondary>
@@ -32,22 +32,22 @@ export function Brand() {
             <Text.Body secondary>Secondary theme prop</Text.Body>
 
             <Button type="secondary" to="/signup" target="_blank">
-              <Text.Caps>To signup</Text.Caps>
+              To signup
             </Button>
             <Button type="secondary" theme={0} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme zero 2nd</Text.Caps>
+              Theme zero 2nd
             </Button>
             <Button type="secondary" theme={1} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme one 2nd</Text.Caps>
+              Theme one 2nd
             </Button>
             <Button type="secondary" theme={2} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme two 2nd</Text.Caps>
+              Theme two 2nd
             </Button>
             <Button type="secondary" theme={3} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme three 2nd</Text.Caps>
+              Theme three 2nd
             </Button>
             <Button type="secondary" theme={4} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme four 2nd</Text.Caps>
+              Theme four 2nd
             </Button>
           </div>
         </Card>
@@ -56,22 +56,22 @@ export function Brand() {
             <Text.Body secondary>Secondary theme prop</Text.Body>
 
             <Button type="secondary" to="/signup" target="_blank">
-              <Text.Caps>To signup</Text.Caps>
+              To signup
             </Button>
             <Button type="secondary" theme={0} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme zero 2nd</Text.Caps>
+              Theme zero 2nd
             </Button>
             <Button type="secondary" theme={1} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme one 2nd</Text.Caps>
+              Theme one 2nd
             </Button>
             <Button type="secondary" theme={2} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme two 2nd</Text.Caps>
+              Theme two 2nd
             </Button>
             <Button type="secondary" theme={3} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme three 2nd</Text.Caps>
+              Theme three 2nd
             </Button>
             <Button type="secondary" theme={4} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme four 2nd</Text.Caps>
+              Theme four 2nd
             </Button>
           </div>
         </Card.Secondary>
@@ -79,22 +79,22 @@ export function Brand() {
           <div className="card-header">
             <Text.Body secondary>Small button</Text.Body>
             <Button size="small" href="https://www.example.com" target="_blank">
-              <Text.Caps>Default theme </Text.Caps>
+              Default theme
             </Button>
             <Button size="small" theme={0} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme zero</Text.Caps>
+              Theme zero
             </Button>
             <Button size="small" theme={1} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme one</Text.Caps>
+              Theme one
             </Button>
             <Button size="small" theme={2} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme two</Text.Caps>
+              Theme two
             </Button>
             <Button size="small" theme={3} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme three</Text.Caps>
+              Theme three
             </Button>
             <Button size="small" theme={4} href="https://www.example.com" target="_blank">
-              <Text.Caps>Theme four</Text.Caps>
+              Theme four
             </Button>
           </div>
         </Card.Secondary>

@@ -14,19 +14,19 @@ export const Hero = (props: HeroProps) => {
     <div className={`col bleed`}>
       <div className={`col ${style.hero}`}>
         <div className={`${style.content}`}>
-          <Text.H1>
-            <StaggerText>Unlock alpha in your risk models.</StaggerText>
+          <Text.H1 balance>
+            <StaggerText>Accelerate your alpha.</StaggerText>
           </Text.H1>
           <Text.Body secondary balance>
-            Use our next generation infrastructure to build more insightful equity risk models in seconds. 
-            Configure your own universe, bring custom factors, run backtests and reports on the fly.
+            Use our next generation infrastructure to build more insightful equity risk models in seconds. Configure
+            your own universe, bring custom factors, run backtests and reports on the fly.
           </Text.Body>
           <div className={`${style.ctas}`}>
             <Button size="small" theme={1} type="primary-interactive" href="https://app.bayesline.com" target="_blank">
-              <Text.Caps>Try for Free</Text.Caps>
+              Try for Free
             </Button>
             <Button size="small" theme={3} type="primary" href="http://schedule30.bayesline.com" target="_blank">
-              <Text.Caps>Book a Demo</Text.Caps>
+              Book a Demo
             </Button>
           </div>
           <div className={`${style.badges}`}>

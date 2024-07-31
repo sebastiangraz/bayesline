@@ -25,7 +25,7 @@
     height: unset;
   }
   h1 {
-    max-width: 8ch;
+    max-width: 12ch;
   }
   .ctas {
     gap: 0.5em;
