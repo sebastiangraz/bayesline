@@ -3,6 +3,7 @@ import style from './hero.module.css';
 import { Button, Img, Text, VectorField } from '@/components';
 import nvidia from '@/assets/nvidia.svg';
 import ycomb from '@/assets/ycomb.svg';
+import { motion } from 'framer-motion';
 interface HeroProps {
   title?: string;
 }
@@ -29,7 +30,13 @@ export const Hero = (props: HeroProps) => {
               Book a Demo
             </Button>
           </div>
-          <div className={`${style.badges}`}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false, amount: 'all' }}
+            transition={{ duration: 0.56, delay: 0.1 }}
+            className={`${style.badges}`}
+          >
             <div className={`${style.badge}`}>
               <img src={ycomb} alt="badge" />
               <Text.Small>YCombinator S24</Text.Small>
@@ -38,7 +45,7 @@ export const Hero = (props: HeroProps) => {
               <img src={nvidia} alt="badge" />
               <Text.Small>Nvidia Inception</Text.Small>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
       <div className={`col ${style.ui}`}>

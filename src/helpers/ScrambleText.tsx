@@ -62,7 +62,7 @@ export const ScrambleText = ({ inputText, inView = true }: { inputText: string; 
         <span
           key={item.key}
           className="char"
-          style={{ transition: '0.5s ease opacity', opacity: item.isScrambled ? 1 : 0.7 }}
+          style={{ transition: '0.48s ease opacity', opacity: item.isScrambled ? 1 : 0.56 }}
         >
           {item.char}
         </span>

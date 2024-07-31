@@ -15,17 +15,21 @@
   grid-area: 2/1;
   color: var(--background-4);
   place-self: end center;
-  margin-left: -5em;
-  width: 4em;
+  margin-left: -13em;
+  width: 7em;
+  @media (--sm) {
+    margin-left: -5em;
+    width: 4em;
+  }
 }
 
 .cardShapeField {
   grid-area: 2/1;
   margin-top: -1em;
-  place-self: end start;
+  place-self: end center;
   width: 50%;
-
   @media (--md) {
+    place-self: end center;
     width: 6em;
   }
 }

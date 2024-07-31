@@ -223,6 +223,9 @@ export const ShapeField = React.memo(
         className={classNames}
         preserveAspectRatio="xMidYMid meet"
         viewBox={`0 0 ${width} ${height}`}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.1 }}
         ref={svgRef}
       >
         {memoizedShapes}

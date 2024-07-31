@@ -1,6 +1,6 @@
 .footer {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   background: var(--background);
 
   grid-column: bleedstart / bleedend;
@@ -31,7 +31,7 @@
 
 .slogan {
   color: var(--foreground);
-  max-width: 12rem;
+  max-width: 20rem;
   grid-area: top-left;
   display: grid;
   grid-column: 1 / span 2;
@@ -150,6 +150,7 @@
   display: grid;
   white-space: nowrap;
   place-self: start;
+  opacity: 0.56;
   @media (--sm) {
     place-self: start end;
   }
