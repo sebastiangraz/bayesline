@@ -26,7 +26,7 @@ export const Navigation = ({ backbutton = false }: { backbutton?: boolean }) => 
             <path d="M6.5 11L2 6.5M2 6.5L11 6.5M2 6.5L6.5 2" stroke="currentColor" />
           </svg>
 
-          <Link to="/news">{'Back to news'}</Link>
+          <Link to="/blog">{'Back to index'}</Link>
         </div>
       )}
     </div>
@@ -131,7 +131,7 @@ const MobileNavigation = (props: any) => {
 
 export const navItems = [
   { to: '/mission', label: 'About' },
-  { to: '/news', label: 'Blog' },
+  { to: '/blog', label: 'Blog' },
   { to: '/pricing', label: 'Pricing' },
   { to: 'https://app.bayesline.com/equity/code-examples', label: 'API Docs' },
   { to: 'https://app.bayesline.com/signup/', label: 'Explore', highlight: true }

@@ -1,7 +1,7 @@
 import { Asset, Icon, Markdown, Text } from '@/components';
-import { Route } from '@/routes/news/$postId';
-import style from './newsentry.module.css';
-import { entryMeta } from '@/pages/News/entryMeta';
+import { Route } from '@/routes/blog/$postId';
+import style from './blogentry.module.css';
+import { entryMeta } from '@/pages/Blog/entryMeta';
 import { Link } from '@tanstack/react-router';
 import { readableDate } from '@/helpers/utils';
 function tableOfContents(toc: any) {
@@ -27,7 +27,7 @@ function getImageUrl(fileName: string, name: string) {
   return new URL(`./entries/${fileName}/${name}`, import.meta.url).href;
 }
 
-export function NewsEntry() {
+export function BlogEntry() {
   const { post } = Route.useLoaderData();
   const { Page, title, fileName, excerpt, published, toc, thumbnail, seed } = post;
   const date = readableDate(published);
@@ -106,7 +106,7 @@ export function NewsEntry() {
                 <li key={fileName} className={`col`}>
                   <Link
                     className={`col`}
-                    to={`/news/$postId`}
+                    to={`/blog/$postId`}
                     params={{
                       postId: `${fileName}`
                     }}

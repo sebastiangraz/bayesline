@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import style from './news.module.css';
+import style from './blog.module.css';
 import { Text, Asset } from '@/components';
 
 import { readableDate, themeClasses } from '@/helpers/utils';
@@ -9,7 +9,7 @@ function getImageUrl(fileName: string, name: string) {
   return new URL(`../NewsEntry/entries/${fileName}/${name}`, import.meta.url).href;
 }
 
-export function News() {
+export function Blog() {
   const currentTimestamp = Date.now();
 
   const entryByDate = entryMeta
@@ -36,7 +36,7 @@ export function News() {
             <li key={fileName} data-theme={featured ? themeValue : ''} className={`col ${classNames}`}>
               <Link
                 className={`col ${style.wrapper}`}
-                to={`/news/$postId`}
+                to={`/blog/$postId`}
                 params={{
                   postId: `${fileName}`
                 }}

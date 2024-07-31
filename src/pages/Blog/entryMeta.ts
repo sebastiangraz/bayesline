@@ -2,7 +2,7 @@ import type { Toc } from '@stefanprobst/rehype-extract-toc';
 import { getPrevPathFromExtension } from '@/helpers/utils';
 
 const globEntries = Object.entries(
-  import.meta.glob<string | string[] | any>(['@/pages/NewsEntry/entries/*/*.mdx'], {
+  import.meta.glob<string | string[] | any>(['@/pages/BlogEntry/entries/*/*.mdx'], {
     eager: true
   })
 );

@@ -13,7 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as NewsPostIdImport } from './routes/news/$postId'
+import { Route as BlogPostIdImport } from './routes/blog/$postId'
 
 // Create Virtual Routes
 
@@ -22,7 +22,7 @@ const PricingLazyImport = createFileRoute('/pricing')()
 const MissionLazyImport = createFileRoute('/mission')()
 const BrandLazyImport = createFileRoute('/brand')()
 const IndexLazyImport = createFileRoute('/')()
-const NewsIndexLazyImport = createFileRoute('/news/')()
+const BlogIndexLazyImport = createFileRoute('/blog/')()
 
 // Create/Update Routes
 
@@ -51,13 +51,13 @@ const IndexLazyRoute = IndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
-const NewsIndexLazyRoute = NewsIndexLazyImport.update({
-  path: '/news/',
+const BlogIndexLazyRoute = BlogIndexLazyImport.update({
+  path: '/blog/',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/news/index.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/blog/index.lazy').then((d) => d.Route))
 
-const NewsPostIdRoute = NewsPostIdImport.update({
-  path: '/news/$postId',
+const BlogPostIdRoute = BlogPostIdImport.update({
+  path: '/blog/$postId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -100,18 +100,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TosLazyImport
       parentRoute: typeof rootRoute
     }
-    '/news/$postId': {
-      id: '/news/$postId'
-      path: '/news/$postId'
-      fullPath: '/news/$postId'
-      preLoaderRoute: typeof NewsPostIdImport
+    '/blog/$postId': {
+      id: '/blog/$postId'
+      path: '/blog/$postId'
+      fullPath: '/blog/$postId'
+      preLoaderRoute: typeof BlogPostIdImport
       parentRoute: typeof rootRoute
     }
-    '/news/': {
-      id: '/news/'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsIndexLazyImport
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogIndexLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -125,8 +125,8 @@ export const routeTree = rootRoute.addChildren({
   MissionLazyRoute,
   PricingLazyRoute,
   TosLazyRoute,
-  NewsPostIdRoute,
-  NewsIndexLazyRoute,
+  BlogPostIdRoute,
+  BlogIndexLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -142,8 +142,8 @@ export const routeTree = rootRoute.addChildren({
         "/mission",
         "/pricing",
         "/tos",
-        "/news/$postId",
-        "/news/"
+        "/blog/$postId",
+        "/blog/"
       ]
     },
     "/": {
@@ -161,11 +161,11 @@ export const routeTree = rootRoute.addChildren({
     "/tos": {
       "filePath": "tos.lazy.tsx"
     },
-    "/news/$postId": {
-      "filePath": "news/$postId.tsx"
+    "/blog/$postId": {
+      "filePath": "blog/$postId.tsx"
     },
-    "/news/": {
-      "filePath": "news/index.lazy.tsx"
+    "/blog/": {
+      "filePath": "blog/index.lazy.tsx"
     }
   }
 }

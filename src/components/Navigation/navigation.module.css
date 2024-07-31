@@ -34,7 +34,7 @@
   display: grid;
   align-items: center;
   justify-content: start;
-
+  z-index: 2;
   color: var(--foreground-accent);
   svg {
     margin-right: 0.125em;
@@ -43,10 +43,11 @@
     font-size: var(--body-small);
     text-decoration: none;
     line-height: 1;
+    &:hover {
+      text-decoration: underline;
+    }
   }
-  &:hover {
-    text-decoration: underline;
-  }
+
   @media (--lg) {
     margin-bottom: 0;
     justify-content: center;

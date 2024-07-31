@@ -1,6 +1,6 @@
 import { createFileRoute, ErrorComponent, ErrorComponentProps } from '@tanstack/react-router';
-import { entryMeta } from '@/pages/News/entryMeta';
-import { NewsEntry } from '@/pages/NewsEntry';
+import { entryMeta } from '@/pages/Blog/entryMeta';
+import { BlogEntry } from '@/pages/BlogEntry';
 
 export function PostErrorComponent({ error }: ErrorComponentProps) {
   return (
@@ -11,8 +11,8 @@ export function PostErrorComponent({ error }: ErrorComponentProps) {
   );
 }
 
-export const Route = createFileRoute('/news/$postId')({
-  component: NewsEntry,
+export const Route = createFileRoute('/blog/$postId')({
+  component: BlogEntry,
   beforeLoad: ({ params }) => {
     const post = entryMeta.find((p) => p.id === params.postId);
     const title = post?.title;

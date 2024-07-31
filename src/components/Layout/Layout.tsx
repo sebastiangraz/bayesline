@@ -10,9 +10,8 @@ interface LayoutProps {
 
 export const Layout = (props: LayoutProps) => {
   const { children, theme } = props;
-  //match any child routes in /news
 
-  const showBackButton = ['/news/$postId'];
+  const showBackButton = ['/blog/$postId'];
   const matchRoute = useMatchRoute();
   const matchedShowBackButton = showBackButton.some((route) => matchRoute({ to: route }));
 
