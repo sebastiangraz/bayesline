@@ -74,27 +74,23 @@ export function Home() {
       <Cards layout="grid-col" className={`${style.threeup}`}>
         <Card dataTheme={0}>
           <Icon name="chart" />
-          <Text.Body balance secondary>
-            <b>Research Alignment</b>
-            <br />
-            Move with the speed of research. Iterate quickly on research and backtesting.
+          <Text.Body balance secondary as="span">
+            <Text.Body as="span">Research Alignment.</Text.Body> Move with the speed of research. Iterate quickly on
+            research and backtesting.
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="layers" />
-          <Text.Body balance secondary>
-            <b>Market Alignment</b>
-            <br />
-            React to changing market conditions and use reliable and relevant analytics when they are most needed.
+          <Text.Body balance secondary as="span">
+            <Text.Body as="span">Market Alignment.</Text.Body> React to changing market conditions and use reliable and
+            relevant analytics when they are most needed.
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="globe" />
-          <Text.Body balance secondary>
-            <b>Portfolio Alignment</b>
-            <br />
-            Align your risk models with your universe, styles and preferences. Gain a better sense of granularity,
-            accuracy and performance.
+          <Text.Body balance secondary as="span">
+            <Text.Body as="span">Portfolio Alignment.</Text.Body> Align your risk models with your universe, styles and
+            preferences. Gain a better sense of granularity, accuracy and performance.
           </Text.Body>
         </Card>
       </Cards>

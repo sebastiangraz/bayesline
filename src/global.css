@@ -274,13 +274,13 @@
   .h2 {
     font-size: var(--h2);
     font-weight: 300;
-    line-height: 1.1;
+    line-height: 1.04;
     letter-spacing: -0.04em;
   }
 
   .h3 {
     font-size: var(--h3);
-    line-height: 1.2;
+    line-height: 1.16;
     letter-spacing: -0.03em;
   }
 

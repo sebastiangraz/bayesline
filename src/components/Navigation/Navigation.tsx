@@ -134,5 +134,5 @@ export const navItems = [
   { to: '/news', label: 'Blog' },
   { to: '/pricing', label: 'Pricing' },
   { to: 'https://app.bayesline.com/equity/code-examples', label: 'API Docs' },
-  { to: 'https://app.bayesline.com/signup/', label: 'Try For Free', highlight: true }
+  { to: 'https://app.bayesline.com/signup/', label: 'Explore', highlight: true }
 ] as { to: string; label: string; highlight?: boolean }[];

@@ -54,15 +54,10 @@ const FeatureCenterAsset = () => {
   return (
     <div data-theme="one" className={`theme col ${style.centerAsset}`}>
       <div className={`${style.copy}`}>
-        <Text.H1>
-          Your Data
-          <br />
-          Our Engine
-        </Text.H1>
+        <Text.H2 balance>Your data, our engine.</Text.H2>
         <Text.Body balance secondary as="span">
-          <Text.Body as="span">Start unlocking the alpha on your equity risk models today.</Text.Body>
-          <br />
-          Try it out for free with just your email or book a demo and talk to us about your needs.
+          <Text.Body as="span">Start unlocking the alpha on your equity risk models today.</Text.Body> Try it out for
+          free with just your email or book a demo and talk to us about your needs.
         </Text.Body>
       </div>
       <div className={style.cpu}>
@@ -78,11 +73,11 @@ const FeatureCenterAsset = () => {
         />
       </div>
 
-      <div className={`${style.copy}`}>
-        <Button type="secondary" theme={1} href="https://app.bayesline.com" target="_blank">
+      <div className={`${style.ctas}`}>
+        <Button type="secondary" size="small" theme={1} href="https://app.bayesline.com" target="_blank">
           Try for Free
         </Button>
-        <Button size="small" theme={3} type="primary" href="http://schedule30.bayesline.com" target="_blank">
+        <Button type="primary" size="small" theme={1} href="http://schedule30.bayesline.com" target="_blank">
           Book a Demo
         </Button>
       </div>
