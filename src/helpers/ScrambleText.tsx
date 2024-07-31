@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 const getRandomChar = () => {
   const chars = 'XxYyZzR0@#$%&/[*&^{};:?||||~';
   return chars[Math.floor(Math.random() * chars.length)];
 };
-
 export const ScrambleText = ({ inputText, inView = true }: { inputText: string; inView?: boolean }) => {
   const initialText = inputText.split('');
+  const fullLength = initialText.length;
+  const skipLength = fullLength / 2.5;
   const text = initialText.map((char, index) => ({
     char,
     key: `${char}-${index}`,
-    isScrambled: false
+    isScrambled: index < skipLength
   }));
 
   const [chars, setChars] = useState<Array<{ char: string; key: string; isScrambled: boolean }>>([...text]);
@@ -19,7 +19,11 @@ export const ScrambleText = ({ inputText, inView = true }: { inputText: string; 
   // Handle the scrambling effect
   useEffect(() => {
     if (!inView) return;
+
+    // Only start scrambling from the 8th character onwards
     const scrambleTimeouts = chars.map((_, index) => {
+      if (index < skipLength) return null; // Skip scrambling for the first X characters
+
       return setTimeout(() => {
         const scrambleChar = (idx: number, count: number = 0) => {
           if (count >= 3) {
@@ -48,12 +52,12 @@ export const ScrambleText = ({ inputText, inView = true }: { inputText: string; 
 
     // Clean up timeouts on component unmount or dependency change
     return () => {
-      scrambleTimeouts.forEach(clearTimeout);
+      scrambleTimeouts.forEach((timeout) => timeout && clearTimeout(timeout));
     };
-  }, [chars.length, inputText]);
+  }, [chars.length, inputText, inView]);
 
   return (
-    <motion.span>
+    <span>
       {chars.map((item) => (
         <span
           key={item.key}
@@ -63,6 +67,6 @@ export const ScrambleText = ({ inputText, inView = true }: { inputText: string; 
           {item.char}
         </span>
       ))}
-    </motion.span>
+    </span>
   );
 };
