@@ -6,7 +6,7 @@ import { readableDate, themeClasses } from '@/helpers/utils';
 import { entryMeta } from './entryMeta';
 
 function getImageUrl(fileName: string, name: string) {
-  return new URL(`../NewsEntry/entries/${fileName}/${name}`, import.meta.url).href;
+  return new URL(`../BlogEntry/entries/${fileName}/${name}`, import.meta.url).href;
 }
 
 export function Blog() {

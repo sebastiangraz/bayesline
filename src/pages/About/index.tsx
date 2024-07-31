@@ -1,12 +1,12 @@
 import { Icon, Img, ShapeField, Text } from '@/components';
-import style from './mission.module.css';
+import style from './about.module.css';
 import progress from '@/assets/progress.svg';
 
-export function Mission() {
+export function About() {
   return (
     <>
       <div className={`col ${style.page}`}>
-        <div className={`col ${style.missionHero}`}>
+        <div className={`col ${style.hero}`}>
           <div className={`col ${style.intro}`}>
             <Text.H3 balance>
               We are reimagining <Text secondary>financial analytics on AI infrastructure.</Text>
@@ -47,8 +47,8 @@ export function Mission() {
               <li>
                 <Icon name="globe" />
                 <Text.Small secondary balance>
-                  We aim to be the one stop shop analytics provider for the modern investment manager. 
-                  All asset classes, all strategies, all in one place.
+                  We aim to be the one stop shop analytics provider for the modern investment manager. All asset
+                  classes, all strategies, all in one place.
                 </Text.Small>
               </li>
             </ul>
@@ -56,8 +56,8 @@ export function Mission() {
         </div>
         <div className={`col ${style.founders}`}>
           <Text.H4 balance className={`col ${style.header}`}>
-            Bayesline was founded in 2024 by Sebastian Janisch and Misha van Beek, with a mission to
-            reimagine financial analytics—putting flexibility and performance first.
+            Bayesline was founded in 2024 by Sebastian Janisch and Misha van Beek, with a mission to reimagine financial
+            analytics—putting flexibility and performance first.
           </Text.H4>
           <hr className="col" />
           <div className={`col ${style.founderlist} `}>

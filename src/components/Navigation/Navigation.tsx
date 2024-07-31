@@ -130,7 +130,7 @@ const MobileNavigation = (props: any) => {
 };
 
 export const navItems = [
-  { to: '/mission', label: 'About' },
+  { to: '/about', label: 'About' },
   { to: '/blog', label: 'Blog' },
   { to: '/pricing', label: 'Pricing' },
   { to: 'https://app.bayesline.com/equity/code-examples', label: 'API Docs' },
