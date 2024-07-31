@@ -13,9 +13,9 @@ export const Hero = (props: HeroProps) => {
   return (
     <div className={`col bleed`}>
       <div className={`col ${style.hero}`}>
-        <div className={`${style.content}`}>
+        <div className={`col ${style.content}`}>
           <Text.H1 balance>
-            <StaggerText>Accelerate your alpha.</StaggerText>
+            <StaggerText>Unlock alpha in your&nbsp;risk models.</StaggerText>
           </Text.H1>
           <Text.Body secondary balance>
             Use our next generation infrastructure to build more insightful equity risk models in seconds. Configure

@@ -2,7 +2,7 @@
   background: var(--background-accent);
   padding: 2em;
   grid-row: 1;
-  grid-column: start/ end;
+  grid-column: bleedstart / bleedend;
   @media (--md) {
     grid-column: start/ span 14;
   }
@@ -13,15 +13,22 @@
 }
 
 .hero p {
-  padding-right: 3em;
+  max-width: auto;
+  @media (--sm) {
+    max-width: 28rem;
+  }
+  @media (--md) {
+    max-width: 18rem;
+  }
 }
 .content {
   display: grid;
   grid-template-rows: auto auto minmax(0, 10em) auto;
   gap: 1em;
   height: 100%;
+  grid-column: start / end;
   @media (--md) {
-    grid-template-rows: 1fr auto 1fr auto;
+    grid-template-rows: 1fr auto minmax(0, 3em) auto;
     height: unset;
   }
   h1 {
@@ -101,7 +108,7 @@
   z-index: 0;
   /* position: absolute; */
   /* inset: 0; */
-  grid-column: 8 / span 7;
+  grid-column: 9 / span 7;
   @media (--md) {
     grid-column: 3 / span 4;
   }

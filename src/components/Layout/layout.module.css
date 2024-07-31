@@ -20,6 +20,10 @@
       margin-bottom: 4em;
     }
 
+    @media (--sm) {
+      grid-template-columns: [bleedstart] 1em [start] repeat(23, 1fr) [end] 1em [bleedend];
+    }
+
     @media (--lg) {
       grid-template-columns: [bleedstart] 1fr [start] repeat(23, 1em) [end] 1fr [bleedend];
     }

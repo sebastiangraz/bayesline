@@ -51,7 +51,7 @@
   --opacity: 1;
 
   /* TYPO | https://clamp.font-size.app/ min:400 max:1104 */
-  --h1: clamp(3.5rem, 2.9318rem + 2.2727vw, 4.5rem);
+  --h1: clamp(3.5rem, 3.2159rem + 1.1364vw, 4rem);
   --h2: clamp(3rem, 2.7159rem + 1.1364vw, 3.5rem);
   --h3: clamp(2rem, 1.858rem + 0.5682vw, 2.25rem);
   --h4: clamp(1.25rem, 1.108rem + 0.5682vw, 1.5rem);
