@@ -1,7 +1,6 @@
 import { StaggerText } from '@/helpers/StaggerText';
 import style from './hero.module.css';
-import { Button, Flex, Img, Text, VectorField } from '@/components';
-import hero from '@/assets/homepage-hero.png';
+import { Button, Img, Text, VectorField } from '@/components';
 import nvidia from '@/assets/nvidia.svg';
 import ycomb from '@/assets/ycomb.svg';
 interface HeroProps {

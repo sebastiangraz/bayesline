@@ -1,4 +1,19 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+// Utility function to recursively extract strings from component children
+export const extractTextFromChildren = (children: React.ReactNode): string => {
+  let extractedText = '';
+
+  React.Children.forEach(children, (child) => {
+    if (typeof child === 'string') {
+      extractedText += child; // Direct string children
+    } else if (React.isValidElement(child) && child.props.children) {
+      extractedText += extractTextFromChildren(child.props.children); // Recurse into component children
+    }
+  });
+
+  return extractedText;
+};
 
 export function getPrevPathFromExtension(path: string, extension = '.mdx') {
   const regex = new RegExp(`/[^/]+${extension}$`);
@@ -83,6 +98,14 @@ export const recursiveDivider = (
   return result;
 };
 
+export const themeClasses: Record<number, string> = {
+  0: '',
+  1: 'one',
+  2: 'two',
+  3: 'three',
+  4: 'four'
+};
+
 const templates = [
   //prettier-ignore
   [ 
@@ -139,14 +162,6 @@ const templates = [
     1, 0, 1
   ]
 ];
-
-export const themeClasses: Record<number, string> = {
-  0: '',
-  1: 'one',
-  2: 'two',
-  3: 'three',
-  4: 'four'
-};
 
 export function useStickyObserver(ref: React.RefObject<HTMLElement>, options: IntersectionObserverInit) {
   const [isSticky, setIsSticky] = useState(false);

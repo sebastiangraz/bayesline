@@ -1,7 +1,6 @@
 import style from './button.module.css';
 import { motion } from 'framer-motion';
 import { Link } from '@tanstack/react-router';
-
 import { VectorField } from '../VectorField';
 import { themeClasses } from '@/helpers/utils';
 
@@ -91,7 +90,6 @@ const ButtonNodes = (props: ButtonNodeProps) => {
       viewBox="0 0 240 62"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={style.buttonNode}
       preserveAspectRatio="xMidYMin slice"
       style={props.style}
     >
