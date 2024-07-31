@@ -11,7 +11,7 @@ const FeatureComparison = () => {
         <div className={`${style.bannertext}`}>
           <Text.H5>Move with the markets.</Text.H5>
           <Text.Small secondary balance>
-            Build models and reports in real-time
+            The right model - at the right time.
           </Text.Small>
         </div>
         <section>
@@ -31,8 +31,8 @@ const FeatureComparison = () => {
       </div>
       <Flex column gap={4} className={`col ${style.text}`}>
         <Text.Body balance>
-          We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
-          blazing fast.
+          Bayesline empowers you to truly own your risk and attribution analytics. <br />
+          See your unique understanding of the markets immediately reflected in your equity risk models.
         </Text.Body>
         <div className={`${style.cta}`}>
           <Button type="secondary" theme={1} href="http://schedule30.bayesline.com" target="_blank">
@@ -54,10 +54,10 @@ const FeatureCenterAsset = () => {
   return (
     <div data-theme="one" className={`theme col ${style.centerAsset}`}>
       <div className={`${style.copy}`}>
-        <Text.H1>Powerful.</Text.H1>
+        <Text.H1>Your Data<br />Our Engine</Text.H1>
         <Text.Body balance secondary as="span">
-          <Text.Body as="span"> Traditional models don't align with realistic portfolios, </Text.Body>
-          and can't be adjusted to reflect market changes
+          <Text.Body as="span">Start unlocking the alpha on your equity risk models today.</Text.Body>
+          <br />Try it out for free with just your email or book a demo and talk to us about your needs.
         </Text.Body>
       </div>
       <div className={style.cpu}>
@@ -72,9 +72,13 @@ const FeatureCenterAsset = () => {
           className={`col ${style.shapefield}`}
         />
       </div>
+      
       <div className={`${style.copy}`}>
-        <Button type="secondary" theme={4} to="/news" target="_blank">
-          <Text.Caps>Learn more</Text.Caps>
+        <Button type="secondary" theme={1} href="https://app.bayesline.com" target="_blank">
+          <Text.Caps>Try for Free</Text.Caps>
+        </Button>
+        <Button size="small" theme={3} type="primary" href="http://schedule30.bayesline.com" target="_blank">
+          <Text.Caps>Book a Demo</Text.Caps>
         </Button>
       </div>
     </div>

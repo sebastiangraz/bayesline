@@ -16,24 +16,24 @@ export const Hero = (props: HeroProps) => {
       <div className={`col ${style.hero}`}>
         <div className={`${style.content}`}>
           <Text.H1>
-            <StaggerText>Financial analytics rethought.</StaggerText>
+            <StaggerText>Unlock alpha in your risk models.</StaggerText>
           </Text.H1>
           <Text.Body secondary balance>
-            We deliver the analytics that investment managers are already familiar with, but hyper-customizable and
-            blazing fast.
+            Use our next generation infrastructure to build more insightful equity risk models in seconds. 
+            Configure your own universe, bring custom factors, run backtests and reports on the fly.
           </Text.Body>
           <div className={`${style.ctas}`}>
             <Button size="small" theme={1} type="primary-interactive" href="https://app.bayesline.com" target="_blank">
               <Text.Caps>Try for Free</Text.Caps>
             </Button>
             <Button size="small" theme={3} type="primary" href="http://schedule30.bayesline.com" target="_blank">
-              <Text.Caps>Learn More</Text.Caps>
+              <Text.Caps>Book a Demo</Text.Caps>
             </Button>
           </div>
           <div className={`${style.badges}`}>
             <div className={`${style.badge}`}>
               <img src={ycomb} alt="badge" />
-              <Text.Small>YCombinator 24</Text.Small>
+              <Text.Small>YCombinator S24</Text.Small>
             </div>
             <div className={`${style.badge}`}>
               <img src={nvidia} alt="badge" />

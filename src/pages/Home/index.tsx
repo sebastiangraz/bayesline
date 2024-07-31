@@ -9,13 +9,16 @@ export function Home() {
       <Cards layout="grid-left">
         <Card dataTheme={1}>
           <div className="card-header">
-            <Text.H4>Ultimate flexibility</Text.H4>
+            <Text.H4>The Industry Standard<br />Just More Of It</Text.H4>
             <Text.Body secondary>
-              Bring your own data, hierarchies, factor exposures, or use our pre-canned and optimized models. Select
-              from industry standard reports, or new ways to look at risk.
+              We use industry standard factor risk model methodologies without shortcuts.
+              Use our analytics engine to create custom models with portfolio 
+              aligned universes, factors and settings.
+              <br /><br />
+              Creating custom risk models and sophisticated portfolio reports was never this easy.
             </Text.Body>
             <Button type="secondary" href="http://schedule30.bayesline.com" target="_blank">
-              <Text.Caps>Schedule a Demo</Text.Caps>
+              <Text.Caps>Book a Demo</Text.Caps>
             </Button>
           </div>
 
@@ -23,9 +26,11 @@ export function Home() {
         </Card>
         <Card dataTheme={3}>
           <div className="card-header">
-            <Text.H4>Compare models</Text.H4>
+            <Text.H4>Bring Vendor Data<br />And Also Your Own</Text.H4>
             <Text.Body secondary>
-              Run reports in comparison mode, zooming into the relative performance of different models and settings.
+              Build on top of your existing risk model vendor data. Add proprietary crowding factors, third party alpha libraries, 
+              custom industry hierarchies and more. 
+              Bring your own data with ease and use them in your risk models - all within your own private cloud. 
             </Text.Body>
           </div>
           <Img src="comparemodels.png" className={style.cardImage} />
@@ -33,10 +38,14 @@ export function Home() {
         </Card>
         <Card.Secondary dataTheme={1}>
           <div className="card-header">
-            <Text.H4>Automated suggestions</Text.H4>
-            <Text.Body secondary>Seamless tips and approval flows.</Text.Body>
+            <Text.H4>API First<br />UX Native</Text.H4>
+            <Text.Body secondary>
+              Use our programmatic API to speed up research workflows and integrate with existing systems.
+              <br /><br />
+              Slice and dice your risk reports with our intuitive user interface for maximum insight.
+            </Text.Body>
           </div>
-          <Img src="suggestions.png" className={style.cardImage} />
+          
           <ShapeField
             variant="dithered-gradient"
             rows={24}
@@ -53,22 +62,23 @@ export function Home() {
         <Card dataTheme={0}>
           <Icon name="chart" />
           <Text.Body balance secondary>
-            We are changing the way investment managers interact with financial analytics. From one-size-doesn't-fit-all
-            to highly customizable and blazing fast.
+            <b>Research Alignment</b><br />Move with the speed of research. Iterate quickly on research and backtesting.
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="layers" />
           <Text.Body balance secondary>
-            Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align with
-            realistic investment universes or styles - we're changing that.
+            <b>Market Alignment</b><br />
+            React to changing market conditions and use reliable and relevant analytics when they are most needed.
+
           </Text.Body>
         </Card>
         <Card dataTheme={0}>
           <Icon name="globe" />
           <Text.Body balance secondary>
-            You are only a few seconds away from a geographically and stylistically aligned risk model, that can be
-            changed at any time to move with the speed of the markets.
+            <b>Portfolio Alignment</b><br />
+            Align your risk models with your universe, styles and preferences. 
+            Gain a better sense of granularity, accuracy and performance.
           </Text.Body>
         </Card>
       </Cards>

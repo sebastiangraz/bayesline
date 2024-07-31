@@ -47,8 +47,8 @@ export function Mission() {
               <li>
                 <Icon name="globe" />
                 <Text.Small secondary balance>
-                  For example, if you run a mid-cap health care portfolio across the US and Europe, a geographically and
-                  stylistically aligned model is only a few seconds away.
+                  We aim to be the one stop shop analytics provider for the modern investment manager. 
+                  All asset classes, all strategies, all in one place.
                 </Text.Small>
               </li>
             </ul>
@@ -56,7 +56,7 @@ export function Mission() {
         </div>
         <div className={`col ${style.founders}`}>
           <Text.H4 balance className={`col ${style.header}`}>
-            Bayesline was founded on March 25th 2024 by Sebastian Janisch and Misha van Beek, with a mission to
+            Bayesline was founded in 2024 by Sebastian Janisch and Misha van Beek, with a mission to
             reimagine financial analytics—putting flexibility and performance first.
           </Text.H4>
           <hr className="col" />
