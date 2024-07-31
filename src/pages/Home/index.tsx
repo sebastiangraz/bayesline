@@ -96,7 +96,7 @@ export function Home() {
       </Cards>
       <Feature.Comparison />
       <Feature.CenterAsset />
-      <Feature.Ticker />
+      {/* <Feature.Ticker /> */}
     </>
   );
 }
