@@ -31,8 +31,8 @@ const FeatureComparison = () => {
       </div>
       <Flex column gap={4} className={`col ${style.text}`}>
         <Text.Body balance>
-          Bayesline empowers you to truly own your risk and attribution analytics. <br />
-          See your unique understanding of the markets immediately reflected in your equity risk models.
+          Bayesline empowers you to truly own your risk and attribution analytics. See your unique understanding of the
+          markets immediately reflected in your equity risk models.
         </Text.Body>
         <div className={`${style.cta}`}>
           <Button type="secondary" theme={1} href="http://schedule30.bayesline.com" target="_blank">

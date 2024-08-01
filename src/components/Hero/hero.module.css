@@ -41,6 +41,7 @@
     grid-auto-columns: auto auto;
     justify-content: start;
     align-content: start;
+
     @media (--md) {
       grid-auto-flow: column;
     }

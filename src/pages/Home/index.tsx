@@ -9,16 +9,12 @@ export function Home() {
       <Cards layout="grid-left">
         <Card dataTheme={1}>
           <div className="card-header">
-            <Text.H4>
-              The Industry Standard
-              <br />
-              Just More Of It
-            </Text.H4>
+            <Text.H4 balance>The industry standard, just more of it</Text.H4>
             <Text.Body secondary>
               We use industry standard factor risk model methodologies without shortcuts. Use our analytics engine to
               create custom models with portfolio aligned universes, factors and settings.
-              <br />
-              <br />
+            </Text.Body>
+            <Text.Body secondary>
               Creating custom risk models and sophisticated portfolio reports was never this easy.
             </Text.Body>
             <Button type="secondary" href="http://schedule30.bayesline.com" target="_blank">
@@ -30,11 +26,7 @@ export function Home() {
         </Card>
         <Card dataTheme={3}>
           <div className="card-header">
-            <Text.H4>
-              Bring Vendor Data
-              <br />
-              And Also Your Own
-            </Text.H4>
+            <Text.H4 balance>Bring vendor data and also your own</Text.H4>
             <Text.Body secondary>
               Build on top of your existing risk model vendor data. Add proprietary crowding factors, third party alpha
               libraries, custom industry hierarchies and more. Bring your own data with ease and use them in your risk
@@ -46,16 +38,10 @@ export function Home() {
         </Card>
         <Card.Secondary dataTheme={1}>
           <div className="card-header">
-            <Text.H4>
-              API First
-              <br />
-              UX Native
-            </Text.H4>
+            <Text.H4 balance>API first, UX native</Text.H4>
             <Text.Body secondary>
-              Use our programmatic API to speed up research workflows and integrate with existing systems.
-              <br />
-              <br />
-              Slice and dice your risk reports with our intuitive user interface for maximum insight.
+              Use our programmatic API to speed up research workflows and integrate with existing systems.Slice and dice
+              your risk reports with our intuitive user interface for maximum insight.
             </Text.Body>
           </div>
 
