@@ -4,9 +4,6 @@
   grid-column: start / end;
   align-items: stretch;
   gap: 2em 0;
-  .card {
-    width: 100%;
-  }
 
   @media (--md) {
     gap: 0;
@@ -77,15 +74,17 @@
   align-content: start;
   grid-template-rows: 1fr auto;
   border-radius: var(--radius);
-  gap: 1em;
+  gap: 1em 0;
+  width: 100%;
+  overflow: clip;
   :global .card-header {
     display: flex;
     flex-direction: column;
     padding: 1.5em;
-    gap: 0.75em;
+    gap: 0.75em 0;
     @media (--md) {
       padding: 1em;
-      gap: 0.5em;
+      gap: 0.5em 0;
     }
   }
   img {

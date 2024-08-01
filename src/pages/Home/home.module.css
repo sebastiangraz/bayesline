@@ -11,6 +11,31 @@
   margin-top: -2em;
 }
 
+.cardImageComposition {
+  grid-area: 2/1;
+  pointer-events: none;
+  place-self: end end;
+}
+.cardImageIllustration {
+  grid-area: 2/1;
+  pointer-events: none;
+  place-self: start end;
+  inset: -25% 0 0 50%;
+  position: relative;
+  animation: rotate 20s linear infinite alternate;
+
+  /* width: 75%; */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(20deg);
+  }
+}
+
 .cardVectorField {
   grid-area: 2/1;
   color: var(--background-4);

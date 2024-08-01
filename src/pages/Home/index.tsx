@@ -1,7 +1,7 @@
 import style from './home.module.css';
 import { Hero, Button, Card, Cards, Text, VectorField, ShapeField, Flex, Icon, Img } from '@/components';
 import { Feature } from './Feature';
-
+import radial from '@/assets/radial-alt.svg';
 export function Home() {
   return (
     <>
@@ -21,8 +21,8 @@ export function Home() {
               Book a Demo
             </Button>
           </div>
-
-          <Img src="composition.png" />
+          <img src={radial} className={style.cardImageIllustration} />
+          <Img src="composition.png" className={style.cardImageComposition} />
         </Card>
         <Card dataTheme={3}>
           <div className="card-header">
