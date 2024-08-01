@@ -7,23 +7,11 @@ interface ExposePropsProps {
 }
 
 export const ExposeProps = ({ children }: ExposePropsProps) => {
-  // Function to format props into a readable string
   const formatProps = (props: any): string => {
     return Object.entries(props)
       .map(([key, value]) => `${key}="${value}"`)
       .join(' ');
   };
-
-  //   const formatProps = (props: any): JSX.Element => {
-  //     const entries = Object.entries(props).map(([key, value]: [string, any]) => (
-  //       // Wrap each prop in a span, and ensure the value is also encapsulated properly
-  //       <span key={key}>
-  //         {key}=" <span className="highlight">{value.toString()}</span> "
-  //       </span>
-  //     ));
-
-  //     return <>{entries.reduce<React.ReactNode[]>((acc, curr) => acc.concat(curr, ' '), [])}</>;
-  //   };
 
   return (
     <div>
