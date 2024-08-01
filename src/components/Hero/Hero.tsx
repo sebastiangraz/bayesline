@@ -53,7 +53,7 @@ export const Hero = (props: HeroProps) => {
           <VectorField />
         </div>
 
-        <Img src="homepage-hero.png" alt="hero" className={style.image} />
+        <Img src="homepage-hero-alt.png" alt="hero" className={style.image} />
       </div>
     </div>
   );
