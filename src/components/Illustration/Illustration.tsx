@@ -43,12 +43,12 @@ const childVariant = {
 
 export const Illustration = ({ ...props }) => {
   const coral = getComputedStyle(document.documentElement).getPropertyValue('--coral');
-  const tan = getComputedStyle(document.documentElement).getPropertyValue('--tan');
+  const brand = getComputedStyle(document.documentElement).getPropertyValue('--brand-0');
   const background = getComputedStyle(document.documentElement).getPropertyValue('--background');
 
   const { scrollYProgress } = useScroll();
 
-  const yDistance = useTransform(scrollYProgress, [0, 0.5, 1], [coral, tan, background]);
+  const yDistance = useTransform(scrollYProgress, [0, 0.5, 1], [coral, brand, background]);
   return (
     <motion.svg
       width="852"

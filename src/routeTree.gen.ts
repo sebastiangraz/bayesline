@@ -13,34 +13,105 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as BlogPostIdImport } from './routes/blog/$postId'
 
 // Create Virtual Routes
 
-const SignupLazyImport = createFileRoute('/signup')()
+const TosLazyImport = createFileRoute('/tos')()
+const PricingLazyImport = createFileRoute('/pricing')()
+const BrandLazyImport = createFileRoute('/brand')()
+const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
+const BlogIndexLazyImport = createFileRoute('/blog/')()
 
 // Create/Update Routes
 
-const SignupLazyRoute = SignupLazyImport.update({
-  path: '/signup',
+const TosLazyRoute = TosLazyImport.update({
+  path: '/tos',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/signup.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/tos.lazy').then((d) => d.Route))
+
+const PricingLazyRoute = PricingLazyImport.update({
+  path: '/pricing',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/pricing.lazy').then((d) => d.Route))
+
+const BrandLazyRoute = BrandLazyImport.update({
+  path: '/brand',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/brand.lazy').then((d) => d.Route))
+
+const AboutLazyRoute = AboutLazyImport.update({
+  path: '/about',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
+const BlogIndexLazyRoute = BlogIndexLazyImport.update({
+  path: '/blog/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/blog/index.lazy').then((d) => d.Route))
+
+const BlogPostIdRoute = BlogPostIdImport.update({
+  path: '/blog/$postId',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/signup': {
-      preLoaderRoute: typeof SignupLazyImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/brand': {
+      id: '/brand'
+      path: '/brand'
+      fullPath: '/brand'
+      preLoaderRoute: typeof BrandLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/tos': {
+      id: '/tos'
+      path: '/tos'
+      fullPath: '/tos'
+      preLoaderRoute: typeof TosLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/blog/$postId': {
+      id: '/blog/$postId'
+      path: '/blog/$postId'
+      fullPath: '/blog/$postId'
+      preLoaderRoute: typeof BlogPostIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogIndexLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -48,9 +119,54 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([
+export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
-  SignupLazyRoute,
-])
+  AboutLazyRoute,
+  BrandLazyRoute,
+  PricingLazyRoute,
+  TosLazyRoute,
+  BlogPostIdRoute,
+  BlogIndexLazyRoute,
+})
 
 /* prettier-ignore-end */
+
+/* ROUTE_MANIFEST_START
+{
+  "routes": {
+    "__root__": {
+      "filePath": "__root.tsx",
+      "children": [
+        "/",
+        "/about",
+        "/brand",
+        "/pricing",
+        "/tos",
+        "/blog/$postId",
+        "/blog/"
+      ]
+    },
+    "/": {
+      "filePath": "index.lazy.tsx"
+    },
+    "/about": {
+      "filePath": "about.lazy.tsx"
+    },
+    "/brand": {
+      "filePath": "brand.lazy.tsx"
+    },
+    "/pricing": {
+      "filePath": "pricing.lazy.tsx"
+    },
+    "/tos": {
+      "filePath": "tos.lazy.tsx"
+    },
+    "/blog/$postId": {
+      "filePath": "blog/$postId.tsx"
+    },
+    "/blog/": {
+      "filePath": "blog/index.lazy.tsx"
+    }
+  }
+}
+ROUTE_MANIFEST_END */

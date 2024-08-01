@@ -1,0 +1,44 @@
+.home {
+  & > * + * {
+    margin-top: 3em;
+    margin-bottom: 0;
+  }
+}
+
+.cardImage {
+  grid-area: 2/1;
+  pointer-events: none;
+  margin-top: -2em;
+}
+
+.cardVectorField {
+  grid-area: 2/1;
+  color: var(--background-4);
+  place-self: end center;
+  margin-left: -13em;
+  width: 7em;
+  @media (--sm) {
+    margin-left: -5em;
+    width: 4em;
+  }
+}
+
+.cardShapeField {
+  grid-area: 2/1;
+  margin-top: -1em;
+  place-self: end center;
+  width: 50%;
+  @media (--md) {
+    place-self: end center;
+    width: 6em;
+  }
+}
+
+.threeup {
+  @media (--md) {
+    & > * {
+      grid-template-rows: subgrid;
+      grid-row: span 2;
+    }
+  }
+}

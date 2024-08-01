@@ -1,31 +1,43 @@
 import style from './footer.module.css';
-import utils from '@/utils.module.css';
-import footer from '@/assets/footer.webp';
-import { Button, Flex } from '@/components';
-import { StaggerText } from '@/helpers/StaggerText';
+import { Button, Flex, Logo, Text, navItems } from '@/components';
+import footer from '@/assets/footer.svg';
+import { Link } from '@tanstack/react-router';
+
+const footerItems = [{ to: '/tos', label: 'Terms' }];
 
 export const Footer = () => {
+  const currentTimestamp = Date.now();
+  const date = new Date(currentTimestamp);
+  const mergedItems = [...footerItems, ...navItems];
   return (
-    <>
-      <div className={`${utils.section} ${style.wrapper}`}>
-        <div className="s-2 e-10">
-          <Flex center column gap={3}>
-            <h1 className="w-title">
-              <StaggerText>financial analytics rethought</StaggerText>
-            </h1>
-            <Button type="primary" href="https://calendar.app.google/qq4pjZcmDdzTjBme7" target="_blank">
-              <pre className="caps">Schedule a Demo</pre>
-            </Button>
-            <p className="w-prose balance center small">
-              For general inquiries you can reach us at <a href="mailto:info@bayesline.com">info@bayesline.com</a>.
-            </p>
-            <p className="small balance center">© Copyright 2024 · Bayesline</p>
-          </Flex>
+    <div className={`col theme ${style.footer}`} data-theme="one">
+      <div className={`col ${style.content}`}>
+        <div className={style.slogan}>
+          <Text.H4>Unlock alpha in your risk models.</Text.H4>
+        </div>
+        <div className={`${style.logo}`}>
+          <div className={style.logowrapper}>
+            <Logo.Mark loop className={style.logomark} />
+          </div>
+          <img src={footer} className={style.logoimage} alt="radial" />
+        </div>
+        <hr />
+        <div className={style.menu}>
+          <nav>
+            {mergedItems.map((item, index) => {
+              const isLink = item.to.startsWith('http');
+              return (
+                <Link key={index} to={item.to} target={isLink ? '_blank' : ''} className={`${style.menuItem}`}>
+                  <Text.SmallCaps secondary>{item.label}</Text.SmallCaps>
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+        <div className={style.copyright}>
+          <Text.SmallCaps secondary>© {date.getFullYear()} · Bayesline</Text.SmallCaps>
         </div>
       </div>
-      <div className={style.footer}>
-        <img src={footer} alt="footer" />
-      </div>
-    </>
+    </div>
   );
 };

@@ -1,14 +1,17 @@
 import { motion } from 'framer-motion';
 import React from 'react';
+import { extractTextFromChildren } from '@/helpers/utils';
 interface StaggerTextProps {
   children: React.ReactNode;
   delay?: number;
 }
+
 export const StaggerText = (props: StaggerTextProps) => {
   const { delay, children } = props;
-  const content = children!.toString();
+  const content = extractTextFromChildren(children);
   const contentWords = content.split(' ');
-  /*   const duration = contentWords.length * 0.064; */
+
+  // const duration = contentWords.length * 0.064;
 
   const parentVariant = {
     hidden: { opacity: 0 },
