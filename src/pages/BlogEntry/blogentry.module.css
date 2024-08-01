@@ -31,8 +31,12 @@
   display: grid;
   gap: 2em;
   margin-bottom: 5rem;
+
   summary {
     cursor: pointer;
+    & > span {
+      display: inline-grid;
+    }
   }
   details > summary::marker {
     content: '';
