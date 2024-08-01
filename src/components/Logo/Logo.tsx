@@ -177,3 +177,5 @@ export const Logo: BaseLogoComponent = Object.assign(LogoPrimitive, {
   Default: LogoPrimitive,
   Mark: MarkPrimitive
 });
+
+Logo.displayName = 'Logo';

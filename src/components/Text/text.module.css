@@ -36,8 +36,7 @@
 }
 
 .smallCaps {
-  composes: caps from global;
-  font-size: var(--label);
+  composes: smallCaps from global;
 }
 
 .balance {

@@ -298,15 +298,31 @@
 
   .small {
     font-size: var(--body-small);
+    color: var(--foreground);
     line-height: 1.5;
+    display: grid;
   }
 
   .caps {
     text-transform: uppercase;
     font-variant: small-caps;
+    color: var(--foreground);
     font-family: var(--mono);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.065em;
     font-weight: normal;
+    display: grid;
+  }
+
+  .smallCaps {
+    text-transform: uppercase;
+    font-variant: small-caps;
+    letter-spacing: 0.075em;
+    font-size: var(--label);
+    font-family: var(--mono);
+    color: var(--foreground);
+    line-height: 1.5;
+    font-weight: normal;
+    display: grid;
   }
 
   .center {

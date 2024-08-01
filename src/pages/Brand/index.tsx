@@ -1,4 +1,5 @@
 import { Flex, Card, Cards, Text, VectorField, Logo, ShapeField, Button } from '@/components';
+import { ExposeProps } from '@/helpers/ExposeProps';
 
 export function Brand() {
   return (
@@ -102,10 +103,14 @@ export function Brand() {
       <Cards>
         <Card dataTheme={1}>
           <div className="card-header">
-            <Text.H1>Brand</Text.H1>
-            <Text.H1>
+            <Text.H3>Logotype</Text.H3>
+
+            <ExposeProps>
+              <Logo type={true} />
+              <Logo loop />
               <Logo type={false} />
-            </Text.H1>
+              <Logo type={false} loop />
+            </ExposeProps>
           </div>
         </Card>
         <Card dataTheme={2}>
