@@ -96,6 +96,7 @@
   .image {
     background: white;
     border-radius: var(--radius);
+    box-shadow: var(--shadow);
     overflow: clip;
     isolation: isolate;
     max-height: 100%;
