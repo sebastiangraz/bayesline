@@ -49,7 +49,10 @@
   }
   img,
   source {
+    background: white;
     grid-area: 1/1;
-    border-radius: 1em;
+    border-radius: 29px;
+    padding: 15px;
+    box-sizing: content-box;
   }
 }
