@@ -25,18 +25,19 @@
   .ui {
     /* aspect-ratio: 768/584; */
     align-self: end;
-    max-height: 576px;
+    max-height: 528px;
     grid-area: ui;
     padding-left: 1em;
     overflow: clip;
     margin-top: -1em;
+    mask-image: radial-gradient(ellipse at top left, #ffff 40%, #fff0 90%);
     picture {
       /* padding: 0.9125em; */
       max-height: 100%;
-      top: 1em;
+      top: 2em;
       left: 1em;
       position: relative;
-      max-width: 100%;
+      width: calc(100% + 2em);
     }
   }
   .banner {

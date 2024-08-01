@@ -77,27 +77,27 @@ export function About() {
               </Flex>
               <ul>
                 <li>
-                  <Text.Small balance>
+                  <Text.Small balance secondary>
                     A software engineer with a passion for quant research, Sebastian has spent the last 10 years
                     leveraging the power of machine learning to challenge, innovate, and reshape how institutions think
                     about financial modeling.
                   </Text.Small>
                 </li>
                 <li>
-                  <Text.Small balance>
+                  <Text.Small balance secondary>
                     Prior to Bayesline, he was at Bloomberg where he incubated the next generation of customizable and
                     actionable quant products as part of the Quant & AI Research group.
                   </Text.Small>
                 </li>
                 <li>
-                  <Text.Small balance>
+                  <Text.Small balance secondary>
                     Sebastian built his expertise in quant research during his time as a Director in BlackRock’s
                     Financial Modeling Group where he researched and implemented equity risk models that analyze
                     trillions in assets.
                   </Text.Small>
                 </li>
                 <li>
-                  <Text.Small balance>
+                  <Text.Small balance secondary>
                     Sebastian holds a Bachelor of Science in Information Systems from University of Hamburg and a
                     Masters of Science in Finance & IT from Warwick Business School.
                   </Text.Small>
@@ -120,25 +120,25 @@ export function About() {
 
               <ul>
                 <li>
-                  <Text.Small balance>
+                  <Text.Small balance secondary>
                     Misha has spent the past 10 years coupling his professional quant training with his personal
                     interest in all things AI and hands-on engineering.
                   </Text.Small>
                 </li>
                 <li>
-                  <Text.Small balance>
+                  <Text.Small balance secondary>
                     Before co-founding Bayesline, Misha was a Managing Director at BlackRock where he evolved Aladdin’s
                     portfolio risk models spanning tens of trillions in assets.
                   </Text.Small>
                 </li>
                 <li>
-                  <Text.Small balance>
+                  <Text.Small balance secondary>
                     Under his leadership, his team also developed Aladdin’s economic scenario engine, as well as
                     investment models that run roughly $400 billion in strategic asset allocations.
                   </Text.Small>
                 </li>
                 <li>
-                  <Text.Small balance>
+                  <Text.Small balance secondary>
                     Prior to BlackRock, he worked as a quant analyst at Rabobank. Misha holds a Master of Science in
                     Finance & Economics from the London School of Economics and a PhD in Financial Mathematics from the
                     University of Amsterdam.
