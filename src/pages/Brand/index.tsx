@@ -1,5 +1,5 @@
 import { Flex, Card, Cards, Text, VectorField, Logo, ShapeField, Button } from '@/components';
-import { ExposeProps } from '@/helpers/ExposeProps';
+import { ExposeProps } from './ExposeProps';
 
 export function Brand() {
   return (

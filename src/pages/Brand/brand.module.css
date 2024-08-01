@@ -1,0 +1,8 @@
+.highlight {
+  color: var(--foreground);
+}
+.syntax {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.5em;
+}
