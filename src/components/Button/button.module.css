@@ -30,6 +30,10 @@
   }
 }
 
+.ref {
+  display: grid;
+}
+
 .button .field {
   color: var(--background-accent);
   position: relative;

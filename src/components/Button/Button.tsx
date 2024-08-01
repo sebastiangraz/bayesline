@@ -51,7 +51,7 @@ export const Button = ({
   }, [sanitizedText, isInView]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={style.ref}>
       <MotionComponent
         {...rest}
         data-theme={themeValue}

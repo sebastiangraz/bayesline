@@ -29,7 +29,7 @@
     grid-area: ui;
     padding-left: 1em;
     overflow: clip;
-    margin-top: -1em;
+    margin-top: -2em;
     mask-image: radial-gradient(ellipse at top left, #ffff 40%, #fff0 90%);
     picture {
       /* padding: 0.9125em; */
