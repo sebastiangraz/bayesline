@@ -46,3 +46,5 @@ export const Img = ({
     );
   }
 };
+
+Img.displayName = 'Img';

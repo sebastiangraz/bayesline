@@ -256,3 +256,5 @@ export const VectorField = ({
     </svg>
   );
 };
+
+VectorField.displayName = 'VectorField';

@@ -8,7 +8,6 @@ interface ShapeFieldProps {
   rows?: number;
   columns?: number;
   padding?: number;
-  interpolationValue?: number;
   variant?: 'swirl' | 'dithered-gradient' | 'radial' | 'checker' | 'bayesian' | 'pcb';
   color1?: string;
   color2?: string;
@@ -279,3 +278,5 @@ function pcbPattern(col: number, row: number) {
 
   return connections;
 }
+
+ShapeField.displayName = 'ShapeField';

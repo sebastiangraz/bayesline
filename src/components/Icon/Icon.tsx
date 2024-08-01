@@ -86,3 +86,5 @@ const IconPaths = {
     )
   }
 } as const;
+
+Icon.displayName = 'Icon';

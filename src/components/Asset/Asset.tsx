@@ -206,3 +206,5 @@ export const Asset: React.FC<Props> = React.memo(
     seed = `${seed}-${count}`;
   */
 }
+
+Asset.displayName = 'Asset';

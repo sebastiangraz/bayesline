@@ -5,7 +5,7 @@ import { VectorField } from '../VectorField';
 import { Text } from '@/components';
 import { themeClasses, extractTextFromChildren } from '@/helpers/utils';
 import { ScrambleText } from '@/helpers/ScrambleText';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
 interface ButtonProps {
   type?: 'primary-interactive' | 'primary' | 'secondary';
@@ -70,3 +70,5 @@ export const Button = ({
     </div>
   );
 };
+
+Button.displayName = 'Button';

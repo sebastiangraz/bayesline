@@ -1,147 +1,95 @@
 import { Flex, Card, Cards, Text, VectorField, Logo, ShapeField, Button } from '@/components';
 import { ExposeProps } from './ExposeProps';
+import style from './brand.module.css';
 
 export function Brand() {
   return (
-    <>
-      <Cards>
-        <Card.Secondary>
-          <div className="card-header">
-            <Text.Body secondary>Primary theme prop</Text.Body>
-            <Button href="https://www.example.com" target="_blank">
-              Default theme
-            </Button>
-            <Button theme={0} href="https://www.example.com" target="_blank">
-              Theme zero
-            </Button>
-            <Button theme={1} href="https://www.example.com" target="_blank">
-              Theme one
-            </Button>
-            <Button theme={2} href="https://www.example.com" target="_blank">
-              Theme two
-            </Button>
-            <Button theme={3} href="https://www.example.com" target="_blank">
-              Theme three
-            </Button>
-            <Button theme={4} href="https://www.example.com" target="_blank">
-              Theme four
-            </Button>
-          </div>
-        </Card.Secondary>
-        <Card dataTheme={4}>
-          <div className="card-header">
-            <Text.Body secondary>Secondary theme prop</Text.Body>
+    <div className={`col theme ${style.page}`}>
+      <div className={`col theme ${style.slide}`} data-theme="one">
+        <Text.H3>Logotype</Text.H3>
 
-            <Button type="secondary" to="/signup" target="_blank">
-              To signup
-            </Button>
-            <Button type="secondary" theme={0} href="https://www.example.com" target="_blank">
-              Theme zero 2nd
-            </Button>
-            <Button type="secondary" theme={1} href="https://www.example.com" target="_blank">
-              Theme one 2nd
-            </Button>
-            <Button type="secondary" theme={2} href="https://www.example.com" target="_blank">
-              Theme two 2nd
-            </Button>
-            <Button type="secondary" theme={3} href="https://www.example.com" target="_blank">
-              Theme three 2nd
-            </Button>
-            <Button type="secondary" theme={4} href="https://www.example.com" target="_blank">
-              Theme four 2nd
-            </Button>
-          </div>
-        </Card>
-        <Card.Secondary dataTheme={4}>
-          <div className="card-header">
-            <Text.Body secondary>Secondary theme prop</Text.Body>
+        <ExposeProps className={`${style.grid}`}>
+          <Logo type={true} />
+          <Logo loop />
+          <Logo type={false} />
+          <Logo type={false} loop />
+        </ExposeProps>
+      </div>
+      <div className={`col theme ${style.slide}`} data-theme="two">
+        <Text.H3>Fields</Text.H3>
+        <ExposeProps className={`${style.grid}`}>
+          <ShapeField variant="bayesian" rows={33} columns={33} padding={2.5} />
+          <ShapeField isStatic variant="bayesian" rows={33} columns={33} padding={2.5} />
+        </ExposeProps>
+        <Text.Caps>variants</Text.Caps>
+        <ExposeProps className={`${style.grid} ${style.col3}`} ignoreProps={['isStatic', 'rows', 'columns']}>
+          <ShapeField isStatic variant="bayesian" rows={20} columns={20} />
+          <ShapeField isStatic variant="checker" rows={20} columns={20} />
+          <ShapeField isStatic variant="dithered-gradient" rows={20} columns={20} />
+          <ShapeField isStatic variant="pcb" rows={20} columns={20} />
+          <ShapeField isStatic variant="radial" rows={20} columns={20} />
+          <ShapeField isStatic variant="swirl" rows={20} columns={20} />
+        </ExposeProps>
+        <Text.Caps>columns & rows</Text.Caps>
+        <ExposeProps className={`${style.grid} ${style.col4}`} ignoreProps={['isStatic']}>
+          <ShapeField isStatic rows={20} columns={20} />
+          <ShapeField isStatic rows={20} columns={10} />
+          <ShapeField isStatic rows={10} columns={20} />
+          <ShapeField isStatic rows={10} columns={10} />
+        </ExposeProps>
+      </div>
 
-            <Button type="secondary" to="/signup" target="_blank">
-              To signup
-            </Button>
-            <Button type="secondary" theme={0} href="https://www.example.com" target="_blank">
-              Theme zero 2nd
-            </Button>
-            <Button type="secondary" theme={1} href="https://www.example.com" target="_blank">
-              Theme one 2nd
-            </Button>
-            <Button type="secondary" theme={2} href="https://www.example.com" target="_blank">
-              Theme two 2nd
-            </Button>
-            <Button type="secondary" theme={3} href="https://www.example.com" target="_blank">
-              Theme three 2nd
-            </Button>
-            <Button type="secondary" theme={4} href="https://www.example.com" target="_blank">
-              Theme four 2nd
-            </Button>
-          </div>
-        </Card.Secondary>
-        <Card.Secondary>
-          <div className="card-header">
-            <Text.Body secondary>Small button</Text.Body>
-            <Button size="small" href="https://www.example.com" target="_blank">
-              Default theme
-            </Button>
-            <Button size="small" theme={0} href="https://www.example.com" target="_blank">
-              Theme zero
-            </Button>
-            <Button size="small" theme={1} href="https://www.example.com" target="_blank">
-              Theme one
-            </Button>
-            <Button size="small" theme={2} href="https://www.example.com" target="_blank">
-              Theme two
-            </Button>
-            <Button size="small" theme={3} href="https://www.example.com" target="_blank">
-              Theme three
-            </Button>
-            <Button size="small" theme={4} href="https://www.example.com" target="_blank">
-              Theme four
-            </Button>
-          </div>
-        </Card.Secondary>
-      </Cards>
-      <Cards>
-        <Card dataTheme={1}>
-          <div className="card-header">
-            <Text.H3>Logotype</Text.H3>
+      <div className={`col theme ${style.slide}`} data-theme="one">
+        <Text.H3>Vector Fields</Text.H3>
+        <ExposeProps className={`${style.grid} ${style.col4}`}>
+          <VectorField variant="checker" />
+          <VectorField variant="grid" />
+          <VectorField variant="magnify" />
+          <VectorField variant="radial" />
+          <VectorField variant="straight" />
+          <VectorField variant="swirl" />
+          <VectorField variant="twist" />
+          <VectorField variant="twist" loop />
+        </ExposeProps>
+      </div>
 
-            <ExposeProps>
-              <Logo type={true} />
-              <Logo loop />
-              <Logo type={false} />
-              <Logo type={false} loop />
-            </ExposeProps>
-          </div>
-        </Card>
-        <Card dataTheme={2}>
-          <div className="card-header">
-            <Text.H4>Vector Fields</Text.H4>
-            <Flex wrap>
-              <VectorField variant="swirl" />
-              <VectorField variant="straight" />
-              <VectorField variant="radial" />
-              <VectorField variant="checker" />
-              <VectorField variant="grid" />
-              <VectorField variant="magnify" />
-            </Flex>
-          </div>
-        </Card>
-        <Card.Secondary dataTheme={2}>
-          <div className="card-header">
-            <Text.H4>Shape Fields</Text.H4>
-            <ShapeField isStatic variant="bayesian" rows={55} columns={55} padding={1} />
-            <ShapeField isStatic variant="bayesian" rows={24} columns={40} padding={1} />
-            <ShapeField isStatic variant="bayesian" rows={55} columns={21} padding={1} />
-            <ShapeField isStatic variant="bayesian" rows={28} columns={28} padding={1} />
-            <ShapeField isStatic variant="swirl" />
-            <ShapeField isStatic variant="dithered-gradient" />
-            <ShapeField isStatic variant="radial" />
-            <ShapeField isStatic variant="radial" rows={36} columns={36} padding={2} />
-            <ShapeField isStatic variant="checker" />
-            <ShapeField isStatic variant="pcb" />
-          </div>
-        </Card.Secondary>
-      </Cards>
-    </>
+      <div className={`col theme ${style.slide}`}>
+        <Text.H3>Buttons</Text.H3>
+        <Text.Caps>Type</Text.Caps>
+        <ExposeProps className={`${style.grid} ${style.col3}`} ignoreProps={['theme', 'children']}>
+          <Button>Default</Button>
+          <Button type="primary" theme={1}>
+            Primary
+          </Button>
+          <Button type="secondary" theme={1}>
+            Secondary
+          </Button>
+        </ExposeProps>
+        <Text.Caps>Size</Text.Caps>
+        <ExposeProps className={`${style.grid}`} ignoreProps={['theme', 'children']}>
+          <Button size="default" theme={3}>
+            Default
+          </Button>
+          <Button size="small" theme={3}>
+            Small
+          </Button>
+        </ExposeProps>
+        <Text.Caps>Theme</Text.Caps>
+        <ExposeProps className={`${style.grid} ${style.col4}`} ignoreProps={['children', 'size']}>
+          <Button theme={1} size="small">
+            One
+          </Button>
+          <Button theme={2} size="small">
+            Two
+          </Button>
+          <Button theme={3} size="small">
+            Three
+          </Button>
+          <Button theme={4} size="small">
+            Four
+          </Button>
+        </ExposeProps>
+      </div>
+    </div>
   );
 }

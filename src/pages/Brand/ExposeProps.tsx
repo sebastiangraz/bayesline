@@ -1,44 +1,59 @@
 import { Text } from '@/components';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useRef } from 'react';
 import style from './brand.module.css';
+import { ScrambleText } from '@/helpers/ScrambleText';
+import { useInView } from 'framer-motion';
 
 interface ExposePropsProps {
+  ignoreProps?: string[];
   children: ReactElement | ReactElement[];
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-const formatProps = (props: any): JSX.Element => {
-  const entries = Object.entries(props).map(([key, value]: [string, any]) => {
-    // Assume all values are strings for simplicity, handle special cases as needed
-    return (
-      <span key={key}>
-        {key}="<span className={style.highlight}>{value.toString()}</span>"
-      </span>
-    );
-  });
+const formatProps = (props: any, inView: boolean, ignoreProps: string[]): JSX.Element => {
+  const filteredProps = Object.entries(props)
+    .filter(([key]) => !ignoreProps.includes(key)) // Filter out ignored props
+    .map(([key, value]: [string, any]) => {
+      return (
+        <span key={key}>
+          <ScrambleText inView={inView} inputText={`${key}="`} />
+          <span className={style.highlight}>
+            <ScrambleText inView={inView} inputText={value.toString()} />
+          </span>
+          "
+        </span>
+      );
+    });
 
-  return <>{entries.reduce<React.ReactNode[]>((acc, curr) => [...acc, ' ', curr], [])}</>;
+  return <>{filteredProps.reduce<React.ReactNode[]>((acc, curr) => [...acc, ' ', curr], [])}</>;
 };
 
-export const ExposeProps = ({ children }: ExposePropsProps) => {
+export const ExposeProps = ({ children, className = '', ignoreProps = [], ...props }: ExposePropsProps) => {
+  const { style: styleValue } = props;
+
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 'some'
+  });
+
   return (
-    <div>
-      {React.Children.map(children, (child: any, index: number) => (
-        <div
-          key={index}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            marginBottom: '1em'
-          }}
-        >
-          <div style={{ width: '100%' }}>{child}</div>
-          <Text.SmallCaps secondary className={style.syntax}>
-            {'<'}
-            {child.type.displayName || child.type.name} {formatProps(child.props)}
-            {' />'}
-          </Text.SmallCaps>
-        </div>
-      ))}
+    <div className={className} style={styleValue} ref={ref}>
+      {React.Children.map(children, (child: any, index: number) => {
+        const isSpan = child.type === 'span';
+
+        return (
+          <div key={index} className={style.prop}>
+            <div>{child}</div>
+            <Text.Small secondary className={style.syntax}>
+              {!isSpan && '<'}
+              {child.type.displayName || child.type.name} {formatProps(child.props, isInView, ignoreProps)}
+              {!isSpan && '/>'}
+            </Text.Small>
+          </div>
+        );
+      })}
     </div>
   );
 };

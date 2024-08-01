@@ -51,3 +51,5 @@ Text.Caps = createStyledText('caps', 'span');
 Text.SmallCaps = createStyledText('smallCaps', 'span');
 
 export { Text };
+
+Text.displayName = 'Text';
