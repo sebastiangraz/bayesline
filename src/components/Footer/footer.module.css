@@ -49,16 +49,15 @@
   height: 1em;
   grid-area: top-right;
   display: grid;
-  justify-items: center;
   align-items: center;
+  justify-items: center;
   z-index: 0;
   place-self: end;
+  place-content: center;
 }
 
 .logowrapper {
   grid-area: 1/1;
-  width: 100%;
-
   display: inline-grid;
 }
 
@@ -101,12 +100,16 @@
 }
 
 .logoimage {
-  position: absolute;
+  position: relative;
   display: grid;
   grid-area: 1/1;
-  width: 800px;
-  height: 800px;
+  min-width: 800px;
+  min-height: 800px;
   pointer-events: none;
+  mask-image: radial-gradient(ellipse at bottom right, #ffff 52%, #fff0 60%);
+  @media (--md) {
+    mask-image: none;
+  }
 }
 
 .menu {
