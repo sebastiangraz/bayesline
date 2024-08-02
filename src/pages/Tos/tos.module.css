@@ -1,7 +1,0 @@
-.title {
-  min-height: 4rem;
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
-  grid-column: 8 / span 11;
-}

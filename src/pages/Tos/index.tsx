@@ -9,14 +9,10 @@ export function TOS() {
   const Content = content['./tos.mdx'].default;
 
   return (
-    <>
-      <div className={`col`}>
-        <Text.H2 className={`col ${style.title}`}>Terms of Service</Text.H2>
-        <hr className="col" />
-        <Markdown>
-          <Content />
-        </Markdown>
-      </div>
-    </>
+    <div className={`col bleed`}>
+      <Markdown>
+        <Content />
+      </Markdown>
+    </div>
   );
 }

@@ -34,8 +34,10 @@
   display: grid;
   align-items: center;
   justify-content: start;
-  z-index: 2;
   color: var(--foreground-accent);
+  @media (--md) {
+    z-index: 2;
+  }
   svg {
     margin-right: 0.125em;
   }

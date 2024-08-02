@@ -27,62 +27,23 @@
   }
 }
 
-@supports (animation-timeline: scroll(x self)) {
-  .prose {
-    :global .katex-display {
-      mask:
-        linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
-        linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
-        linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
-      mask-composite: exclude;
-      &:local {
-        animation:
-          mask-up both linear,
-          mask-down both linear;
-        animation-timeline: scroll(x self);
-        animation-range:
-          0 2em,
-          calc(100% - 2em) 100%;
-      }
-    }
-  }
-  .table {
-    mask:
-      linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
-      linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
-      linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
-    mask-composite: exclude;
-
-    &:local {
-      animation:
-        mask-up both linear,
-        mask-down both linear;
-      animation-timeline: scroll(x self);
-      animation-range:
-        0 2em,
-        calc(100% - 2em) 100%;
-    }
-  }
-}
-
 .prose {
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: subgrid;
   grid-column: 1 / 26;
   gap: 2rem 0;
-  padding: 2em 0;
 
   :global .katex-display {
     padding: 1.5em;
     display: grid;
-    z-index: 1;
     grid-column: start / end;
     font-size: var(--body-small);
     overflow-x: auto;
     overflow-y: hidden;
 
     @media (--sm) {
+      z-index: 1;
       font-size: var(--h5);
     }
 
@@ -152,6 +113,9 @@
     padding-top: 0.5em;
     margin-top: 1em;
     box-shadow: var(--border-t) var(--foreground-border);
+    @media (--sm) {
+      grid-column: 8 / end;
+    }
   }
 
   /* Hide the section label for visual users. */
@@ -185,6 +149,44 @@
   }
 }
 
+@supports (animation-timeline: scroll(x self)) {
+  .prose {
+    :global .katex-display {
+      mask:
+        linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
+        linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
+        linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
+      mask-composite: exclude;
+      &:local {
+        animation:
+          mask-up both linear,
+          mask-down both linear;
+        animation-timeline: scroll(x self);
+        animation-range:
+          0 2em,
+          calc(100% - 2em) 100%;
+      }
+    }
+  }
+  .table {
+    mask:
+      linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
+      linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
+      linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
+    mask-composite: exclude;
+
+    &:local {
+      animation:
+        mask-up both linear,
+        mask-down both linear;
+      animation-timeline: scroll(x self);
+      animation-range:
+        0 2em,
+        calc(100% - 2em) 100%;
+    }
+  }
+}
+
 .image {
   display: grid;
   grid-column: bleedstart / bleedend;
@@ -205,6 +207,7 @@
     text-indent: -9999px;
     font-size: var(--body);
     height: 1ch;
+
     &:before {
       content: '';
       visibility: visible;
@@ -214,6 +217,7 @@
       box-shadow: var(--border-t) inset var(--foreground-border);
       width: 100%;
       height: 1px;
+      z-index: 1;
     }
   }
 
@@ -229,7 +233,6 @@
     top: 3rem;
     align-self: stretch;
     display: inline;
-
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

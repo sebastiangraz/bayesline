@@ -58,9 +58,11 @@ export function BlogEntry() {
         <div className={`col ${style.chapters}`}>{toc.length >= 2 && tableOfContentsComponent}</div>
       </div>
 
-      <Markdown>
-        <Page />
-      </Markdown>
+      <div className={`col ${style.content}`}>
+        <Markdown>
+          <Page />
+        </Markdown>
+      </div>
       <div className={`col ${style.disclaimer}`}>
         <Icon name="warning" className={style.icon} />
         <details>

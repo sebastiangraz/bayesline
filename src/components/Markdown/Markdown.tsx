@@ -4,7 +4,7 @@ import style from './markdown.module.css';
 
 export const Markdown = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className={`${style.prose}`}>
+    <div className={`col ${style.prose}`}>
       <MDXProvider components={components}>{children}</MDXProvider>
     </div>
   );
