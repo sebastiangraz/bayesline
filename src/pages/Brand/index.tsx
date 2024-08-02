@@ -1,5 +1,6 @@
-import { Flex, Card, Cards, Text, VectorField, Logo, ShapeField, Button, Asset } from '@/components';
+import { Text, VectorField, Logo, ShapeField, Button, Asset } from '@/components';
 import { ExposeProps } from './ExposeProps';
+import { Swatch, getColor } from './Swatch';
 import style from './brand.module.css';
 
 export function Brand() {
@@ -18,19 +19,19 @@ export function Brand() {
       <div className={`col theme ${style.slide}`} data-theme="three">
         <Text.H3>Colors</Text.H3>
         <Text.Caps>Primary</Text.Caps>
-        <ExposeProps className={`${style.grid} ${style.col3}`} ignoreProps={['theme', 'children']}>
+        <ExposeProps className={`${style.grid} ${style.col3}`}>
           <Swatch color={getColor('accent-1')} />
           <Swatch color={getColor('accent-2')} />
           <Swatch color={getColor('accent-3')} />
         </ExposeProps>
         <Text.Caps>Secondary</Text.Caps>
-        <ExposeProps className={`${style.grid} ${style.col3}`} ignoreProps={['theme', 'children']}>
+        <ExposeProps className={`${style.grid} ${style.col3}`}>
           <Swatch color={getColor('foreground')} />
           <Swatch color={getColor('foreground-accent')} />
           <Swatch color={getColor('foreground-border')} />
         </ExposeProps>
         <Text.Caps>Background</Text.Caps>
-        <ExposeProps className={`${style.grid} ${style.col3}`} ignoreProps={['theme', 'children']}>
+        <ExposeProps className={`${style.grid} ${style.col3}`}>
           <Swatch color={getColor('background-4')} />
           <Swatch color={getColor('background-3')} />
           <Swatch color={getColor('background-2')} />
@@ -41,7 +42,7 @@ export function Brand() {
 
       <div className={`col theme ${style.slide}`}>
         <Text.H3>Typography</Text.H3>
-        <ExposeProps className={`${style.grid} ${style.col3}`} ignoreProps={['theme', 'children']}>
+        <ExposeProps className={`${style.grid} ${style.col3}`} ignoreProps={['children']}>
           <Text.H1>H1</Text.H1>
           <Text.H2>H2</Text.H2>
           <Text.H3>H3</Text.H3>
@@ -54,7 +55,7 @@ export function Brand() {
           <Text.SmallCaps>Small Caps text</Text.SmallCaps>
         </ExposeProps>
         <Text.Caps>Balance</Text.Caps>
-        <ExposeProps className={`${style.grid} ${style.col2}`} ignoreProps={['theme', 'children']}>
+        <ExposeProps className={`${style.grid} ${style.col2}`} ignoreProps={['children']}>
           <Text.Body>
             Bayesline is a hyper customizable analytics tool that investment managers are already familiar with.
           </Text.Body>
@@ -158,15 +159,3 @@ export function Brand() {
     </div>
   );
 }
-
-const getColor = (color: string) => {
-  return `var(--${color})`;
-};
-
-const Swatch = ({ color }: { color: string }) => {
-  return (
-    <div className={`${style.colorblock}`}>
-      <div style={{ background: color }} />
-    </div>
-  );
-};
