@@ -3,11 +3,10 @@
 
   &.entry:after {
     content: '';
-    position: absolute;
+    position: relative;
+    grid-area: 1 / 1 / span 2 / span bleedend;
     top: -1em;
     left: 0;
-    width: 100%;
-    min-height: 10em;
     background: var(--background);
     z-index: -1;
     pointer-events: none;
