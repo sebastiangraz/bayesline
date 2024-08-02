@@ -147,6 +147,34 @@
   :global [data-footnote-ref]::after {
     content: ']';
   }
+
+  :global [data-footnote-backref] {
+    text-indent: -999em;
+    display: inline-flex;
+    position: relative;
+  }
+
+  :global [data-footnote-backref]::after {
+    content: '';
+    mask-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgOSA2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0wLjUgMC41TDQuNSA0LjVMOC41IDAuNSIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=');
+    mask-size: 10px;
+    mask-repeat: no-repeat;
+    mask-position: center 0.25em;
+
+    text-indent: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-self: center start;
+    width: 1.25em;
+    height: 1.25em;
+    left: 0;
+    top: 0;
+    transform: rotate(180deg);
+    background: var(--foreground-accent);
+    border-radius: var(--radius);
+  }
 }
 
 @supports (animation-timeline: scroll(x self)) {
