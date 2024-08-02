@@ -27,6 +27,44 @@
   }
 }
 
+@supports (animation-timeline: scroll(x self)) {
+  .prose {
+    :global .katex-display {
+      mask:
+        linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
+        linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
+        linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
+      mask-composite: exclude;
+      &:local {
+        animation:
+          mask-up both linear,
+          mask-down both linear;
+        animation-timeline: scroll(x self);
+        animation-range:
+          0 2em,
+          calc(100% - 2em) 100%;
+      }
+    }
+  }
+  .table {
+    mask:
+      linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
+      linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
+      linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
+    mask-composite: exclude;
+
+    &:local {
+      animation:
+        mask-up both linear,
+        mask-down both linear;
+      animation-timeline: scroll(x self);
+      animation-range:
+        0 2em,
+        calc(100% - 2em) 100%;
+    }
+  }
+}
+
 .prose {
   display: grid;
   grid-auto-flow: row;
@@ -43,21 +81,6 @@
     font-size: var(--body-small);
     overflow-x: auto;
     overflow-y: hidden;
-    mask:
-      linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
-      linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
-      linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
-    mask-composite: exclude;
-
-    &:local {
-      animation:
-        mask-up both linear,
-        mask-down both linear;
-      animation-timeline: scroll(x self);
-      animation-range:
-        0 2em,
-        calc(100% - 2em) 100%;
-    }
 
     @media (--sm) {
       font-size: var(--h5);
@@ -225,21 +248,6 @@
   composes: scrollbar from global;
   grid-column: start / end;
   overflow-y: hidden;
-  mask:
-    linear-gradient(to right, white, transparent) 0% 50% / 0 100% no-repeat,
-    linear-gradient(to right, white, white) 50% 50% / 100% 100% no-repeat,
-    linear-gradient(to right, transparent, white) 100% 50% / 3em 100% no-repeat;
-  mask-composite: exclude;
-
-  &:local {
-    animation:
-      mask-up both linear,
-      mask-down both linear;
-    animation-timeline: scroll(x self);
-    animation-range:
-      0 2em,
-      calc(100% - 2em) 100%;
-  }
 
   @media (--sm) {
     grid-column: 8 / span end;
