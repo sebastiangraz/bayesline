@@ -79,7 +79,9 @@ const width = 288;
 const height = 288;
 
 const generateSVGs = (seed: string) => {
-  const rng = seedrandom(seed);
+  const terminatedSeed = `${seed}\0`;
+
+  const rng = seedrandom(terminatedSeed);
   const themeKeys = Object.keys(themes);
   const selectedTheme = themes[themeKeys[Math.floor(rng() * themeKeys.length)]];
 
@@ -143,6 +145,7 @@ export const Asset: React.FC<Props> = React.memo(
         viewBox={`0 0 ${width} ${height}`}
         preserveAspectRatio="xMidYMid meet"
         className={`${style.asset}`}
+        data-seed={seed}
       >
         {svgs.map((svg, index) => {
           const directions = directionsArr[index % directionsArr.length];

@@ -34,19 +34,19 @@ export const ExposeProps = ({ children, className = '', ignoreProps = [], ...pro
 
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
-    once: false,
+    once: true,
     amount: 'some'
   });
 
   return (
-    <div className={className} style={styleValue} ref={ref}>
+    <div className={className} style={styleValue}>
       {React.Children.map(children, (child: any, index: number) => {
         const isSpan = child.type === 'span';
 
         return (
           <div key={index} className={style.prop}>
             <div>{child}</div>
-            <Text.Small secondary className={style.syntax}>
+            <Text.Small secondary className={style.syntax} ref={ref}>
               {!isSpan && '<'}
               {child.type.displayName || child.type.name} {formatProps(child.props, isInView, ignoreProps)}
               {!isSpan && '/>'}

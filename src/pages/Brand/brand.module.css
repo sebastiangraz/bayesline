@@ -1,5 +1,6 @@
 .highlight {
   color: var(--foreground);
+  white-space: nowrap;
 }
 .page {
   row-gap: 0em;
@@ -28,6 +29,9 @@
   position: relative;
   inset: 1px 0px 0px -1px;
   max-width: calc(100% - 1em);
+  /* width: 100%; */
+  overflow: clip;
+  white-space: nowrap;
 }
 
 .prop {
@@ -35,11 +39,10 @@
   flex-direction: column;
   box-shadow: var(--border) var(--foreground-border);
   border-radius: var(--radius);
+
   & > *:not(.syntax) {
     padding: 1em;
     flex: 1 0 auto;
-    display: flex;
-    justify-content: center;
   }
 }
 
@@ -47,11 +50,20 @@
   /* --columns: 2; */
   display: grid;
   justify-content: space-evenly;
-  gap: 1em;
+  gap: 0.5em;
   grid-column: start / end;
-  grid-template-columns: repeat(var(--columns, 2), 1fr);
+  grid-template-columns: 1fr;
   & > * {
     grid-column: span 1;
+  }
+  @media (--sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (--md) {
+    grid-template-columns: repeat(var(--columns, 2), minmax(0, 1fr));
+  }
+  @media (--lg) {
+    gap: 1em;
   }
 }
 
@@ -61,4 +73,18 @@
 
 .col3 {
   --columns: 3;
+}
+
+.colorblock {
+  aspect-ratio: 1;
+  width: 1.5em;
+  border-radius: var(--radius-);
+  display: grid;
+  & > div {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+    background: var(--background);
+    box-shadow: var(--border) inset var(--foreground-border);
+  }
 }

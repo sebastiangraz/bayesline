@@ -53,3 +53,13 @@ Text.SmallCaps = createStyledText('smallCaps', 'span');
 export { Text };
 
 Text.displayName = 'Text';
+Text.H1.displayName = 'Text.H1';
+Text.H2.displayName = 'Text.H2';
+Text.H3.displayName = 'Text.H3';
+Text.H4.displayName = 'Text.H4';
+Text.H5.displayName = 'Text.H5';
+Text.H6.displayName = 'Text.H6';
+Text.Body.displayName = 'Text.Body';
+Text.Small.displayName = 'Text.Small';
+Text.Caps.displayName = 'Text.Caps';
+Text.SmallCaps.displayName = 'Text.SmallCaps';
