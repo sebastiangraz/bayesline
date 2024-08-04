@@ -1,4 +1,4 @@
-import { Text, VectorField, Logo, ShapeField, Button, Asset } from '@/components';
+import { Text, VectorField, Logo, ShapeField, Button, Asset, Icon, IconPaths } from '@/components';
 import { ExposeProps } from './ExposeProps';
 import { Swatch, getColor } from './Swatch';
 import style from './brand.module.css';
@@ -55,14 +55,21 @@ export function Brand() {
           <Text.SmallCaps>Small Caps text</Text.SmallCaps>
         </ExposeProps>
         <Text.Caps>Balance</Text.Caps>
-        <ExposeProps className={`${style.grid} ${style.col2}`} ignoreProps={['children']}>
+        <ExposeProps className={`${style.grid}`} ignoreProps={['children']}>
           <Text.Body>
             Bayesline is a hyper customizable analytics tool that investment managers are already familiar with.
           </Text.Body>
           <Text.Body balance>
-            {' '}
             Bayesline is a hyper customizable analytics tool that investment managers are already familiar with.
           </Text.Body>
+        </ExposeProps>
+      </div>
+      <div className={`col theme ${style.slide}`} data-theme="three">
+        <Text.H3>Icons</Text.H3>
+        <ExposeProps className={`${style.grid} ${style.col4}`}>
+          {Object.keys(IconPaths).map((icon) => (
+            <Icon name={icon} key={icon} />
+          ))}
         </ExposeProps>
       </div>
       <div className={`col theme ${style.slide}`} data-theme="two">

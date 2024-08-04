@@ -4,7 +4,7 @@ export { Card, Cards } from './Cards';
 export { Flex } from './Flex';
 export { Footer } from './Footer';
 export { Hero } from './Hero';
-export { Icon } from './Icon';
+export { Icon, IconPaths } from './Icon';
 export { Illustration } from './Illustration';
 export { Img } from './Img';
 export { Layout } from './Layout';

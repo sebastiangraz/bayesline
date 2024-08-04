@@ -1,1 +1,1 @@
-export { Icon } from './Icon';
+export { Icon, IconPaths } from './Icon';
