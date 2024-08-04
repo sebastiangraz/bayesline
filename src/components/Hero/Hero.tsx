@@ -23,7 +23,7 @@ export const Hero = (props: HeroProps) => {
             your own universe, bring custom factors, run backtests and reports on the fly.
           </Text.Body>
           <div className={`${style.ctas}`}>
-            <Button size="small" theme={1} type="primary-interactive" href="https://app.bayesline.com" target="_blank">
+            <Button size="small" theme={1} type="primary-interactive" href="https://app.bayesline.com/signup" target="_blank">
               Try for Free
             </Button>
             <Button size="small" theme={3} type="primary" href="http://schedule30.bayesline.com" target="_blank">
@@ -38,7 +38,9 @@ export const Hero = (props: HeroProps) => {
             className={`${style.badges}`}
           >
             <div className={`${style.badge}`}>
-              <img src={ycomb} alt="badge" />
+              <a href="https://www.ycombinator.com/companies/bayesline" target="_blank">
+                <img src={ycomb} alt="badge" />
+              </a>
               <Text.Small>YCombinator S24</Text.Small>
             </div>
             <div className={`${style.badge}`}>
