@@ -6,7 +6,7 @@ interface IconProps {
   secondary?: boolean;
 }
 
-export const Icon = ({ name = 'icon', secondary = true, ...rest }: IconProps) => {
+export const Icon = ({ name = 'bayesian', secondary = true, ...rest }: IconProps) => {
   const iconPath = IconPaths[name];
   const secondaryClass = secondary ? style.secondary : '';
   return (
@@ -23,7 +23,7 @@ export const Icon = ({ name = 'icon', secondary = true, ...rest }: IconProps) =>
   );
 };
 
-export const IconPaths: { [key: string]: JSX.Element } = {
+export const IconPaths = {
   documentSearch: (
     <>
       <path

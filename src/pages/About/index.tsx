@@ -31,21 +31,21 @@ export function About() {
           <div className={`col ${style.valueprops}`}>
             <ul>
               <li>
-                <Icon name="streamline" />
+                <Icon name="connect" />
                 <Text.Small secondary balance>
                   We are changing the way investment managers interact with financial analytics. From
                   one-size-doesn't-fit-all to highly customizable and blazing fast.
                 </Text.Small>
               </li>
               <li>
-                <Icon name="layers" />
+                <Icon name="bayesian" />
                 <Text.Small secondary balance>
                   Our first goal is to revolutionize equity risk models and analytics. Traditional models don't align
                   with realistic investment universes or styles - we're changing that.
                 </Text.Small>
               </li>
               <li>
-                <Icon name="globe" />
+                <Icon name="fragmentize" />
                 <Text.Small secondary balance>
                   We aim to be the one stop shop analytics provider for the modern investment manager. All asset
                   classes, all strategies, all in one place.
