@@ -1,5 +1,5 @@
 import { Text, VectorField, Logo, ShapeField, Button, Asset, Icon, IconPaths } from '@/components';
-import { IconProps } from '@/components/Icon';
+import { IconProps } from '@/components/Icon/Icon';
 import { ExposeProps } from './ExposeProps';
 import { Swatch, getColor } from './Swatch';
 import style from './brand.module.css';
@@ -69,7 +69,7 @@ export function Brand() {
         <Text.H3>Icons</Text.H3>
         <ExposeProps className={`${style.grid} ${style.col4}`}>
           {Object.keys(IconPaths).map((icon) => (
-            <Icon name={icon as IconProps} key={icon} />
+            <Icon name={icon as IconProps['name']} key={icon} />
           ))}
         </ExposeProps>
       </div>
