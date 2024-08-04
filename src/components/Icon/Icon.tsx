@@ -1,11 +1,5 @@
 import style from './icon.module.css';
 
-interface IconProps {
-  name?: keyof typeof IconPaths;
-  className?: string;
-  secondary?: boolean;
-}
-
 export const Icon = ({ name = 'bayesian', secondary = true, ...rest }: IconProps) => {
   const iconPath = IconPaths[name];
   const secondaryClass = secondary ? style.secondary : '';
@@ -366,5 +360,11 @@ export const IconPaths = {
     </>
   )
 } as const;
+
+export interface IconProps {
+  name?: keyof typeof IconPaths;
+  className?: string;
+  secondary?: boolean;
+}
 
 Icon.displayName = 'Icon';
