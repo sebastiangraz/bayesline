@@ -11,13 +11,13 @@ import { Img } from '@/components';
 
 In this blog post we are going to take the position of an new investor that is building a strategic asset allocation that includes private assets. We will use our asset allocation API to build a 20-year plan that maximizes returns for a given annual risk budget. In the process, we will introduce concepts like commitment pacing, vintage diversification, and liquid sleeves.
 
-The optimization algorithm used in this post is available through our free API, and we offer a python notebook that can be used to reproduce results, or run plans with different capital market assumptions.
+The optimization algorithm used in this post is available through our API, and we offer a python notebook that can be used to reproduce results, or run plans with different capital market assumptions.
 
-We assume a basic familiarity with the principles (but not the math) behind mean-variance optimization. The more technical paper behind our optimization algorithm can be found here [TODO: link].
+We assume a basic familiarity with the principles (but not the math) behind mean-variance optimization. The more technical paper behind our optimization algorithm is forthcoming.
 
 # What's so hard?
 
-Investors generally have a solid theoretical understanding of how to build strategic asset allocation with public assets only. However, this is not so when private assets are part of the mix. Markowitz portfolio optimization assume that investors can invest according to a weight vector. But as practitioners know all too well, one does not simply invest in private assets. As limited partners (LPs), investors can commit to a private fund, giving the general partner (GP) of the fund the bandwidth to invest at a later stage, based on the deals that become available over time. The minimal investment required is also often substantial, and the total duration of the fund's life can easily reach 12 or 15 years.
+Investors generally have a solid theoretical understanding of how to build strategic asset allocation with public assets only. However, this is not so when private assets are part of the mix. Markowitz portfolio optimization assumes that investors can invest according to a weight vector. But as practitioners know all too well, one does not simply invest in private assets. As limited partners (LPs), investors can commit to a private fund, giving the general partner (GP) of the fund the bandwidth to invest at a later stage, based on the deals that become available over time. The minimal investment required is also often substantial, and the total duration of the fund's life can easily reach 12 or 15 years.
 
 This makes strategic asset allocation more complicated. The illiquidity demands long term planning of commitments, and the high minimal investment generate diversification constraints. In this blog post, we start with a mean-variance optimization to get a benchmark, and compare this to our approach. We then one-by-one remove **features** from our approach to get back to the benchmark, and explain the value of each feature in the process.
 
@@ -36,7 +36,7 @@ The starting point is a universe of five assets (or rather asset classes), cash,
 The standard mean-variance problem maximizes the mean return subject to a volatility constraint. The (long-only) optimization problem reads,
 
 <aside>
-  <p>Lift($$L$$) can be determined by Lift Coefficient ($$C_L$$) like the following equation.</p>
+  <p>A common alternative version is to minimize volatility subject to a mean return constraint. We will not consider that variant here.</p>
 </aside>
 
 ```math
